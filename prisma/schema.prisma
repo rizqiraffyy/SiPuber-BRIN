@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(cuid())
+  first_name String    @db.VarChar(100)
+  last_name  String    @db.VarChar(100)
+  email          String?   @unique
+  no_telepon String
+  image          String?
+  password       String?
+  role           String    @default("user")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  devices        Device[]
+
+  @@map("users")
+}
+
+model Device {
+  id            Int       @id @default(autoincrement())
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  device_name   String    @unique
+  nomor_modem   String?
+  tanggal_paket DateTime?
+  email         String
+  latitude      Float
+  longitude     Float
+  user_id       String?
+  user          User?     @relation(fields: [user_id], references: [id], onDelete: SetNull)
+  sipubers      Sipuber[] 
+
+  @@index([user_id])
+}
+
+model Sipuber {
+  id          Int       @id @default(autoincrement())
+  created_at  DateTime  @default(now())
+  device_name String    @unique
+  latitude    Float
+  longitude   Float
+  pm1         Float?
+  pm10        Float?
+  pm25        Float?
+  co          Float?
+  so2         Float?
+  no2         Float?
+  o3          Float?
+  nh3         Float?
+  vbat        Float?
+  device_id   Int
+  device      Device    @relation(fields: [device_id], references: [id], onDelete: Cascade)
+  sipuberOlah SipuberOlah[]
+
+  @@index([device_name])
+}
+
+model SipuberOlah {
+  id          Int       @id @default(autoincrement())
+  created_at  DateTime  @default(now())
+  device_name String
+  latitude    Float
+  longitude   Float
+  pm1         Float?
+  pm10        Float?
+  pm25        Float?
+  co          Float?
+  so2         Float?
+  no2         Float?
+  o3          Float?
+  nh3         Float?
+  vbat        Float?
+  aqi         Int
+  sipuber_id  Int
+  sipuber     Sipuber   @relation(fields: [sipuber_id], references: [id], onDelete: Cascade)
+
+  @@index([device_name])
+}
+
+model Contact {
+  id            Int    @id @default(autoincrement())
+  contact_name  String
+  phone_number  String
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
