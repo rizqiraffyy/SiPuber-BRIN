@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import { socket } from "../socket";
 
 interface IoTData {
-  device_id: number;
+  device_name: number;
   location: string;
   co: number;
-  so: number;
+  so2: number;
   no2: number;
   o3: number;
   nh3: number;
@@ -87,16 +87,16 @@ export default function Home() {
         {iotData ? (
     <div style={{ marginTop: "1rem", padding: "1rem", border: "1px solid #ccc", borderRadius: "8px" }}>
       <h3>Latest IoT Data</h3>
-      <p><strong>Device ID:</strong> {iotData.device_id}</p>
+      <p><strong>Device Name:</strong> {iotData.device_name}</p>
       <p><strong>Location:</strong> {iotData.location}</p>
+      <p><strong>PM1:</strong> {iotData.pm1}</p>
+      <p><strong>PM10:</strong> {iotData.pm10}</p>
+      <p><strong>PM25:</strong> {iotData.pm25}</p>
       <p><strong>CO:</strong> {iotData.co}</p>
-      <p><strong>SO:</strong> {iotData.so}</p>
+      <p><strong>SO2:</strong> {iotData.so2}</p>
       <p><strong>NO₂:</strong> {iotData.no2}</p>
       <p><strong>O₃:</strong> {iotData.o3}</p>
       <p><strong>NH₃:</strong> {iotData.nh3}</p>
-      <p><strong>PM1:</strong> {iotData.pm1}</p>
-      <p><strong>PM25:</strong> {iotData.pm25}</p>
-      <p><strong>PM10:</strong> {iotData.pm10}</p>
       {/* <p><strong>ISPU (Realtime):</strong> {iotData.ispu_realtime}</p> */}
       <p><strong>Battery Voltage:</strong> {iotData.v_bat} V</p>
       {iotData.timestamp && (

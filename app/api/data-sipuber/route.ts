@@ -22,23 +22,25 @@ export async function POST(req: NextRequest) {
     }
     console.log(`data: ${result}`)
     const {
-      device_id, 
-      location, 
+      device_name, 
+      latitude, 
+      longitude,
+      pm1, 
+      pm10, 
+      pm25, 
       co, 
-      so, 
+      so2, 
       no2, 
       o3, 
       nh3, 
-      pm1, 
-      pm25, 
-      pm10, 
-      v_bat} = result.data
+      v_bat } = result.data
+      const location = `SRID=4326;POINT(${longitude} ${latitude})` 
 
     socket.emit("iot-update", {
-      device_id, 
-      location, 
+      device_name, 
+      location,
       co, 
-      so, 
+      so2, 
       no2, 
       o3, 
       nh3, 
