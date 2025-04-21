@@ -14,7 +14,7 @@ export async function POST(request: Request) {
         success: false,
         message: result.error.format() }, { status: 400 });
     }
-    const {username, full_name, email, password, role } = result.data;
+    const { username, full_name, email, password, role } = result.data;
 
     const hashedPassword = await hashPassword(password);
     await prisma.user.create({

@@ -50,7 +50,7 @@ model PpmDataSipuber {
   device_id    Int
   location     String
   co           Float
-  so           Float
+  so2           Float
   no2          Float
   o3           Float
   nh3          Float
@@ -67,7 +67,7 @@ model DailyDataSipuber {
   created_at   DateTime @default(now()) // Maps to TIMESTAMPTZ in PostgreSQL, ensuring time zone support
   location     String
   co           Float
-  so           Float
+  so2           Float
   no2          Float
   o3           Float
   nh3          Float
@@ -85,7 +85,7 @@ model AnalDataSipuber {
   device_id    Int
   location     String
   co           Float
-  so           Float
+  so2           Float
   no2          Float
   o3           Float
   nh3          Float

@@ -4838,7 +4838,7 @@ export namespace Prisma {
     id: number | null
     device_id: number | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -4853,7 +4853,7 @@ export namespace Prisma {
     id: number | null
     device_id: number | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -4870,7 +4870,7 @@ export namespace Prisma {
     device_id: number | null
     location: string | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -4887,7 +4887,7 @@ export namespace Prisma {
     device_id: number | null
     location: string | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -4904,7 +4904,7 @@ export namespace Prisma {
     device_id: number
     location: number
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -4921,7 +4921,7 @@ export namespace Prisma {
     id?: true
     device_id?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -4936,7 +4936,7 @@ export namespace Prisma {
     id?: true
     device_id?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -4953,7 +4953,7 @@ export namespace Prisma {
     device_id?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -4970,7 +4970,7 @@ export namespace Prisma {
     device_id?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -4987,7 +4987,7 @@ export namespace Prisma {
     device_id?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -5091,7 +5091,7 @@ export namespace Prisma {
     device_id: number
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -5127,7 +5127,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -5145,7 +5145,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -5163,7 +5163,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -5181,7 +5181,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -5192,7 +5192,7 @@ export namespace Prisma {
     v_bat?: boolean
   }
 
-  export type PpmDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_realtime" | "v_bat", ExtArgs["result"]["ppmDataSipuber"]>
+  export type PpmDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_realtime" | "v_bat", ExtArgs["result"]["ppmDataSipuber"]>
   export type PpmDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
@@ -5214,7 +5214,7 @@ export namespace Prisma {
       device_id: number
       location: string
       co: number
-      so: number
+      so2: number
       no2: number
       o3: number
       nh3: number
@@ -5652,7 +5652,7 @@ export namespace Prisma {
     readonly device_id: FieldRef<"PpmDataSipuber", 'Int'>
     readonly location: FieldRef<"PpmDataSipuber", 'String'>
     readonly co: FieldRef<"PpmDataSipuber", 'Float'>
-    readonly so: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly so2: FieldRef<"PpmDataSipuber", 'Float'>
     readonly no2: FieldRef<"PpmDataSipuber", 'Float'>
     readonly o3: FieldRef<"PpmDataSipuber", 'Float'>
     readonly nh3: FieldRef<"PpmDataSipuber", 'Float'>
@@ -6090,7 +6090,7 @@ export namespace Prisma {
   export type DailyDataSipuberAvgAggregateOutputType = {
     id: number | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -6104,7 +6104,7 @@ export namespace Prisma {
   export type DailyDataSipuberSumAggregateOutputType = {
     id: number | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -6120,7 +6120,7 @@ export namespace Prisma {
     created_at: Date | null
     location: string | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -6136,7 +6136,7 @@ export namespace Prisma {
     created_at: Date | null
     location: string | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -6152,7 +6152,7 @@ export namespace Prisma {
     created_at: number
     location: number
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -6168,7 +6168,7 @@ export namespace Prisma {
   export type DailyDataSipuberAvgAggregateInputType = {
     id?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -6182,7 +6182,7 @@ export namespace Prisma {
   export type DailyDataSipuberSumAggregateInputType = {
     id?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -6198,7 +6198,7 @@ export namespace Prisma {
     created_at?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -6214,7 +6214,7 @@ export namespace Prisma {
     created_at?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -6230,7 +6230,7 @@ export namespace Prisma {
     created_at?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -6333,7 +6333,7 @@ export namespace Prisma {
     created_at: Date
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -6368,7 +6368,7 @@ export namespace Prisma {
     created_at?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -6385,7 +6385,7 @@ export namespace Prisma {
     created_at?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -6402,7 +6402,7 @@ export namespace Prisma {
     created_at?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -6419,7 +6419,7 @@ export namespace Prisma {
     created_at?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -6430,7 +6430,7 @@ export namespace Prisma {
     device_id?: boolean
   }
 
-  export type DailyDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "location" | "co" | "so" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_daily" | "device_id", ExtArgs["result"]["dailyDataSipuber"]>
+  export type DailyDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_daily" | "device_id", ExtArgs["result"]["dailyDataSipuber"]>
   export type DailyDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
@@ -6451,7 +6451,7 @@ export namespace Prisma {
       created_at: Date
       location: string
       co: number
-      so: number
+      so2: number
       no2: number
       o3: number
       nh3: number
@@ -6888,7 +6888,7 @@ export namespace Prisma {
     readonly created_at: FieldRef<"DailyDataSipuber", 'DateTime'>
     readonly location: FieldRef<"DailyDataSipuber", 'String'>
     readonly co: FieldRef<"DailyDataSipuber", 'Float'>
-    readonly so: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly so2: FieldRef<"DailyDataSipuber", 'Float'>
     readonly no2: FieldRef<"DailyDataSipuber", 'Float'>
     readonly o3: FieldRef<"DailyDataSipuber", 'Float'>
     readonly nh3: FieldRef<"DailyDataSipuber", 'Float'>
@@ -7327,7 +7327,7 @@ export namespace Prisma {
     id: number | null
     device_id: number | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -7341,7 +7341,7 @@ export namespace Prisma {
     id: number | null
     device_id: number | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -7357,7 +7357,7 @@ export namespace Prisma {
     device_id: number | null
     location: string | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -7373,7 +7373,7 @@ export namespace Prisma {
     device_id: number | null
     location: string | null
     co: number | null
-    so: number | null
+    so2: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
@@ -7389,7 +7389,7 @@ export namespace Prisma {
     device_id: number
     location: number
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -7405,7 +7405,7 @@ export namespace Prisma {
     id?: true
     device_id?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -7419,7 +7419,7 @@ export namespace Prisma {
     id?: true
     device_id?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -7435,7 +7435,7 @@ export namespace Prisma {
     device_id?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -7451,7 +7451,7 @@ export namespace Prisma {
     device_id?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -7467,7 +7467,7 @@ export namespace Prisma {
     device_id?: true
     location?: true
     co?: true
-    so?: true
+    so2?: true
     no2?: true
     o3?: true
     nh3?: true
@@ -7570,7 +7570,7 @@ export namespace Prisma {
     device_id: number
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -7605,7 +7605,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -7622,7 +7622,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -7639,7 +7639,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -7656,7 +7656,7 @@ export namespace Prisma {
     device_id?: boolean
     location?: boolean
     co?: boolean
-    so?: boolean
+    so2?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
@@ -7666,7 +7666,7 @@ export namespace Prisma {
     v_bat?: boolean
   }
 
-  export type AnalDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "v_bat", ExtArgs["result"]["analDataSipuber"]>
+  export type AnalDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "v_bat", ExtArgs["result"]["analDataSipuber"]>
   export type AnalDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
@@ -7688,7 +7688,7 @@ export namespace Prisma {
       device_id: number
       location: string
       co: number
-      so: number
+      so2: number
       no2: number
       o3: number
       nh3: number
@@ -8125,7 +8125,7 @@ export namespace Prisma {
     readonly device_id: FieldRef<"AnalDataSipuber", 'Int'>
     readonly location: FieldRef<"AnalDataSipuber", 'String'>
     readonly co: FieldRef<"AnalDataSipuber", 'Float'>
-    readonly so: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly so2: FieldRef<"AnalDataSipuber", 'Float'>
     readonly no2: FieldRef<"AnalDataSipuber", 'Float'>
     readonly o3: FieldRef<"AnalDataSipuber", 'Float'>
     readonly nh3: FieldRef<"AnalDataSipuber", 'Float'>
@@ -9617,7 +9617,7 @@ export namespace Prisma {
     device_id: 'device_id',
     location: 'location',
     co: 'co',
-    so: 'so',
+    so2: 'so2',
     no2: 'no2',
     o3: 'o3',
     nh3: 'nh3',
@@ -9636,7 +9636,7 @@ export namespace Prisma {
     created_at: 'created_at',
     location: 'location',
     co: 'co',
-    so: 'so',
+    so2: 'so2',
     no2: 'no2',
     o3: 'o3',
     nh3: 'nh3',
@@ -9656,7 +9656,7 @@ export namespace Prisma {
     device_id: 'device_id',
     location: 'location',
     co: 'co',
-    so: 'so',
+    so2: 'so2',
     no2: 'no2',
     o3: 'o3',
     nh3: 'nh3',
@@ -9965,7 +9965,7 @@ export namespace Prisma {
     device_id?: IntFilter<"PpmDataSipuber"> | number
     location?: StringFilter<"PpmDataSipuber"> | string
     co?: FloatFilter<"PpmDataSipuber"> | number
-    so?: FloatFilter<"PpmDataSipuber"> | number
+    so2?: FloatFilter<"PpmDataSipuber"> | number
     no2?: FloatFilter<"PpmDataSipuber"> | number
     o3?: FloatFilter<"PpmDataSipuber"> | number
     nh3?: FloatFilter<"PpmDataSipuber"> | number
@@ -9983,7 +9983,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -10004,7 +10004,7 @@ export namespace Prisma {
     device_id?: IntFilter<"PpmDataSipuber"> | number
     location?: StringFilter<"PpmDataSipuber"> | string
     co?: FloatFilter<"PpmDataSipuber"> | number
-    so?: FloatFilter<"PpmDataSipuber"> | number
+    so2?: FloatFilter<"PpmDataSipuber"> | number
     no2?: FloatFilter<"PpmDataSipuber"> | number
     o3?: FloatFilter<"PpmDataSipuber"> | number
     nh3?: FloatFilter<"PpmDataSipuber"> | number
@@ -10022,7 +10022,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -10047,7 +10047,7 @@ export namespace Prisma {
     device_id?: IntWithAggregatesFilter<"PpmDataSipuber"> | number
     location?: StringWithAggregatesFilter<"PpmDataSipuber"> | string
     co?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
-    so?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    so2?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
     no2?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
     o3?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
     nh3?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
@@ -10066,7 +10066,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"DailyDataSipuber"> | Date | string
     location?: StringFilter<"DailyDataSipuber"> | string
     co?: FloatFilter<"DailyDataSipuber"> | number
-    so?: FloatFilter<"DailyDataSipuber"> | number
+    so2?: FloatFilter<"DailyDataSipuber"> | number
     no2?: FloatFilter<"DailyDataSipuber"> | number
     o3?: FloatFilter<"DailyDataSipuber"> | number
     nh3?: FloatFilter<"DailyDataSipuber"> | number
@@ -10083,7 +10083,7 @@ export namespace Prisma {
     created_at?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -10103,7 +10103,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"DailyDataSipuber"> | Date | string
     location?: StringFilter<"DailyDataSipuber"> | string
     co?: FloatFilter<"DailyDataSipuber"> | number
-    so?: FloatFilter<"DailyDataSipuber"> | number
+    so2?: FloatFilter<"DailyDataSipuber"> | number
     no2?: FloatFilter<"DailyDataSipuber"> | number
     o3?: FloatFilter<"DailyDataSipuber"> | number
     nh3?: FloatFilter<"DailyDataSipuber"> | number
@@ -10120,7 +10120,7 @@ export namespace Prisma {
     created_at?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -10144,7 +10144,7 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"DailyDataSipuber"> | Date | string
     location?: StringWithAggregatesFilter<"DailyDataSipuber"> | string
     co?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
-    so?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    so2?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
     no2?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
     o3?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
     nh3?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
@@ -10164,7 +10164,7 @@ export namespace Prisma {
     device_id?: IntFilter<"AnalDataSipuber"> | number
     location?: StringFilter<"AnalDataSipuber"> | string
     co?: FloatFilter<"AnalDataSipuber"> | number
-    so?: FloatFilter<"AnalDataSipuber"> | number
+    so2?: FloatFilter<"AnalDataSipuber"> | number
     no2?: FloatFilter<"AnalDataSipuber"> | number
     o3?: FloatFilter<"AnalDataSipuber"> | number
     nh3?: FloatFilter<"AnalDataSipuber"> | number
@@ -10181,7 +10181,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -10201,7 +10201,7 @@ export namespace Prisma {
     device_id?: IntFilter<"AnalDataSipuber"> | number
     location?: StringFilter<"AnalDataSipuber"> | string
     co?: FloatFilter<"AnalDataSipuber"> | number
-    so?: FloatFilter<"AnalDataSipuber"> | number
+    so2?: FloatFilter<"AnalDataSipuber"> | number
     no2?: FloatFilter<"AnalDataSipuber"> | number
     o3?: FloatFilter<"AnalDataSipuber"> | number
     nh3?: FloatFilter<"AnalDataSipuber"> | number
@@ -10218,7 +10218,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -10242,7 +10242,7 @@ export namespace Prisma {
     device_id?: IntWithAggregatesFilter<"AnalDataSipuber"> | number
     location?: StringWithAggregatesFilter<"AnalDataSipuber"> | string
     co?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
-    so?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    so2?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
     no2?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
     o3?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
     nh3?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
@@ -10486,7 +10486,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10504,7 +10504,7 @@ export namespace Prisma {
     device_id: number
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10519,7 +10519,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10537,7 +10537,7 @@ export namespace Prisma {
     device_id?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10554,7 +10554,7 @@ export namespace Prisma {
     device_id: number
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10569,7 +10569,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10586,7 +10586,7 @@ export namespace Prisma {
     device_id?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10601,7 +10601,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10617,7 +10617,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10632,7 +10632,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10648,7 +10648,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10664,7 +10664,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10679,7 +10679,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10694,7 +10694,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10709,7 +10709,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10726,7 +10726,7 @@ export namespace Prisma {
     device_id: number
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10740,7 +10740,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10757,7 +10757,7 @@ export namespace Prisma {
     device_id?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10773,7 +10773,7 @@ export namespace Prisma {
     device_id: number
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -10787,7 +10787,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -10803,7 +10803,7 @@ export namespace Prisma {
     device_id?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -11149,7 +11149,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11164,7 +11164,7 @@ export namespace Prisma {
     id?: SortOrder
     device_id?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11181,7 +11181,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11198,7 +11198,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11213,7 +11213,7 @@ export namespace Prisma {
     id?: SortOrder
     device_id?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11259,7 +11259,7 @@ export namespace Prisma {
     created_at?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11273,7 +11273,7 @@ export namespace Prisma {
   export type DailyDataSipuberAvgOrderByAggregateInput = {
     id?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11289,7 +11289,7 @@ export namespace Prisma {
     created_at?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11305,7 +11305,7 @@ export namespace Prisma {
     created_at?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11319,7 +11319,7 @@ export namespace Prisma {
   export type DailyDataSipuberSumOrderByAggregateInput = {
     id?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11336,7 +11336,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11350,7 +11350,7 @@ export namespace Prisma {
     id?: SortOrder
     device_id?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11366,7 +11366,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11382,7 +11382,7 @@ export namespace Prisma {
     device_id?: SortOrder
     location?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11396,7 +11396,7 @@ export namespace Prisma {
     id?: SortOrder
     device_id?: SortOrder
     co?: SortOrder
-    so?: SortOrder
+    so2?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
@@ -11940,7 +11940,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -11956,7 +11956,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -11981,7 +11981,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -11996,7 +11996,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -12020,7 +12020,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -12035,7 +12035,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -12110,7 +12110,7 @@ export namespace Prisma {
     device_id?: IntFilter<"PpmDataSipuber"> | number
     location?: StringFilter<"PpmDataSipuber"> | string
     co?: FloatFilter<"PpmDataSipuber"> | number
-    so?: FloatFilter<"PpmDataSipuber"> | number
+    so2?: FloatFilter<"PpmDataSipuber"> | number
     no2?: FloatFilter<"PpmDataSipuber"> | number
     o3?: FloatFilter<"PpmDataSipuber"> | number
     nh3?: FloatFilter<"PpmDataSipuber"> | number
@@ -12145,7 +12145,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"DailyDataSipuber"> | Date | string
     location?: StringFilter<"DailyDataSipuber"> | string
     co?: FloatFilter<"DailyDataSipuber"> | number
-    so?: FloatFilter<"DailyDataSipuber"> | number
+    so2?: FloatFilter<"DailyDataSipuber"> | number
     no2?: FloatFilter<"DailyDataSipuber"> | number
     o3?: FloatFilter<"DailyDataSipuber"> | number
     nh3?: FloatFilter<"DailyDataSipuber"> | number
@@ -12181,7 +12181,7 @@ export namespace Prisma {
     device_id?: IntFilter<"AnalDataSipuber"> | number
     location?: StringFilter<"AnalDataSipuber"> | string
     co?: FloatFilter<"AnalDataSipuber"> | number
-    so?: FloatFilter<"AnalDataSipuber"> | number
+    so2?: FloatFilter<"AnalDataSipuber"> | number
     no2?: FloatFilter<"AnalDataSipuber"> | number
     o3?: FloatFilter<"AnalDataSipuber"> | number
     nh3?: FloatFilter<"AnalDataSipuber"> | number
@@ -12391,7 +12391,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -12407,7 +12407,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -12422,7 +12422,7 @@ export namespace Prisma {
     created_at?: Date | string
     location: string
     co: number
-    so: number
+    so2: number
     no2: number
     o3: number
     nh3: number
@@ -12436,7 +12436,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12452,7 +12452,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12468,7 +12468,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12483,7 +12483,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12498,7 +12498,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12513,7 +12513,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12527,7 +12527,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12542,7 +12542,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
@@ -12557,7 +12557,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: StringFieldUpdateOperationsInput | string
     co?: FloatFieldUpdateOperationsInput | number
-    so?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
     o3?: FloatFieldUpdateOperationsInput | number
     nh3?: FloatFieldUpdateOperationsInput | number
