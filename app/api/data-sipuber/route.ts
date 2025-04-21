@@ -39,14 +39,14 @@ export async function POST(req: NextRequest) {
     socket.emit("iot-update", {
       device_name, 
       location,
+      pm10, 
+      pm1, 
+      pm25, 
       co, 
       so2, 
       no2, 
       o3, 
       nh3, 
-      pm1, 
-      pm25, 
-      pm10, 
       v_bat
     });
 
