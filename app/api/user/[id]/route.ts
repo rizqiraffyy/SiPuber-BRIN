@@ -2,10 +2,7 @@ import { NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 import { roleSchema } from "@/lib/validator";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
     const userId = parseInt(params.id);
     const user = await prisma.user.findUnique({
@@ -20,6 +17,7 @@ export async function GET(
 
     return NextResponse.json({
       success: true,
+      message: "User retrieved successfully",
       data: {
         id: user.id,
         username: user.username,
@@ -28,8 +26,9 @@ export async function GET(
         role: user.role,
         isSoftDelete: user.isSoftDelete
       },
-  });
+  }, {status: 200});
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ 
       success: false,
       message: error }, { status: 500 });
@@ -46,12 +45,11 @@ export async function PATCH(request: Request, { params }: { params: { id: string
       return NextResponse.json({
         success: false,
         message: result.error.format() },
-        { status: 400 }
-      );
+        { status: 400 });
     }
     const { role } = result.data;
 
-    await prisma.user.update({
+    const user = await prisma.user.update({
       where: { id: userId },
       data: {
         role,
@@ -60,8 +58,8 @@ export async function PATCH(request: Request, { params }: { params: { id: string
 
     return NextResponse.json({
       success: true,
-      message: `role: ${role} updated successfully`
-    })
+      message: `User "${user.username}" role updated to "${role}" successfully.`
+    }, {status: 200})
   } catch (error) {
     return NextResponse.json({ 
       success: false,

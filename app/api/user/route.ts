@@ -12,9 +12,7 @@ export async function POST(request: Request) {
     if (!result.success) {
       return NextResponse.json({
         success: false,
-        message: result.error.format() },
-        { status: 400 }
-      );
+        message: result.error.format() }, { status: 400 });
     }
     const {username, full_name, email, password, role } = result.data;
 
