@@ -30,6 +30,22 @@ const RoleSchema = z.enum(["USER", "STAKEHOLDER", "ADMIN"], {
   errorMap: () => ({ message: "Role must be one of: USER, STAKEHOLDER, ADMIN" }),
 });
 
+export const siPuberSchema = z.object({
+  device_id: z.number().int(),
+  location: z.string(),
+  co: z.number(),
+  so: z.number(),
+  no2: z.number(),
+  o3: z.number(),
+  nh3: z.number(),
+  pm1: z.number(),
+  pm25: z.number(),
+  pm10: z.number(),
+  // ispu_realtime: z.number(),
+  v_bat: z.number()
+});
+
+
 export const registerSchema = z.object({
   username: UsernameSchema,
   full_name: FullNameSchema,

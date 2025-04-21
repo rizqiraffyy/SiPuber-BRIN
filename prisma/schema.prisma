@@ -27,8 +27,8 @@ model User {
 
 model Device {
   id           Int      @id @default(autoincrement())
-  device_name  String
-  no_modem     String?
+  device_name  String @db.VarChar(50)
+  no_modem     String? @db.VarChar(50)
   tanggal_paket String?
   user_id      Int
   user         User     @relation(fields: [user_id], references: [id])
@@ -100,5 +100,5 @@ model AlertManagement {
   id         Int      @id @default(autoincrement())
   wa_name    String
   wa_number  String
-  email      String
+  email      String @db.VarChar(100)
 }

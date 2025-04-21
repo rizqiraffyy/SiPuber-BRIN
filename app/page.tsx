@@ -5,10 +5,21 @@ import { useEffect, useState } from "react";
 import { socket } from "../socket";
 
 interface IoTData {
-  sensorId: string;
-  value: number;
-  timestamp: string;
+  device_id: number;
+  location: string;
+  co: number;
+  so: number;
+  no2: number;
+  o3: number;
+  nh3: number;
+  pm1: number;
+  pm25: number;
+  pm10: number;
+  // ispu_realtime: number;
+  v_bat: number;
+  timestamp?: string; 
 }
+
 
 export default function Home() {
   const [isConnected, setIsConnected] = useState(false);
@@ -73,16 +84,29 @@ export default function Home() {
       <p>Status: <strong>{isConnected ? "Connected ✅" : "Disconnected ❌"}</strong></p>
       <p>Transport: <strong>{transport}</strong></p>
 
-      {iotData ? (
-        <div style={{ marginTop: "1rem", padding: "1rem", border: "1px solid #ccc", borderRadius: "8px" }}>
-          <h3>Latest IoT Data</h3>
-          <p><strong>Sensor ID:</strong> {iotData.sensorId}</p>
-          <p><strong>Value:</strong> {iotData.value}</p>
-          <p><strong>Timestamp:</strong> {iotData.timestamp}</p>
-        </div>
-      ) : (
-        <p style={{ marginTop: "1rem" }}>No IoT data received yet.</p>
+        {iotData ? (
+    <div style={{ marginTop: "1rem", padding: "1rem", border: "1px solid #ccc", borderRadius: "8px" }}>
+      <h3>Latest IoT Data</h3>
+      <p><strong>Device ID:</strong> {iotData.device_id}</p>
+      <p><strong>Location:</strong> {iotData.location}</p>
+      <p><strong>CO:</strong> {iotData.co}</p>
+      <p><strong>SO:</strong> {iotData.so}</p>
+      <p><strong>NO₂:</strong> {iotData.no2}</p>
+      <p><strong>O₃:</strong> {iotData.o3}</p>
+      <p><strong>NH₃:</strong> {iotData.nh3}</p>
+      <p><strong>PM1:</strong> {iotData.pm1}</p>
+      <p><strong>PM25:</strong> {iotData.pm25}</p>
+      <p><strong>PM10:</strong> {iotData.pm10}</p>
+      {/* <p><strong>ISPU (Realtime):</strong> {iotData.ispu_realtime}</p> */}
+      <p><strong>Battery Voltage:</strong> {iotData.v_bat} V</p>
+      {iotData.timestamp && (
+        <p><strong>Timestamp:</strong> {iotData.timestamp}</p>
       )}
+    </div>
+) : (
+  <p style={{ marginTop: "1rem" }}>No IoT data received yet.</p>
+)}
+
     </div>
   );
 }
