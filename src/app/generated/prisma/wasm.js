@@ -119,80 +119,83 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  first_name: 'first_name',
-  last_name: 'last_name',
+  username: 'username',
+  full_name: 'full_name',
   email: 'email',
-  no_telepon: 'no_telepon',
-  image: 'image',
   password: 'password',
   role: 'role',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  isSoftDelete: 'isSoftDelete'
 };
 
 exports.Prisma.DeviceScalarFieldEnum = {
   id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
   device_name: 'device_name',
-  nomor_modem: 'nomor_modem',
+  no_modem: 'no_modem',
   tanggal_paket: 'tanggal_paket',
-  email: 'email',
-  latitude: 'latitude',
-  longitude: 'longitude',
   user_id: 'user_id'
 };
 
-exports.Prisma.SipuberScalarFieldEnum = {
+exports.Prisma.CmsSettingScalarFieldEnum = {
+  id: 'id',
+  thumbnail: 'thumbnail',
+  section: 'section',
+  content: 'content'
+};
+
+exports.Prisma.PpmDataSipuberScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
-  device_name: 'device_name',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  pm1: 'pm1',
-  pm10: 'pm10',
-  pm25: 'pm25',
+  device_id: 'device_id',
+  location: 'location',
   co: 'co',
-  so2: 'so2',
+  so: 'so',
   no2: 'no2',
   o3: 'o3',
   nh3: 'nh3',
-  vbat: 'vbat',
+  pm1: 'pm1',
+  pm25: 'pm25',
+  pm10: 'pm10',
+  ispu_realtime: 'ispu_realtime',
+  v_bat: 'v_bat'
+};
+
+exports.Prisma.DailyDataSipuberScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  location: 'location',
+  co: 'co',
+  so: 'so',
+  no2: 'no2',
+  o3: 'o3',
+  nh3: 'nh3',
+  pm1: 'pm1',
+  pm25: 'pm25',
+  pm10: 'pm10',
+  ispu_daily: 'ispu_daily',
   device_id: 'device_id'
 };
 
-exports.Prisma.SipuberOlahScalarFieldEnum = {
+exports.Prisma.AnalDataSipuberScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
-  device_name: 'device_name',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  pm1: 'pm1',
-  pm10: 'pm10',
-  pm25: 'pm25',
+  device_id: 'device_id',
+  location: 'location',
   co: 'co',
-  so2: 'so2',
+  so: 'so',
   no2: 'no2',
   o3: 'o3',
   nh3: 'nh3',
-  vbat: 'vbat',
-  aqi: 'aqi',
-  sipuber_id: 'sipuber_id'
+  pm1: 'pm1',
+  pm25: 'pm25',
+  pm10: 'pm10',
+  v_bat: 'v_bat'
 };
 
-exports.Prisma.ContactScalarFieldEnum = {
+exports.Prisma.AlertManagementScalarFieldEnum = {
   id: 'id',
-  contact_name: 'contact_name',
-  phone_number: 'phone_number'
-};
-
-exports.Prisma.SessionScalarFieldEnum = {
-  id: 'id',
-  sid: 'sid',
-  data: 'data',
-  expiresAt: 'expiresAt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  wa_name: 'wa_name',
+  wa_number: 'wa_number',
+  email: 'email'
 };
 
 exports.Prisma.SortOrder = {
@@ -214,10 +217,11 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Device: 'Device',
-  Sipuber: 'Sipuber',
-  SipuberOlah: 'SipuberOlah',
-  Contact: 'Contact',
-  Session: 'Session'
+  CmsSetting: 'CmsSetting',
+  PpmDataSipuber: 'PpmDataSipuber',
+  DailyDataSipuber: 'DailyDataSipuber',
+  AnalDataSipuber: 'AnalDataSipuber',
+  AlertManagement: 'AlertManagement'
 };
 
 /**

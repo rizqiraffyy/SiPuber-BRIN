@@ -24,25 +24,30 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Device = $Result.DefaultSelection<Prisma.$DevicePayload>
 /**
- * Model Sipuber
+ * Model CmsSetting
  * 
  */
-export type Sipuber = $Result.DefaultSelection<Prisma.$SipuberPayload>
+export type CmsSetting = $Result.DefaultSelection<Prisma.$CmsSettingPayload>
 /**
- * Model SipuberOlah
+ * Model PpmDataSipuber
  * 
  */
-export type SipuberOlah = $Result.DefaultSelection<Prisma.$SipuberOlahPayload>
+export type PpmDataSipuber = $Result.DefaultSelection<Prisma.$PpmDataSipuberPayload>
 /**
- * Model Contact
+ * Model DailyDataSipuber
  * 
  */
-export type Contact = $Result.DefaultSelection<Prisma.$ContactPayload>
+export type DailyDataSipuber = $Result.DefaultSelection<Prisma.$DailyDataSipuberPayload>
 /**
- * Model Session
+ * Model AnalDataSipuber
  * 
  */
-export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
+export type AnalDataSipuber = $Result.DefaultSelection<Prisma.$AnalDataSipuberPayload>
+/**
+ * Model AlertManagement
+ * 
+ */
+export type AlertManagement = $Result.DefaultSelection<Prisma.$AlertManagementPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -190,44 +195,54 @@ export class PrismaClient<
   get device(): Prisma.DeviceDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.sipuber`: Exposes CRUD operations for the **Sipuber** model.
+   * `prisma.cmsSetting`: Exposes CRUD operations for the **CmsSetting** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Sipubers
-    * const sipubers = await prisma.sipuber.findMany()
+    * // Fetch zero or more CmsSettings
+    * const cmsSettings = await prisma.cmsSetting.findMany()
     * ```
     */
-  get sipuber(): Prisma.SipuberDelegate<ExtArgs, ClientOptions>;
+  get cmsSetting(): Prisma.CmsSettingDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.sipuberOlah`: Exposes CRUD operations for the **SipuberOlah** model.
+   * `prisma.ppmDataSipuber`: Exposes CRUD operations for the **PpmDataSipuber** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more SipuberOlahs
-    * const sipuberOlahs = await prisma.sipuberOlah.findMany()
+    * // Fetch zero or more PpmDataSipubers
+    * const ppmDataSipubers = await prisma.ppmDataSipuber.findMany()
     * ```
     */
-  get sipuberOlah(): Prisma.SipuberOlahDelegate<ExtArgs, ClientOptions>;
+  get ppmDataSipuber(): Prisma.PpmDataSipuberDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.contact`: Exposes CRUD operations for the **Contact** model.
+   * `prisma.dailyDataSipuber`: Exposes CRUD operations for the **DailyDataSipuber** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Contacts
-    * const contacts = await prisma.contact.findMany()
+    * // Fetch zero or more DailyDataSipubers
+    * const dailyDataSipubers = await prisma.dailyDataSipuber.findMany()
     * ```
     */
-  get contact(): Prisma.ContactDelegate<ExtArgs, ClientOptions>;
+  get dailyDataSipuber(): Prisma.DailyDataSipuberDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.session`: Exposes CRUD operations for the **Session** model.
+   * `prisma.analDataSipuber`: Exposes CRUD operations for the **AnalDataSipuber** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Sessions
-    * const sessions = await prisma.session.findMany()
+    * // Fetch zero or more AnalDataSipubers
+    * const analDataSipubers = await prisma.analDataSipuber.findMany()
     * ```
     */
-  get session(): Prisma.SessionDelegate<ExtArgs, ClientOptions>;
+  get analDataSipuber(): Prisma.AnalDataSipuberDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.alertManagement`: Exposes CRUD operations for the **AlertManagement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AlertManagements
+    * const alertManagements = await prisma.alertManagement.findMany()
+    * ```
+    */
+  get alertManagement(): Prisma.AlertManagementDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -670,10 +685,11 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Device: 'Device',
-    Sipuber: 'Sipuber',
-    SipuberOlah: 'SipuberOlah',
-    Contact: 'Contact',
-    Session: 'Session'
+    CmsSetting: 'CmsSetting',
+    PpmDataSipuber: 'PpmDataSipuber',
+    DailyDataSipuber: 'DailyDataSipuber',
+    AnalDataSipuber: 'AnalDataSipuber',
+    AlertManagement: 'AlertManagement'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "device" | "sipuber" | "sipuberOlah" | "contact" | "session"
+      modelProps: "user" | "device" | "cmsSetting" | "ppmDataSipuber" | "dailyDataSipuber" | "analDataSipuber" | "alertManagement"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -844,299 +860,373 @@ export namespace Prisma {
           }
         }
       }
-      Sipuber: {
-        payload: Prisma.$SipuberPayload<ExtArgs>
-        fields: Prisma.SipuberFieldRefs
+      CmsSetting: {
+        payload: Prisma.$CmsSettingPayload<ExtArgs>
+        fields: Prisma.CmsSettingFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.SipuberFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload> | null
+            args: Prisma.CmsSettingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.SipuberFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>
+            args: Prisma.CmsSettingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>
           }
           findFirst: {
-            args: Prisma.SipuberFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload> | null
+            args: Prisma.CmsSettingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.SipuberFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>
+            args: Prisma.CmsSettingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>
           }
           findMany: {
-            args: Prisma.SipuberFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>[]
+            args: Prisma.CmsSettingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>[]
           }
           create: {
-            args: Prisma.SipuberCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>
+            args: Prisma.CmsSettingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>
           }
           createMany: {
-            args: Prisma.SipuberCreateManyArgs<ExtArgs>
+            args: Prisma.CmsSettingCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.SipuberCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>[]
+            args: Prisma.CmsSettingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>[]
           }
           delete: {
-            args: Prisma.SipuberDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>
+            args: Prisma.CmsSettingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>
           }
           update: {
-            args: Prisma.SipuberUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>
+            args: Prisma.CmsSettingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>
           }
           deleteMany: {
-            args: Prisma.SipuberDeleteManyArgs<ExtArgs>
+            args: Prisma.CmsSettingDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.SipuberUpdateManyArgs<ExtArgs>
+            args: Prisma.CmsSettingUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.SipuberUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>[]
+            args: Prisma.CmsSettingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>[]
           }
           upsert: {
-            args: Prisma.SipuberUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberPayload>
+            args: Prisma.CmsSettingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CmsSettingPayload>
           }
           aggregate: {
-            args: Prisma.SipuberAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSipuber>
+            args: Prisma.CmsSettingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCmsSetting>
           }
           groupBy: {
-            args: Prisma.SipuberGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SipuberGroupByOutputType>[]
+            args: Prisma.CmsSettingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CmsSettingGroupByOutputType>[]
           }
           count: {
-            args: Prisma.SipuberCountArgs<ExtArgs>
-            result: $Utils.Optional<SipuberCountAggregateOutputType> | number
+            args: Prisma.CmsSettingCountArgs<ExtArgs>
+            result: $Utils.Optional<CmsSettingCountAggregateOutputType> | number
           }
         }
       }
-      SipuberOlah: {
-        payload: Prisma.$SipuberOlahPayload<ExtArgs>
-        fields: Prisma.SipuberOlahFieldRefs
+      PpmDataSipuber: {
+        payload: Prisma.$PpmDataSipuberPayload<ExtArgs>
+        fields: Prisma.PpmDataSipuberFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.SipuberOlahFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload> | null
+            args: Prisma.PpmDataSipuberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.SipuberOlahFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>
+            args: Prisma.PpmDataSipuberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>
           }
           findFirst: {
-            args: Prisma.SipuberOlahFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload> | null
+            args: Prisma.PpmDataSipuberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.SipuberOlahFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>
+            args: Prisma.PpmDataSipuberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>
           }
           findMany: {
-            args: Prisma.SipuberOlahFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>[]
+            args: Prisma.PpmDataSipuberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>[]
           }
           create: {
-            args: Prisma.SipuberOlahCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>
+            args: Prisma.PpmDataSipuberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>
           }
           createMany: {
-            args: Prisma.SipuberOlahCreateManyArgs<ExtArgs>
+            args: Prisma.PpmDataSipuberCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.SipuberOlahCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>[]
+            args: Prisma.PpmDataSipuberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>[]
           }
           delete: {
-            args: Prisma.SipuberOlahDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>
+            args: Prisma.PpmDataSipuberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>
           }
           update: {
-            args: Prisma.SipuberOlahUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>
+            args: Prisma.PpmDataSipuberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>
           }
           deleteMany: {
-            args: Prisma.SipuberOlahDeleteManyArgs<ExtArgs>
+            args: Prisma.PpmDataSipuberDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.SipuberOlahUpdateManyArgs<ExtArgs>
+            args: Prisma.PpmDataSipuberUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.SipuberOlahUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>[]
+            args: Prisma.PpmDataSipuberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>[]
           }
           upsert: {
-            args: Prisma.SipuberOlahUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SipuberOlahPayload>
+            args: Prisma.PpmDataSipuberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PpmDataSipuberPayload>
           }
           aggregate: {
-            args: Prisma.SipuberOlahAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSipuberOlah>
+            args: Prisma.PpmDataSipuberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePpmDataSipuber>
           }
           groupBy: {
-            args: Prisma.SipuberOlahGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SipuberOlahGroupByOutputType>[]
+            args: Prisma.PpmDataSipuberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PpmDataSipuberGroupByOutputType>[]
           }
           count: {
-            args: Prisma.SipuberOlahCountArgs<ExtArgs>
-            result: $Utils.Optional<SipuberOlahCountAggregateOutputType> | number
+            args: Prisma.PpmDataSipuberCountArgs<ExtArgs>
+            result: $Utils.Optional<PpmDataSipuberCountAggregateOutputType> | number
           }
         }
       }
-      Contact: {
-        payload: Prisma.$ContactPayload<ExtArgs>
-        fields: Prisma.ContactFieldRefs
+      DailyDataSipuber: {
+        payload: Prisma.$DailyDataSipuberPayload<ExtArgs>
+        fields: Prisma.DailyDataSipuberFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ContactFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
+            args: Prisma.DailyDataSipuberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ContactFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.DailyDataSipuberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>
           }
           findFirst: {
-            args: Prisma.ContactFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
+            args: Prisma.DailyDataSipuberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ContactFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.DailyDataSipuberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>
           }
           findMany: {
-            args: Prisma.ContactFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
+            args: Prisma.DailyDataSipuberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>[]
           }
           create: {
-            args: Prisma.ContactCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.DailyDataSipuberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>
           }
           createMany: {
-            args: Prisma.ContactCreateManyArgs<ExtArgs>
+            args: Prisma.DailyDataSipuberCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.ContactCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
+            args: Prisma.DailyDataSipuberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>[]
           }
           delete: {
-            args: Prisma.ContactDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.DailyDataSipuberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>
           }
           update: {
-            args: Prisma.ContactUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.DailyDataSipuberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>
           }
           deleteMany: {
-            args: Prisma.ContactDeleteManyArgs<ExtArgs>
+            args: Prisma.DailyDataSipuberDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ContactUpdateManyArgs<ExtArgs>
+            args: Prisma.DailyDataSipuberUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.ContactUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
+            args: Prisma.DailyDataSipuberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>[]
           }
           upsert: {
-            args: Prisma.ContactUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.DailyDataSipuberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyDataSipuberPayload>
           }
           aggregate: {
-            args: Prisma.ContactAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateContact>
+            args: Prisma.DailyDataSipuberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDailyDataSipuber>
           }
           groupBy: {
-            args: Prisma.ContactGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ContactGroupByOutputType>[]
+            args: Prisma.DailyDataSipuberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DailyDataSipuberGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ContactCountArgs<ExtArgs>
-            result: $Utils.Optional<ContactCountAggregateOutputType> | number
+            args: Prisma.DailyDataSipuberCountArgs<ExtArgs>
+            result: $Utils.Optional<DailyDataSipuberCountAggregateOutputType> | number
           }
         }
       }
-      Session: {
-        payload: Prisma.$SessionPayload<ExtArgs>
-        fields: Prisma.SessionFieldRefs
+      AnalDataSipuber: {
+        payload: Prisma.$AnalDataSipuberPayload<ExtArgs>
+        fields: Prisma.AnalDataSipuberFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.SessionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload> | null
+            args: Prisma.AnalDataSipuberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.SessionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+            args: Prisma.AnalDataSipuberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>
           }
           findFirst: {
-            args: Prisma.SessionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload> | null
+            args: Prisma.AnalDataSipuberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.SessionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+            args: Prisma.AnalDataSipuberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>
           }
           findMany: {
-            args: Prisma.SessionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
+            args: Prisma.AnalDataSipuberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>[]
           }
           create: {
-            args: Prisma.SessionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+            args: Prisma.AnalDataSipuberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>
           }
           createMany: {
-            args: Prisma.SessionCreateManyArgs<ExtArgs>
+            args: Prisma.AnalDataSipuberCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.SessionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
+            args: Prisma.AnalDataSipuberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>[]
           }
           delete: {
-            args: Prisma.SessionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+            args: Prisma.AnalDataSipuberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>
           }
           update: {
-            args: Prisma.SessionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+            args: Prisma.AnalDataSipuberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>
           }
           deleteMany: {
-            args: Prisma.SessionDeleteManyArgs<ExtArgs>
+            args: Prisma.AnalDataSipuberDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.SessionUpdateManyArgs<ExtArgs>
+            args: Prisma.AnalDataSipuberUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.SessionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
+            args: Prisma.AnalDataSipuberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>[]
           }
           upsert: {
-            args: Prisma.SessionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
+            args: Prisma.AnalDataSipuberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalDataSipuberPayload>
           }
           aggregate: {
-            args: Prisma.SessionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSession>
+            args: Prisma.AnalDataSipuberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAnalDataSipuber>
           }
           groupBy: {
-            args: Prisma.SessionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SessionGroupByOutputType>[]
+            args: Prisma.AnalDataSipuberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AnalDataSipuberGroupByOutputType>[]
           }
           count: {
-            args: Prisma.SessionCountArgs<ExtArgs>
-            result: $Utils.Optional<SessionCountAggregateOutputType> | number
+            args: Prisma.AnalDataSipuberCountArgs<ExtArgs>
+            result: $Utils.Optional<AnalDataSipuberCountAggregateOutputType> | number
+          }
+        }
+      }
+      AlertManagement: {
+        payload: Prisma.$AlertManagementPayload<ExtArgs>
+        fields: Prisma.AlertManagementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AlertManagementFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AlertManagementFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>
+          }
+          findFirst: {
+            args: Prisma.AlertManagementFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AlertManagementFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>
+          }
+          findMany: {
+            args: Prisma.AlertManagementFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>[]
+          }
+          create: {
+            args: Prisma.AlertManagementCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>
+          }
+          createMany: {
+            args: Prisma.AlertManagementCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AlertManagementCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>[]
+          }
+          delete: {
+            args: Prisma.AlertManagementDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>
+          }
+          update: {
+            args: Prisma.AlertManagementUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>
+          }
+          deleteMany: {
+            args: Prisma.AlertManagementDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AlertManagementUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AlertManagementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>[]
+          }
+          upsert: {
+            args: Prisma.AlertManagementUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlertManagementPayload>
+          }
+          aggregate: {
+            args: Prisma.AlertManagementAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAlertManagement>
+          }
+          groupBy: {
+            args: Prisma.AlertManagementGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AlertManagementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AlertManagementCountArgs<ExtArgs>
+            result: $Utils.Optional<AlertManagementCountAggregateOutputType> | number
           }
         }
       }
@@ -1226,10 +1316,11 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     device?: DeviceOmit
-    sipuber?: SipuberOmit
-    sipuberOlah?: SipuberOlahOmit
-    contact?: ContactOmit
-    session?: SessionOmit
+    cmsSetting?: CmsSettingOmit
+    ppmDataSipuber?: PpmDataSipuberOmit
+    dailyDataSipuber?: DailyDataSipuberOmit
+    analDataSipuber?: AnalDataSipuberOmit
+    alertManagement?: AlertManagementOmit
   }
 
   /* Types for Logging */
@@ -1355,11 +1446,15 @@ export namespace Prisma {
    */
 
   export type DeviceCountOutputType = {
-    sipubers: number
+    ppm_data: number
+    daily_data: number
+    anal_data: number
   }
 
   export type DeviceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sipubers?: boolean | DeviceCountOutputTypeCountSipubersArgs
+    ppm_data?: boolean | DeviceCountOutputTypeCountPpm_dataArgs
+    daily_data?: boolean | DeviceCountOutputTypeCountDaily_dataArgs
+    anal_data?: boolean | DeviceCountOutputTypeCountAnal_dataArgs
   }
 
   // Custom InputTypes
@@ -1376,39 +1471,22 @@ export namespace Prisma {
   /**
    * DeviceCountOutputType without action
    */
-  export type DeviceCountOutputTypeCountSipubersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SipuberWhereInput
-  }
-
-
-  /**
-   * Count Type SipuberCountOutputType
-   */
-
-  export type SipuberCountOutputType = {
-    sipuberOlah: number
-  }
-
-  export type SipuberCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sipuberOlah?: boolean | SipuberCountOutputTypeCountSipuberOlahArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * SipuberCountOutputType without action
-   */
-  export type SipuberCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SipuberCountOutputType
-     */
-    select?: SipuberCountOutputTypeSelect<ExtArgs> | null
+  export type DeviceCountOutputTypeCountPpm_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PpmDataSipuberWhereInput
   }
 
   /**
-   * SipuberCountOutputType without action
+   * DeviceCountOutputType without action
    */
-  export type SipuberCountOutputTypeCountSipuberOlahArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SipuberOlahWhereInput
+  export type DeviceCountOutputTypeCountDaily_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DailyDataSipuberWhereInput
+  }
+
+  /**
+   * DeviceCountOutputType without action
+   */
+  export type DeviceCountOutputTypeCountAnal_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnalDataSipuberWhereInput
   }
 
 
@@ -1422,88 +1500,88 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
+  export type UserAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    id: number | null
+  }
+
   export type UserMinAggregateOutputType = {
-    id: string | null
-    first_name: string | null
-    last_name: string | null
+    id: number | null
+    username: string | null
+    full_name: string | null
     email: string | null
-    no_telepon: string | null
-    image: string | null
     password: string | null
     role: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    isSoftDelete: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
-    id: string | null
-    first_name: string | null
-    last_name: string | null
+    id: number | null
+    username: string | null
+    full_name: string | null
     email: string | null
-    no_telepon: string | null
-    image: string | null
     password: string | null
     role: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    isSoftDelete: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    first_name: number
-    last_name: number
+    username: number
+    full_name: number
     email: number
-    no_telepon: number
-    image: number
     password: number
     role: number
-    createdAt: number
-    updatedAt: number
+    isSoftDelete: number
     _all: number
   }
 
 
+  export type UserAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    id?: true
+  }
+
   export type UserMinAggregateInputType = {
     id?: true
-    first_name?: true
-    last_name?: true
+    username?: true
+    full_name?: true
     email?: true
-    no_telepon?: true
-    image?: true
     password?: true
     role?: true
-    createdAt?: true
-    updatedAt?: true
+    isSoftDelete?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    first_name?: true
-    last_name?: true
+    username?: true
+    full_name?: true
     email?: true
-    no_telepon?: true
-    image?: true
     password?: true
     role?: true
-    createdAt?: true
-    updatedAt?: true
+    isSoftDelete?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    first_name?: true
-    last_name?: true
+    username?: true
+    full_name?: true
     email?: true
-    no_telepon?: true
-    image?: true
     password?: true
     role?: true
-    createdAt?: true
-    updatedAt?: true
+    isSoftDelete?: true
     _all?: true
   }
 
@@ -1545,6 +1623,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1575,22 +1665,23 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    id: string
-    first_name: string
-    last_name: string
-    email: string | null
-    no_telepon: string
-    image: string | null
-    password: string | null
+    id: number
+    username: string
+    full_name: string
+    email: string
+    password: string
     role: string
-    createdAt: Date
-    updatedAt: Date
+    isSoftDelete: boolean
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1611,59 +1702,47 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    first_name?: boolean
-    last_name?: boolean
+    username?: boolean
+    full_name?: boolean
     email?: boolean
-    no_telepon?: boolean
-    image?: boolean
     password?: boolean
     role?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    isSoftDelete?: boolean
     devices?: boolean | User$devicesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    first_name?: boolean
-    last_name?: boolean
+    username?: boolean
+    full_name?: boolean
     email?: boolean
-    no_telepon?: boolean
-    image?: boolean
     password?: boolean
     role?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    isSoftDelete?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    first_name?: boolean
-    last_name?: boolean
+    username?: boolean
+    full_name?: boolean
     email?: boolean
-    no_telepon?: boolean
-    image?: boolean
     password?: boolean
     role?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    isSoftDelete?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    first_name?: boolean
-    last_name?: boolean
+    username?: boolean
+    full_name?: boolean
     email?: boolean
-    no_telepon?: boolean
-    image?: boolean
     password?: boolean
     role?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    isSoftDelete?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "no_telepon" | "image" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "full_name" | "email" | "password" | "role" | "isSoftDelete", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     devices?: boolean | User$devicesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1677,16 +1756,13 @@ export namespace Prisma {
       devices: Prisma.$DevicePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
-      first_name: string
-      last_name: string
-      email: string | null
-      no_telepon: string
-      image: string | null
-      password: string | null
+      id: number
+      username: string
+      full_name: string
+      email: string
+      password: string
       role: string
-      createdAt: Date
-      updatedAt: Date
+      isSoftDelete: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2111,16 +2187,13 @@ export namespace Prisma {
    * Fields of the User model
    */
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'String'>
-    readonly first_name: FieldRef<"User", 'String'>
-    readonly last_name: FieldRef<"User", 'String'>
+    readonly id: FieldRef<"User", 'Int'>
+    readonly username: FieldRef<"User", 'String'>
+    readonly full_name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly no_telepon: FieldRef<"User", 'String'>
-    readonly image: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'String'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly isSoftDelete: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -2565,52 +2638,35 @@ export namespace Prisma {
 
   export type DeviceAvgAggregateOutputType = {
     id: number | null
-    latitude: number | null
-    longitude: number | null
+    user_id: number | null
   }
 
   export type DeviceSumAggregateOutputType = {
     id: number | null
-    latitude: number | null
-    longitude: number | null
+    user_id: number | null
   }
 
   export type DeviceMinAggregateOutputType = {
     id: number | null
-    created_at: Date | null
-    updated_at: Date | null
     device_name: string | null
-    nomor_modem: string | null
-    tanggal_paket: Date | null
-    email: string | null
-    latitude: number | null
-    longitude: number | null
-    user_id: string | null
+    no_modem: string | null
+    tanggal_paket: string | null
+    user_id: number | null
   }
 
   export type DeviceMaxAggregateOutputType = {
     id: number | null
-    created_at: Date | null
-    updated_at: Date | null
     device_name: string | null
-    nomor_modem: string | null
-    tanggal_paket: Date | null
-    email: string | null
-    latitude: number | null
-    longitude: number | null
-    user_id: string | null
+    no_modem: string | null
+    tanggal_paket: string | null
+    user_id: number | null
   }
 
   export type DeviceCountAggregateOutputType = {
     id: number
-    created_at: number
-    updated_at: number
     device_name: number
-    nomor_modem: number
+    no_modem: number
     tanggal_paket: number
-    email: number
-    latitude: number
-    longitude: number
     user_id: number
     _all: number
   }
@@ -2618,52 +2674,35 @@ export namespace Prisma {
 
   export type DeviceAvgAggregateInputType = {
     id?: true
-    latitude?: true
-    longitude?: true
+    user_id?: true
   }
 
   export type DeviceSumAggregateInputType = {
     id?: true
-    latitude?: true
-    longitude?: true
+    user_id?: true
   }
 
   export type DeviceMinAggregateInputType = {
     id?: true
-    created_at?: true
-    updated_at?: true
     device_name?: true
-    nomor_modem?: true
+    no_modem?: true
     tanggal_paket?: true
-    email?: true
-    latitude?: true
-    longitude?: true
     user_id?: true
   }
 
   export type DeviceMaxAggregateInputType = {
     id?: true
-    created_at?: true
-    updated_at?: true
     device_name?: true
-    nomor_modem?: true
+    no_modem?: true
     tanggal_paket?: true
-    email?: true
-    latitude?: true
-    longitude?: true
     user_id?: true
   }
 
   export type DeviceCountAggregateInputType = {
     id?: true
-    created_at?: true
-    updated_at?: true
     device_name?: true
-    nomor_modem?: true
+    no_modem?: true
     tanggal_paket?: true
-    email?: true
-    latitude?: true
-    longitude?: true
     user_id?: true
     _all?: true
   }
@@ -2756,15 +2795,10 @@ export namespace Prisma {
 
   export type DeviceGroupByOutputType = {
     id: number
-    created_at: Date
-    updated_at: Date
     device_name: string
-    nomor_modem: string | null
-    tanggal_paket: Date | null
-    email: string
-    latitude: number
-    longitude: number
-    user_id: string | null
+    no_modem: string | null
+    tanggal_paket: string | null
+    user_id: number
     _count: DeviceCountAggregateOutputType | null
     _avg: DeviceAvgAggregateOutputType | null
     _sum: DeviceSumAggregateOutputType | null
@@ -2788,91 +2822,72 @@ export namespace Prisma {
 
   export type DeviceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     device_name?: boolean
-    nomor_modem?: boolean
+    no_modem?: boolean
     tanggal_paket?: boolean
-    email?: boolean
-    latitude?: boolean
-    longitude?: boolean
     user_id?: boolean
-    user?: boolean | Device$userArgs<ExtArgs>
-    sipubers?: boolean | Device$sipubersArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    ppm_data?: boolean | Device$ppm_dataArgs<ExtArgs>
+    daily_data?: boolean | Device$daily_dataArgs<ExtArgs>
+    anal_data?: boolean | Device$anal_dataArgs<ExtArgs>
     _count?: boolean | DeviceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["device"]>
 
   export type DeviceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     device_name?: boolean
-    nomor_modem?: boolean
+    no_modem?: boolean
     tanggal_paket?: boolean
-    email?: boolean
-    latitude?: boolean
-    longitude?: boolean
     user_id?: boolean
-    user?: boolean | Device$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["device"]>
 
   export type DeviceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     device_name?: boolean
-    nomor_modem?: boolean
+    no_modem?: boolean
     tanggal_paket?: boolean
-    email?: boolean
-    latitude?: boolean
-    longitude?: boolean
     user_id?: boolean
-    user?: boolean | Device$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["device"]>
 
   export type DeviceSelectScalar = {
     id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     device_name?: boolean
-    nomor_modem?: boolean
+    no_modem?: boolean
     tanggal_paket?: boolean
-    email?: boolean
-    latitude?: boolean
-    longitude?: boolean
     user_id?: boolean
   }
 
-  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "updated_at" | "device_name" | "nomor_modem" | "tanggal_paket" | "email" | "latitude" | "longitude" | "user_id", ExtArgs["result"]["device"]>
+  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "device_name" | "no_modem" | "tanggal_paket" | "user_id", ExtArgs["result"]["device"]>
   export type DeviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Device$userArgs<ExtArgs>
-    sipubers?: boolean | Device$sipubersArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    ppm_data?: boolean | Device$ppm_dataArgs<ExtArgs>
+    daily_data?: boolean | Device$daily_dataArgs<ExtArgs>
+    anal_data?: boolean | Device$anal_dataArgs<ExtArgs>
     _count?: boolean | DeviceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DeviceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Device$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type DeviceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Device$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $DevicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Device"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
-      sipubers: Prisma.$SipuberPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+      ppm_data: Prisma.$PpmDataSipuberPayload<ExtArgs>[]
+      daily_data: Prisma.$DailyDataSipuberPayload<ExtArgs>[]
+      anal_data: Prisma.$AnalDataSipuberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      created_at: Date
-      updated_at: Date
       device_name: string
-      nomor_modem: string | null
-      tanggal_paket: Date | null
-      email: string
-      latitude: number
-      longitude: number
-      user_id: string | null
+      no_modem: string | null
+      tanggal_paket: string | null
+      user_id: number
     }, ExtArgs["result"]["device"]>
     composites: {}
   }
@@ -3267,8 +3282,10 @@ export namespace Prisma {
    */
   export interface Prisma__DeviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends Device$userArgs<ExtArgs> = {}>(args?: Subset<T, Device$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    sipubers<T extends Device$sipubersArgs<ExtArgs> = {}>(args?: Subset<T, Device$sipubersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    ppm_data<T extends Device$ppm_dataArgs<ExtArgs> = {}>(args?: Subset<T, Device$ppm_dataArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    daily_data<T extends Device$daily_dataArgs<ExtArgs> = {}>(args?: Subset<T, Device$daily_dataArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    anal_data<T extends Device$anal_dataArgs<ExtArgs> = {}>(args?: Subset<T, Device$anal_dataArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3299,15 +3316,10 @@ export namespace Prisma {
    */
   interface DeviceFieldRefs {
     readonly id: FieldRef<"Device", 'Int'>
-    readonly created_at: FieldRef<"Device", 'DateTime'>
-    readonly updated_at: FieldRef<"Device", 'DateTime'>
     readonly device_name: FieldRef<"Device", 'String'>
-    readonly nomor_modem: FieldRef<"Device", 'String'>
-    readonly tanggal_paket: FieldRef<"Device", 'DateTime'>
-    readonly email: FieldRef<"Device", 'String'>
-    readonly latitude: FieldRef<"Device", 'Float'>
-    readonly longitude: FieldRef<"Device", 'Float'>
-    readonly user_id: FieldRef<"Device", 'String'>
+    readonly no_modem: FieldRef<"Device", 'String'>
+    readonly tanggal_paket: FieldRef<"Device", 'String'>
+    readonly user_id: FieldRef<"Device", 'Int'>
   }
     
 
@@ -3704,46 +3716,75 @@ export namespace Prisma {
   }
 
   /**
-   * Device.user
+   * Device.ppm_data
    */
-  export type Device$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Device$ppm_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
+    include?: PpmDataSipuberInclude<ExtArgs> | null
+    where?: PpmDataSipuberWhereInput
+    orderBy?: PpmDataSipuberOrderByWithRelationInput | PpmDataSipuberOrderByWithRelationInput[]
+    cursor?: PpmDataSipuberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PpmDataSipuberScalarFieldEnum | PpmDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Device.sipubers
+   * Device.daily_data
    */
-  export type Device$sipubersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Device$daily_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
-    where?: SipuberWhereInput
-    orderBy?: SipuberOrderByWithRelationInput | SipuberOrderByWithRelationInput[]
-    cursor?: SipuberWhereUniqueInput
+    include?: DailyDataSipuberInclude<ExtArgs> | null
+    where?: DailyDataSipuberWhereInput
+    orderBy?: DailyDataSipuberOrderByWithRelationInput | DailyDataSipuberOrderByWithRelationInput[]
+    cursor?: DailyDataSipuberWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: SipuberScalarFieldEnum | SipuberScalarFieldEnum[]
+    distinct?: DailyDataSipuberScalarFieldEnum | DailyDataSipuberScalarFieldEnum[]
+  }
+
+  /**
+   * Device.anal_data
+   */
+  export type Device$anal_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnalDataSipuber
+     */
+    select?: AnalDataSipuberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AnalDataSipuber
+     */
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    where?: AnalDataSipuberWhereInput
+    orderBy?: AnalDataSipuberOrderByWithRelationInput | AnalDataSipuberOrderByWithRelationInput[]
+    cursor?: AnalDataSipuberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AnalDataSipuberScalarFieldEnum | AnalDataSipuberScalarFieldEnum[]
   }
 
   /**
@@ -3766,557 +3807,1552 @@ export namespace Prisma {
 
 
   /**
-   * Model Sipuber
+   * Model CmsSetting
    */
 
-  export type AggregateSipuber = {
-    _count: SipuberCountAggregateOutputType | null
-    _avg: SipuberAvgAggregateOutputType | null
-    _sum: SipuberSumAggregateOutputType | null
-    _min: SipuberMinAggregateOutputType | null
-    _max: SipuberMaxAggregateOutputType | null
+  export type AggregateCmsSetting = {
+    _count: CmsSettingCountAggregateOutputType | null
+    _avg: CmsSettingAvgAggregateOutputType | null
+    _sum: CmsSettingSumAggregateOutputType | null
+    _min: CmsSettingMinAggregateOutputType | null
+    _max: CmsSettingMaxAggregateOutputType | null
   }
 
-  export type SipuberAvgAggregateOutputType = {
+  export type CmsSettingAvgAggregateOutputType = {
     id: number | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
-    co: number | null
-    so2: number | null
-    no2: number | null
-    o3: number | null
-    nh3: number | null
-    vbat: number | null
-    device_id: number | null
   }
 
-  export type SipuberSumAggregateOutputType = {
+  export type CmsSettingSumAggregateOutputType = {
     id: number | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
-    co: number | null
-    so2: number | null
-    no2: number | null
-    o3: number | null
-    nh3: number | null
-    vbat: number | null
-    device_id: number | null
   }
 
-  export type SipuberMinAggregateOutputType = {
+  export type CmsSettingMinAggregateOutputType = {
     id: number | null
-    created_at: Date | null
-    device_name: string | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
-    co: number | null
-    so2: number | null
-    no2: number | null
-    o3: number | null
-    nh3: number | null
-    vbat: number | null
-    device_id: number | null
+    thumbnail: string | null
+    section: string | null
+    content: string | null
   }
 
-  export type SipuberMaxAggregateOutputType = {
+  export type CmsSettingMaxAggregateOutputType = {
     id: number | null
-    created_at: Date | null
-    device_name: string | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
-    co: number | null
-    so2: number | null
-    no2: number | null
-    o3: number | null
-    nh3: number | null
-    vbat: number | null
-    device_id: number | null
+    thumbnail: string | null
+    section: string | null
+    content: string | null
   }
 
-  export type SipuberCountAggregateOutputType = {
+  export type CmsSettingCountAggregateOutputType = {
     id: number
-    created_at: number
-    device_name: number
-    latitude: number
-    longitude: number
-    pm1: number
-    pm10: number
-    pm25: number
-    co: number
-    so2: number
-    no2: number
-    o3: number
-    nh3: number
-    vbat: number
-    device_id: number
+    thumbnail: number
+    section: number
+    content: number
     _all: number
   }
 
 
-  export type SipuberAvgAggregateInputType = {
+  export type CmsSettingAvgAggregateInputType = {
     id?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
-    co?: true
-    so2?: true
-    no2?: true
-    o3?: true
-    nh3?: true
-    vbat?: true
-    device_id?: true
   }
 
-  export type SipuberSumAggregateInputType = {
+  export type CmsSettingSumAggregateInputType = {
     id?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
-    co?: true
-    so2?: true
-    no2?: true
-    o3?: true
-    nh3?: true
-    vbat?: true
-    device_id?: true
   }
 
-  export type SipuberMinAggregateInputType = {
+  export type CmsSettingMinAggregateInputType = {
     id?: true
-    created_at?: true
-    device_name?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
-    co?: true
-    so2?: true
-    no2?: true
-    o3?: true
-    nh3?: true
-    vbat?: true
-    device_id?: true
+    thumbnail?: true
+    section?: true
+    content?: true
   }
 
-  export type SipuberMaxAggregateInputType = {
+  export type CmsSettingMaxAggregateInputType = {
     id?: true
-    created_at?: true
-    device_name?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
-    co?: true
-    so2?: true
-    no2?: true
-    o3?: true
-    nh3?: true
-    vbat?: true
-    device_id?: true
+    thumbnail?: true
+    section?: true
+    content?: true
   }
 
-  export type SipuberCountAggregateInputType = {
+  export type CmsSettingCountAggregateInputType = {
     id?: true
-    created_at?: true
-    device_name?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
-    co?: true
-    so2?: true
-    no2?: true
-    o3?: true
-    nh3?: true
-    vbat?: true
-    device_id?: true
+    thumbnail?: true
+    section?: true
+    content?: true
     _all?: true
   }
 
-  export type SipuberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CmsSettingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Sipuber to aggregate.
+     * Filter which CmsSetting to aggregate.
      */
-    where?: SipuberWhereInput
+    where?: CmsSettingWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sipubers to fetch.
+     * Determine the order of CmsSettings to fetch.
      */
-    orderBy?: SipuberOrderByWithRelationInput | SipuberOrderByWithRelationInput[]
+    orderBy?: CmsSettingOrderByWithRelationInput | CmsSettingOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SipuberWhereUniqueInput
+    cursor?: CmsSettingWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sipubers from the position of the cursor.
+     * Take `±n` CmsSettings from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sipubers.
+     * Skip the first `n` CmsSettings.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Sipubers
+     * Count returned CmsSettings
     **/
-    _count?: true | SipuberCountAggregateInputType
+    _count?: true | CmsSettingCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: SipuberAvgAggregateInputType
+    _avg?: CmsSettingAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: SipuberSumAggregateInputType
+    _sum?: CmsSettingSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: SipuberMinAggregateInputType
+    _min?: CmsSettingMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: SipuberMaxAggregateInputType
+    _max?: CmsSettingMaxAggregateInputType
   }
 
-  export type GetSipuberAggregateType<T extends SipuberAggregateArgs> = {
-        [P in keyof T & keyof AggregateSipuber]: P extends '_count' | 'count'
+  export type GetCmsSettingAggregateType<T extends CmsSettingAggregateArgs> = {
+        [P in keyof T & keyof AggregateCmsSetting]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSipuber[P]>
-      : GetScalarType<T[P], AggregateSipuber[P]>
+        : GetScalarType<T[P], AggregateCmsSetting[P]>
+      : GetScalarType<T[P], AggregateCmsSetting[P]>
   }
 
 
 
 
-  export type SipuberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SipuberWhereInput
-    orderBy?: SipuberOrderByWithAggregationInput | SipuberOrderByWithAggregationInput[]
-    by: SipuberScalarFieldEnum[] | SipuberScalarFieldEnum
-    having?: SipuberScalarWhereWithAggregatesInput
+  export type CmsSettingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CmsSettingWhereInput
+    orderBy?: CmsSettingOrderByWithAggregationInput | CmsSettingOrderByWithAggregationInput[]
+    by: CmsSettingScalarFieldEnum[] | CmsSettingScalarFieldEnum
+    having?: CmsSettingScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: SipuberCountAggregateInputType | true
-    _avg?: SipuberAvgAggregateInputType
-    _sum?: SipuberSumAggregateInputType
-    _min?: SipuberMinAggregateInputType
-    _max?: SipuberMaxAggregateInputType
+    _count?: CmsSettingCountAggregateInputType | true
+    _avg?: CmsSettingAvgAggregateInputType
+    _sum?: CmsSettingSumAggregateInputType
+    _min?: CmsSettingMinAggregateInputType
+    _max?: CmsSettingMaxAggregateInputType
   }
 
-  export type SipuberGroupByOutputType = {
+  export type CmsSettingGroupByOutputType = {
     id: number
-    created_at: Date
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
-    co: number | null
-    so2: number | null
-    no2: number | null
-    o3: number | null
-    nh3: number | null
-    vbat: number | null
-    device_id: number
-    _count: SipuberCountAggregateOutputType | null
-    _avg: SipuberAvgAggregateOutputType | null
-    _sum: SipuberSumAggregateOutputType | null
-    _min: SipuberMinAggregateOutputType | null
-    _max: SipuberMaxAggregateOutputType | null
+    thumbnail: string
+    section: string
+    content: string
+    _count: CmsSettingCountAggregateOutputType | null
+    _avg: CmsSettingAvgAggregateOutputType | null
+    _sum: CmsSettingSumAggregateOutputType | null
+    _min: CmsSettingMinAggregateOutputType | null
+    _max: CmsSettingMaxAggregateOutputType | null
   }
 
-  type GetSipuberGroupByPayload<T extends SipuberGroupByArgs> = Prisma.PrismaPromise<
+  type GetCmsSettingGroupByPayload<T extends CmsSettingGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SipuberGroupByOutputType, T['by']> &
+      PickEnumerable<CmsSettingGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof SipuberGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CmsSettingGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], SipuberGroupByOutputType[P]>
-            : GetScalarType<T[P], SipuberGroupByOutputType[P]>
+              : GetScalarType<T[P], CmsSettingGroupByOutputType[P]>
+            : GetScalarType<T[P], CmsSettingGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type SipuberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CmsSettingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    thumbnail?: boolean
+    section?: boolean
+    content?: boolean
+  }, ExtArgs["result"]["cmsSetting"]>
+
+  export type CmsSettingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    thumbnail?: boolean
+    section?: boolean
+    content?: boolean
+  }, ExtArgs["result"]["cmsSetting"]>
+
+  export type CmsSettingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    thumbnail?: boolean
+    section?: boolean
+    content?: boolean
+  }, ExtArgs["result"]["cmsSetting"]>
+
+  export type CmsSettingSelectScalar = {
+    id?: boolean
+    thumbnail?: boolean
+    section?: boolean
+    content?: boolean
+  }
+
+  export type CmsSettingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "thumbnail" | "section" | "content", ExtArgs["result"]["cmsSetting"]>
+
+  export type $CmsSettingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CmsSetting"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      thumbnail: string
+      section: string
+      content: string
+    }, ExtArgs["result"]["cmsSetting"]>
+    composites: {}
+  }
+
+  type CmsSettingGetPayload<S extends boolean | null | undefined | CmsSettingDefaultArgs> = $Result.GetResult<Prisma.$CmsSettingPayload, S>
+
+  type CmsSettingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CmsSettingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CmsSettingCountAggregateInputType | true
+    }
+
+  export interface CmsSettingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CmsSetting'], meta: { name: 'CmsSetting' } }
+    /**
+     * Find zero or one CmsSetting that matches the filter.
+     * @param {CmsSettingFindUniqueArgs} args - Arguments to find a CmsSetting
+     * @example
+     * // Get one CmsSetting
+     * const cmsSetting = await prisma.cmsSetting.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CmsSettingFindUniqueArgs>(args: SelectSubset<T, CmsSettingFindUniqueArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CmsSetting that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CmsSettingFindUniqueOrThrowArgs} args - Arguments to find a CmsSetting
+     * @example
+     * // Get one CmsSetting
+     * const cmsSetting = await prisma.cmsSetting.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CmsSettingFindUniqueOrThrowArgs>(args: SelectSubset<T, CmsSettingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CmsSetting that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingFindFirstArgs} args - Arguments to find a CmsSetting
+     * @example
+     * // Get one CmsSetting
+     * const cmsSetting = await prisma.cmsSetting.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CmsSettingFindFirstArgs>(args?: SelectSubset<T, CmsSettingFindFirstArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CmsSetting that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingFindFirstOrThrowArgs} args - Arguments to find a CmsSetting
+     * @example
+     * // Get one CmsSetting
+     * const cmsSetting = await prisma.cmsSetting.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CmsSettingFindFirstOrThrowArgs>(args?: SelectSubset<T, CmsSettingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CmsSettings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CmsSettings
+     * const cmsSettings = await prisma.cmsSetting.findMany()
+     * 
+     * // Get first 10 CmsSettings
+     * const cmsSettings = await prisma.cmsSetting.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cmsSettingWithIdOnly = await prisma.cmsSetting.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CmsSettingFindManyArgs>(args?: SelectSubset<T, CmsSettingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CmsSetting.
+     * @param {CmsSettingCreateArgs} args - Arguments to create a CmsSetting.
+     * @example
+     * // Create one CmsSetting
+     * const CmsSetting = await prisma.cmsSetting.create({
+     *   data: {
+     *     // ... data to create a CmsSetting
+     *   }
+     * })
+     * 
+     */
+    create<T extends CmsSettingCreateArgs>(args: SelectSubset<T, CmsSettingCreateArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CmsSettings.
+     * @param {CmsSettingCreateManyArgs} args - Arguments to create many CmsSettings.
+     * @example
+     * // Create many CmsSettings
+     * const cmsSetting = await prisma.cmsSetting.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CmsSettingCreateManyArgs>(args?: SelectSubset<T, CmsSettingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CmsSettings and returns the data saved in the database.
+     * @param {CmsSettingCreateManyAndReturnArgs} args - Arguments to create many CmsSettings.
+     * @example
+     * // Create many CmsSettings
+     * const cmsSetting = await prisma.cmsSetting.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CmsSettings and only return the `id`
+     * const cmsSettingWithIdOnly = await prisma.cmsSetting.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CmsSettingCreateManyAndReturnArgs>(args?: SelectSubset<T, CmsSettingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CmsSetting.
+     * @param {CmsSettingDeleteArgs} args - Arguments to delete one CmsSetting.
+     * @example
+     * // Delete one CmsSetting
+     * const CmsSetting = await prisma.cmsSetting.delete({
+     *   where: {
+     *     // ... filter to delete one CmsSetting
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CmsSettingDeleteArgs>(args: SelectSubset<T, CmsSettingDeleteArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CmsSetting.
+     * @param {CmsSettingUpdateArgs} args - Arguments to update one CmsSetting.
+     * @example
+     * // Update one CmsSetting
+     * const cmsSetting = await prisma.cmsSetting.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CmsSettingUpdateArgs>(args: SelectSubset<T, CmsSettingUpdateArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CmsSettings.
+     * @param {CmsSettingDeleteManyArgs} args - Arguments to filter CmsSettings to delete.
+     * @example
+     * // Delete a few CmsSettings
+     * const { count } = await prisma.cmsSetting.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CmsSettingDeleteManyArgs>(args?: SelectSubset<T, CmsSettingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CmsSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CmsSettings
+     * const cmsSetting = await prisma.cmsSetting.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CmsSettingUpdateManyArgs>(args: SelectSubset<T, CmsSettingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CmsSettings and returns the data updated in the database.
+     * @param {CmsSettingUpdateManyAndReturnArgs} args - Arguments to update many CmsSettings.
+     * @example
+     * // Update many CmsSettings
+     * const cmsSetting = await prisma.cmsSetting.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CmsSettings and only return the `id`
+     * const cmsSettingWithIdOnly = await prisma.cmsSetting.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CmsSettingUpdateManyAndReturnArgs>(args: SelectSubset<T, CmsSettingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CmsSetting.
+     * @param {CmsSettingUpsertArgs} args - Arguments to update or create a CmsSetting.
+     * @example
+     * // Update or create a CmsSetting
+     * const cmsSetting = await prisma.cmsSetting.upsert({
+     *   create: {
+     *     // ... data to create a CmsSetting
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CmsSetting we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CmsSettingUpsertArgs>(args: SelectSubset<T, CmsSettingUpsertArgs<ExtArgs>>): Prisma__CmsSettingClient<$Result.GetResult<Prisma.$CmsSettingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CmsSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingCountArgs} args - Arguments to filter CmsSettings to count.
+     * @example
+     * // Count the number of CmsSettings
+     * const count = await prisma.cmsSetting.count({
+     *   where: {
+     *     // ... the filter for the CmsSettings we want to count
+     *   }
+     * })
+    **/
+    count<T extends CmsSettingCountArgs>(
+      args?: Subset<T, CmsSettingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CmsSettingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CmsSetting.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CmsSettingAggregateArgs>(args: Subset<T, CmsSettingAggregateArgs>): Prisma.PrismaPromise<GetCmsSettingAggregateType<T>>
+
+    /**
+     * Group by CmsSetting.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CmsSettingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CmsSettingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CmsSettingGroupByArgs['orderBy'] }
+        : { orderBy?: CmsSettingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CmsSettingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCmsSettingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CmsSetting model
+   */
+  readonly fields: CmsSettingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CmsSetting.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CmsSettingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CmsSetting model
+   */
+  interface CmsSettingFieldRefs {
+    readonly id: FieldRef<"CmsSetting", 'Int'>
+    readonly thumbnail: FieldRef<"CmsSetting", 'String'>
+    readonly section: FieldRef<"CmsSetting", 'String'>
+    readonly content: FieldRef<"CmsSetting", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CmsSetting findUnique
+   */
+  export type CmsSettingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * Filter, which CmsSetting to fetch.
+     */
+    where: CmsSettingWhereUniqueInput
+  }
+
+  /**
+   * CmsSetting findUniqueOrThrow
+   */
+  export type CmsSettingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * Filter, which CmsSetting to fetch.
+     */
+    where: CmsSettingWhereUniqueInput
+  }
+
+  /**
+   * CmsSetting findFirst
+   */
+  export type CmsSettingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * Filter, which CmsSetting to fetch.
+     */
+    where?: CmsSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CmsSettings to fetch.
+     */
+    orderBy?: CmsSettingOrderByWithRelationInput | CmsSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CmsSettings.
+     */
+    cursor?: CmsSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CmsSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CmsSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CmsSettings.
+     */
+    distinct?: CmsSettingScalarFieldEnum | CmsSettingScalarFieldEnum[]
+  }
+
+  /**
+   * CmsSetting findFirstOrThrow
+   */
+  export type CmsSettingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * Filter, which CmsSetting to fetch.
+     */
+    where?: CmsSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CmsSettings to fetch.
+     */
+    orderBy?: CmsSettingOrderByWithRelationInput | CmsSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CmsSettings.
+     */
+    cursor?: CmsSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CmsSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CmsSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CmsSettings.
+     */
+    distinct?: CmsSettingScalarFieldEnum | CmsSettingScalarFieldEnum[]
+  }
+
+  /**
+   * CmsSetting findMany
+   */
+  export type CmsSettingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * Filter, which CmsSettings to fetch.
+     */
+    where?: CmsSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CmsSettings to fetch.
+     */
+    orderBy?: CmsSettingOrderByWithRelationInput | CmsSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CmsSettings.
+     */
+    cursor?: CmsSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CmsSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CmsSettings.
+     */
+    skip?: number
+    distinct?: CmsSettingScalarFieldEnum | CmsSettingScalarFieldEnum[]
+  }
+
+  /**
+   * CmsSetting create
+   */
+  export type CmsSettingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CmsSetting.
+     */
+    data: XOR<CmsSettingCreateInput, CmsSettingUncheckedCreateInput>
+  }
+
+  /**
+   * CmsSetting createMany
+   */
+  export type CmsSettingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CmsSettings.
+     */
+    data: CmsSettingCreateManyInput | CmsSettingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CmsSetting createManyAndReturn
+   */
+  export type CmsSettingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * The data used to create many CmsSettings.
+     */
+    data: CmsSettingCreateManyInput | CmsSettingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CmsSetting update
+   */
+  export type CmsSettingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CmsSetting.
+     */
+    data: XOR<CmsSettingUpdateInput, CmsSettingUncheckedUpdateInput>
+    /**
+     * Choose, which CmsSetting to update.
+     */
+    where: CmsSettingWhereUniqueInput
+  }
+
+  /**
+   * CmsSetting updateMany
+   */
+  export type CmsSettingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CmsSettings.
+     */
+    data: XOR<CmsSettingUpdateManyMutationInput, CmsSettingUncheckedUpdateManyInput>
+    /**
+     * Filter which CmsSettings to update
+     */
+    where?: CmsSettingWhereInput
+    /**
+     * Limit how many CmsSettings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CmsSetting updateManyAndReturn
+   */
+  export type CmsSettingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * The data used to update CmsSettings.
+     */
+    data: XOR<CmsSettingUpdateManyMutationInput, CmsSettingUncheckedUpdateManyInput>
+    /**
+     * Filter which CmsSettings to update
+     */
+    where?: CmsSettingWhereInput
+    /**
+     * Limit how many CmsSettings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CmsSetting upsert
+   */
+  export type CmsSettingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CmsSetting to update in case it exists.
+     */
+    where: CmsSettingWhereUniqueInput
+    /**
+     * In case the CmsSetting found by the `where` argument doesn't exist, create a new CmsSetting with this data.
+     */
+    create: XOR<CmsSettingCreateInput, CmsSettingUncheckedCreateInput>
+    /**
+     * In case the CmsSetting was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CmsSettingUpdateInput, CmsSettingUncheckedUpdateInput>
+  }
+
+  /**
+   * CmsSetting delete
+   */
+  export type CmsSettingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+    /**
+     * Filter which CmsSetting to delete.
+     */
+    where: CmsSettingWhereUniqueInput
+  }
+
+  /**
+   * CmsSetting deleteMany
+   */
+  export type CmsSettingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CmsSettings to delete
+     */
+    where?: CmsSettingWhereInput
+    /**
+     * Limit how many CmsSettings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CmsSetting without action
+   */
+  export type CmsSettingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CmsSetting
+     */
+    select?: CmsSettingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CmsSetting
+     */
+    omit?: CmsSettingOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PpmDataSipuber
+   */
+
+  export type AggregatePpmDataSipuber = {
+    _count: PpmDataSipuberCountAggregateOutputType | null
+    _avg: PpmDataSipuberAvgAggregateOutputType | null
+    _sum: PpmDataSipuberSumAggregateOutputType | null
+    _min: PpmDataSipuberMinAggregateOutputType | null
+    _max: PpmDataSipuberMaxAggregateOutputType | null
+  }
+
+  export type PpmDataSipuberAvgAggregateOutputType = {
+    id: number | null
+    device_id: number | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_realtime: number | null
+    v_bat: number | null
+  }
+
+  export type PpmDataSipuberSumAggregateOutputType = {
+    id: number | null
+    device_id: number | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_realtime: number | null
+    v_bat: number | null
+  }
+
+  export type PpmDataSipuberMinAggregateOutputType = {
+    id: number | null
+    created_at: Date | null
+    device_id: number | null
+    location: string | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_realtime: number | null
+    v_bat: number | null
+  }
+
+  export type PpmDataSipuberMaxAggregateOutputType = {
+    id: number | null
+    created_at: Date | null
+    device_id: number | null
+    location: string | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_realtime: number | null
+    v_bat: number | null
+  }
+
+  export type PpmDataSipuberCountAggregateOutputType = {
+    id: number
+    created_at: number
+    device_id: number
+    location: number
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
+    _all: number
+  }
+
+
+  export type PpmDataSipuberAvgAggregateInputType = {
+    id?: true
+    device_id?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_realtime?: true
+    v_bat?: true
+  }
+
+  export type PpmDataSipuberSumAggregateInputType = {
+    id?: true
+    device_id?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_realtime?: true
+    v_bat?: true
+  }
+
+  export type PpmDataSipuberMinAggregateInputType = {
+    id?: true
+    created_at?: true
+    device_id?: true
+    location?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_realtime?: true
+    v_bat?: true
+  }
+
+  export type PpmDataSipuberMaxAggregateInputType = {
+    id?: true
+    created_at?: true
+    device_id?: true
+    location?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_realtime?: true
+    v_bat?: true
+  }
+
+  export type PpmDataSipuberCountAggregateInputType = {
+    id?: true
+    created_at?: true
+    device_id?: true
+    location?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_realtime?: true
+    v_bat?: true
+    _all?: true
+  }
+
+  export type PpmDataSipuberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PpmDataSipuber to aggregate.
+     */
+    where?: PpmDataSipuberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PpmDataSipubers to fetch.
+     */
+    orderBy?: PpmDataSipuberOrderByWithRelationInput | PpmDataSipuberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PpmDataSipuberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PpmDataSipubers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PpmDataSipubers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PpmDataSipubers
+    **/
+    _count?: true | PpmDataSipuberCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PpmDataSipuberAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PpmDataSipuberSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PpmDataSipuberMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PpmDataSipuberMaxAggregateInputType
+  }
+
+  export type GetPpmDataSipuberAggregateType<T extends PpmDataSipuberAggregateArgs> = {
+        [P in keyof T & keyof AggregatePpmDataSipuber]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePpmDataSipuber[P]>
+      : GetScalarType<T[P], AggregatePpmDataSipuber[P]>
+  }
+
+
+
+
+  export type PpmDataSipuberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PpmDataSipuberWhereInput
+    orderBy?: PpmDataSipuberOrderByWithAggregationInput | PpmDataSipuberOrderByWithAggregationInput[]
+    by: PpmDataSipuberScalarFieldEnum[] | PpmDataSipuberScalarFieldEnum
+    having?: PpmDataSipuberScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PpmDataSipuberCountAggregateInputType | true
+    _avg?: PpmDataSipuberAvgAggregateInputType
+    _sum?: PpmDataSipuberSumAggregateInputType
+    _min?: PpmDataSipuberMinAggregateInputType
+    _max?: PpmDataSipuberMaxAggregateInputType
+  }
+
+  export type PpmDataSipuberGroupByOutputType = {
+    id: number
+    created_at: Date
+    device_id: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
+    _count: PpmDataSipuberCountAggregateOutputType | null
+    _avg: PpmDataSipuberAvgAggregateOutputType | null
+    _sum: PpmDataSipuberSumAggregateOutputType | null
+    _min: PpmDataSipuberMinAggregateOutputType | null
+    _max: PpmDataSipuberMaxAggregateOutputType | null
+  }
+
+  type GetPpmDataSipuberGroupByPayload<T extends PpmDataSipuberGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PpmDataSipuberGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PpmDataSipuberGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PpmDataSipuberGroupByOutputType[P]>
+            : GetScalarType<T[P], PpmDataSipuberGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PpmDataSipuberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    device_id?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    device_id?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_realtime?: boolean
+    v_bat?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
-    sipuberOlah?: boolean | Sipuber$sipuberOlahArgs<ExtArgs>
-    _count?: boolean | SipuberCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sipuber"]>
+  }, ExtArgs["result"]["ppmDataSipuber"]>
 
-  export type SipuberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PpmDataSipuberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    device_id?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    device_id?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_realtime?: boolean
+    v_bat?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sipuber"]>
+  }, ExtArgs["result"]["ppmDataSipuber"]>
 
-  export type SipuberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PpmDataSipuberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    device_id?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    device_id?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_realtime?: boolean
+    v_bat?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sipuber"]>
+  }, ExtArgs["result"]["ppmDataSipuber"]>
 
-  export type SipuberSelectScalar = {
+  export type PpmDataSipuberSelectScalar = {
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    device_id?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    device_id?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_realtime?: boolean
+    v_bat?: boolean
   }
 
-  export type SipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_name" | "latitude" | "longitude" | "pm1" | "pm10" | "pm25" | "co" | "so2" | "no2" | "o3" | "nh3" | "vbat" | "device_id", ExtArgs["result"]["sipuber"]>
-  export type SipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    device?: boolean | DeviceDefaultArgs<ExtArgs>
-    sipuberOlah?: boolean | Sipuber$sipuberOlahArgs<ExtArgs>
-    _count?: boolean | SipuberCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type SipuberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_realtime" | "v_bat", ExtArgs["result"]["ppmDataSipuber"]>
+  export type PpmDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
-  export type SipuberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }
+  export type PpmDataSipuberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
 
-  export type $SipuberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Sipuber"
+  export type $PpmDataSipuberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PpmDataSipuber"
     objects: {
       device: Prisma.$DevicePayload<ExtArgs>
-      sipuberOlah: Prisma.$SipuberOlahPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       created_at: Date
-      device_name: string
-      latitude: number
-      longitude: number
-      pm1: number | null
-      pm10: number | null
-      pm25: number | null
-      co: number | null
-      so2: number | null
-      no2: number | null
-      o3: number | null
-      nh3: number | null
-      vbat: number | null
       device_id: number
-    }, ExtArgs["result"]["sipuber"]>
+      location: string
+      co: number
+      so: number
+      no2: number
+      o3: number
+      nh3: number
+      pm1: number
+      pm25: number
+      pm10: number
+      ispu_realtime: number
+      v_bat: number
+    }, ExtArgs["result"]["ppmDataSipuber"]>
     composites: {}
   }
 
-  type SipuberGetPayload<S extends boolean | null | undefined | SipuberDefaultArgs> = $Result.GetResult<Prisma.$SipuberPayload, S>
+  type PpmDataSipuberGetPayload<S extends boolean | null | undefined | PpmDataSipuberDefaultArgs> = $Result.GetResult<Prisma.$PpmDataSipuberPayload, S>
 
-  type SipuberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SipuberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SipuberCountAggregateInputType | true
+  type PpmDataSipuberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PpmDataSipuberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PpmDataSipuberCountAggregateInputType | true
     }
 
-  export interface SipuberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Sipuber'], meta: { name: 'Sipuber' } }
+  export interface PpmDataSipuberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PpmDataSipuber'], meta: { name: 'PpmDataSipuber' } }
     /**
-     * Find zero or one Sipuber that matches the filter.
-     * @param {SipuberFindUniqueArgs} args - Arguments to find a Sipuber
+     * Find zero or one PpmDataSipuber that matches the filter.
+     * @param {PpmDataSipuberFindUniqueArgs} args - Arguments to find a PpmDataSipuber
      * @example
-     * // Get one Sipuber
-     * const sipuber = await prisma.sipuber.findUnique({
+     * // Get one PpmDataSipuber
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends SipuberFindUniqueArgs>(args: SelectSubset<T, SipuberFindUniqueArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PpmDataSipuberFindUniqueArgs>(args: SelectSubset<T, PpmDataSipuberFindUniqueArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Sipuber that matches the filter or throw an error with `error.code='P2025'`
+     * Find one PpmDataSipuber that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {SipuberFindUniqueOrThrowArgs} args - Arguments to find a Sipuber
+     * @param {PpmDataSipuberFindUniqueOrThrowArgs} args - Arguments to find a PpmDataSipuber
      * @example
-     * // Get one Sipuber
-     * const sipuber = await prisma.sipuber.findUniqueOrThrow({
+     * // Get one PpmDataSipuber
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SipuberFindUniqueOrThrowArgs>(args: SelectSubset<T, SipuberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PpmDataSipuberFindUniqueOrThrowArgs>(args: SelectSubset<T, PpmDataSipuberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Sipuber that matches the filter.
+     * Find the first PpmDataSipuber that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberFindFirstArgs} args - Arguments to find a Sipuber
+     * @param {PpmDataSipuberFindFirstArgs} args - Arguments to find a PpmDataSipuber
      * @example
-     * // Get one Sipuber
-     * const sipuber = await prisma.sipuber.findFirst({
+     * // Get one PpmDataSipuber
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends SipuberFindFirstArgs>(args?: SelectSubset<T, SipuberFindFirstArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PpmDataSipuberFindFirstArgs>(args?: SelectSubset<T, PpmDataSipuberFindFirstArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Sipuber that matches the filter or
+     * Find the first PpmDataSipuber that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberFindFirstOrThrowArgs} args - Arguments to find a Sipuber
+     * @param {PpmDataSipuberFindFirstOrThrowArgs} args - Arguments to find a PpmDataSipuber
      * @example
-     * // Get one Sipuber
-     * const sipuber = await prisma.sipuber.findFirstOrThrow({
+     * // Get one PpmDataSipuber
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends SipuberFindFirstOrThrowArgs>(args?: SelectSubset<T, SipuberFindFirstOrThrowArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PpmDataSipuberFindFirstOrThrowArgs>(args?: SelectSubset<T, PpmDataSipuberFindFirstOrThrowArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Sipubers that matches the filter.
+     * Find zero or more PpmDataSipubers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PpmDataSipuberFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Sipubers
-     * const sipubers = await prisma.sipuber.findMany()
+     * // Get all PpmDataSipubers
+     * const ppmDataSipubers = await prisma.ppmDataSipuber.findMany()
      * 
-     * // Get first 10 Sipubers
-     * const sipubers = await prisma.sipuber.findMany({ take: 10 })
+     * // Get first 10 PpmDataSipubers
+     * const ppmDataSipubers = await prisma.ppmDataSipuber.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const sipuberWithIdOnly = await prisma.sipuber.findMany({ select: { id: true } })
+     * const ppmDataSipuberWithIdOnly = await prisma.ppmDataSipuber.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends SipuberFindManyArgs>(args?: SelectSubset<T, SipuberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PpmDataSipuberFindManyArgs>(args?: SelectSubset<T, PpmDataSipuberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Sipuber.
-     * @param {SipuberCreateArgs} args - Arguments to create a Sipuber.
+     * Create a PpmDataSipuber.
+     * @param {PpmDataSipuberCreateArgs} args - Arguments to create a PpmDataSipuber.
      * @example
-     * // Create one Sipuber
-     * const Sipuber = await prisma.sipuber.create({
+     * // Create one PpmDataSipuber
+     * const PpmDataSipuber = await prisma.ppmDataSipuber.create({
      *   data: {
-     *     // ... data to create a Sipuber
+     *     // ... data to create a PpmDataSipuber
      *   }
      * })
      * 
      */
-    create<T extends SipuberCreateArgs>(args: SelectSubset<T, SipuberCreateArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PpmDataSipuberCreateArgs>(args: SelectSubset<T, PpmDataSipuberCreateArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Sipubers.
-     * @param {SipuberCreateManyArgs} args - Arguments to create many Sipubers.
+     * Create many PpmDataSipubers.
+     * @param {PpmDataSipuberCreateManyArgs} args - Arguments to create many PpmDataSipubers.
      * @example
-     * // Create many Sipubers
-     * const sipuber = await prisma.sipuber.createMany({
+     * // Create many PpmDataSipubers
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends SipuberCreateManyArgs>(args?: SelectSubset<T, SipuberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PpmDataSipuberCreateManyArgs>(args?: SelectSubset<T, PpmDataSipuberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Sipubers and returns the data saved in the database.
-     * @param {SipuberCreateManyAndReturnArgs} args - Arguments to create many Sipubers.
+     * Create many PpmDataSipubers and returns the data saved in the database.
+     * @param {PpmDataSipuberCreateManyAndReturnArgs} args - Arguments to create many PpmDataSipubers.
      * @example
-     * // Create many Sipubers
-     * const sipuber = await prisma.sipuber.createManyAndReturn({
+     * // Create many PpmDataSipubers
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Sipubers and only return the `id`
-     * const sipuberWithIdOnly = await prisma.sipuber.createManyAndReturn({
+     * // Create many PpmDataSipubers and only return the `id`
+     * const ppmDataSipuberWithIdOnly = await prisma.ppmDataSipuber.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4326,28 +5362,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends SipuberCreateManyAndReturnArgs>(args?: SelectSubset<T, SipuberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends PpmDataSipuberCreateManyAndReturnArgs>(args?: SelectSubset<T, PpmDataSipuberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Sipuber.
-     * @param {SipuberDeleteArgs} args - Arguments to delete one Sipuber.
+     * Delete a PpmDataSipuber.
+     * @param {PpmDataSipuberDeleteArgs} args - Arguments to delete one PpmDataSipuber.
      * @example
-     * // Delete one Sipuber
-     * const Sipuber = await prisma.sipuber.delete({
+     * // Delete one PpmDataSipuber
+     * const PpmDataSipuber = await prisma.ppmDataSipuber.delete({
      *   where: {
-     *     // ... filter to delete one Sipuber
+     *     // ... filter to delete one PpmDataSipuber
      *   }
      * })
      * 
      */
-    delete<T extends SipuberDeleteArgs>(args: SelectSubset<T, SipuberDeleteArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PpmDataSipuberDeleteArgs>(args: SelectSubset<T, PpmDataSipuberDeleteArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Sipuber.
-     * @param {SipuberUpdateArgs} args - Arguments to update one Sipuber.
+     * Update one PpmDataSipuber.
+     * @param {PpmDataSipuberUpdateArgs} args - Arguments to update one PpmDataSipuber.
      * @example
-     * // Update one Sipuber
-     * const sipuber = await prisma.sipuber.update({
+     * // Update one PpmDataSipuber
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4357,30 +5393,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SipuberUpdateArgs>(args: SelectSubset<T, SipuberUpdateArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PpmDataSipuberUpdateArgs>(args: SelectSubset<T, PpmDataSipuberUpdateArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Sipubers.
-     * @param {SipuberDeleteManyArgs} args - Arguments to filter Sipubers to delete.
+     * Delete zero or more PpmDataSipubers.
+     * @param {PpmDataSipuberDeleteManyArgs} args - Arguments to filter PpmDataSipubers to delete.
      * @example
-     * // Delete a few Sipubers
-     * const { count } = await prisma.sipuber.deleteMany({
+     * // Delete a few PpmDataSipubers
+     * const { count } = await prisma.ppmDataSipuber.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends SipuberDeleteManyArgs>(args?: SelectSubset<T, SipuberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PpmDataSipuberDeleteManyArgs>(args?: SelectSubset<T, PpmDataSipuberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Sipubers.
+     * Update zero or more PpmDataSipubers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PpmDataSipuberUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Sipubers
-     * const sipuber = await prisma.sipuber.updateMany({
+     * // Update many PpmDataSipubers
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4390,14 +5426,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends SipuberUpdateManyArgs>(args: SelectSubset<T, SipuberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PpmDataSipuberUpdateManyArgs>(args: SelectSubset<T, PpmDataSipuberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Sipubers and returns the data updated in the database.
-     * @param {SipuberUpdateManyAndReturnArgs} args - Arguments to update many Sipubers.
+     * Update zero or more PpmDataSipubers and returns the data updated in the database.
+     * @param {PpmDataSipuberUpdateManyAndReturnArgs} args - Arguments to update many PpmDataSipubers.
      * @example
-     * // Update many Sipubers
-     * const sipuber = await prisma.sipuber.updateManyAndReturn({
+     * // Update many PpmDataSipubers
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4406,8 +5442,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Sipubers and only return the `id`
-     * const sipuberWithIdOnly = await prisma.sipuber.updateManyAndReturn({
+     * // Update zero or more PpmDataSipubers and only return the `id`
+     * const ppmDataSipuberWithIdOnly = await prisma.ppmDataSipuber.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -4420,56 +5456,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends SipuberUpdateManyAndReturnArgs>(args: SelectSubset<T, SipuberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends PpmDataSipuberUpdateManyAndReturnArgs>(args: SelectSubset<T, PpmDataSipuberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Sipuber.
-     * @param {SipuberUpsertArgs} args - Arguments to update or create a Sipuber.
+     * Create or update one PpmDataSipuber.
+     * @param {PpmDataSipuberUpsertArgs} args - Arguments to update or create a PpmDataSipuber.
      * @example
-     * // Update or create a Sipuber
-     * const sipuber = await prisma.sipuber.upsert({
+     * // Update or create a PpmDataSipuber
+     * const ppmDataSipuber = await prisma.ppmDataSipuber.upsert({
      *   create: {
-     *     // ... data to create a Sipuber
+     *     // ... data to create a PpmDataSipuber
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Sipuber we want to update
+     *     // ... the filter for the PpmDataSipuber we want to update
      *   }
      * })
      */
-    upsert<T extends SipuberUpsertArgs>(args: SelectSubset<T, SipuberUpsertArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PpmDataSipuberUpsertArgs>(args: SelectSubset<T, PpmDataSipuberUpsertArgs<ExtArgs>>): Prisma__PpmDataSipuberClient<$Result.GetResult<Prisma.$PpmDataSipuberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Sipubers.
+     * Count the number of PpmDataSipubers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberCountArgs} args - Arguments to filter Sipubers to count.
+     * @param {PpmDataSipuberCountArgs} args - Arguments to filter PpmDataSipubers to count.
      * @example
-     * // Count the number of Sipubers
-     * const count = await prisma.sipuber.count({
+     * // Count the number of PpmDataSipubers
+     * const count = await prisma.ppmDataSipuber.count({
      *   where: {
-     *     // ... the filter for the Sipubers we want to count
+     *     // ... the filter for the PpmDataSipubers we want to count
      *   }
      * })
     **/
-    count<T extends SipuberCountArgs>(
-      args?: Subset<T, SipuberCountArgs>,
+    count<T extends PpmDataSipuberCountArgs>(
+      args?: Subset<T, PpmDataSipuberCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SipuberCountAggregateOutputType>
+          : GetScalarType<T['select'], PpmDataSipuberCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Sipuber.
+     * Allows you to perform aggregations operations on a PpmDataSipuber.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PpmDataSipuberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4489,13 +5525,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends SipuberAggregateArgs>(args: Subset<T, SipuberAggregateArgs>): Prisma.PrismaPromise<GetSipuberAggregateType<T>>
+    aggregate<T extends PpmDataSipuberAggregateArgs>(args: Subset<T, PpmDataSipuberAggregateArgs>): Prisma.PrismaPromise<GetPpmDataSipuberAggregateType<T>>
 
     /**
-     * Group by Sipuber.
+     * Group by PpmDataSipuber.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberGroupByArgs} args - Group by arguments.
+     * @param {PpmDataSipuberGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4510,14 +5546,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends SipuberGroupByArgs,
+      T extends PpmDataSipuberGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SipuberGroupByArgs['orderBy'] }
-        : { orderBy?: SipuberGroupByArgs['orderBy'] },
+        ? { orderBy: PpmDataSipuberGroupByArgs['orderBy'] }
+        : { orderBy?: PpmDataSipuberGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4566,23 +5602,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, SipuberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSipuberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PpmDataSipuberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPpmDataSipuberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Sipuber model
+   * Fields of the PpmDataSipuber model
    */
-  readonly fields: SipuberFieldRefs;
+  readonly fields: PpmDataSipuberFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Sipuber.
+   * The delegate class that acts as a "Promise-like" for PpmDataSipuber.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SipuberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PpmDataSipuberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     device<T extends DeviceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeviceDefaultArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    sipuberOlah<T extends Sipuber$sipuberOlahArgs<ExtArgs> = {}>(args?: Subset<T, Sipuber$sipuberOlahArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4609,1025 +5644,952 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Sipuber model
+   * Fields of the PpmDataSipuber model
    */
-  interface SipuberFieldRefs {
-    readonly id: FieldRef<"Sipuber", 'Int'>
-    readonly created_at: FieldRef<"Sipuber", 'DateTime'>
-    readonly device_name: FieldRef<"Sipuber", 'String'>
-    readonly latitude: FieldRef<"Sipuber", 'Float'>
-    readonly longitude: FieldRef<"Sipuber", 'Float'>
-    readonly pm1: FieldRef<"Sipuber", 'Float'>
-    readonly pm10: FieldRef<"Sipuber", 'Float'>
-    readonly pm25: FieldRef<"Sipuber", 'Float'>
-    readonly co: FieldRef<"Sipuber", 'Float'>
-    readonly so2: FieldRef<"Sipuber", 'Float'>
-    readonly no2: FieldRef<"Sipuber", 'Float'>
-    readonly o3: FieldRef<"Sipuber", 'Float'>
-    readonly nh3: FieldRef<"Sipuber", 'Float'>
-    readonly vbat: FieldRef<"Sipuber", 'Float'>
-    readonly device_id: FieldRef<"Sipuber", 'Int'>
+  interface PpmDataSipuberFieldRefs {
+    readonly id: FieldRef<"PpmDataSipuber", 'Int'>
+    readonly created_at: FieldRef<"PpmDataSipuber", 'DateTime'>
+    readonly device_id: FieldRef<"PpmDataSipuber", 'Int'>
+    readonly location: FieldRef<"PpmDataSipuber", 'String'>
+    readonly co: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly so: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly no2: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly o3: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly nh3: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly pm1: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly pm25: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly pm10: FieldRef<"PpmDataSipuber", 'Float'>
+    readonly ispu_realtime: FieldRef<"PpmDataSipuber", 'Int'>
+    readonly v_bat: FieldRef<"PpmDataSipuber", 'Float'>
   }
     
 
   // Custom InputTypes
   /**
-   * Sipuber findUnique
+   * PpmDataSipuber findUnique
    */
-  export type SipuberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which Sipuber to fetch.
+     * Filter, which PpmDataSipuber to fetch.
      */
-    where: SipuberWhereUniqueInput
+    where: PpmDataSipuberWhereUniqueInput
   }
 
   /**
-   * Sipuber findUniqueOrThrow
+   * PpmDataSipuber findUniqueOrThrow
    */
-  export type SipuberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which Sipuber to fetch.
+     * Filter, which PpmDataSipuber to fetch.
      */
-    where: SipuberWhereUniqueInput
+    where: PpmDataSipuberWhereUniqueInput
   }
 
   /**
-   * Sipuber findFirst
+   * PpmDataSipuber findFirst
    */
-  export type SipuberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which Sipuber to fetch.
+     * Filter, which PpmDataSipuber to fetch.
      */
-    where?: SipuberWhereInput
+    where?: PpmDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sipubers to fetch.
+     * Determine the order of PpmDataSipubers to fetch.
      */
-    orderBy?: SipuberOrderByWithRelationInput | SipuberOrderByWithRelationInput[]
+    orderBy?: PpmDataSipuberOrderByWithRelationInput | PpmDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Sipubers.
+     * Sets the position for searching for PpmDataSipubers.
      */
-    cursor?: SipuberWhereUniqueInput
+    cursor?: PpmDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sipubers from the position of the cursor.
+     * Take `±n` PpmDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sipubers.
+     * Skip the first `n` PpmDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Sipubers.
+     * Filter by unique combinations of PpmDataSipubers.
      */
-    distinct?: SipuberScalarFieldEnum | SipuberScalarFieldEnum[]
+    distinct?: PpmDataSipuberScalarFieldEnum | PpmDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Sipuber findFirstOrThrow
+   * PpmDataSipuber findFirstOrThrow
    */
-  export type SipuberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which Sipuber to fetch.
+     * Filter, which PpmDataSipuber to fetch.
      */
-    where?: SipuberWhereInput
+    where?: PpmDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sipubers to fetch.
+     * Determine the order of PpmDataSipubers to fetch.
      */
-    orderBy?: SipuberOrderByWithRelationInput | SipuberOrderByWithRelationInput[]
+    orderBy?: PpmDataSipuberOrderByWithRelationInput | PpmDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Sipubers.
+     * Sets the position for searching for PpmDataSipubers.
      */
-    cursor?: SipuberWhereUniqueInput
+    cursor?: PpmDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sipubers from the position of the cursor.
+     * Take `±n` PpmDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sipubers.
+     * Skip the first `n` PpmDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Sipubers.
+     * Filter by unique combinations of PpmDataSipubers.
      */
-    distinct?: SipuberScalarFieldEnum | SipuberScalarFieldEnum[]
+    distinct?: PpmDataSipuberScalarFieldEnum | PpmDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Sipuber findMany
+   * PpmDataSipuber findMany
    */
-  export type SipuberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which Sipubers to fetch.
+     * Filter, which PpmDataSipubers to fetch.
      */
-    where?: SipuberWhereInput
+    where?: PpmDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sipubers to fetch.
+     * Determine the order of PpmDataSipubers to fetch.
      */
-    orderBy?: SipuberOrderByWithRelationInput | SipuberOrderByWithRelationInput[]
+    orderBy?: PpmDataSipuberOrderByWithRelationInput | PpmDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Sipubers.
+     * Sets the position for listing PpmDataSipubers.
      */
-    cursor?: SipuberWhereUniqueInput
+    cursor?: PpmDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sipubers from the position of the cursor.
+     * Take `±n` PpmDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sipubers.
+     * Skip the first `n` PpmDataSipubers.
      */
     skip?: number
-    distinct?: SipuberScalarFieldEnum | SipuberScalarFieldEnum[]
+    distinct?: PpmDataSipuberScalarFieldEnum | PpmDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Sipuber create
+   * PpmDataSipuber create
    */
-  export type SipuberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * The data needed to create a Sipuber.
+     * The data needed to create a PpmDataSipuber.
      */
-    data: XOR<SipuberCreateInput, SipuberUncheckedCreateInput>
+    data: XOR<PpmDataSipuberCreateInput, PpmDataSipuberUncheckedCreateInput>
   }
 
   /**
-   * Sipuber createMany
+   * PpmDataSipuber createMany
    */
-  export type SipuberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Sipubers.
+     * The data used to create many PpmDataSipubers.
      */
-    data: SipuberCreateManyInput | SipuberCreateManyInput[]
+    data: PpmDataSipuberCreateManyInput | PpmDataSipuberCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Sipuber createManyAndReturn
+   * PpmDataSipuber createManyAndReturn
    */
-  export type SipuberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelectCreateManyAndReturn<ExtArgs> | null
+    select?: PpmDataSipuberSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
-     * The data used to create many Sipubers.
+     * The data used to create many PpmDataSipubers.
      */
-    data: SipuberCreateManyInput | SipuberCreateManyInput[]
+    data: PpmDataSipuberCreateManyInput | PpmDataSipuberCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: PpmDataSipuberIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Sipuber update
+   * PpmDataSipuber update
    */
-  export type SipuberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * The data needed to update a Sipuber.
+     * The data needed to update a PpmDataSipuber.
      */
-    data: XOR<SipuberUpdateInput, SipuberUncheckedUpdateInput>
+    data: XOR<PpmDataSipuberUpdateInput, PpmDataSipuberUncheckedUpdateInput>
     /**
-     * Choose, which Sipuber to update.
+     * Choose, which PpmDataSipuber to update.
      */
-    where: SipuberWhereUniqueInput
+    where: PpmDataSipuberWhereUniqueInput
   }
 
   /**
-   * Sipuber updateMany
+   * PpmDataSipuber updateMany
    */
-  export type SipuberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Sipubers.
+     * The data used to update PpmDataSipubers.
      */
-    data: XOR<SipuberUpdateManyMutationInput, SipuberUncheckedUpdateManyInput>
+    data: XOR<PpmDataSipuberUpdateManyMutationInput, PpmDataSipuberUncheckedUpdateManyInput>
     /**
-     * Filter which Sipubers to update
+     * Filter which PpmDataSipubers to update
      */
-    where?: SipuberWhereInput
+    where?: PpmDataSipuberWhereInput
     /**
-     * Limit how many Sipubers to update.
+     * Limit how many PpmDataSipubers to update.
      */
     limit?: number
   }
 
   /**
-   * Sipuber updateManyAndReturn
+   * PpmDataSipuber updateManyAndReturn
    */
-  export type SipuberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: PpmDataSipuberSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
-     * The data used to update Sipubers.
+     * The data used to update PpmDataSipubers.
      */
-    data: XOR<SipuberUpdateManyMutationInput, SipuberUncheckedUpdateManyInput>
+    data: XOR<PpmDataSipuberUpdateManyMutationInput, PpmDataSipuberUncheckedUpdateManyInput>
     /**
-     * Filter which Sipubers to update
+     * Filter which PpmDataSipubers to update
      */
-    where?: SipuberWhereInput
+    where?: PpmDataSipuberWhereInput
     /**
-     * Limit how many Sipubers to update.
+     * Limit how many PpmDataSipubers to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: PpmDataSipuberIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Sipuber upsert
+   * PpmDataSipuber upsert
    */
-  export type SipuberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * The filter to search for the Sipuber to update in case it exists.
+     * The filter to search for the PpmDataSipuber to update in case it exists.
      */
-    where: SipuberWhereUniqueInput
+    where: PpmDataSipuberWhereUniqueInput
     /**
-     * In case the Sipuber found by the `where` argument doesn't exist, create a new Sipuber with this data.
+     * In case the PpmDataSipuber found by the `where` argument doesn't exist, create a new PpmDataSipuber with this data.
      */
-    create: XOR<SipuberCreateInput, SipuberUncheckedCreateInput>
+    create: XOR<PpmDataSipuberCreateInput, PpmDataSipuberUncheckedCreateInput>
     /**
-     * In case the Sipuber was found with the provided `where` argument, update it with this data.
+     * In case the PpmDataSipuber was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<SipuberUpdateInput, SipuberUncheckedUpdateInput>
+    update: XOR<PpmDataSipuberUpdateInput, PpmDataSipuberUncheckedUpdateInput>
   }
 
   /**
-   * Sipuber delete
+   * PpmDataSipuber delete
    */
-  export type SipuberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Sipuber
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Sipuber
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter which Sipuber to delete.
+     * Filter which PpmDataSipuber to delete.
      */
-    where: SipuberWhereUniqueInput
+    where: PpmDataSipuberWhereUniqueInput
   }
 
   /**
-   * Sipuber deleteMany
+   * PpmDataSipuber deleteMany
    */
-  export type SipuberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Sipubers to delete
+     * Filter which PpmDataSipubers to delete
      */
-    where?: SipuberWhereInput
+    where?: PpmDataSipuberWhereInput
     /**
-     * Limit how many Sipubers to delete.
+     * Limit how many PpmDataSipubers to delete.
      */
     limit?: number
   }
 
   /**
-   * Sipuber.sipuberOlah
+   * PpmDataSipuber without action
    */
-  export type Sipuber$sipuberOlahArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PpmDataSipuberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the PpmDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: PpmDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the PpmDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: PpmDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
-    where?: SipuberOlahWhereInput
-    orderBy?: SipuberOlahOrderByWithRelationInput | SipuberOlahOrderByWithRelationInput[]
-    cursor?: SipuberOlahWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SipuberOlahScalarFieldEnum | SipuberOlahScalarFieldEnum[]
-  }
-
-  /**
-   * Sipuber without action
-   */
-  export type SipuberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Sipuber
-     */
-    select?: SipuberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Sipuber
-     */
-    omit?: SipuberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SipuberInclude<ExtArgs> | null
+    include?: PpmDataSipuberInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model SipuberOlah
+   * Model DailyDataSipuber
    */
 
-  export type AggregateSipuberOlah = {
-    _count: SipuberOlahCountAggregateOutputType | null
-    _avg: SipuberOlahAvgAggregateOutputType | null
-    _sum: SipuberOlahSumAggregateOutputType | null
-    _min: SipuberOlahMinAggregateOutputType | null
-    _max: SipuberOlahMaxAggregateOutputType | null
+  export type AggregateDailyDataSipuber = {
+    _count: DailyDataSipuberCountAggregateOutputType | null
+    _avg: DailyDataSipuberAvgAggregateOutputType | null
+    _sum: DailyDataSipuberSumAggregateOutputType | null
+    _min: DailyDataSipuberMinAggregateOutputType | null
+    _max: DailyDataSipuberMaxAggregateOutputType | null
   }
 
-  export type SipuberOlahAvgAggregateOutputType = {
+  export type DailyDataSipuberAvgAggregateOutputType = {
     id: number | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
     co: number | null
-    so2: number | null
+    so: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
-    vbat: number | null
-    aqi: number | null
-    sipuber_id: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_daily: number | null
+    device_id: number | null
   }
 
-  export type SipuberOlahSumAggregateOutputType = {
+  export type DailyDataSipuberSumAggregateOutputType = {
     id: number | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
     co: number | null
-    so2: number | null
+    so: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
-    vbat: number | null
-    aqi: number | null
-    sipuber_id: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_daily: number | null
+    device_id: number | null
   }
 
-  export type SipuberOlahMinAggregateOutputType = {
+  export type DailyDataSipuberMinAggregateOutputType = {
     id: number | null
     created_at: Date | null
-    device_name: string | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
+    location: string | null
     co: number | null
-    so2: number | null
+    so: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
-    vbat: number | null
-    aqi: number | null
-    sipuber_id: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_daily: number | null
+    device_id: number | null
   }
 
-  export type SipuberOlahMaxAggregateOutputType = {
+  export type DailyDataSipuberMaxAggregateOutputType = {
     id: number | null
     created_at: Date | null
-    device_name: string | null
-    latitude: number | null
-    longitude: number | null
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
+    location: string | null
     co: number | null
-    so2: number | null
+    so: number | null
     no2: number | null
     o3: number | null
     nh3: number | null
-    vbat: number | null
-    aqi: number | null
-    sipuber_id: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    ispu_daily: number | null
+    device_id: number | null
   }
 
-  export type SipuberOlahCountAggregateOutputType = {
+  export type DailyDataSipuberCountAggregateOutputType = {
     id: number
     created_at: number
-    device_name: number
-    latitude: number
-    longitude: number
-    pm1: number
-    pm10: number
-    pm25: number
+    location: number
     co: number
-    so2: number
+    so: number
     no2: number
     o3: number
     nh3: number
-    vbat: number
-    aqi: number
-    sipuber_id: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+    device_id: number
     _all: number
   }
 
 
-  export type SipuberOlahAvgAggregateInputType = {
+  export type DailyDataSipuberAvgAggregateInputType = {
     id?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
     co?: true
-    so2?: true
+    so?: true
     no2?: true
     o3?: true
     nh3?: true
-    vbat?: true
-    aqi?: true
-    sipuber_id?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_daily?: true
+    device_id?: true
   }
 
-  export type SipuberOlahSumAggregateInputType = {
+  export type DailyDataSipuberSumAggregateInputType = {
     id?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
     co?: true
-    so2?: true
+    so?: true
     no2?: true
     o3?: true
     nh3?: true
-    vbat?: true
-    aqi?: true
-    sipuber_id?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_daily?: true
+    device_id?: true
   }
 
-  export type SipuberOlahMinAggregateInputType = {
+  export type DailyDataSipuberMinAggregateInputType = {
     id?: true
     created_at?: true
-    device_name?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
+    location?: true
     co?: true
-    so2?: true
+    so?: true
     no2?: true
     o3?: true
     nh3?: true
-    vbat?: true
-    aqi?: true
-    sipuber_id?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_daily?: true
+    device_id?: true
   }
 
-  export type SipuberOlahMaxAggregateInputType = {
+  export type DailyDataSipuberMaxAggregateInputType = {
     id?: true
     created_at?: true
-    device_name?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
+    location?: true
     co?: true
-    so2?: true
+    so?: true
     no2?: true
     o3?: true
     nh3?: true
-    vbat?: true
-    aqi?: true
-    sipuber_id?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_daily?: true
+    device_id?: true
   }
 
-  export type SipuberOlahCountAggregateInputType = {
+  export type DailyDataSipuberCountAggregateInputType = {
     id?: true
     created_at?: true
-    device_name?: true
-    latitude?: true
-    longitude?: true
-    pm1?: true
-    pm10?: true
-    pm25?: true
+    location?: true
     co?: true
-    so2?: true
+    so?: true
     no2?: true
     o3?: true
     nh3?: true
-    vbat?: true
-    aqi?: true
-    sipuber_id?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    ispu_daily?: true
+    device_id?: true
     _all?: true
   }
 
-  export type SipuberOlahAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SipuberOlah to aggregate.
+     * Filter which DailyDataSipuber to aggregate.
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SipuberOlahs to fetch.
+     * Determine the order of DailyDataSipubers to fetch.
      */
-    orderBy?: SipuberOlahOrderByWithRelationInput | SipuberOlahOrderByWithRelationInput[]
+    orderBy?: DailyDataSipuberOrderByWithRelationInput | DailyDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SipuberOlahWhereUniqueInput
+    cursor?: DailyDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SipuberOlahs from the position of the cursor.
+     * Take `±n` DailyDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SipuberOlahs.
+     * Skip the first `n` DailyDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned SipuberOlahs
+     * Count returned DailyDataSipubers
     **/
-    _count?: true | SipuberOlahCountAggregateInputType
+    _count?: true | DailyDataSipuberCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: SipuberOlahAvgAggregateInputType
+    _avg?: DailyDataSipuberAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: SipuberOlahSumAggregateInputType
+    _sum?: DailyDataSipuberSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: SipuberOlahMinAggregateInputType
+    _min?: DailyDataSipuberMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: SipuberOlahMaxAggregateInputType
+    _max?: DailyDataSipuberMaxAggregateInputType
   }
 
-  export type GetSipuberOlahAggregateType<T extends SipuberOlahAggregateArgs> = {
-        [P in keyof T & keyof AggregateSipuberOlah]: P extends '_count' | 'count'
+  export type GetDailyDataSipuberAggregateType<T extends DailyDataSipuberAggregateArgs> = {
+        [P in keyof T & keyof AggregateDailyDataSipuber]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSipuberOlah[P]>
-      : GetScalarType<T[P], AggregateSipuberOlah[P]>
+        : GetScalarType<T[P], AggregateDailyDataSipuber[P]>
+      : GetScalarType<T[P], AggregateDailyDataSipuber[P]>
   }
 
 
 
 
-  export type SipuberOlahGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SipuberOlahWhereInput
-    orderBy?: SipuberOlahOrderByWithAggregationInput | SipuberOlahOrderByWithAggregationInput[]
-    by: SipuberOlahScalarFieldEnum[] | SipuberOlahScalarFieldEnum
-    having?: SipuberOlahScalarWhereWithAggregatesInput
+  export type DailyDataSipuberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DailyDataSipuberWhereInput
+    orderBy?: DailyDataSipuberOrderByWithAggregationInput | DailyDataSipuberOrderByWithAggregationInput[]
+    by: DailyDataSipuberScalarFieldEnum[] | DailyDataSipuberScalarFieldEnum
+    having?: DailyDataSipuberScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: SipuberOlahCountAggregateInputType | true
-    _avg?: SipuberOlahAvgAggregateInputType
-    _sum?: SipuberOlahSumAggregateInputType
-    _min?: SipuberOlahMinAggregateInputType
-    _max?: SipuberOlahMaxAggregateInputType
+    _count?: DailyDataSipuberCountAggregateInputType | true
+    _avg?: DailyDataSipuberAvgAggregateInputType
+    _sum?: DailyDataSipuberSumAggregateInputType
+    _min?: DailyDataSipuberMinAggregateInputType
+    _max?: DailyDataSipuberMaxAggregateInputType
   }
 
-  export type SipuberOlahGroupByOutputType = {
+  export type DailyDataSipuberGroupByOutputType = {
     id: number
     created_at: Date
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1: number | null
-    pm10: number | null
-    pm25: number | null
-    co: number | null
-    so2: number | null
-    no2: number | null
-    o3: number | null
-    nh3: number | null
-    vbat: number | null
-    aqi: number
-    sipuber_id: number
-    _count: SipuberOlahCountAggregateOutputType | null
-    _avg: SipuberOlahAvgAggregateOutputType | null
-    _sum: SipuberOlahSumAggregateOutputType | null
-    _min: SipuberOlahMinAggregateOutputType | null
-    _max: SipuberOlahMaxAggregateOutputType | null
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+    device_id: number
+    _count: DailyDataSipuberCountAggregateOutputType | null
+    _avg: DailyDataSipuberAvgAggregateOutputType | null
+    _sum: DailyDataSipuberSumAggregateOutputType | null
+    _min: DailyDataSipuberMinAggregateOutputType | null
+    _max: DailyDataSipuberMaxAggregateOutputType | null
   }
 
-  type GetSipuberOlahGroupByPayload<T extends SipuberOlahGroupByArgs> = Prisma.PrismaPromise<
+  type GetDailyDataSipuberGroupByPayload<T extends DailyDataSipuberGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SipuberOlahGroupByOutputType, T['by']> &
+      PickEnumerable<DailyDataSipuberGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof SipuberOlahGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof DailyDataSipuberGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], SipuberOlahGroupByOutputType[P]>
-            : GetScalarType<T[P], SipuberOlahGroupByOutputType[P]>
+              : GetScalarType<T[P], DailyDataSipuberGroupByOutputType[P]>
+            : GetScalarType<T[P], DailyDataSipuberGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type SipuberOlahSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type DailyDataSipuberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    aqi?: boolean
-    sipuber_id?: boolean
-    sipuber?: boolean | SipuberDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sipuberOlah"]>
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_daily?: boolean
+    device_id?: boolean
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyDataSipuber"]>
 
-  export type SipuberOlahSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type DailyDataSipuberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    aqi?: boolean
-    sipuber_id?: boolean
-    sipuber?: boolean | SipuberDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sipuberOlah"]>
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_daily?: boolean
+    device_id?: boolean
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyDataSipuber"]>
 
-  export type SipuberOlahSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type DailyDataSipuberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    aqi?: boolean
-    sipuber_id?: boolean
-    sipuber?: boolean | SipuberDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sipuberOlah"]>
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_daily?: boolean
+    device_id?: boolean
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyDataSipuber"]>
 
-  export type SipuberOlahSelectScalar = {
+  export type DailyDataSipuberSelectScalar = {
     id?: boolean
     created_at?: boolean
-    device_name?: boolean
-    latitude?: boolean
-    longitude?: boolean
-    pm1?: boolean
-    pm10?: boolean
-    pm25?: boolean
+    location?: boolean
     co?: boolean
-    so2?: boolean
+    so?: boolean
     no2?: boolean
     o3?: boolean
     nh3?: boolean
-    vbat?: boolean
-    aqi?: boolean
-    sipuber_id?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    ispu_daily?: boolean
+    device_id?: boolean
   }
 
-  export type SipuberOlahOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_name" | "latitude" | "longitude" | "pm1" | "pm10" | "pm25" | "co" | "so2" | "no2" | "o3" | "nh3" | "vbat" | "aqi" | "sipuber_id", ExtArgs["result"]["sipuberOlah"]>
-  export type SipuberOlahInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sipuber?: boolean | SipuberDefaultArgs<ExtArgs>
+  export type DailyDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "location" | "co" | "so" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_daily" | "device_id", ExtArgs["result"]["dailyDataSipuber"]>
+  export type DailyDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
-  export type SipuberOlahIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sipuber?: boolean | SipuberDefaultArgs<ExtArgs>
+  export type DailyDataSipuberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
-  export type SipuberOlahIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sipuber?: boolean | SipuberDefaultArgs<ExtArgs>
+  export type DailyDataSipuberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
 
-  export type $SipuberOlahPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "SipuberOlah"
+  export type $DailyDataSipuberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DailyDataSipuber"
     objects: {
-      sipuber: Prisma.$SipuberPayload<ExtArgs>
+      device: Prisma.$DevicePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       created_at: Date
-      device_name: string
-      latitude: number
-      longitude: number
-      pm1: number | null
-      pm10: number | null
-      pm25: number | null
-      co: number | null
-      so2: number | null
-      no2: number | null
-      o3: number | null
-      nh3: number | null
-      vbat: number | null
-      aqi: number
-      sipuber_id: number
-    }, ExtArgs["result"]["sipuberOlah"]>
+      location: string
+      co: number
+      so: number
+      no2: number
+      o3: number
+      nh3: number
+      pm1: number
+      pm25: number
+      pm10: number
+      ispu_daily: number
+      device_id: number
+    }, ExtArgs["result"]["dailyDataSipuber"]>
     composites: {}
   }
 
-  type SipuberOlahGetPayload<S extends boolean | null | undefined | SipuberOlahDefaultArgs> = $Result.GetResult<Prisma.$SipuberOlahPayload, S>
+  type DailyDataSipuberGetPayload<S extends boolean | null | undefined | DailyDataSipuberDefaultArgs> = $Result.GetResult<Prisma.$DailyDataSipuberPayload, S>
 
-  type SipuberOlahCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SipuberOlahFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SipuberOlahCountAggregateInputType | true
+  type DailyDataSipuberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DailyDataSipuberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DailyDataSipuberCountAggregateInputType | true
     }
 
-  export interface SipuberOlahDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SipuberOlah'], meta: { name: 'SipuberOlah' } }
+  export interface DailyDataSipuberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DailyDataSipuber'], meta: { name: 'DailyDataSipuber' } }
     /**
-     * Find zero or one SipuberOlah that matches the filter.
-     * @param {SipuberOlahFindUniqueArgs} args - Arguments to find a SipuberOlah
+     * Find zero or one DailyDataSipuber that matches the filter.
+     * @param {DailyDataSipuberFindUniqueArgs} args - Arguments to find a DailyDataSipuber
      * @example
-     * // Get one SipuberOlah
-     * const sipuberOlah = await prisma.sipuberOlah.findUnique({
+     * // Get one DailyDataSipuber
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends SipuberOlahFindUniqueArgs>(args: SelectSubset<T, SipuberOlahFindUniqueArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends DailyDataSipuberFindUniqueArgs>(args: SelectSubset<T, DailyDataSipuberFindUniqueArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one SipuberOlah that matches the filter or throw an error with `error.code='P2025'`
+     * Find one DailyDataSipuber that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {SipuberOlahFindUniqueOrThrowArgs} args - Arguments to find a SipuberOlah
+     * @param {DailyDataSipuberFindUniqueOrThrowArgs} args - Arguments to find a DailyDataSipuber
      * @example
-     * // Get one SipuberOlah
-     * const sipuberOlah = await prisma.sipuberOlah.findUniqueOrThrow({
+     * // Get one DailyDataSipuber
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SipuberOlahFindUniqueOrThrowArgs>(args: SelectSubset<T, SipuberOlahFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends DailyDataSipuberFindUniqueOrThrowArgs>(args: SelectSubset<T, DailyDataSipuberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first SipuberOlah that matches the filter.
+     * Find the first DailyDataSipuber that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahFindFirstArgs} args - Arguments to find a SipuberOlah
+     * @param {DailyDataSipuberFindFirstArgs} args - Arguments to find a DailyDataSipuber
      * @example
-     * // Get one SipuberOlah
-     * const sipuberOlah = await prisma.sipuberOlah.findFirst({
+     * // Get one DailyDataSipuber
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends SipuberOlahFindFirstArgs>(args?: SelectSubset<T, SipuberOlahFindFirstArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends DailyDataSipuberFindFirstArgs>(args?: SelectSubset<T, DailyDataSipuberFindFirstArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first SipuberOlah that matches the filter or
+     * Find the first DailyDataSipuber that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahFindFirstOrThrowArgs} args - Arguments to find a SipuberOlah
+     * @param {DailyDataSipuberFindFirstOrThrowArgs} args - Arguments to find a DailyDataSipuber
      * @example
-     * // Get one SipuberOlah
-     * const sipuberOlah = await prisma.sipuberOlah.findFirstOrThrow({
+     * // Get one DailyDataSipuber
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends SipuberOlahFindFirstOrThrowArgs>(args?: SelectSubset<T, SipuberOlahFindFirstOrThrowArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends DailyDataSipuberFindFirstOrThrowArgs>(args?: SelectSubset<T, DailyDataSipuberFindFirstOrThrowArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more SipuberOlahs that matches the filter.
+     * Find zero or more DailyDataSipubers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {DailyDataSipuberFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all SipuberOlahs
-     * const sipuberOlahs = await prisma.sipuberOlah.findMany()
+     * // Get all DailyDataSipubers
+     * const dailyDataSipubers = await prisma.dailyDataSipuber.findMany()
      * 
-     * // Get first 10 SipuberOlahs
-     * const sipuberOlahs = await prisma.sipuberOlah.findMany({ take: 10 })
+     * // Get first 10 DailyDataSipubers
+     * const dailyDataSipubers = await prisma.dailyDataSipuber.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const sipuberOlahWithIdOnly = await prisma.sipuberOlah.findMany({ select: { id: true } })
+     * const dailyDataSipuberWithIdOnly = await prisma.dailyDataSipuber.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends SipuberOlahFindManyArgs>(args?: SelectSubset<T, SipuberOlahFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends DailyDataSipuberFindManyArgs>(args?: SelectSubset<T, DailyDataSipuberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a SipuberOlah.
-     * @param {SipuberOlahCreateArgs} args - Arguments to create a SipuberOlah.
+     * Create a DailyDataSipuber.
+     * @param {DailyDataSipuberCreateArgs} args - Arguments to create a DailyDataSipuber.
      * @example
-     * // Create one SipuberOlah
-     * const SipuberOlah = await prisma.sipuberOlah.create({
+     * // Create one DailyDataSipuber
+     * const DailyDataSipuber = await prisma.dailyDataSipuber.create({
      *   data: {
-     *     // ... data to create a SipuberOlah
+     *     // ... data to create a DailyDataSipuber
      *   }
      * })
      * 
      */
-    create<T extends SipuberOlahCreateArgs>(args: SelectSubset<T, SipuberOlahCreateArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends DailyDataSipuberCreateArgs>(args: SelectSubset<T, DailyDataSipuberCreateArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many SipuberOlahs.
-     * @param {SipuberOlahCreateManyArgs} args - Arguments to create many SipuberOlahs.
+     * Create many DailyDataSipubers.
+     * @param {DailyDataSipuberCreateManyArgs} args - Arguments to create many DailyDataSipubers.
      * @example
-     * // Create many SipuberOlahs
-     * const sipuberOlah = await prisma.sipuberOlah.createMany({
+     * // Create many DailyDataSipubers
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends SipuberOlahCreateManyArgs>(args?: SelectSubset<T, SipuberOlahCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends DailyDataSipuberCreateManyArgs>(args?: SelectSubset<T, DailyDataSipuberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many SipuberOlahs and returns the data saved in the database.
-     * @param {SipuberOlahCreateManyAndReturnArgs} args - Arguments to create many SipuberOlahs.
+     * Create many DailyDataSipubers and returns the data saved in the database.
+     * @param {DailyDataSipuberCreateManyAndReturnArgs} args - Arguments to create many DailyDataSipubers.
      * @example
-     * // Create many SipuberOlahs
-     * const sipuberOlah = await prisma.sipuberOlah.createManyAndReturn({
+     * // Create many DailyDataSipubers
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many SipuberOlahs and only return the `id`
-     * const sipuberOlahWithIdOnly = await prisma.sipuberOlah.createManyAndReturn({
+     * // Create many DailyDataSipubers and only return the `id`
+     * const dailyDataSipuberWithIdOnly = await prisma.dailyDataSipuber.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5637,28 +6599,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends SipuberOlahCreateManyAndReturnArgs>(args?: SelectSubset<T, SipuberOlahCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends DailyDataSipuberCreateManyAndReturnArgs>(args?: SelectSubset<T, DailyDataSipuberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a SipuberOlah.
-     * @param {SipuberOlahDeleteArgs} args - Arguments to delete one SipuberOlah.
+     * Delete a DailyDataSipuber.
+     * @param {DailyDataSipuberDeleteArgs} args - Arguments to delete one DailyDataSipuber.
      * @example
-     * // Delete one SipuberOlah
-     * const SipuberOlah = await prisma.sipuberOlah.delete({
+     * // Delete one DailyDataSipuber
+     * const DailyDataSipuber = await prisma.dailyDataSipuber.delete({
      *   where: {
-     *     // ... filter to delete one SipuberOlah
+     *     // ... filter to delete one DailyDataSipuber
      *   }
      * })
      * 
      */
-    delete<T extends SipuberOlahDeleteArgs>(args: SelectSubset<T, SipuberOlahDeleteArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends DailyDataSipuberDeleteArgs>(args: SelectSubset<T, DailyDataSipuberDeleteArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one SipuberOlah.
-     * @param {SipuberOlahUpdateArgs} args - Arguments to update one SipuberOlah.
+     * Update one DailyDataSipuber.
+     * @param {DailyDataSipuberUpdateArgs} args - Arguments to update one DailyDataSipuber.
      * @example
-     * // Update one SipuberOlah
-     * const sipuberOlah = await prisma.sipuberOlah.update({
+     * // Update one DailyDataSipuber
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5668,30 +6630,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SipuberOlahUpdateArgs>(args: SelectSubset<T, SipuberOlahUpdateArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends DailyDataSipuberUpdateArgs>(args: SelectSubset<T, DailyDataSipuberUpdateArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more SipuberOlahs.
-     * @param {SipuberOlahDeleteManyArgs} args - Arguments to filter SipuberOlahs to delete.
+     * Delete zero or more DailyDataSipubers.
+     * @param {DailyDataSipuberDeleteManyArgs} args - Arguments to filter DailyDataSipubers to delete.
      * @example
-     * // Delete a few SipuberOlahs
-     * const { count } = await prisma.sipuberOlah.deleteMany({
+     * // Delete a few DailyDataSipubers
+     * const { count } = await prisma.dailyDataSipuber.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends SipuberOlahDeleteManyArgs>(args?: SelectSubset<T, SipuberOlahDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends DailyDataSipuberDeleteManyArgs>(args?: SelectSubset<T, DailyDataSipuberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SipuberOlahs.
+     * Update zero or more DailyDataSipubers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {DailyDataSipuberUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many SipuberOlahs
-     * const sipuberOlah = await prisma.sipuberOlah.updateMany({
+     * // Update many DailyDataSipubers
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5701,14 +6663,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends SipuberOlahUpdateManyArgs>(args: SelectSubset<T, SipuberOlahUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends DailyDataSipuberUpdateManyArgs>(args: SelectSubset<T, DailyDataSipuberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SipuberOlahs and returns the data updated in the database.
-     * @param {SipuberOlahUpdateManyAndReturnArgs} args - Arguments to update many SipuberOlahs.
+     * Update zero or more DailyDataSipubers and returns the data updated in the database.
+     * @param {DailyDataSipuberUpdateManyAndReturnArgs} args - Arguments to update many DailyDataSipubers.
      * @example
-     * // Update many SipuberOlahs
-     * const sipuberOlah = await prisma.sipuberOlah.updateManyAndReturn({
+     * // Update many DailyDataSipubers
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5717,8 +6679,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more SipuberOlahs and only return the `id`
-     * const sipuberOlahWithIdOnly = await prisma.sipuberOlah.updateManyAndReturn({
+     * // Update zero or more DailyDataSipubers and only return the `id`
+     * const dailyDataSipuberWithIdOnly = await prisma.dailyDataSipuber.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -5731,56 +6693,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends SipuberOlahUpdateManyAndReturnArgs>(args: SelectSubset<T, SipuberOlahUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends DailyDataSipuberUpdateManyAndReturnArgs>(args: SelectSubset<T, DailyDataSipuberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one SipuberOlah.
-     * @param {SipuberOlahUpsertArgs} args - Arguments to update or create a SipuberOlah.
+     * Create or update one DailyDataSipuber.
+     * @param {DailyDataSipuberUpsertArgs} args - Arguments to update or create a DailyDataSipuber.
      * @example
-     * // Update or create a SipuberOlah
-     * const sipuberOlah = await prisma.sipuberOlah.upsert({
+     * // Update or create a DailyDataSipuber
+     * const dailyDataSipuber = await prisma.dailyDataSipuber.upsert({
      *   create: {
-     *     // ... data to create a SipuberOlah
+     *     // ... data to create a DailyDataSipuber
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the SipuberOlah we want to update
+     *     // ... the filter for the DailyDataSipuber we want to update
      *   }
      * })
      */
-    upsert<T extends SipuberOlahUpsertArgs>(args: SelectSubset<T, SipuberOlahUpsertArgs<ExtArgs>>): Prisma__SipuberOlahClient<$Result.GetResult<Prisma.$SipuberOlahPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends DailyDataSipuberUpsertArgs>(args: SelectSubset<T, DailyDataSipuberUpsertArgs<ExtArgs>>): Prisma__DailyDataSipuberClient<$Result.GetResult<Prisma.$DailyDataSipuberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of SipuberOlahs.
+     * Count the number of DailyDataSipubers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahCountArgs} args - Arguments to filter SipuberOlahs to count.
+     * @param {DailyDataSipuberCountArgs} args - Arguments to filter DailyDataSipubers to count.
      * @example
-     * // Count the number of SipuberOlahs
-     * const count = await prisma.sipuberOlah.count({
+     * // Count the number of DailyDataSipubers
+     * const count = await prisma.dailyDataSipuber.count({
      *   where: {
-     *     // ... the filter for the SipuberOlahs we want to count
+     *     // ... the filter for the DailyDataSipubers we want to count
      *   }
      * })
     **/
-    count<T extends SipuberOlahCountArgs>(
-      args?: Subset<T, SipuberOlahCountArgs>,
+    count<T extends DailyDataSipuberCountArgs>(
+      args?: Subset<T, DailyDataSipuberCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SipuberOlahCountAggregateOutputType>
+          : GetScalarType<T['select'], DailyDataSipuberCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a SipuberOlah.
+     * Allows you to perform aggregations operations on a DailyDataSipuber.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {DailyDataSipuberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5800,13 +6762,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends SipuberOlahAggregateArgs>(args: Subset<T, SipuberOlahAggregateArgs>): Prisma.PrismaPromise<GetSipuberOlahAggregateType<T>>
+    aggregate<T extends DailyDataSipuberAggregateArgs>(args: Subset<T, DailyDataSipuberAggregateArgs>): Prisma.PrismaPromise<GetDailyDataSipuberAggregateType<T>>
 
     /**
-     * Group by SipuberOlah.
+     * Group by DailyDataSipuber.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SipuberOlahGroupByArgs} args - Group by arguments.
+     * @param {DailyDataSipuberGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5821,14 +6783,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends SipuberOlahGroupByArgs,
+      T extends DailyDataSipuberGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SipuberOlahGroupByArgs['orderBy'] }
-        : { orderBy?: SipuberOlahGroupByArgs['orderBy'] },
+        ? { orderBy: DailyDataSipuberGroupByArgs['orderBy'] }
+        : { orderBy?: DailyDataSipuberGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5877,22 +6839,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, SipuberOlahGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSipuberOlahGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, DailyDataSipuberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDailyDataSipuberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the SipuberOlah model
+   * Fields of the DailyDataSipuber model
    */
-  readonly fields: SipuberOlahFieldRefs;
+  readonly fields: DailyDataSipuberFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for SipuberOlah.
+   * The delegate class that acts as a "Promise-like" for DailyDataSipuber.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SipuberOlahClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__DailyDataSipuberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    sipuber<T extends SipuberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SipuberDefaultArgs<ExtArgs>>): Prisma__SipuberClient<$Result.GetResult<Prisma.$SipuberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    device<T extends DeviceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeviceDefaultArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5919,780 +6881,951 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the SipuberOlah model
+   * Fields of the DailyDataSipuber model
    */
-  interface SipuberOlahFieldRefs {
-    readonly id: FieldRef<"SipuberOlah", 'Int'>
-    readonly created_at: FieldRef<"SipuberOlah", 'DateTime'>
-    readonly device_name: FieldRef<"SipuberOlah", 'String'>
-    readonly latitude: FieldRef<"SipuberOlah", 'Float'>
-    readonly longitude: FieldRef<"SipuberOlah", 'Float'>
-    readonly pm1: FieldRef<"SipuberOlah", 'Float'>
-    readonly pm10: FieldRef<"SipuberOlah", 'Float'>
-    readonly pm25: FieldRef<"SipuberOlah", 'Float'>
-    readonly co: FieldRef<"SipuberOlah", 'Float'>
-    readonly so2: FieldRef<"SipuberOlah", 'Float'>
-    readonly no2: FieldRef<"SipuberOlah", 'Float'>
-    readonly o3: FieldRef<"SipuberOlah", 'Float'>
-    readonly nh3: FieldRef<"SipuberOlah", 'Float'>
-    readonly vbat: FieldRef<"SipuberOlah", 'Float'>
-    readonly aqi: FieldRef<"SipuberOlah", 'Int'>
-    readonly sipuber_id: FieldRef<"SipuberOlah", 'Int'>
+  interface DailyDataSipuberFieldRefs {
+    readonly id: FieldRef<"DailyDataSipuber", 'Int'>
+    readonly created_at: FieldRef<"DailyDataSipuber", 'DateTime'>
+    readonly location: FieldRef<"DailyDataSipuber", 'String'>
+    readonly co: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly so: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly no2: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly o3: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly nh3: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly pm1: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly pm25: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly pm10: FieldRef<"DailyDataSipuber", 'Float'>
+    readonly ispu_daily: FieldRef<"DailyDataSipuber", 'Int'>
+    readonly device_id: FieldRef<"DailyDataSipuber", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * SipuberOlah findUnique
+   * DailyDataSipuber findUnique
    */
-  export type SipuberOlahFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which SipuberOlah to fetch.
+     * Filter, which DailyDataSipuber to fetch.
      */
-    where: SipuberOlahWhereUniqueInput
+    where: DailyDataSipuberWhereUniqueInput
   }
 
   /**
-   * SipuberOlah findUniqueOrThrow
+   * DailyDataSipuber findUniqueOrThrow
    */
-  export type SipuberOlahFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which SipuberOlah to fetch.
+     * Filter, which DailyDataSipuber to fetch.
      */
-    where: SipuberOlahWhereUniqueInput
+    where: DailyDataSipuberWhereUniqueInput
   }
 
   /**
-   * SipuberOlah findFirst
+   * DailyDataSipuber findFirst
    */
-  export type SipuberOlahFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which SipuberOlah to fetch.
+     * Filter, which DailyDataSipuber to fetch.
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SipuberOlahs to fetch.
+     * Determine the order of DailyDataSipubers to fetch.
      */
-    orderBy?: SipuberOlahOrderByWithRelationInput | SipuberOlahOrderByWithRelationInput[]
+    orderBy?: DailyDataSipuberOrderByWithRelationInput | DailyDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SipuberOlahs.
+     * Sets the position for searching for DailyDataSipubers.
      */
-    cursor?: SipuberOlahWhereUniqueInput
+    cursor?: DailyDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SipuberOlahs from the position of the cursor.
+     * Take `±n` DailyDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SipuberOlahs.
+     * Skip the first `n` DailyDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SipuberOlahs.
+     * Filter by unique combinations of DailyDataSipubers.
      */
-    distinct?: SipuberOlahScalarFieldEnum | SipuberOlahScalarFieldEnum[]
+    distinct?: DailyDataSipuberScalarFieldEnum | DailyDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * SipuberOlah findFirstOrThrow
+   * DailyDataSipuber findFirstOrThrow
    */
-  export type SipuberOlahFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which SipuberOlah to fetch.
+     * Filter, which DailyDataSipuber to fetch.
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SipuberOlahs to fetch.
+     * Determine the order of DailyDataSipubers to fetch.
      */
-    orderBy?: SipuberOlahOrderByWithRelationInput | SipuberOlahOrderByWithRelationInput[]
+    orderBy?: DailyDataSipuberOrderByWithRelationInput | DailyDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SipuberOlahs.
+     * Sets the position for searching for DailyDataSipubers.
      */
-    cursor?: SipuberOlahWhereUniqueInput
+    cursor?: DailyDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SipuberOlahs from the position of the cursor.
+     * Take `±n` DailyDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SipuberOlahs.
+     * Skip the first `n` DailyDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SipuberOlahs.
+     * Filter by unique combinations of DailyDataSipubers.
      */
-    distinct?: SipuberOlahScalarFieldEnum | SipuberOlahScalarFieldEnum[]
+    distinct?: DailyDataSipuberScalarFieldEnum | DailyDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * SipuberOlah findMany
+   * DailyDataSipuber findMany
    */
-  export type SipuberOlahFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter, which SipuberOlahs to fetch.
+     * Filter, which DailyDataSipubers to fetch.
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SipuberOlahs to fetch.
+     * Determine the order of DailyDataSipubers to fetch.
      */
-    orderBy?: SipuberOlahOrderByWithRelationInput | SipuberOlahOrderByWithRelationInput[]
+    orderBy?: DailyDataSipuberOrderByWithRelationInput | DailyDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing SipuberOlahs.
+     * Sets the position for listing DailyDataSipubers.
      */
-    cursor?: SipuberOlahWhereUniqueInput
+    cursor?: DailyDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SipuberOlahs from the position of the cursor.
+     * Take `±n` DailyDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SipuberOlahs.
+     * Skip the first `n` DailyDataSipubers.
      */
     skip?: number
-    distinct?: SipuberOlahScalarFieldEnum | SipuberOlahScalarFieldEnum[]
+    distinct?: DailyDataSipuberScalarFieldEnum | DailyDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * SipuberOlah create
+   * DailyDataSipuber create
    */
-  export type SipuberOlahCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * The data needed to create a SipuberOlah.
+     * The data needed to create a DailyDataSipuber.
      */
-    data: XOR<SipuberOlahCreateInput, SipuberOlahUncheckedCreateInput>
+    data: XOR<DailyDataSipuberCreateInput, DailyDataSipuberUncheckedCreateInput>
   }
 
   /**
-   * SipuberOlah createMany
+   * DailyDataSipuber createMany
    */
-  export type SipuberOlahCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many SipuberOlahs.
+     * The data used to create many DailyDataSipubers.
      */
-    data: SipuberOlahCreateManyInput | SipuberOlahCreateManyInput[]
+    data: DailyDataSipuberCreateManyInput | DailyDataSipuberCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * SipuberOlah createManyAndReturn
+   * DailyDataSipuber createManyAndReturn
    */
-  export type SipuberOlahCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelectCreateManyAndReturn<ExtArgs> | null
+    select?: DailyDataSipuberSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
-     * The data used to create many SipuberOlahs.
+     * The data used to create many DailyDataSipubers.
      */
-    data: SipuberOlahCreateManyInput | SipuberOlahCreateManyInput[]
+    data: DailyDataSipuberCreateManyInput | DailyDataSipuberCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: DailyDataSipuberIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * SipuberOlah update
+   * DailyDataSipuber update
    */
-  export type SipuberOlahUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * The data needed to update a SipuberOlah.
+     * The data needed to update a DailyDataSipuber.
      */
-    data: XOR<SipuberOlahUpdateInput, SipuberOlahUncheckedUpdateInput>
+    data: XOR<DailyDataSipuberUpdateInput, DailyDataSipuberUncheckedUpdateInput>
     /**
-     * Choose, which SipuberOlah to update.
+     * Choose, which DailyDataSipuber to update.
      */
-    where: SipuberOlahWhereUniqueInput
+    where: DailyDataSipuberWhereUniqueInput
   }
 
   /**
-   * SipuberOlah updateMany
+   * DailyDataSipuber updateMany
    */
-  export type SipuberOlahUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update SipuberOlahs.
+     * The data used to update DailyDataSipubers.
      */
-    data: XOR<SipuberOlahUpdateManyMutationInput, SipuberOlahUncheckedUpdateManyInput>
+    data: XOR<DailyDataSipuberUpdateManyMutationInput, DailyDataSipuberUncheckedUpdateManyInput>
     /**
-     * Filter which SipuberOlahs to update
+     * Filter which DailyDataSipubers to update
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
-     * Limit how many SipuberOlahs to update.
+     * Limit how many DailyDataSipubers to update.
      */
     limit?: number
   }
 
   /**
-   * SipuberOlah updateManyAndReturn
+   * DailyDataSipuber updateManyAndReturn
    */
-  export type SipuberOlahUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: DailyDataSipuberSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
-     * The data used to update SipuberOlahs.
+     * The data used to update DailyDataSipubers.
      */
-    data: XOR<SipuberOlahUpdateManyMutationInput, SipuberOlahUncheckedUpdateManyInput>
+    data: XOR<DailyDataSipuberUpdateManyMutationInput, DailyDataSipuberUncheckedUpdateManyInput>
     /**
-     * Filter which SipuberOlahs to update
+     * Filter which DailyDataSipubers to update
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
-     * Limit how many SipuberOlahs to update.
+     * Limit how many DailyDataSipubers to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: DailyDataSipuberIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * SipuberOlah upsert
+   * DailyDataSipuber upsert
    */
-  export type SipuberOlahUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * The filter to search for the SipuberOlah to update in case it exists.
+     * The filter to search for the DailyDataSipuber to update in case it exists.
      */
-    where: SipuberOlahWhereUniqueInput
+    where: DailyDataSipuberWhereUniqueInput
     /**
-     * In case the SipuberOlah found by the `where` argument doesn't exist, create a new SipuberOlah with this data.
+     * In case the DailyDataSipuber found by the `where` argument doesn't exist, create a new DailyDataSipuber with this data.
      */
-    create: XOR<SipuberOlahCreateInput, SipuberOlahUncheckedCreateInput>
+    create: XOR<DailyDataSipuberCreateInput, DailyDataSipuberUncheckedCreateInput>
     /**
-     * In case the SipuberOlah was found with the provided `where` argument, update it with this data.
+     * In case the DailyDataSipuber was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<SipuberOlahUpdateInput, SipuberOlahUncheckedUpdateInput>
+    update: XOR<DailyDataSipuberUpdateInput, DailyDataSipuberUncheckedUpdateInput>
   }
 
   /**
-   * SipuberOlah delete
+   * DailyDataSipuber delete
    */
-  export type SipuberOlahDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
     /**
-     * Filter which SipuberOlah to delete.
+     * Filter which DailyDataSipuber to delete.
      */
-    where: SipuberOlahWhereUniqueInput
+    where: DailyDataSipuberWhereUniqueInput
   }
 
   /**
-   * SipuberOlah deleteMany
+   * DailyDataSipuber deleteMany
    */
-  export type SipuberOlahDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SipuberOlahs to delete
+     * Filter which DailyDataSipubers to delete
      */
-    where?: SipuberOlahWhereInput
+    where?: DailyDataSipuberWhereInput
     /**
-     * Limit how many SipuberOlahs to delete.
+     * Limit how many DailyDataSipubers to delete.
      */
     limit?: number
   }
 
   /**
-   * SipuberOlah without action
+   * DailyDataSipuber without action
    */
-  export type SipuberOlahDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DailyDataSipuberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SipuberOlah
+     * Select specific fields to fetch from the DailyDataSipuber
      */
-    select?: SipuberOlahSelect<ExtArgs> | null
+    select?: DailyDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SipuberOlah
+     * Omit specific fields from the DailyDataSipuber
      */
-    omit?: SipuberOlahOmit<ExtArgs> | null
+    omit?: DailyDataSipuberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SipuberOlahInclude<ExtArgs> | null
+    include?: DailyDataSipuberInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Contact
+   * Model AnalDataSipuber
    */
 
-  export type AggregateContact = {
-    _count: ContactCountAggregateOutputType | null
-    _avg: ContactAvgAggregateOutputType | null
-    _sum: ContactSumAggregateOutputType | null
-    _min: ContactMinAggregateOutputType | null
-    _max: ContactMaxAggregateOutputType | null
+  export type AggregateAnalDataSipuber = {
+    _count: AnalDataSipuberCountAggregateOutputType | null
+    _avg: AnalDataSipuberAvgAggregateOutputType | null
+    _sum: AnalDataSipuberSumAggregateOutputType | null
+    _min: AnalDataSipuberMinAggregateOutputType | null
+    _max: AnalDataSipuberMaxAggregateOutputType | null
   }
 
-  export type ContactAvgAggregateOutputType = {
+  export type AnalDataSipuberAvgAggregateOutputType = {
     id: number | null
+    device_id: number | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    v_bat: number | null
   }
 
-  export type ContactSumAggregateOutputType = {
+  export type AnalDataSipuberSumAggregateOutputType = {
     id: number | null
+    device_id: number | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    v_bat: number | null
   }
 
-  export type ContactMinAggregateOutputType = {
+  export type AnalDataSipuberMinAggregateOutputType = {
     id: number | null
-    contact_name: string | null
-    phone_number: string | null
+    created_at: Date | null
+    device_id: number | null
+    location: string | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    v_bat: number | null
   }
 
-  export type ContactMaxAggregateOutputType = {
+  export type AnalDataSipuberMaxAggregateOutputType = {
     id: number | null
-    contact_name: string | null
-    phone_number: string | null
+    created_at: Date | null
+    device_id: number | null
+    location: string | null
+    co: number | null
+    so: number | null
+    no2: number | null
+    o3: number | null
+    nh3: number | null
+    pm1: number | null
+    pm25: number | null
+    pm10: number | null
+    v_bat: number | null
   }
 
-  export type ContactCountAggregateOutputType = {
+  export type AnalDataSipuberCountAggregateOutputType = {
     id: number
-    contact_name: number
-    phone_number: number
+    created_at: number
+    device_id: number
+    location: number
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
     _all: number
   }
 
 
-  export type ContactAvgAggregateInputType = {
+  export type AnalDataSipuberAvgAggregateInputType = {
     id?: true
+    device_id?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    v_bat?: true
   }
 
-  export type ContactSumAggregateInputType = {
+  export type AnalDataSipuberSumAggregateInputType = {
     id?: true
+    device_id?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    v_bat?: true
   }
 
-  export type ContactMinAggregateInputType = {
+  export type AnalDataSipuberMinAggregateInputType = {
     id?: true
-    contact_name?: true
-    phone_number?: true
+    created_at?: true
+    device_id?: true
+    location?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    v_bat?: true
   }
 
-  export type ContactMaxAggregateInputType = {
+  export type AnalDataSipuberMaxAggregateInputType = {
     id?: true
-    contact_name?: true
-    phone_number?: true
+    created_at?: true
+    device_id?: true
+    location?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    v_bat?: true
   }
 
-  export type ContactCountAggregateInputType = {
+  export type AnalDataSipuberCountAggregateInputType = {
     id?: true
-    contact_name?: true
-    phone_number?: true
+    created_at?: true
+    device_id?: true
+    location?: true
+    co?: true
+    so?: true
+    no2?: true
+    o3?: true
+    nh3?: true
+    pm1?: true
+    pm25?: true
+    pm10?: true
+    v_bat?: true
     _all?: true
   }
 
-  export type ContactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Contact to aggregate.
+     * Filter which AnalDataSipuber to aggregate.
      */
-    where?: ContactWhereInput
+    where?: AnalDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of AnalDataSipubers to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: AnalDataSipuberOrderByWithRelationInput | AnalDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: AnalDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` AnalDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` AnalDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Contacts
+     * Count returned AnalDataSipubers
     **/
-    _count?: true | ContactCountAggregateInputType
+    _count?: true | AnalDataSipuberCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: ContactAvgAggregateInputType
+    _avg?: AnalDataSipuberAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: ContactSumAggregateInputType
+    _sum?: AnalDataSipuberSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ContactMinAggregateInputType
+    _min?: AnalDataSipuberMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ContactMaxAggregateInputType
+    _max?: AnalDataSipuberMaxAggregateInputType
   }
 
-  export type GetContactAggregateType<T extends ContactAggregateArgs> = {
-        [P in keyof T & keyof AggregateContact]: P extends '_count' | 'count'
+  export type GetAnalDataSipuberAggregateType<T extends AnalDataSipuberAggregateArgs> = {
+        [P in keyof T & keyof AggregateAnalDataSipuber]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateContact[P]>
-      : GetScalarType<T[P], AggregateContact[P]>
+        : GetScalarType<T[P], AggregateAnalDataSipuber[P]>
+      : GetScalarType<T[P], AggregateAnalDataSipuber[P]>
   }
 
 
 
 
-  export type ContactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ContactWhereInput
-    orderBy?: ContactOrderByWithAggregationInput | ContactOrderByWithAggregationInput[]
-    by: ContactScalarFieldEnum[] | ContactScalarFieldEnum
-    having?: ContactScalarWhereWithAggregatesInput
+  export type AnalDataSipuberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnalDataSipuberWhereInput
+    orderBy?: AnalDataSipuberOrderByWithAggregationInput | AnalDataSipuberOrderByWithAggregationInput[]
+    by: AnalDataSipuberScalarFieldEnum[] | AnalDataSipuberScalarFieldEnum
+    having?: AnalDataSipuberScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ContactCountAggregateInputType | true
-    _avg?: ContactAvgAggregateInputType
-    _sum?: ContactSumAggregateInputType
-    _min?: ContactMinAggregateInputType
-    _max?: ContactMaxAggregateInputType
+    _count?: AnalDataSipuberCountAggregateInputType | true
+    _avg?: AnalDataSipuberAvgAggregateInputType
+    _sum?: AnalDataSipuberSumAggregateInputType
+    _min?: AnalDataSipuberMinAggregateInputType
+    _max?: AnalDataSipuberMaxAggregateInputType
   }
 
-  export type ContactGroupByOutputType = {
+  export type AnalDataSipuberGroupByOutputType = {
     id: number
-    contact_name: string
-    phone_number: string
-    _count: ContactCountAggregateOutputType | null
-    _avg: ContactAvgAggregateOutputType | null
-    _sum: ContactSumAggregateOutputType | null
-    _min: ContactMinAggregateOutputType | null
-    _max: ContactMaxAggregateOutputType | null
+    created_at: Date
+    device_id: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+    _count: AnalDataSipuberCountAggregateOutputType | null
+    _avg: AnalDataSipuberAvgAggregateOutputType | null
+    _sum: AnalDataSipuberSumAggregateOutputType | null
+    _min: AnalDataSipuberMinAggregateOutputType | null
+    _max: AnalDataSipuberMaxAggregateOutputType | null
   }
 
-  type GetContactGroupByPayload<T extends ContactGroupByArgs> = Prisma.PrismaPromise<
+  type GetAnalDataSipuberGroupByPayload<T extends AnalDataSipuberGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ContactGroupByOutputType, T['by']> &
+      PickEnumerable<AnalDataSipuberGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ContactGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AnalDataSipuberGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ContactGroupByOutputType[P]>
-            : GetScalarType<T[P], ContactGroupByOutputType[P]>
+              : GetScalarType<T[P], AnalDataSipuberGroupByOutputType[P]>
+            : GetScalarType<T[P], AnalDataSipuberGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ContactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AnalDataSipuberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    contact_name?: boolean
-    phone_number?: boolean
-  }, ExtArgs["result"]["contact"]>
+    created_at?: boolean
+    device_id?: boolean
+    location?: boolean
+    co?: boolean
+    so?: boolean
+    no2?: boolean
+    o3?: boolean
+    nh3?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    v_bat?: boolean
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["analDataSipuber"]>
 
-  export type ContactSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AnalDataSipuberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    contact_name?: boolean
-    phone_number?: boolean
-  }, ExtArgs["result"]["contact"]>
+    created_at?: boolean
+    device_id?: boolean
+    location?: boolean
+    co?: boolean
+    so?: boolean
+    no2?: boolean
+    o3?: boolean
+    nh3?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    v_bat?: boolean
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["analDataSipuber"]>
 
-  export type ContactSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AnalDataSipuberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    contact_name?: boolean
-    phone_number?: boolean
-  }, ExtArgs["result"]["contact"]>
+    created_at?: boolean
+    device_id?: boolean
+    location?: boolean
+    co?: boolean
+    so?: boolean
+    no2?: boolean
+    o3?: boolean
+    nh3?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    v_bat?: boolean
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["analDataSipuber"]>
 
-  export type ContactSelectScalar = {
+  export type AnalDataSipuberSelectScalar = {
     id?: boolean
-    contact_name?: boolean
-    phone_number?: boolean
+    created_at?: boolean
+    device_id?: boolean
+    location?: boolean
+    co?: boolean
+    so?: boolean
+    no2?: boolean
+    o3?: boolean
+    nh3?: boolean
+    pm1?: boolean
+    pm25?: boolean
+    pm10?: boolean
+    v_bat?: boolean
   }
 
-  export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "contact_name" | "phone_number", ExtArgs["result"]["contact"]>
+  export type AnalDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "v_bat", ExtArgs["result"]["analDataSipuber"]>
+  export type AnalDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }
+  export type AnalDataSipuberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }
+  export type AnalDataSipuberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | DeviceDefaultArgs<ExtArgs>
+  }
 
-  export type $ContactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Contact"
-    objects: {}
+  export type $AnalDataSipuberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AnalDataSipuber"
+    objects: {
+      device: Prisma.$DevicePayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      contact_name: string
-      phone_number: string
-    }, ExtArgs["result"]["contact"]>
+      created_at: Date
+      device_id: number
+      location: string
+      co: number
+      so: number
+      no2: number
+      o3: number
+      nh3: number
+      pm1: number
+      pm25: number
+      pm10: number
+      v_bat: number
+    }, ExtArgs["result"]["analDataSipuber"]>
     composites: {}
   }
 
-  type ContactGetPayload<S extends boolean | null | undefined | ContactDefaultArgs> = $Result.GetResult<Prisma.$ContactPayload, S>
+  type AnalDataSipuberGetPayload<S extends boolean | null | undefined | AnalDataSipuberDefaultArgs> = $Result.GetResult<Prisma.$AnalDataSipuberPayload, S>
 
-  type ContactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ContactFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ContactCountAggregateInputType | true
+  type AnalDataSipuberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AnalDataSipuberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AnalDataSipuberCountAggregateInputType | true
     }
 
-  export interface ContactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Contact'], meta: { name: 'Contact' } }
+  export interface AnalDataSipuberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AnalDataSipuber'], meta: { name: 'AnalDataSipuber' } }
     /**
-     * Find zero or one Contact that matches the filter.
-     * @param {ContactFindUniqueArgs} args - Arguments to find a Contact
+     * Find zero or one AnalDataSipuber that matches the filter.
+     * @param {AnalDataSipuberFindUniqueArgs} args - Arguments to find a AnalDataSipuber
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findUnique({
+     * // Get one AnalDataSipuber
+     * const analDataSipuber = await prisma.analDataSipuber.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ContactFindUniqueArgs>(args: SelectSubset<T, ContactFindUniqueArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AnalDataSipuberFindUniqueArgs>(args: SelectSubset<T, AnalDataSipuberFindUniqueArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Contact that matches the filter or throw an error with `error.code='P2025'`
+     * Find one AnalDataSipuber that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ContactFindUniqueOrThrowArgs} args - Arguments to find a Contact
+     * @param {AnalDataSipuberFindUniqueOrThrowArgs} args - Arguments to find a AnalDataSipuber
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findUniqueOrThrow({
+     * // Get one AnalDataSipuber
+     * const analDataSipuber = await prisma.analDataSipuber.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ContactFindUniqueOrThrowArgs>(args: SelectSubset<T, ContactFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AnalDataSipuberFindUniqueOrThrowArgs>(args: SelectSubset<T, AnalDataSipuberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Contact that matches the filter.
+     * Find the first AnalDataSipuber that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactFindFirstArgs} args - Arguments to find a Contact
+     * @param {AnalDataSipuberFindFirstArgs} args - Arguments to find a AnalDataSipuber
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findFirst({
+     * // Get one AnalDataSipuber
+     * const analDataSipuber = await prisma.analDataSipuber.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ContactFindFirstArgs>(args?: SelectSubset<T, ContactFindFirstArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AnalDataSipuberFindFirstArgs>(args?: SelectSubset<T, AnalDataSipuberFindFirstArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Contact that matches the filter or
+     * Find the first AnalDataSipuber that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactFindFirstOrThrowArgs} args - Arguments to find a Contact
+     * @param {AnalDataSipuberFindFirstOrThrowArgs} args - Arguments to find a AnalDataSipuber
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findFirstOrThrow({
+     * // Get one AnalDataSipuber
+     * const analDataSipuber = await prisma.analDataSipuber.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ContactFindFirstOrThrowArgs>(args?: SelectSubset<T, ContactFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AnalDataSipuberFindFirstOrThrowArgs>(args?: SelectSubset<T, AnalDataSipuberFindFirstOrThrowArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Contacts that matches the filter.
+     * Find zero or more AnalDataSipubers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AnalDataSipuberFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Contacts
-     * const contacts = await prisma.contact.findMany()
+     * // Get all AnalDataSipubers
+     * const analDataSipubers = await prisma.analDataSipuber.findMany()
      * 
-     * // Get first 10 Contacts
-     * const contacts = await prisma.contact.findMany({ take: 10 })
+     * // Get first 10 AnalDataSipubers
+     * const analDataSipubers = await prisma.analDataSipuber.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const contactWithIdOnly = await prisma.contact.findMany({ select: { id: true } })
+     * const analDataSipuberWithIdOnly = await prisma.analDataSipuber.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ContactFindManyArgs>(args?: SelectSubset<T, ContactFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AnalDataSipuberFindManyArgs>(args?: SelectSubset<T, AnalDataSipuberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Contact.
-     * @param {ContactCreateArgs} args - Arguments to create a Contact.
+     * Create a AnalDataSipuber.
+     * @param {AnalDataSipuberCreateArgs} args - Arguments to create a AnalDataSipuber.
      * @example
-     * // Create one Contact
-     * const Contact = await prisma.contact.create({
+     * // Create one AnalDataSipuber
+     * const AnalDataSipuber = await prisma.analDataSipuber.create({
      *   data: {
-     *     // ... data to create a Contact
+     *     // ... data to create a AnalDataSipuber
      *   }
      * })
      * 
      */
-    create<T extends ContactCreateArgs>(args: SelectSubset<T, ContactCreateArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AnalDataSipuberCreateArgs>(args: SelectSubset<T, AnalDataSipuberCreateArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Contacts.
-     * @param {ContactCreateManyArgs} args - Arguments to create many Contacts.
+     * Create many AnalDataSipubers.
+     * @param {AnalDataSipuberCreateManyArgs} args - Arguments to create many AnalDataSipubers.
      * @example
-     * // Create many Contacts
-     * const contact = await prisma.contact.createMany({
+     * // Create many AnalDataSipubers
+     * const analDataSipuber = await prisma.analDataSipuber.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ContactCreateManyArgs>(args?: SelectSubset<T, ContactCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AnalDataSipuberCreateManyArgs>(args?: SelectSubset<T, AnalDataSipuberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Contacts and returns the data saved in the database.
-     * @param {ContactCreateManyAndReturnArgs} args - Arguments to create many Contacts.
+     * Create many AnalDataSipubers and returns the data saved in the database.
+     * @param {AnalDataSipuberCreateManyAndReturnArgs} args - Arguments to create many AnalDataSipubers.
      * @example
-     * // Create many Contacts
-     * const contact = await prisma.contact.createManyAndReturn({
+     * // Create many AnalDataSipubers
+     * const analDataSipuber = await prisma.analDataSipuber.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Contacts and only return the `id`
-     * const contactWithIdOnly = await prisma.contact.createManyAndReturn({
+     * // Create many AnalDataSipubers and only return the `id`
+     * const analDataSipuberWithIdOnly = await prisma.analDataSipuber.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -6702,28 +7835,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ContactCreateManyAndReturnArgs>(args?: SelectSubset<T, ContactCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AnalDataSipuberCreateManyAndReturnArgs>(args?: SelectSubset<T, AnalDataSipuberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Contact.
-     * @param {ContactDeleteArgs} args - Arguments to delete one Contact.
+     * Delete a AnalDataSipuber.
+     * @param {AnalDataSipuberDeleteArgs} args - Arguments to delete one AnalDataSipuber.
      * @example
-     * // Delete one Contact
-     * const Contact = await prisma.contact.delete({
+     * // Delete one AnalDataSipuber
+     * const AnalDataSipuber = await prisma.analDataSipuber.delete({
      *   where: {
-     *     // ... filter to delete one Contact
+     *     // ... filter to delete one AnalDataSipuber
      *   }
      * })
      * 
      */
-    delete<T extends ContactDeleteArgs>(args: SelectSubset<T, ContactDeleteArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AnalDataSipuberDeleteArgs>(args: SelectSubset<T, AnalDataSipuberDeleteArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Contact.
-     * @param {ContactUpdateArgs} args - Arguments to update one Contact.
+     * Update one AnalDataSipuber.
+     * @param {AnalDataSipuberUpdateArgs} args - Arguments to update one AnalDataSipuber.
      * @example
-     * // Update one Contact
-     * const contact = await prisma.contact.update({
+     * // Update one AnalDataSipuber
+     * const analDataSipuber = await prisma.analDataSipuber.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6733,30 +7866,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ContactUpdateArgs>(args: SelectSubset<T, ContactUpdateArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AnalDataSipuberUpdateArgs>(args: SelectSubset<T, AnalDataSipuberUpdateArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Contacts.
-     * @param {ContactDeleteManyArgs} args - Arguments to filter Contacts to delete.
+     * Delete zero or more AnalDataSipubers.
+     * @param {AnalDataSipuberDeleteManyArgs} args - Arguments to filter AnalDataSipubers to delete.
      * @example
-     * // Delete a few Contacts
-     * const { count } = await prisma.contact.deleteMany({
+     * // Delete a few AnalDataSipubers
+     * const { count } = await prisma.analDataSipuber.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ContactDeleteManyArgs>(args?: SelectSubset<T, ContactDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AnalDataSipuberDeleteManyArgs>(args?: SelectSubset<T, AnalDataSipuberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Contacts.
+     * Update zero or more AnalDataSipubers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AnalDataSipuberUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Contacts
-     * const contact = await prisma.contact.updateMany({
+     * // Update many AnalDataSipubers
+     * const analDataSipuber = await prisma.analDataSipuber.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6766,14 +7899,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ContactUpdateManyArgs>(args: SelectSubset<T, ContactUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AnalDataSipuberUpdateManyArgs>(args: SelectSubset<T, AnalDataSipuberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Contacts and returns the data updated in the database.
-     * @param {ContactUpdateManyAndReturnArgs} args - Arguments to update many Contacts.
+     * Update zero or more AnalDataSipubers and returns the data updated in the database.
+     * @param {AnalDataSipuberUpdateManyAndReturnArgs} args - Arguments to update many AnalDataSipubers.
      * @example
-     * // Update many Contacts
-     * const contact = await prisma.contact.updateManyAndReturn({
+     * // Update many AnalDataSipubers
+     * const analDataSipuber = await prisma.analDataSipuber.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6782,8 +7915,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Contacts and only return the `id`
-     * const contactWithIdOnly = await prisma.contact.updateManyAndReturn({
+     * // Update zero or more AnalDataSipubers and only return the `id`
+     * const analDataSipuberWithIdOnly = await prisma.analDataSipuber.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -6796,56 +7929,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ContactUpdateManyAndReturnArgs>(args: SelectSubset<T, ContactUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AnalDataSipuberUpdateManyAndReturnArgs>(args: SelectSubset<T, AnalDataSipuberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Contact.
-     * @param {ContactUpsertArgs} args - Arguments to update or create a Contact.
+     * Create or update one AnalDataSipuber.
+     * @param {AnalDataSipuberUpsertArgs} args - Arguments to update or create a AnalDataSipuber.
      * @example
-     * // Update or create a Contact
-     * const contact = await prisma.contact.upsert({
+     * // Update or create a AnalDataSipuber
+     * const analDataSipuber = await prisma.analDataSipuber.upsert({
      *   create: {
-     *     // ... data to create a Contact
+     *     // ... data to create a AnalDataSipuber
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Contact we want to update
+     *     // ... the filter for the AnalDataSipuber we want to update
      *   }
      * })
      */
-    upsert<T extends ContactUpsertArgs>(args: SelectSubset<T, ContactUpsertArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AnalDataSipuberUpsertArgs>(args: SelectSubset<T, AnalDataSipuberUpsertArgs<ExtArgs>>): Prisma__AnalDataSipuberClient<$Result.GetResult<Prisma.$AnalDataSipuberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Contacts.
+     * Count the number of AnalDataSipubers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactCountArgs} args - Arguments to filter Contacts to count.
+     * @param {AnalDataSipuberCountArgs} args - Arguments to filter AnalDataSipubers to count.
      * @example
-     * // Count the number of Contacts
-     * const count = await prisma.contact.count({
+     * // Count the number of AnalDataSipubers
+     * const count = await prisma.analDataSipuber.count({
      *   where: {
-     *     // ... the filter for the Contacts we want to count
+     *     // ... the filter for the AnalDataSipubers we want to count
      *   }
      * })
     **/
-    count<T extends ContactCountArgs>(
-      args?: Subset<T, ContactCountArgs>,
+    count<T extends AnalDataSipuberCountArgs>(
+      args?: Subset<T, AnalDataSipuberCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ContactCountAggregateOutputType>
+          : GetScalarType<T['select'], AnalDataSipuberCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Contact.
+     * Allows you to perform aggregations operations on a AnalDataSipuber.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AnalDataSipuberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6865,13 +7998,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ContactAggregateArgs>(args: Subset<T, ContactAggregateArgs>): Prisma.PrismaPromise<GetContactAggregateType<T>>
+    aggregate<T extends AnalDataSipuberAggregateArgs>(args: Subset<T, AnalDataSipuberAggregateArgs>): Prisma.PrismaPromise<GetAnalDataSipuberAggregateType<T>>
 
     /**
-     * Group by Contact.
+     * Group by AnalDataSipuber.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactGroupByArgs} args - Group by arguments.
+     * @param {AnalDataSipuberGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6886,14 +8019,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ContactGroupByArgs,
+      T extends AnalDataSipuberGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ContactGroupByArgs['orderBy'] }
-        : { orderBy?: ContactGroupByArgs['orderBy'] },
+        ? { orderBy: AnalDataSipuberGroupByArgs['orderBy'] }
+        : { orderBy?: AnalDataSipuberGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6942,21 +8075,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ContactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AnalDataSipuberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAnalDataSipuberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Contact model
+   * Fields of the AnalDataSipuber model
    */
-  readonly fields: ContactFieldRefs;
+  readonly fields: AnalDataSipuberFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Contact.
+   * The delegate class that acts as a "Promise-like" for AnalDataSipuber.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ContactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AnalDataSipuberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    device<T extends DeviceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeviceDefaultArgs<ExtArgs>>): Prisma__DeviceClient<$Result.GetResult<Prisma.$DevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6983,721 +8117,789 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Contact model
+   * Fields of the AnalDataSipuber model
    */
-  interface ContactFieldRefs {
-    readonly id: FieldRef<"Contact", 'Int'>
-    readonly contact_name: FieldRef<"Contact", 'String'>
-    readonly phone_number: FieldRef<"Contact", 'String'>
+  interface AnalDataSipuberFieldRefs {
+    readonly id: FieldRef<"AnalDataSipuber", 'Int'>
+    readonly created_at: FieldRef<"AnalDataSipuber", 'DateTime'>
+    readonly device_id: FieldRef<"AnalDataSipuber", 'Int'>
+    readonly location: FieldRef<"AnalDataSipuber", 'String'>
+    readonly co: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly so: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly no2: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly o3: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly nh3: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly pm1: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly pm25: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly pm10: FieldRef<"AnalDataSipuber", 'Float'>
+    readonly v_bat: FieldRef<"AnalDataSipuber", 'Float'>
   }
     
 
   // Custom InputTypes
   /**
-   * Contact findUnique
+   * AnalDataSipuber findUnique
    */
-  export type ContactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: ContactWhereUniqueInput
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * Filter, which AnalDataSipuber to fetch.
+     */
+    where: AnalDataSipuberWhereUniqueInput
   }
 
   /**
-   * Contact findUniqueOrThrow
+   * AnalDataSipuber findUniqueOrThrow
    */
-  export type ContactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: ContactWhereUniqueInput
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * Filter, which AnalDataSipuber to fetch.
+     */
+    where: AnalDataSipuberWhereUniqueInput
   }
 
   /**
-   * Contact findFirst
+   * AnalDataSipuber findFirst
    */
-  export type ContactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: ContactWhereInput
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * Filter, which AnalDataSipuber to fetch.
+     */
+    where?: AnalDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of AnalDataSipubers to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: AnalDataSipuberOrderByWithRelationInput | AnalDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Contacts.
+     * Sets the position for searching for AnalDataSipubers.
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: AnalDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` AnalDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` AnalDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Contacts.
+     * Filter by unique combinations of AnalDataSipubers.
      */
-    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+    distinct?: AnalDataSipuberScalarFieldEnum | AnalDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Contact findFirstOrThrow
+   * AnalDataSipuber findFirstOrThrow
    */
-  export type ContactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: ContactWhereInput
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * Filter, which AnalDataSipuber to fetch.
+     */
+    where?: AnalDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of AnalDataSipubers to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: AnalDataSipuberOrderByWithRelationInput | AnalDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Contacts.
+     * Sets the position for searching for AnalDataSipubers.
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: AnalDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` AnalDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` AnalDataSipubers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Contacts.
+     * Filter by unique combinations of AnalDataSipubers.
      */
-    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+    distinct?: AnalDataSipuberScalarFieldEnum | AnalDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Contact findMany
+   * AnalDataSipuber findMany
    */
-  export type ContactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * Filter, which Contacts to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: ContactWhereInput
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * Filter, which AnalDataSipubers to fetch.
+     */
+    where?: AnalDataSipuberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of AnalDataSipubers to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: AnalDataSipuberOrderByWithRelationInput | AnalDataSipuberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Contacts.
+     * Sets the position for listing AnalDataSipubers.
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: AnalDataSipuberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` AnalDataSipubers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` AnalDataSipubers.
      */
     skip?: number
-    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+    distinct?: AnalDataSipuberScalarFieldEnum | AnalDataSipuberScalarFieldEnum[]
   }
 
   /**
-   * Contact create
+   * AnalDataSipuber create
    */
-  export type ContactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * The data needed to create a Contact.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<ContactCreateInput, ContactUncheckedCreateInput>
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AnalDataSipuber.
+     */
+    data: XOR<AnalDataSipuberCreateInput, AnalDataSipuberUncheckedCreateInput>
   }
 
   /**
-   * Contact createMany
+   * AnalDataSipuber createMany
    */
-  export type ContactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Contacts.
+     * The data used to create many AnalDataSipubers.
      */
-    data: ContactCreateManyInput | ContactCreateManyInput[]
+    data: AnalDataSipuberCreateManyInput | AnalDataSipuberCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Contact createManyAndReturn
+   * AnalDataSipuber createManyAndReturn
    */
-  export type ContactCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AnalDataSipuberSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * The data used to create many Contacts.
+     * The data used to create many AnalDataSipubers.
      */
-    data: ContactCreateManyInput | ContactCreateManyInput[]
+    data: AnalDataSipuberCreateManyInput | AnalDataSipuberCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnalDataSipuberIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Contact update
+   * AnalDataSipuber update
    */
-  export type ContactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * The data needed to update a Contact.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
+    include?: AnalDataSipuberInclude<ExtArgs> | null
     /**
-     * Choose, which Contact to update.
+     * The data needed to update a AnalDataSipuber.
      */
-    where: ContactWhereUniqueInput
+    data: XOR<AnalDataSipuberUpdateInput, AnalDataSipuberUncheckedUpdateInput>
+    /**
+     * Choose, which AnalDataSipuber to update.
+     */
+    where: AnalDataSipuberWhereUniqueInput
   }
 
   /**
-   * Contact updateMany
+   * AnalDataSipuber updateMany
    */
-  export type ContactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Contacts.
+     * The data used to update AnalDataSipubers.
      */
-    data: XOR<ContactUpdateManyMutationInput, ContactUncheckedUpdateManyInput>
+    data: XOR<AnalDataSipuberUpdateManyMutationInput, AnalDataSipuberUncheckedUpdateManyInput>
     /**
-     * Filter which Contacts to update
+     * Filter which AnalDataSipubers to update
      */
-    where?: ContactWhereInput
+    where?: AnalDataSipuberWhereInput
     /**
-     * Limit how many Contacts to update.
+     * Limit how many AnalDataSipubers to update.
      */
     limit?: number
   }
 
   /**
-   * Contact updateManyAndReturn
+   * AnalDataSipuber updateManyAndReturn
    */
-  export type ContactUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AnalDataSipuberSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * The data used to update Contacts.
+     * The data used to update AnalDataSipubers.
      */
-    data: XOR<ContactUpdateManyMutationInput, ContactUncheckedUpdateManyInput>
+    data: XOR<AnalDataSipuberUpdateManyMutationInput, AnalDataSipuberUncheckedUpdateManyInput>
     /**
-     * Filter which Contacts to update
+     * Filter which AnalDataSipubers to update
      */
-    where?: ContactWhereInput
+    where?: AnalDataSipuberWhereInput
     /**
-     * Limit how many Contacts to update.
+     * Limit how many AnalDataSipubers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnalDataSipuberIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AnalDataSipuber upsert
+   */
+  export type AnalDataSipuberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnalDataSipuber
+     */
+    select?: AnalDataSipuberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AnalDataSipuber
+     */
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AnalDataSipuber to update in case it exists.
+     */
+    where: AnalDataSipuberWhereUniqueInput
+    /**
+     * In case the AnalDataSipuber found by the `where` argument doesn't exist, create a new AnalDataSipuber with this data.
+     */
+    create: XOR<AnalDataSipuberCreateInput, AnalDataSipuberUncheckedCreateInput>
+    /**
+     * In case the AnalDataSipuber was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AnalDataSipuberUpdateInput, AnalDataSipuberUncheckedUpdateInput>
+  }
+
+  /**
+   * AnalDataSipuber delete
+   */
+  export type AnalDataSipuberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnalDataSipuber
+     */
+    select?: AnalDataSipuberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AnalDataSipuber
+     */
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnalDataSipuberInclude<ExtArgs> | null
+    /**
+     * Filter which AnalDataSipuber to delete.
+     */
+    where: AnalDataSipuberWhereUniqueInput
+  }
+
+  /**
+   * AnalDataSipuber deleteMany
+   */
+  export type AnalDataSipuberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnalDataSipubers to delete
+     */
+    where?: AnalDataSipuberWhereInput
+    /**
+     * Limit how many AnalDataSipubers to delete.
      */
     limit?: number
   }
 
   /**
-   * Contact upsert
+   * AnalDataSipuber without action
    */
-  export type ContactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AnalDataSipuberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the AnalDataSipuber
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: AnalDataSipuberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the AnalDataSipuber
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: AnalDataSipuberOmit<ExtArgs> | null
     /**
-     * The filter to search for the Contact to update in case it exists.
+     * Choose, which related nodes to fetch as well
      */
-    where: ContactWhereUniqueInput
-    /**
-     * In case the Contact found by the `where` argument doesn't exist, create a new Contact with this data.
-     */
-    create: XOR<ContactCreateInput, ContactUncheckedCreateInput>
-    /**
-     * In case the Contact was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
-  }
-
-  /**
-   * Contact delete
-   */
-  export type ContactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Contact
-     */
-    select?: ContactSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Contact
-     */
-    omit?: ContactOmit<ExtArgs> | null
-    /**
-     * Filter which Contact to delete.
-     */
-    where: ContactWhereUniqueInput
-  }
-
-  /**
-   * Contact deleteMany
-   */
-  export type ContactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Contacts to delete
-     */
-    where?: ContactWhereInput
-    /**
-     * Limit how many Contacts to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Contact without action
-   */
-  export type ContactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Contact
-     */
-    select?: ContactSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Contact
-     */
-    omit?: ContactOmit<ExtArgs> | null
+    include?: AnalDataSipuberInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Session
+   * Model AlertManagement
    */
 
-  export type AggregateSession = {
-    _count: SessionCountAggregateOutputType | null
-    _min: SessionMinAggregateOutputType | null
-    _max: SessionMaxAggregateOutputType | null
+  export type AggregateAlertManagement = {
+    _count: AlertManagementCountAggregateOutputType | null
+    _avg: AlertManagementAvgAggregateOutputType | null
+    _sum: AlertManagementSumAggregateOutputType | null
+    _min: AlertManagementMinAggregateOutputType | null
+    _max: AlertManagementMaxAggregateOutputType | null
   }
 
-  export type SessionMinAggregateOutputType = {
-    id: string | null
-    sid: string | null
-    data: string | null
-    expiresAt: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
+  export type AlertManagementAvgAggregateOutputType = {
+    id: number | null
   }
 
-  export type SessionMaxAggregateOutputType = {
-    id: string | null
-    sid: string | null
-    data: string | null
-    expiresAt: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
+  export type AlertManagementSumAggregateOutputType = {
+    id: number | null
   }
 
-  export type SessionCountAggregateOutputType = {
+  export type AlertManagementMinAggregateOutputType = {
+    id: number | null
+    wa_name: string | null
+    wa_number: string | null
+    email: string | null
+  }
+
+  export type AlertManagementMaxAggregateOutputType = {
+    id: number | null
+    wa_name: string | null
+    wa_number: string | null
+    email: string | null
+  }
+
+  export type AlertManagementCountAggregateOutputType = {
     id: number
-    sid: number
-    data: number
-    expiresAt: number
-    createdAt: number
-    updatedAt: number
+    wa_name: number
+    wa_number: number
+    email: number
     _all: number
   }
 
 
-  export type SessionMinAggregateInputType = {
+  export type AlertManagementAvgAggregateInputType = {
     id?: true
-    sid?: true
-    data?: true
-    expiresAt?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
-  export type SessionMaxAggregateInputType = {
+  export type AlertManagementSumAggregateInputType = {
     id?: true
-    sid?: true
-    data?: true
-    expiresAt?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
-  export type SessionCountAggregateInputType = {
+  export type AlertManagementMinAggregateInputType = {
     id?: true
-    sid?: true
-    data?: true
-    expiresAt?: true
-    createdAt?: true
-    updatedAt?: true
+    wa_name?: true
+    wa_number?: true
+    email?: true
+  }
+
+  export type AlertManagementMaxAggregateInputType = {
+    id?: true
+    wa_name?: true
+    wa_number?: true
+    email?: true
+  }
+
+  export type AlertManagementCountAggregateInputType = {
+    id?: true
+    wa_name?: true
+    wa_number?: true
+    email?: true
     _all?: true
   }
 
-  export type SessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Session to aggregate.
+     * Filter which AlertManagement to aggregate.
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sessions to fetch.
+     * Determine the order of AlertManagements to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: AlertManagementOrderByWithRelationInput | AlertManagementOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SessionWhereUniqueInput
+    cursor?: AlertManagementWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sessions from the position of the cursor.
+     * Take `±n` AlertManagements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sessions.
+     * Skip the first `n` AlertManagements.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Sessions
+     * Count returned AlertManagements
     **/
-    _count?: true | SessionCountAggregateInputType
+    _count?: true | AlertManagementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AlertManagementAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AlertManagementSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: SessionMinAggregateInputType
+    _min?: AlertManagementMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: SessionMaxAggregateInputType
+    _max?: AlertManagementMaxAggregateInputType
   }
 
-  export type GetSessionAggregateType<T extends SessionAggregateArgs> = {
-        [P in keyof T & keyof AggregateSession]: P extends '_count' | 'count'
+  export type GetAlertManagementAggregateType<T extends AlertManagementAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlertManagement]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSession[P]>
-      : GetScalarType<T[P], AggregateSession[P]>
+        : GetScalarType<T[P], AggregateAlertManagement[P]>
+      : GetScalarType<T[P], AggregateAlertManagement[P]>
   }
 
 
 
 
-  export type SessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SessionWhereInput
-    orderBy?: SessionOrderByWithAggregationInput | SessionOrderByWithAggregationInput[]
-    by: SessionScalarFieldEnum[] | SessionScalarFieldEnum
-    having?: SessionScalarWhereWithAggregatesInput
+  export type AlertManagementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlertManagementWhereInput
+    orderBy?: AlertManagementOrderByWithAggregationInput | AlertManagementOrderByWithAggregationInput[]
+    by: AlertManagementScalarFieldEnum[] | AlertManagementScalarFieldEnum
+    having?: AlertManagementScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: SessionCountAggregateInputType | true
-    _min?: SessionMinAggregateInputType
-    _max?: SessionMaxAggregateInputType
+    _count?: AlertManagementCountAggregateInputType | true
+    _avg?: AlertManagementAvgAggregateInputType
+    _sum?: AlertManagementSumAggregateInputType
+    _min?: AlertManagementMinAggregateInputType
+    _max?: AlertManagementMaxAggregateInputType
   }
 
-  export type SessionGroupByOutputType = {
-    id: string
-    sid: string
-    data: string
-    expiresAt: Date
-    createdAt: Date
-    updatedAt: Date
-    _count: SessionCountAggregateOutputType | null
-    _min: SessionMinAggregateOutputType | null
-    _max: SessionMaxAggregateOutputType | null
+  export type AlertManagementGroupByOutputType = {
+    id: number
+    wa_name: string
+    wa_number: string
+    email: string
+    _count: AlertManagementCountAggregateOutputType | null
+    _avg: AlertManagementAvgAggregateOutputType | null
+    _sum: AlertManagementSumAggregateOutputType | null
+    _min: AlertManagementMinAggregateOutputType | null
+    _max: AlertManagementMaxAggregateOutputType | null
   }
 
-  type GetSessionGroupByPayload<T extends SessionGroupByArgs> = Prisma.PrismaPromise<
+  type GetAlertManagementGroupByPayload<T extends AlertManagementGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SessionGroupByOutputType, T['by']> &
+      PickEnumerable<AlertManagementGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof SessionGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AlertManagementGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], SessionGroupByOutputType[P]>
-            : GetScalarType<T[P], SessionGroupByOutputType[P]>
+              : GetScalarType<T[P], AlertManagementGroupByOutputType[P]>
+            : GetScalarType<T[P], AlertManagementGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type SessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlertManagementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    sid?: boolean
-    data?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["session"]>
+    wa_name?: boolean
+    wa_number?: boolean
+    email?: boolean
+  }, ExtArgs["result"]["alertManagement"]>
 
-  export type SessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlertManagementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    sid?: boolean
-    data?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["session"]>
+    wa_name?: boolean
+    wa_number?: boolean
+    email?: boolean
+  }, ExtArgs["result"]["alertManagement"]>
 
-  export type SessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlertManagementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    sid?: boolean
-    data?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["session"]>
+    wa_name?: boolean
+    wa_number?: boolean
+    email?: boolean
+  }, ExtArgs["result"]["alertManagement"]>
 
-  export type SessionSelectScalar = {
+  export type AlertManagementSelectScalar = {
     id?: boolean
-    sid?: boolean
-    data?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    wa_name?: boolean
+    wa_number?: boolean
+    email?: boolean
   }
 
-  export type SessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sid" | "data" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["session"]>
+  export type AlertManagementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wa_name" | "wa_number" | "email", ExtArgs["result"]["alertManagement"]>
 
-  export type $SessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Session"
+  export type $AlertManagementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AlertManagement"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
-      sid: string
-      data: string
-      expiresAt: Date
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["session"]>
+      id: number
+      wa_name: string
+      wa_number: string
+      email: string
+    }, ExtArgs["result"]["alertManagement"]>
     composites: {}
   }
 
-  type SessionGetPayload<S extends boolean | null | undefined | SessionDefaultArgs> = $Result.GetResult<Prisma.$SessionPayload, S>
+  type AlertManagementGetPayload<S extends boolean | null | undefined | AlertManagementDefaultArgs> = $Result.GetResult<Prisma.$AlertManagementPayload, S>
 
-  type SessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SessionCountAggregateInputType | true
+  type AlertManagementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AlertManagementFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AlertManagementCountAggregateInputType | true
     }
 
-  export interface SessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Session'], meta: { name: 'Session' } }
+  export interface AlertManagementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AlertManagement'], meta: { name: 'AlertManagement' } }
     /**
-     * Find zero or one Session that matches the filter.
-     * @param {SessionFindUniqueArgs} args - Arguments to find a Session
+     * Find zero or one AlertManagement that matches the filter.
+     * @param {AlertManagementFindUniqueArgs} args - Arguments to find a AlertManagement
      * @example
-     * // Get one Session
-     * const session = await prisma.session.findUnique({
+     * // Get one AlertManagement
+     * const alertManagement = await prisma.alertManagement.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends SessionFindUniqueArgs>(args: SelectSubset<T, SessionFindUniqueArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AlertManagementFindUniqueArgs>(args: SelectSubset<T, AlertManagementFindUniqueArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Session that matches the filter or throw an error with `error.code='P2025'`
+     * Find one AlertManagement that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {SessionFindUniqueOrThrowArgs} args - Arguments to find a Session
+     * @param {AlertManagementFindUniqueOrThrowArgs} args - Arguments to find a AlertManagement
      * @example
-     * // Get one Session
-     * const session = await prisma.session.findUniqueOrThrow({
+     * // Get one AlertManagement
+     * const alertManagement = await prisma.alertManagement.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SessionFindUniqueOrThrowArgs>(args: SelectSubset<T, SessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AlertManagementFindUniqueOrThrowArgs>(args: SelectSubset<T, AlertManagementFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Session that matches the filter.
+     * Find the first AlertManagement that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionFindFirstArgs} args - Arguments to find a Session
+     * @param {AlertManagementFindFirstArgs} args - Arguments to find a AlertManagement
      * @example
-     * // Get one Session
-     * const session = await prisma.session.findFirst({
+     * // Get one AlertManagement
+     * const alertManagement = await prisma.alertManagement.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends SessionFindFirstArgs>(args?: SelectSubset<T, SessionFindFirstArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AlertManagementFindFirstArgs>(args?: SelectSubset<T, AlertManagementFindFirstArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Session that matches the filter or
+     * Find the first AlertManagement that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionFindFirstOrThrowArgs} args - Arguments to find a Session
+     * @param {AlertManagementFindFirstOrThrowArgs} args - Arguments to find a AlertManagement
      * @example
-     * // Get one Session
-     * const session = await prisma.session.findFirstOrThrow({
+     * // Get one AlertManagement
+     * const alertManagement = await prisma.alertManagement.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends SessionFindFirstOrThrowArgs>(args?: SelectSubset<T, SessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AlertManagementFindFirstOrThrowArgs>(args?: SelectSubset<T, AlertManagementFindFirstOrThrowArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Sessions that matches the filter.
+     * Find zero or more AlertManagements that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AlertManagementFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Sessions
-     * const sessions = await prisma.session.findMany()
+     * // Get all AlertManagements
+     * const alertManagements = await prisma.alertManagement.findMany()
      * 
-     * // Get first 10 Sessions
-     * const sessions = await prisma.session.findMany({ take: 10 })
+     * // Get first 10 AlertManagements
+     * const alertManagements = await prisma.alertManagement.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const sessionWithIdOnly = await prisma.session.findMany({ select: { id: true } })
+     * const alertManagementWithIdOnly = await prisma.alertManagement.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends SessionFindManyArgs>(args?: SelectSubset<T, SessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AlertManagementFindManyArgs>(args?: SelectSubset<T, AlertManagementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Session.
-     * @param {SessionCreateArgs} args - Arguments to create a Session.
+     * Create a AlertManagement.
+     * @param {AlertManagementCreateArgs} args - Arguments to create a AlertManagement.
      * @example
-     * // Create one Session
-     * const Session = await prisma.session.create({
+     * // Create one AlertManagement
+     * const AlertManagement = await prisma.alertManagement.create({
      *   data: {
-     *     // ... data to create a Session
+     *     // ... data to create a AlertManagement
      *   }
      * })
      * 
      */
-    create<T extends SessionCreateArgs>(args: SelectSubset<T, SessionCreateArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AlertManagementCreateArgs>(args: SelectSubset<T, AlertManagementCreateArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Sessions.
-     * @param {SessionCreateManyArgs} args - Arguments to create many Sessions.
+     * Create many AlertManagements.
+     * @param {AlertManagementCreateManyArgs} args - Arguments to create many AlertManagements.
      * @example
-     * // Create many Sessions
-     * const session = await prisma.session.createMany({
+     * // Create many AlertManagements
+     * const alertManagement = await prisma.alertManagement.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends SessionCreateManyArgs>(args?: SelectSubset<T, SessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AlertManagementCreateManyArgs>(args?: SelectSubset<T, AlertManagementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Sessions and returns the data saved in the database.
-     * @param {SessionCreateManyAndReturnArgs} args - Arguments to create many Sessions.
+     * Create many AlertManagements and returns the data saved in the database.
+     * @param {AlertManagementCreateManyAndReturnArgs} args - Arguments to create many AlertManagements.
      * @example
-     * // Create many Sessions
-     * const session = await prisma.session.createManyAndReturn({
+     * // Create many AlertManagements
+     * const alertManagement = await prisma.alertManagement.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Sessions and only return the `id`
-     * const sessionWithIdOnly = await prisma.session.createManyAndReturn({
+     * // Create many AlertManagements and only return the `id`
+     * const alertManagementWithIdOnly = await prisma.alertManagement.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7707,28 +8909,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends SessionCreateManyAndReturnArgs>(args?: SelectSubset<T, SessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AlertManagementCreateManyAndReturnArgs>(args?: SelectSubset<T, AlertManagementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Session.
-     * @param {SessionDeleteArgs} args - Arguments to delete one Session.
+     * Delete a AlertManagement.
+     * @param {AlertManagementDeleteArgs} args - Arguments to delete one AlertManagement.
      * @example
-     * // Delete one Session
-     * const Session = await prisma.session.delete({
+     * // Delete one AlertManagement
+     * const AlertManagement = await prisma.alertManagement.delete({
      *   where: {
-     *     // ... filter to delete one Session
+     *     // ... filter to delete one AlertManagement
      *   }
      * })
      * 
      */
-    delete<T extends SessionDeleteArgs>(args: SelectSubset<T, SessionDeleteArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AlertManagementDeleteArgs>(args: SelectSubset<T, AlertManagementDeleteArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Session.
-     * @param {SessionUpdateArgs} args - Arguments to update one Session.
+     * Update one AlertManagement.
+     * @param {AlertManagementUpdateArgs} args - Arguments to update one AlertManagement.
      * @example
-     * // Update one Session
-     * const session = await prisma.session.update({
+     * // Update one AlertManagement
+     * const alertManagement = await prisma.alertManagement.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7738,30 +8940,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SessionUpdateArgs>(args: SelectSubset<T, SessionUpdateArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AlertManagementUpdateArgs>(args: SelectSubset<T, AlertManagementUpdateArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Sessions.
-     * @param {SessionDeleteManyArgs} args - Arguments to filter Sessions to delete.
+     * Delete zero or more AlertManagements.
+     * @param {AlertManagementDeleteManyArgs} args - Arguments to filter AlertManagements to delete.
      * @example
-     * // Delete a few Sessions
-     * const { count } = await prisma.session.deleteMany({
+     * // Delete a few AlertManagements
+     * const { count } = await prisma.alertManagement.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends SessionDeleteManyArgs>(args?: SelectSubset<T, SessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AlertManagementDeleteManyArgs>(args?: SelectSubset<T, AlertManagementDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Sessions.
+     * Update zero or more AlertManagements.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AlertManagementUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Sessions
-     * const session = await prisma.session.updateMany({
+     * // Update many AlertManagements
+     * const alertManagement = await prisma.alertManagement.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7771,14 +8973,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends SessionUpdateManyArgs>(args: SelectSubset<T, SessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AlertManagementUpdateManyArgs>(args: SelectSubset<T, AlertManagementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Sessions and returns the data updated in the database.
-     * @param {SessionUpdateManyAndReturnArgs} args - Arguments to update many Sessions.
+     * Update zero or more AlertManagements and returns the data updated in the database.
+     * @param {AlertManagementUpdateManyAndReturnArgs} args - Arguments to update many AlertManagements.
      * @example
-     * // Update many Sessions
-     * const session = await prisma.session.updateManyAndReturn({
+     * // Update many AlertManagements
+     * const alertManagement = await prisma.alertManagement.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7787,8 +8989,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Sessions and only return the `id`
-     * const sessionWithIdOnly = await prisma.session.updateManyAndReturn({
+     * // Update zero or more AlertManagements and only return the `id`
+     * const alertManagementWithIdOnly = await prisma.alertManagement.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -7801,56 +9003,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends SessionUpdateManyAndReturnArgs>(args: SelectSubset<T, SessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AlertManagementUpdateManyAndReturnArgs>(args: SelectSubset<T, AlertManagementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Session.
-     * @param {SessionUpsertArgs} args - Arguments to update or create a Session.
+     * Create or update one AlertManagement.
+     * @param {AlertManagementUpsertArgs} args - Arguments to update or create a AlertManagement.
      * @example
-     * // Update or create a Session
-     * const session = await prisma.session.upsert({
+     * // Update or create a AlertManagement
+     * const alertManagement = await prisma.alertManagement.upsert({
      *   create: {
-     *     // ... data to create a Session
+     *     // ... data to create a AlertManagement
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Session we want to update
+     *     // ... the filter for the AlertManagement we want to update
      *   }
      * })
      */
-    upsert<T extends SessionUpsertArgs>(args: SelectSubset<T, SessionUpsertArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AlertManagementUpsertArgs>(args: SelectSubset<T, AlertManagementUpsertArgs<ExtArgs>>): Prisma__AlertManagementClient<$Result.GetResult<Prisma.$AlertManagementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Sessions.
+     * Count the number of AlertManagements.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionCountArgs} args - Arguments to filter Sessions to count.
+     * @param {AlertManagementCountArgs} args - Arguments to filter AlertManagements to count.
      * @example
-     * // Count the number of Sessions
-     * const count = await prisma.session.count({
+     * // Count the number of AlertManagements
+     * const count = await prisma.alertManagement.count({
      *   where: {
-     *     // ... the filter for the Sessions we want to count
+     *     // ... the filter for the AlertManagements we want to count
      *   }
      * })
     **/
-    count<T extends SessionCountArgs>(
-      args?: Subset<T, SessionCountArgs>,
+    count<T extends AlertManagementCountArgs>(
+      args?: Subset<T, AlertManagementCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SessionCountAggregateOutputType>
+          : GetScalarType<T['select'], AlertManagementCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Session.
+     * Allows you to perform aggregations operations on a AlertManagement.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AlertManagementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7870,13 +9072,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends SessionAggregateArgs>(args: Subset<T, SessionAggregateArgs>): Prisma.PrismaPromise<GetSessionAggregateType<T>>
+    aggregate<T extends AlertManagementAggregateArgs>(args: Subset<T, AlertManagementAggregateArgs>): Prisma.PrismaPromise<GetAlertManagementAggregateType<T>>
 
     /**
-     * Group by Session.
+     * Group by AlertManagement.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionGroupByArgs} args - Group by arguments.
+     * @param {AlertManagementGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7891,14 +9093,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends SessionGroupByArgs,
+      T extends AlertManagementGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SessionGroupByArgs['orderBy'] }
-        : { orderBy?: SessionGroupByArgs['orderBy'] },
+        ? { orderBy: AlertManagementGroupByArgs['orderBy'] }
+        : { orderBy?: AlertManagementGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7947,20 +9149,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, SessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AlertManagementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlertManagementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Session model
+   * Fields of the AlertManagement model
    */
-  readonly fields: SessionFieldRefs;
+  readonly fields: AlertManagementFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Session.
+   * The delegate class that acts as a "Promise-like" for AlertManagement.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AlertManagementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7988,378 +9190,376 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Session model
+   * Fields of the AlertManagement model
    */
-  interface SessionFieldRefs {
-    readonly id: FieldRef<"Session", 'String'>
-    readonly sid: FieldRef<"Session", 'String'>
-    readonly data: FieldRef<"Session", 'String'>
-    readonly expiresAt: FieldRef<"Session", 'DateTime'>
-    readonly createdAt: FieldRef<"Session", 'DateTime'>
-    readonly updatedAt: FieldRef<"Session", 'DateTime'>
+  interface AlertManagementFieldRefs {
+    readonly id: FieldRef<"AlertManagement", 'Int'>
+    readonly wa_name: FieldRef<"AlertManagement", 'String'>
+    readonly wa_number: FieldRef<"AlertManagement", 'String'>
+    readonly email: FieldRef<"AlertManagement", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Session findUnique
+   * AlertManagement findUnique
    */
-  export type SessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * Filter, which Session to fetch.
+     * Filter, which AlertManagement to fetch.
      */
-    where: SessionWhereUniqueInput
+    where: AlertManagementWhereUniqueInput
   }
 
   /**
-   * Session findUniqueOrThrow
+   * AlertManagement findUniqueOrThrow
    */
-  export type SessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * Filter, which Session to fetch.
+     * Filter, which AlertManagement to fetch.
      */
-    where: SessionWhereUniqueInput
+    where: AlertManagementWhereUniqueInput
   }
 
   /**
-   * Session findFirst
+   * AlertManagement findFirst
    */
-  export type SessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * Filter, which Session to fetch.
+     * Filter, which AlertManagement to fetch.
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sessions to fetch.
+     * Determine the order of AlertManagements to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: AlertManagementOrderByWithRelationInput | AlertManagementOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Sessions.
+     * Sets the position for searching for AlertManagements.
      */
-    cursor?: SessionWhereUniqueInput
+    cursor?: AlertManagementWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sessions from the position of the cursor.
+     * Take `±n` AlertManagements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sessions.
+     * Skip the first `n` AlertManagements.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Sessions.
+     * Filter by unique combinations of AlertManagements.
      */
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+    distinct?: AlertManagementScalarFieldEnum | AlertManagementScalarFieldEnum[]
   }
 
   /**
-   * Session findFirstOrThrow
+   * AlertManagement findFirstOrThrow
    */
-  export type SessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * Filter, which Session to fetch.
+     * Filter, which AlertManagement to fetch.
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sessions to fetch.
+     * Determine the order of AlertManagements to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: AlertManagementOrderByWithRelationInput | AlertManagementOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Sessions.
+     * Sets the position for searching for AlertManagements.
      */
-    cursor?: SessionWhereUniqueInput
+    cursor?: AlertManagementWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sessions from the position of the cursor.
+     * Take `±n` AlertManagements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sessions.
+     * Skip the first `n` AlertManagements.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Sessions.
+     * Filter by unique combinations of AlertManagements.
      */
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+    distinct?: AlertManagementScalarFieldEnum | AlertManagementScalarFieldEnum[]
   }
 
   /**
-   * Session findMany
+   * AlertManagement findMany
    */
-  export type SessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * Filter, which Sessions to fetch.
+     * Filter, which AlertManagements to fetch.
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Sessions to fetch.
+     * Determine the order of AlertManagements to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: AlertManagementOrderByWithRelationInput | AlertManagementOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Sessions.
+     * Sets the position for listing AlertManagements.
      */
-    cursor?: SessionWhereUniqueInput
+    cursor?: AlertManagementWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Sessions from the position of the cursor.
+     * Take `±n` AlertManagements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Sessions.
+     * Skip the first `n` AlertManagements.
      */
     skip?: number
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+    distinct?: AlertManagementScalarFieldEnum | AlertManagementScalarFieldEnum[]
   }
 
   /**
-   * Session create
+   * AlertManagement create
    */
-  export type SessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * The data needed to create a Session.
+     * The data needed to create a AlertManagement.
      */
-    data: XOR<SessionCreateInput, SessionUncheckedCreateInput>
+    data: XOR<AlertManagementCreateInput, AlertManagementUncheckedCreateInput>
   }
 
   /**
-   * Session createMany
+   * AlertManagement createMany
    */
-  export type SessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Sessions.
+     * The data used to create many AlertManagements.
      */
-    data: SessionCreateManyInput | SessionCreateManyInput[]
+    data: AlertManagementCreateManyInput | AlertManagementCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Session createManyAndReturn
+   * AlertManagement createManyAndReturn
    */
-  export type SessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AlertManagementSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * The data used to create many Sessions.
+     * The data used to create many AlertManagements.
      */
-    data: SessionCreateManyInput | SessionCreateManyInput[]
+    data: AlertManagementCreateManyInput | AlertManagementCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Session update
+   * AlertManagement update
    */
-  export type SessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * The data needed to update a Session.
+     * The data needed to update a AlertManagement.
      */
-    data: XOR<SessionUpdateInput, SessionUncheckedUpdateInput>
+    data: XOR<AlertManagementUpdateInput, AlertManagementUncheckedUpdateInput>
     /**
-     * Choose, which Session to update.
+     * Choose, which AlertManagement to update.
      */
-    where: SessionWhereUniqueInput
+    where: AlertManagementWhereUniqueInput
   }
 
   /**
-   * Session updateMany
+   * AlertManagement updateMany
    */
-  export type SessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Sessions.
+     * The data used to update AlertManagements.
      */
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyInput>
+    data: XOR<AlertManagementUpdateManyMutationInput, AlertManagementUncheckedUpdateManyInput>
     /**
-     * Filter which Sessions to update
+     * Filter which AlertManagements to update
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
-     * Limit how many Sessions to update.
+     * Limit how many AlertManagements to update.
      */
     limit?: number
   }
 
   /**
-   * Session updateManyAndReturn
+   * AlertManagement updateManyAndReturn
    */
-  export type SessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AlertManagementSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * The data used to update Sessions.
+     * The data used to update AlertManagements.
      */
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyInput>
+    data: XOR<AlertManagementUpdateManyMutationInput, AlertManagementUncheckedUpdateManyInput>
     /**
-     * Filter which Sessions to update
+     * Filter which AlertManagements to update
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
-     * Limit how many Sessions to update.
+     * Limit how many AlertManagements to update.
      */
     limit?: number
   }
 
   /**
-   * Session upsert
+   * AlertManagement upsert
    */
-  export type SessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * The filter to search for the Session to update in case it exists.
+     * The filter to search for the AlertManagement to update in case it exists.
      */
-    where: SessionWhereUniqueInput
+    where: AlertManagementWhereUniqueInput
     /**
-     * In case the Session found by the `where` argument doesn't exist, create a new Session with this data.
+     * In case the AlertManagement found by the `where` argument doesn't exist, create a new AlertManagement with this data.
      */
-    create: XOR<SessionCreateInput, SessionUncheckedCreateInput>
+    create: XOR<AlertManagementCreateInput, AlertManagementUncheckedCreateInput>
     /**
-     * In case the Session was found with the provided `where` argument, update it with this data.
+     * In case the AlertManagement was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<SessionUpdateInput, SessionUncheckedUpdateInput>
+    update: XOR<AlertManagementUpdateInput, AlertManagementUncheckedUpdateInput>
   }
 
   /**
-   * Session delete
+   * AlertManagement delete
    */
-  export type SessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
     /**
-     * Filter which Session to delete.
+     * Filter which AlertManagement to delete.
      */
-    where: SessionWhereUniqueInput
+    where: AlertManagementWhereUniqueInput
   }
 
   /**
-   * Session deleteMany
+   * AlertManagement deleteMany
    */
-  export type SessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Sessions to delete
+     * Filter which AlertManagements to delete
      */
-    where?: SessionWhereInput
+    where?: AlertManagementWhereInput
     /**
-     * Limit how many Sessions to delete.
+     * Limit how many AlertManagements to delete.
      */
     limit?: number
   }
 
   /**
-   * Session without action
+   * AlertManagement without action
    */
-  export type SessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlertManagementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the AlertManagement
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: AlertManagementSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the AlertManagement
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: AlertManagementOmit<ExtArgs> | null
   }
 
 
@@ -8379,15 +9579,12 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    first_name: 'first_name',
-    last_name: 'last_name',
+    username: 'username',
+    full_name: 'full_name',
     email: 'email',
-    no_telepon: 'no_telepon',
-    image: 'image',
     password: 'password',
     role: 'role',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    isSoftDelete: 'isSoftDelete'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8395,82 +9592,91 @@ export namespace Prisma {
 
   export const DeviceScalarFieldEnum: {
     id: 'id',
-    created_at: 'created_at',
-    updated_at: 'updated_at',
     device_name: 'device_name',
-    nomor_modem: 'nomor_modem',
+    no_modem: 'no_modem',
     tanggal_paket: 'tanggal_paket',
-    email: 'email',
-    latitude: 'latitude',
-    longitude: 'longitude',
     user_id: 'user_id'
   };
 
   export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
 
 
-  export const SipuberScalarFieldEnum: {
+  export const CmsSettingScalarFieldEnum: {
+    id: 'id',
+    thumbnail: 'thumbnail',
+    section: 'section',
+    content: 'content'
+  };
+
+  export type CmsSettingScalarFieldEnum = (typeof CmsSettingScalarFieldEnum)[keyof typeof CmsSettingScalarFieldEnum]
+
+
+  export const PpmDataSipuberScalarFieldEnum: {
     id: 'id',
     created_at: 'created_at',
-    device_name: 'device_name',
-    latitude: 'latitude',
-    longitude: 'longitude',
-    pm1: 'pm1',
-    pm10: 'pm10',
-    pm25: 'pm25',
+    device_id: 'device_id',
+    location: 'location',
     co: 'co',
-    so2: 'so2',
+    so: 'so',
     no2: 'no2',
     o3: 'o3',
     nh3: 'nh3',
-    vbat: 'vbat',
+    pm1: 'pm1',
+    pm25: 'pm25',
+    pm10: 'pm10',
+    ispu_realtime: 'ispu_realtime',
+    v_bat: 'v_bat'
+  };
+
+  export type PpmDataSipuberScalarFieldEnum = (typeof PpmDataSipuberScalarFieldEnum)[keyof typeof PpmDataSipuberScalarFieldEnum]
+
+
+  export const DailyDataSipuberScalarFieldEnum: {
+    id: 'id',
+    created_at: 'created_at',
+    location: 'location',
+    co: 'co',
+    so: 'so',
+    no2: 'no2',
+    o3: 'o3',
+    nh3: 'nh3',
+    pm1: 'pm1',
+    pm25: 'pm25',
+    pm10: 'pm10',
+    ispu_daily: 'ispu_daily',
     device_id: 'device_id'
   };
 
-  export type SipuberScalarFieldEnum = (typeof SipuberScalarFieldEnum)[keyof typeof SipuberScalarFieldEnum]
+  export type DailyDataSipuberScalarFieldEnum = (typeof DailyDataSipuberScalarFieldEnum)[keyof typeof DailyDataSipuberScalarFieldEnum]
 
 
-  export const SipuberOlahScalarFieldEnum: {
+  export const AnalDataSipuberScalarFieldEnum: {
     id: 'id',
     created_at: 'created_at',
-    device_name: 'device_name',
-    latitude: 'latitude',
-    longitude: 'longitude',
-    pm1: 'pm1',
-    pm10: 'pm10',
-    pm25: 'pm25',
+    device_id: 'device_id',
+    location: 'location',
     co: 'co',
-    so2: 'so2',
+    so: 'so',
     no2: 'no2',
     o3: 'o3',
     nh3: 'nh3',
-    vbat: 'vbat',
-    aqi: 'aqi',
-    sipuber_id: 'sipuber_id'
+    pm1: 'pm1',
+    pm25: 'pm25',
+    pm10: 'pm10',
+    v_bat: 'v_bat'
   };
 
-  export type SipuberOlahScalarFieldEnum = (typeof SipuberOlahScalarFieldEnum)[keyof typeof SipuberOlahScalarFieldEnum]
+  export type AnalDataSipuberScalarFieldEnum = (typeof AnalDataSipuberScalarFieldEnum)[keyof typeof AnalDataSipuberScalarFieldEnum]
 
 
-  export const ContactScalarFieldEnum: {
+  export const AlertManagementScalarFieldEnum: {
     id: 'id',
-    contact_name: 'contact_name',
-    phone_number: 'phone_number'
+    wa_name: 'wa_name',
+    wa_number: 'wa_number',
+    email: 'email'
   };
 
-  export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
-
-
-  export const SessionScalarFieldEnum: {
-    id: 'id',
-    sid: 'sid',
-    data: 'data',
-    expiresAt: 'expiresAt',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+  export type AlertManagementScalarFieldEnum = (typeof AlertManagementScalarFieldEnum)[keyof typeof AlertManagementScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8503,6 +9709,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -8517,6 +9737,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -8527,20 +9754,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -8565,80 +9778,67 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: StringFilter<"User"> | string
-    first_name?: StringFilter<"User"> | string
-    last_name?: StringFilter<"User"> | string
-    email?: StringNullableFilter<"User"> | string | null
-    no_telepon?: StringFilter<"User"> | string
-    image?: StringNullableFilter<"User"> | string | null
-    password?: StringNullableFilter<"User"> | string | null
+    id?: IntFilter<"User"> | number
+    username?: StringFilter<"User"> | string
+    full_name?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     role?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    isSoftDelete?: BoolFilter<"User"> | boolean
     devices?: DeviceListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    first_name?: SortOrder
-    last_name?: SortOrder
-    email?: SortOrderInput | SortOrder
-    no_telepon?: SortOrder
-    image?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
+    username?: SortOrder
+    full_name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    isSoftDelete?: SortOrder
     devices?: DeviceOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    id?: number
+    username?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    first_name?: StringFilter<"User"> | string
-    last_name?: StringFilter<"User"> | string
-    no_telepon?: StringFilter<"User"> | string
-    image?: StringNullableFilter<"User"> | string | null
-    password?: StringNullableFilter<"User"> | string | null
+    full_name?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     role?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    isSoftDelete?: BoolFilter<"User"> | boolean
     devices?: DeviceListRelationFilter
-  }, "id" | "email">
+  }, "id" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    first_name?: SortOrder
-    last_name?: SortOrder
-    email?: SortOrderInput | SortOrder
-    no_telepon?: SortOrder
-    image?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
+    username?: SortOrder
+    full_name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    isSoftDelete?: SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"User"> | string
-    first_name?: StringWithAggregatesFilter<"User"> | string
-    last_name?: StringWithAggregatesFilter<"User"> | string
-    email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    no_telepon?: StringWithAggregatesFilter<"User"> | string
-    image?: StringNullableWithAggregatesFilter<"User"> | string | null
-    password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    id?: IntWithAggregatesFilter<"User"> | number
+    username?: StringWithAggregatesFilter<"User"> | string
+    full_name?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
     role?: StringWithAggregatesFilter<"User"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    isSoftDelete?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type DeviceWhereInput = {
@@ -8646,63 +9846,49 @@ export namespace Prisma {
     OR?: DeviceWhereInput[]
     NOT?: DeviceWhereInput | DeviceWhereInput[]
     id?: IntFilter<"Device"> | number
-    created_at?: DateTimeFilter<"Device"> | Date | string
-    updated_at?: DateTimeFilter<"Device"> | Date | string
     device_name?: StringFilter<"Device"> | string
-    nomor_modem?: StringNullableFilter<"Device"> | string | null
-    tanggal_paket?: DateTimeNullableFilter<"Device"> | Date | string | null
-    email?: StringFilter<"Device"> | string
-    latitude?: FloatFilter<"Device"> | number
-    longitude?: FloatFilter<"Device"> | number
-    user_id?: StringNullableFilter<"Device"> | string | null
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    sipubers?: SipuberListRelationFilter
+    no_modem?: StringNullableFilter<"Device"> | string | null
+    tanggal_paket?: StringNullableFilter<"Device"> | string | null
+    user_id?: IntFilter<"Device"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    ppm_data?: PpmDataSipuberListRelationFilter
+    daily_data?: DailyDataSipuberListRelationFilter
+    anal_data?: AnalDataSipuberListRelationFilter
   }
 
   export type DeviceOrderByWithRelationInput = {
     id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
     device_name?: SortOrder
-    nomor_modem?: SortOrderInput | SortOrder
+    no_modem?: SortOrderInput | SortOrder
     tanggal_paket?: SortOrderInput | SortOrder
-    email?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    user_id?: SortOrderInput | SortOrder
+    user_id?: SortOrder
     user?: UserOrderByWithRelationInput
-    sipubers?: SipuberOrderByRelationAggregateInput
+    ppm_data?: PpmDataSipuberOrderByRelationAggregateInput
+    daily_data?: DailyDataSipuberOrderByRelationAggregateInput
+    anal_data?: AnalDataSipuberOrderByRelationAggregateInput
   }
 
   export type DeviceWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    device_name?: string
     AND?: DeviceWhereInput | DeviceWhereInput[]
     OR?: DeviceWhereInput[]
     NOT?: DeviceWhereInput | DeviceWhereInput[]
-    created_at?: DateTimeFilter<"Device"> | Date | string
-    updated_at?: DateTimeFilter<"Device"> | Date | string
-    nomor_modem?: StringNullableFilter<"Device"> | string | null
-    tanggal_paket?: DateTimeNullableFilter<"Device"> | Date | string | null
-    email?: StringFilter<"Device"> | string
-    latitude?: FloatFilter<"Device"> | number
-    longitude?: FloatFilter<"Device"> | number
-    user_id?: StringNullableFilter<"Device"> | string | null
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    sipubers?: SipuberListRelationFilter
-  }, "id" | "device_name">
+    device_name?: StringFilter<"Device"> | string
+    no_modem?: StringNullableFilter<"Device"> | string | null
+    tanggal_paket?: StringNullableFilter<"Device"> | string | null
+    user_id?: IntFilter<"Device"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    ppm_data?: PpmDataSipuberListRelationFilter
+    daily_data?: DailyDataSipuberListRelationFilter
+    anal_data?: AnalDataSipuberListRelationFilter
+  }, "id">
 
   export type DeviceOrderByWithAggregationInput = {
     id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
     device_name?: SortOrder
-    nomor_modem?: SortOrderInput | SortOrder
+    no_modem?: SortOrderInput | SortOrder
     tanggal_paket?: SortOrderInput | SortOrder
-    email?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    user_id?: SortOrderInput | SortOrder
+    user_id?: SortOrder
     _count?: DeviceCountOrderByAggregateInput
     _avg?: DeviceAvgOrderByAggregateInput
     _max?: DeviceMaxOrderByAggregateInput
@@ -8715,881 +9901,973 @@ export namespace Prisma {
     OR?: DeviceScalarWhereWithAggregatesInput[]
     NOT?: DeviceScalarWhereWithAggregatesInput | DeviceScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Device"> | number
-    created_at?: DateTimeWithAggregatesFilter<"Device"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"Device"> | Date | string
     device_name?: StringWithAggregatesFilter<"Device"> | string
-    nomor_modem?: StringNullableWithAggregatesFilter<"Device"> | string | null
-    tanggal_paket?: DateTimeNullableWithAggregatesFilter<"Device"> | Date | string | null
-    email?: StringWithAggregatesFilter<"Device"> | string
-    latitude?: FloatWithAggregatesFilter<"Device"> | number
-    longitude?: FloatWithAggregatesFilter<"Device"> | number
-    user_id?: StringNullableWithAggregatesFilter<"Device"> | string | null
+    no_modem?: StringNullableWithAggregatesFilter<"Device"> | string | null
+    tanggal_paket?: StringNullableWithAggregatesFilter<"Device"> | string | null
+    user_id?: IntWithAggregatesFilter<"Device"> | number
   }
 
-  export type SipuberWhereInput = {
-    AND?: SipuberWhereInput | SipuberWhereInput[]
-    OR?: SipuberWhereInput[]
-    NOT?: SipuberWhereInput | SipuberWhereInput[]
-    id?: IntFilter<"Sipuber"> | number
-    created_at?: DateTimeFilter<"Sipuber"> | Date | string
-    device_name?: StringFilter<"Sipuber"> | string
-    latitude?: FloatFilter<"Sipuber"> | number
-    longitude?: FloatFilter<"Sipuber"> | number
-    pm1?: FloatNullableFilter<"Sipuber"> | number | null
-    pm10?: FloatNullableFilter<"Sipuber"> | number | null
-    pm25?: FloatNullableFilter<"Sipuber"> | number | null
-    co?: FloatNullableFilter<"Sipuber"> | number | null
-    so2?: FloatNullableFilter<"Sipuber"> | number | null
-    no2?: FloatNullableFilter<"Sipuber"> | number | null
-    o3?: FloatNullableFilter<"Sipuber"> | number | null
-    nh3?: FloatNullableFilter<"Sipuber"> | number | null
-    vbat?: FloatNullableFilter<"Sipuber"> | number | null
-    device_id?: IntFilter<"Sipuber"> | number
+  export type CmsSettingWhereInput = {
+    AND?: CmsSettingWhereInput | CmsSettingWhereInput[]
+    OR?: CmsSettingWhereInput[]
+    NOT?: CmsSettingWhereInput | CmsSettingWhereInput[]
+    id?: IntFilter<"CmsSetting"> | number
+    thumbnail?: StringFilter<"CmsSetting"> | string
+    section?: StringFilter<"CmsSetting"> | string
+    content?: StringFilter<"CmsSetting"> | string
+  }
+
+  export type CmsSettingOrderByWithRelationInput = {
+    id?: SortOrder
+    thumbnail?: SortOrder
+    section?: SortOrder
+    content?: SortOrder
+  }
+
+  export type CmsSettingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CmsSettingWhereInput | CmsSettingWhereInput[]
+    OR?: CmsSettingWhereInput[]
+    NOT?: CmsSettingWhereInput | CmsSettingWhereInput[]
+    thumbnail?: StringFilter<"CmsSetting"> | string
+    section?: StringFilter<"CmsSetting"> | string
+    content?: StringFilter<"CmsSetting"> | string
+  }, "id">
+
+  export type CmsSettingOrderByWithAggregationInput = {
+    id?: SortOrder
+    thumbnail?: SortOrder
+    section?: SortOrder
+    content?: SortOrder
+    _count?: CmsSettingCountOrderByAggregateInput
+    _avg?: CmsSettingAvgOrderByAggregateInput
+    _max?: CmsSettingMaxOrderByAggregateInput
+    _min?: CmsSettingMinOrderByAggregateInput
+    _sum?: CmsSettingSumOrderByAggregateInput
+  }
+
+  export type CmsSettingScalarWhereWithAggregatesInput = {
+    AND?: CmsSettingScalarWhereWithAggregatesInput | CmsSettingScalarWhereWithAggregatesInput[]
+    OR?: CmsSettingScalarWhereWithAggregatesInput[]
+    NOT?: CmsSettingScalarWhereWithAggregatesInput | CmsSettingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CmsSetting"> | number
+    thumbnail?: StringWithAggregatesFilter<"CmsSetting"> | string
+    section?: StringWithAggregatesFilter<"CmsSetting"> | string
+    content?: StringWithAggregatesFilter<"CmsSetting"> | string
+  }
+
+  export type PpmDataSipuberWhereInput = {
+    AND?: PpmDataSipuberWhereInput | PpmDataSipuberWhereInput[]
+    OR?: PpmDataSipuberWhereInput[]
+    NOT?: PpmDataSipuberWhereInput | PpmDataSipuberWhereInput[]
+    id?: IntFilter<"PpmDataSipuber"> | number
+    created_at?: DateTimeFilter<"PpmDataSipuber"> | Date | string
+    device_id?: IntFilter<"PpmDataSipuber"> | number
+    location?: StringFilter<"PpmDataSipuber"> | string
+    co?: FloatFilter<"PpmDataSipuber"> | number
+    so?: FloatFilter<"PpmDataSipuber"> | number
+    no2?: FloatFilter<"PpmDataSipuber"> | number
+    o3?: FloatFilter<"PpmDataSipuber"> | number
+    nh3?: FloatFilter<"PpmDataSipuber"> | number
+    pm1?: FloatFilter<"PpmDataSipuber"> | number
+    pm25?: FloatFilter<"PpmDataSipuber"> | number
+    pm10?: FloatFilter<"PpmDataSipuber"> | number
+    ispu_realtime?: IntFilter<"PpmDataSipuber"> | number
+    v_bat?: FloatFilter<"PpmDataSipuber"> | number
     device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
-    sipuberOlah?: SipuberOlahListRelationFilter
   }
 
-  export type SipuberOrderByWithRelationInput = {
+  export type PpmDataSipuberOrderByWithRelationInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrderInput | SortOrder
-    pm10?: SortOrderInput | SortOrder
-    pm25?: SortOrderInput | SortOrder
-    co?: SortOrderInput | SortOrder
-    so2?: SortOrderInput | SortOrder
-    no2?: SortOrderInput | SortOrder
-    o3?: SortOrderInput | SortOrder
-    nh3?: SortOrderInput | SortOrder
-    vbat?: SortOrderInput | SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
+    device?: DeviceOrderByWithRelationInput
+  }
+
+  export type PpmDataSipuberWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PpmDataSipuberWhereInput | PpmDataSipuberWhereInput[]
+    OR?: PpmDataSipuberWhereInput[]
+    NOT?: PpmDataSipuberWhereInput | PpmDataSipuberWhereInput[]
+    created_at?: DateTimeFilter<"PpmDataSipuber"> | Date | string
+    device_id?: IntFilter<"PpmDataSipuber"> | number
+    location?: StringFilter<"PpmDataSipuber"> | string
+    co?: FloatFilter<"PpmDataSipuber"> | number
+    so?: FloatFilter<"PpmDataSipuber"> | number
+    no2?: FloatFilter<"PpmDataSipuber"> | number
+    o3?: FloatFilter<"PpmDataSipuber"> | number
+    nh3?: FloatFilter<"PpmDataSipuber"> | number
+    pm1?: FloatFilter<"PpmDataSipuber"> | number
+    pm25?: FloatFilter<"PpmDataSipuber"> | number
+    pm10?: FloatFilter<"PpmDataSipuber"> | number
+    ispu_realtime?: IntFilter<"PpmDataSipuber"> | number
+    v_bat?: FloatFilter<"PpmDataSipuber"> | number
+    device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
+  }, "id">
+
+  export type PpmDataSipuberOrderByWithAggregationInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
+    _count?: PpmDataSipuberCountOrderByAggregateInput
+    _avg?: PpmDataSipuberAvgOrderByAggregateInput
+    _max?: PpmDataSipuberMaxOrderByAggregateInput
+    _min?: PpmDataSipuberMinOrderByAggregateInput
+    _sum?: PpmDataSipuberSumOrderByAggregateInput
+  }
+
+  export type PpmDataSipuberScalarWhereWithAggregatesInput = {
+    AND?: PpmDataSipuberScalarWhereWithAggregatesInput | PpmDataSipuberScalarWhereWithAggregatesInput[]
+    OR?: PpmDataSipuberScalarWhereWithAggregatesInput[]
+    NOT?: PpmDataSipuberScalarWhereWithAggregatesInput | PpmDataSipuberScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PpmDataSipuber"> | number
+    created_at?: DateTimeWithAggregatesFilter<"PpmDataSipuber"> | Date | string
+    device_id?: IntWithAggregatesFilter<"PpmDataSipuber"> | number
+    location?: StringWithAggregatesFilter<"PpmDataSipuber"> | string
+    co?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    so?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    no2?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    o3?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    nh3?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    pm1?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    pm25?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    pm10?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+    ispu_realtime?: IntWithAggregatesFilter<"PpmDataSipuber"> | number
+    v_bat?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
+  }
+
+  export type DailyDataSipuberWhereInput = {
+    AND?: DailyDataSipuberWhereInput | DailyDataSipuberWhereInput[]
+    OR?: DailyDataSipuberWhereInput[]
+    NOT?: DailyDataSipuberWhereInput | DailyDataSipuberWhereInput[]
+    id?: IntFilter<"DailyDataSipuber"> | number
+    created_at?: DateTimeFilter<"DailyDataSipuber"> | Date | string
+    location?: StringFilter<"DailyDataSipuber"> | string
+    co?: FloatFilter<"DailyDataSipuber"> | number
+    so?: FloatFilter<"DailyDataSipuber"> | number
+    no2?: FloatFilter<"DailyDataSipuber"> | number
+    o3?: FloatFilter<"DailyDataSipuber"> | number
+    nh3?: FloatFilter<"DailyDataSipuber"> | number
+    pm1?: FloatFilter<"DailyDataSipuber"> | number
+    pm25?: FloatFilter<"DailyDataSipuber"> | number
+    pm10?: FloatFilter<"DailyDataSipuber"> | number
+    ispu_daily?: IntFilter<"DailyDataSipuber"> | number
+    device_id?: IntFilter<"DailyDataSipuber"> | number
+    device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
+  }
+
+  export type DailyDataSipuberOrderByWithRelationInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
     device?: DeviceOrderByWithRelationInput
-    sipuberOlah?: SipuberOlahOrderByRelationAggregateInput
   }
 
-  export type SipuberWhereUniqueInput = Prisma.AtLeast<{
+  export type DailyDataSipuberWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    device_name?: string
-    AND?: SipuberWhereInput | SipuberWhereInput[]
-    OR?: SipuberWhereInput[]
-    NOT?: SipuberWhereInput | SipuberWhereInput[]
-    created_at?: DateTimeFilter<"Sipuber"> | Date | string
-    latitude?: FloatFilter<"Sipuber"> | number
-    longitude?: FloatFilter<"Sipuber"> | number
-    pm1?: FloatNullableFilter<"Sipuber"> | number | null
-    pm10?: FloatNullableFilter<"Sipuber"> | number | null
-    pm25?: FloatNullableFilter<"Sipuber"> | number | null
-    co?: FloatNullableFilter<"Sipuber"> | number | null
-    so2?: FloatNullableFilter<"Sipuber"> | number | null
-    no2?: FloatNullableFilter<"Sipuber"> | number | null
-    o3?: FloatNullableFilter<"Sipuber"> | number | null
-    nh3?: FloatNullableFilter<"Sipuber"> | number | null
-    vbat?: FloatNullableFilter<"Sipuber"> | number | null
-    device_id?: IntFilter<"Sipuber"> | number
+    AND?: DailyDataSipuberWhereInput | DailyDataSipuberWhereInput[]
+    OR?: DailyDataSipuberWhereInput[]
+    NOT?: DailyDataSipuberWhereInput | DailyDataSipuberWhereInput[]
+    created_at?: DateTimeFilter<"DailyDataSipuber"> | Date | string
+    location?: StringFilter<"DailyDataSipuber"> | string
+    co?: FloatFilter<"DailyDataSipuber"> | number
+    so?: FloatFilter<"DailyDataSipuber"> | number
+    no2?: FloatFilter<"DailyDataSipuber"> | number
+    o3?: FloatFilter<"DailyDataSipuber"> | number
+    nh3?: FloatFilter<"DailyDataSipuber"> | number
+    pm1?: FloatFilter<"DailyDataSipuber"> | number
+    pm25?: FloatFilter<"DailyDataSipuber"> | number
+    pm10?: FloatFilter<"DailyDataSipuber"> | number
+    ispu_daily?: IntFilter<"DailyDataSipuber"> | number
+    device_id?: IntFilter<"DailyDataSipuber"> | number
     device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
-    sipuberOlah?: SipuberOlahListRelationFilter
-  }, "id" | "device_name">
+  }, "id">
 
-  export type SipuberOrderByWithAggregationInput = {
+  export type DailyDataSipuberOrderByWithAggregationInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrderInput | SortOrder
-    pm10?: SortOrderInput | SortOrder
-    pm25?: SortOrderInput | SortOrder
-    co?: SortOrderInput | SortOrder
-    so2?: SortOrderInput | SortOrder
-    no2?: SortOrderInput | SortOrder
-    o3?: SortOrderInput | SortOrder
-    nh3?: SortOrderInput | SortOrder
-    vbat?: SortOrderInput | SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
-    _count?: SipuberCountOrderByAggregateInput
-    _avg?: SipuberAvgOrderByAggregateInput
-    _max?: SipuberMaxOrderByAggregateInput
-    _min?: SipuberMinOrderByAggregateInput
-    _sum?: SipuberSumOrderByAggregateInput
+    _count?: DailyDataSipuberCountOrderByAggregateInput
+    _avg?: DailyDataSipuberAvgOrderByAggregateInput
+    _max?: DailyDataSipuberMaxOrderByAggregateInput
+    _min?: DailyDataSipuberMinOrderByAggregateInput
+    _sum?: DailyDataSipuberSumOrderByAggregateInput
   }
 
-  export type SipuberScalarWhereWithAggregatesInput = {
-    AND?: SipuberScalarWhereWithAggregatesInput | SipuberScalarWhereWithAggregatesInput[]
-    OR?: SipuberScalarWhereWithAggregatesInput[]
-    NOT?: SipuberScalarWhereWithAggregatesInput | SipuberScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Sipuber"> | number
-    created_at?: DateTimeWithAggregatesFilter<"Sipuber"> | Date | string
-    device_name?: StringWithAggregatesFilter<"Sipuber"> | string
-    latitude?: FloatWithAggregatesFilter<"Sipuber"> | number
-    longitude?: FloatWithAggregatesFilter<"Sipuber"> | number
-    pm1?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    pm10?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    pm25?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    co?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    so2?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    no2?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    o3?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    nh3?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    vbat?: FloatNullableWithAggregatesFilter<"Sipuber"> | number | null
-    device_id?: IntWithAggregatesFilter<"Sipuber"> | number
+  export type DailyDataSipuberScalarWhereWithAggregatesInput = {
+    AND?: DailyDataSipuberScalarWhereWithAggregatesInput | DailyDataSipuberScalarWhereWithAggregatesInput[]
+    OR?: DailyDataSipuberScalarWhereWithAggregatesInput[]
+    NOT?: DailyDataSipuberScalarWhereWithAggregatesInput | DailyDataSipuberScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DailyDataSipuber"> | number
+    created_at?: DateTimeWithAggregatesFilter<"DailyDataSipuber"> | Date | string
+    location?: StringWithAggregatesFilter<"DailyDataSipuber"> | string
+    co?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    so?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    no2?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    o3?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    nh3?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    pm1?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    pm25?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    pm10?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
+    ispu_daily?: IntWithAggregatesFilter<"DailyDataSipuber"> | number
+    device_id?: IntWithAggregatesFilter<"DailyDataSipuber"> | number
   }
 
-  export type SipuberOlahWhereInput = {
-    AND?: SipuberOlahWhereInput | SipuberOlahWhereInput[]
-    OR?: SipuberOlahWhereInput[]
-    NOT?: SipuberOlahWhereInput | SipuberOlahWhereInput[]
-    id?: IntFilter<"SipuberOlah"> | number
-    created_at?: DateTimeFilter<"SipuberOlah"> | Date | string
-    device_name?: StringFilter<"SipuberOlah"> | string
-    latitude?: FloatFilter<"SipuberOlah"> | number
-    longitude?: FloatFilter<"SipuberOlah"> | number
-    pm1?: FloatNullableFilter<"SipuberOlah"> | number | null
-    pm10?: FloatNullableFilter<"SipuberOlah"> | number | null
-    pm25?: FloatNullableFilter<"SipuberOlah"> | number | null
-    co?: FloatNullableFilter<"SipuberOlah"> | number | null
-    so2?: FloatNullableFilter<"SipuberOlah"> | number | null
-    no2?: FloatNullableFilter<"SipuberOlah"> | number | null
-    o3?: FloatNullableFilter<"SipuberOlah"> | number | null
-    nh3?: FloatNullableFilter<"SipuberOlah"> | number | null
-    vbat?: FloatNullableFilter<"SipuberOlah"> | number | null
-    aqi?: IntFilter<"SipuberOlah"> | number
-    sipuber_id?: IntFilter<"SipuberOlah"> | number
-    sipuber?: XOR<SipuberScalarRelationFilter, SipuberWhereInput>
+  export type AnalDataSipuberWhereInput = {
+    AND?: AnalDataSipuberWhereInput | AnalDataSipuberWhereInput[]
+    OR?: AnalDataSipuberWhereInput[]
+    NOT?: AnalDataSipuberWhereInput | AnalDataSipuberWhereInput[]
+    id?: IntFilter<"AnalDataSipuber"> | number
+    created_at?: DateTimeFilter<"AnalDataSipuber"> | Date | string
+    device_id?: IntFilter<"AnalDataSipuber"> | number
+    location?: StringFilter<"AnalDataSipuber"> | string
+    co?: FloatFilter<"AnalDataSipuber"> | number
+    so?: FloatFilter<"AnalDataSipuber"> | number
+    no2?: FloatFilter<"AnalDataSipuber"> | number
+    o3?: FloatFilter<"AnalDataSipuber"> | number
+    nh3?: FloatFilter<"AnalDataSipuber"> | number
+    pm1?: FloatFilter<"AnalDataSipuber"> | number
+    pm25?: FloatFilter<"AnalDataSipuber"> | number
+    pm10?: FloatFilter<"AnalDataSipuber"> | number
+    v_bat?: FloatFilter<"AnalDataSipuber"> | number
+    device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
   }
 
-  export type SipuberOlahOrderByWithRelationInput = {
+  export type AnalDataSipuberOrderByWithRelationInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrderInput | SortOrder
-    pm10?: SortOrderInput | SortOrder
-    pm25?: SortOrderInput | SortOrder
-    co?: SortOrderInput | SortOrder
-    so2?: SortOrderInput | SortOrder
-    no2?: SortOrderInput | SortOrder
-    o3?: SortOrderInput | SortOrder
-    nh3?: SortOrderInput | SortOrder
-    vbat?: SortOrderInput | SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
-    sipuber?: SipuberOrderByWithRelationInput
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
+    device?: DeviceOrderByWithRelationInput
   }
 
-  export type SipuberOlahWhereUniqueInput = Prisma.AtLeast<{
+  export type AnalDataSipuberWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: SipuberOlahWhereInput | SipuberOlahWhereInput[]
-    OR?: SipuberOlahWhereInput[]
-    NOT?: SipuberOlahWhereInput | SipuberOlahWhereInput[]
-    created_at?: DateTimeFilter<"SipuberOlah"> | Date | string
-    device_name?: StringFilter<"SipuberOlah"> | string
-    latitude?: FloatFilter<"SipuberOlah"> | number
-    longitude?: FloatFilter<"SipuberOlah"> | number
-    pm1?: FloatNullableFilter<"SipuberOlah"> | number | null
-    pm10?: FloatNullableFilter<"SipuberOlah"> | number | null
-    pm25?: FloatNullableFilter<"SipuberOlah"> | number | null
-    co?: FloatNullableFilter<"SipuberOlah"> | number | null
-    so2?: FloatNullableFilter<"SipuberOlah"> | number | null
-    no2?: FloatNullableFilter<"SipuberOlah"> | number | null
-    o3?: FloatNullableFilter<"SipuberOlah"> | number | null
-    nh3?: FloatNullableFilter<"SipuberOlah"> | number | null
-    vbat?: FloatNullableFilter<"SipuberOlah"> | number | null
-    aqi?: IntFilter<"SipuberOlah"> | number
-    sipuber_id?: IntFilter<"SipuberOlah"> | number
-    sipuber?: XOR<SipuberScalarRelationFilter, SipuberWhereInput>
+    AND?: AnalDataSipuberWhereInput | AnalDataSipuberWhereInput[]
+    OR?: AnalDataSipuberWhereInput[]
+    NOT?: AnalDataSipuberWhereInput | AnalDataSipuberWhereInput[]
+    created_at?: DateTimeFilter<"AnalDataSipuber"> | Date | string
+    device_id?: IntFilter<"AnalDataSipuber"> | number
+    location?: StringFilter<"AnalDataSipuber"> | string
+    co?: FloatFilter<"AnalDataSipuber"> | number
+    so?: FloatFilter<"AnalDataSipuber"> | number
+    no2?: FloatFilter<"AnalDataSipuber"> | number
+    o3?: FloatFilter<"AnalDataSipuber"> | number
+    nh3?: FloatFilter<"AnalDataSipuber"> | number
+    pm1?: FloatFilter<"AnalDataSipuber"> | number
+    pm25?: FloatFilter<"AnalDataSipuber"> | number
+    pm10?: FloatFilter<"AnalDataSipuber"> | number
+    v_bat?: FloatFilter<"AnalDataSipuber"> | number
+    device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
   }, "id">
 
-  export type SipuberOlahOrderByWithAggregationInput = {
+  export type AnalDataSipuberOrderByWithAggregationInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrderInput | SortOrder
-    pm10?: SortOrderInput | SortOrder
-    pm25?: SortOrderInput | SortOrder
-    co?: SortOrderInput | SortOrder
-    so2?: SortOrderInput | SortOrder
-    no2?: SortOrderInput | SortOrder
-    o3?: SortOrderInput | SortOrder
-    nh3?: SortOrderInput | SortOrder
-    vbat?: SortOrderInput | SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
-    _count?: SipuberOlahCountOrderByAggregateInput
-    _avg?: SipuberOlahAvgOrderByAggregateInput
-    _max?: SipuberOlahMaxOrderByAggregateInput
-    _min?: SipuberOlahMinOrderByAggregateInput
-    _sum?: SipuberOlahSumOrderByAggregateInput
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
+    _count?: AnalDataSipuberCountOrderByAggregateInput
+    _avg?: AnalDataSipuberAvgOrderByAggregateInput
+    _max?: AnalDataSipuberMaxOrderByAggregateInput
+    _min?: AnalDataSipuberMinOrderByAggregateInput
+    _sum?: AnalDataSipuberSumOrderByAggregateInput
   }
 
-  export type SipuberOlahScalarWhereWithAggregatesInput = {
-    AND?: SipuberOlahScalarWhereWithAggregatesInput | SipuberOlahScalarWhereWithAggregatesInput[]
-    OR?: SipuberOlahScalarWhereWithAggregatesInput[]
-    NOT?: SipuberOlahScalarWhereWithAggregatesInput | SipuberOlahScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"SipuberOlah"> | number
-    created_at?: DateTimeWithAggregatesFilter<"SipuberOlah"> | Date | string
-    device_name?: StringWithAggregatesFilter<"SipuberOlah"> | string
-    latitude?: FloatWithAggregatesFilter<"SipuberOlah"> | number
-    longitude?: FloatWithAggregatesFilter<"SipuberOlah"> | number
-    pm1?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    pm10?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    pm25?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    co?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    so2?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    no2?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    o3?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    nh3?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    vbat?: FloatNullableWithAggregatesFilter<"SipuberOlah"> | number | null
-    aqi?: IntWithAggregatesFilter<"SipuberOlah"> | number
-    sipuber_id?: IntWithAggregatesFilter<"SipuberOlah"> | number
+  export type AnalDataSipuberScalarWhereWithAggregatesInput = {
+    AND?: AnalDataSipuberScalarWhereWithAggregatesInput | AnalDataSipuberScalarWhereWithAggregatesInput[]
+    OR?: AnalDataSipuberScalarWhereWithAggregatesInput[]
+    NOT?: AnalDataSipuberScalarWhereWithAggregatesInput | AnalDataSipuberScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AnalDataSipuber"> | number
+    created_at?: DateTimeWithAggregatesFilter<"AnalDataSipuber"> | Date | string
+    device_id?: IntWithAggregatesFilter<"AnalDataSipuber"> | number
+    location?: StringWithAggregatesFilter<"AnalDataSipuber"> | string
+    co?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    so?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    no2?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    o3?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    nh3?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    pm1?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    pm25?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    pm10?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
+    v_bat?: FloatWithAggregatesFilter<"AnalDataSipuber"> | number
   }
 
-  export type ContactWhereInput = {
-    AND?: ContactWhereInput | ContactWhereInput[]
-    OR?: ContactWhereInput[]
-    NOT?: ContactWhereInput | ContactWhereInput[]
-    id?: IntFilter<"Contact"> | number
-    contact_name?: StringFilter<"Contact"> | string
-    phone_number?: StringFilter<"Contact"> | string
+  export type AlertManagementWhereInput = {
+    AND?: AlertManagementWhereInput | AlertManagementWhereInput[]
+    OR?: AlertManagementWhereInput[]
+    NOT?: AlertManagementWhereInput | AlertManagementWhereInput[]
+    id?: IntFilter<"AlertManagement"> | number
+    wa_name?: StringFilter<"AlertManagement"> | string
+    wa_number?: StringFilter<"AlertManagement"> | string
+    email?: StringFilter<"AlertManagement"> | string
   }
 
-  export type ContactOrderByWithRelationInput = {
+  export type AlertManagementOrderByWithRelationInput = {
     id?: SortOrder
-    contact_name?: SortOrder
-    phone_number?: SortOrder
+    wa_name?: SortOrder
+    wa_number?: SortOrder
+    email?: SortOrder
   }
 
-  export type ContactWhereUniqueInput = Prisma.AtLeast<{
+  export type AlertManagementWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: ContactWhereInput | ContactWhereInput[]
-    OR?: ContactWhereInput[]
-    NOT?: ContactWhereInput | ContactWhereInput[]
-    contact_name?: StringFilter<"Contact"> | string
-    phone_number?: StringFilter<"Contact"> | string
+    AND?: AlertManagementWhereInput | AlertManagementWhereInput[]
+    OR?: AlertManagementWhereInput[]
+    NOT?: AlertManagementWhereInput | AlertManagementWhereInput[]
+    wa_name?: StringFilter<"AlertManagement"> | string
+    wa_number?: StringFilter<"AlertManagement"> | string
+    email?: StringFilter<"AlertManagement"> | string
   }, "id">
 
-  export type ContactOrderByWithAggregationInput = {
+  export type AlertManagementOrderByWithAggregationInput = {
     id?: SortOrder
-    contact_name?: SortOrder
-    phone_number?: SortOrder
-    _count?: ContactCountOrderByAggregateInput
-    _avg?: ContactAvgOrderByAggregateInput
-    _max?: ContactMaxOrderByAggregateInput
-    _min?: ContactMinOrderByAggregateInput
-    _sum?: ContactSumOrderByAggregateInput
+    wa_name?: SortOrder
+    wa_number?: SortOrder
+    email?: SortOrder
+    _count?: AlertManagementCountOrderByAggregateInput
+    _avg?: AlertManagementAvgOrderByAggregateInput
+    _max?: AlertManagementMaxOrderByAggregateInput
+    _min?: AlertManagementMinOrderByAggregateInput
+    _sum?: AlertManagementSumOrderByAggregateInput
   }
 
-  export type ContactScalarWhereWithAggregatesInput = {
-    AND?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
-    OR?: ContactScalarWhereWithAggregatesInput[]
-    NOT?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Contact"> | number
-    contact_name?: StringWithAggregatesFilter<"Contact"> | string
-    phone_number?: StringWithAggregatesFilter<"Contact"> | string
-  }
-
-  export type SessionWhereInput = {
-    AND?: SessionWhereInput | SessionWhereInput[]
-    OR?: SessionWhereInput[]
-    NOT?: SessionWhereInput | SessionWhereInput[]
-    id?: StringFilter<"Session"> | string
-    sid?: StringFilter<"Session"> | string
-    data?: StringFilter<"Session"> | string
-    expiresAt?: DateTimeFilter<"Session"> | Date | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
-    updatedAt?: DateTimeFilter<"Session"> | Date | string
-  }
-
-  export type SessionOrderByWithRelationInput = {
-    id?: SortOrder
-    sid?: SortOrder
-    data?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SessionWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    sid?: string
-    AND?: SessionWhereInput | SessionWhereInput[]
-    OR?: SessionWhereInput[]
-    NOT?: SessionWhereInput | SessionWhereInput[]
-    data?: StringFilter<"Session"> | string
-    expiresAt?: DateTimeFilter<"Session"> | Date | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
-    updatedAt?: DateTimeFilter<"Session"> | Date | string
-  }, "id" | "sid">
-
-  export type SessionOrderByWithAggregationInput = {
-    id?: SortOrder
-    sid?: SortOrder
-    data?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: SessionCountOrderByAggregateInput
-    _max?: SessionMaxOrderByAggregateInput
-    _min?: SessionMinOrderByAggregateInput
-  }
-
-  export type SessionScalarWhereWithAggregatesInput = {
-    AND?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
-    OR?: SessionScalarWhereWithAggregatesInput[]
-    NOT?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Session"> | string
-    sid?: StringWithAggregatesFilter<"Session"> | string
-    data?: StringWithAggregatesFilter<"Session"> | string
-    expiresAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
-    createdAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
+  export type AlertManagementScalarWhereWithAggregatesInput = {
+    AND?: AlertManagementScalarWhereWithAggregatesInput | AlertManagementScalarWhereWithAggregatesInput[]
+    OR?: AlertManagementScalarWhereWithAggregatesInput[]
+    NOT?: AlertManagementScalarWhereWithAggregatesInput | AlertManagementScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AlertManagement"> | number
+    wa_name?: StringWithAggregatesFilter<"AlertManagement"> | string
+    wa_number?: StringWithAggregatesFilter<"AlertManagement"> | string
+    email?: StringWithAggregatesFilter<"AlertManagement"> | string
   }
 
   export type UserCreateInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email?: string | null
-    no_telepon: string
-    image?: string | null
-    password?: string | null
-    role?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    username: string
+    full_name: string
+    email: string
+    password: string
+    role: string
+    isSoftDelete?: boolean
     devices?: DeviceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email?: string | null
-    no_telepon: string
-    image?: string | null
-    password?: string | null
-    role?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    id?: number
+    username: string
+    full_name: string
+    email: string
+    password: string
+    role: string
+    isSoftDelete?: boolean
     devices?: DeviceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    no_telepon?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    full_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     devices?: DeviceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    no_telepon?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    full_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     devices?: DeviceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email?: string | null
-    no_telepon: string
-    image?: string | null
-    password?: string | null
-    role?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    id?: number
+    username: string
+    full_name: string
+    email: string
+    password: string
+    role: string
+    isSoftDelete?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    no_telepon?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    full_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    no_telepon?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    full_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DeviceCreateInput = {
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    user?: UserCreateNestedOneWithoutDevicesInput
-    sipubers?: SipuberCreateNestedManyWithoutDeviceInput
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user: UserCreateNestedOneWithoutDevicesInput
+    ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
+    daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
   }
 
   export type DeviceUncheckedCreateInput = {
     id?: number
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    user_id?: string | null
-    sipubers?: SipuberUncheckedCreateNestedManyWithoutDeviceInput
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user_id: number
+    ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
   }
 
   export type DeviceUpdateInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    user?: UserUpdateOneWithoutDevicesNestedInput
-    sipubers?: SipuberUpdateManyWithoutDeviceNestedInput
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutDevicesNestedInput
+    ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
+    daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
   }
 
   export type DeviceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    user_id?: NullableStringFieldUpdateOperationsInput | string | null
-    sipubers?: SipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: IntFieldUpdateOperationsInput | number
+    ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
   }
 
   export type DeviceCreateManyInput = {
     id?: number
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    user_id?: string | null
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user_id: number
   }
 
   export type DeviceUpdateManyMutationInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DeviceUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CmsSettingCreateInput = {
+    thumbnail: string
+    section: string
+    content: string
+  }
+
+  export type CmsSettingUncheckedCreateInput = {
+    id?: number
+    thumbnail: string
+    section: string
+    content: string
+  }
+
+  export type CmsSettingUpdateInput = {
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    section?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CmsSettingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    section?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CmsSettingCreateManyInput = {
+    id?: number
+    thumbnail: string
+    section: string
+    content: string
+  }
+
+  export type CmsSettingUpdateManyMutationInput = {
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    section?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CmsSettingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    section?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PpmDataSipuberCreateInput = {
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
+    device: DeviceCreateNestedOneWithoutPpm_dataInput
+  }
+
+  export type PpmDataSipuberUncheckedCreateInput = {
+    id?: number
+    created_at?: Date | string
+    device_id: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
+  }
+
+  export type PpmDataSipuberUpdateInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+    device?: DeviceUpdateOneRequiredWithoutPpm_dataNestedInput
+  }
+
+  export type PpmDataSipuberUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    device_id?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type PpmDataSipuberCreateManyInput = {
+    id?: number
+    created_at?: Date | string
+    device_id: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
+  }
+
+  export type PpmDataSipuberUpdateManyMutationInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type PpmDataSipuberUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    device_id?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type DailyDataSipuberCreateInput = {
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+    device: DeviceCreateNestedOneWithoutDaily_dataInput
+  }
+
+  export type DailyDataSipuberUncheckedCreateInput = {
+    id?: number
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+    device_id: number
+  }
+
+  export type DailyDataSipuberUpdateInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+    device?: DeviceUpdateOneRequiredWithoutDaily_dataNestedInput
+  }
+
+  export type DailyDataSipuberUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+    device_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DailyDataSipuberCreateManyInput = {
+    id?: number
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+    device_id: number
+  }
+
+  export type DailyDataSipuberUpdateManyMutationInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DailyDataSipuberUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+    device_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AnalDataSipuberCreateInput = {
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+    device: DeviceCreateNestedOneWithoutAnal_dataInput
+  }
+
+  export type AnalDataSipuberUncheckedCreateInput = {
+    id?: number
+    created_at?: Date | string
+    device_id: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+  }
+
+  export type AnalDataSipuberUpdateInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+    device?: DeviceUpdateOneRequiredWithoutAnal_dataNestedInput
+  }
+
+  export type AnalDataSipuberUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    device_id?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AnalDataSipuberCreateManyInput = {
+    id?: number
+    created_at?: Date | string
+    device_id: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+  }
+
+  export type AnalDataSipuberUpdateManyMutationInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AnalDataSipuberUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    device_id?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AlertManagementCreateInput = {
+    wa_name: string
+    wa_number: string
+    email: string
+  }
+
+  export type AlertManagementUncheckedCreateInput = {
+    id?: number
+    wa_name: string
+    wa_number: string
+    email: string
+  }
+
+  export type AlertManagementUpdateInput = {
+    wa_name?: StringFieldUpdateOperationsInput | string
+    wa_number?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    user_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SipuberCreateInput = {
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    device: DeviceCreateNestedOneWithoutSipubersInput
-    sipuberOlah?: SipuberOlahCreateNestedManyWithoutSipuberInput
-  }
-
-  export type SipuberUncheckedCreateInput = {
-    id?: number
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    device_id: number
-    sipuberOlah?: SipuberOlahUncheckedCreateNestedManyWithoutSipuberInput
-  }
-
-  export type SipuberUpdateInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    device?: DeviceUpdateOneRequiredWithoutSipubersNestedInput
-    sipuberOlah?: SipuberOlahUpdateManyWithoutSipuberNestedInput
-  }
-
-  export type SipuberUncheckedUpdateInput = {
+  export type AlertManagementUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    device_id?: IntFieldUpdateOperationsInput | number
-    sipuberOlah?: SipuberOlahUncheckedUpdateManyWithoutSipuberNestedInput
+    wa_name?: StringFieldUpdateOperationsInput | string
+    wa_number?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
   }
 
-  export type SipuberCreateManyInput = {
+  export type AlertManagementCreateManyInput = {
     id?: number
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    device_id: number
+    wa_name: string
+    wa_number: string
+    email: string
   }
 
-  export type SipuberUpdateManyMutationInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
+  export type AlertManagementUpdateManyMutationInput = {
+    wa_name?: StringFieldUpdateOperationsInput | string
+    wa_number?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
   }
 
-  export type SipuberUncheckedUpdateManyInput = {
+  export type AlertManagementUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    device_id?: IntFieldUpdateOperationsInput | number
+    wa_name?: StringFieldUpdateOperationsInput | string
+    wa_number?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
   }
 
-  export type SipuberOlahCreateInput = {
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    aqi: number
-    sipuber: SipuberCreateNestedOneWithoutSipuberOlahInput
-  }
-
-  export type SipuberOlahUncheckedCreateInput = {
-    id?: number
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    aqi: number
-    sipuber_id: number
-  }
-
-  export type SipuberOlahUpdateInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
-    sipuber?: SipuberUpdateOneRequiredWithoutSipuberOlahNestedInput
-  }
-
-  export type SipuberOlahUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
-    sipuber_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type SipuberOlahCreateManyInput = {
-    id?: number
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    aqi: number
-    sipuber_id: number
-  }
-
-  export type SipuberOlahUpdateManyMutationInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type SipuberOlahUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
-    sipuber_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type ContactCreateInput = {
-    contact_name: string
-    phone_number: string
-  }
-
-  export type ContactUncheckedCreateInput = {
-    id?: number
-    contact_name: string
-    phone_number: string
-  }
-
-  export type ContactUpdateInput = {
-    contact_name?: StringFieldUpdateOperationsInput | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ContactUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    contact_name?: StringFieldUpdateOperationsInput | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ContactCreateManyInput = {
-    id?: number
-    contact_name: string
-    phone_number: string
-  }
-
-  export type ContactUpdateManyMutationInput = {
-    contact_name?: StringFieldUpdateOperationsInput | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ContactUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    contact_name?: StringFieldUpdateOperationsInput | string
-    phone_number?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SessionCreateInput = {
-    id?: string
-    sid: string
-    data: string
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SessionUncheckedCreateInput = {
-    id?: string
-    sid: string
-    data: string
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SessionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sid?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SessionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sid?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SessionCreateManyInput = {
-    id?: string
-    sid: string
-    data: string
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SessionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sid?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SessionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sid?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9607,30 +10885,9 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type DeviceListRelationFilter = {
@@ -9639,52 +10896,62 @@ export namespace Prisma {
     none?: DeviceWhereInput
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type DeviceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    first_name?: SortOrder
-    last_name?: SortOrder
+    username?: SortOrder
+    full_name?: SortOrder
     email?: SortOrder
-    no_telepon?: SortOrder
-    image?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    isSoftDelete?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    first_name?: SortOrder
-    last_name?: SortOrder
+    username?: SortOrder
+    full_name?: SortOrder
     email?: SortOrder
-    no_telepon?: SortOrder
-    image?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    isSoftDelete?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    first_name?: SortOrder
-    last_name?: SortOrder
+    username?: SortOrder
+    full_name?: SortOrder
     email?: SortOrder
-    no_telepon?: SortOrder
-    image?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    isSoftDelete?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9705,6 +10972,103 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type PpmDataSipuberListRelationFilter = {
+    every?: PpmDataSipuberWhereInput
+    some?: PpmDataSipuberWhereInput
+    none?: PpmDataSipuberWhereInput
+  }
+
+  export type DailyDataSipuberListRelationFilter = {
+    every?: DailyDataSipuberWhereInput
+    some?: DailyDataSipuberWhereInput
+    none?: DailyDataSipuberWhereInput
+  }
+
+  export type AnalDataSipuberListRelationFilter = {
+    every?: AnalDataSipuberWhereInput
+    some?: AnalDataSipuberWhereInput
+    none?: AnalDataSipuberWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type PpmDataSipuberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DailyDataSipuberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AnalDataSipuberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DeviceCountOrderByAggregateInput = {
+    id?: SortOrder
+    device_name?: SortOrder
+    no_modem?: SortOrder
+    tanggal_paket?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DeviceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DeviceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    device_name?: SortOrder
+    no_modem?: SortOrder
+    tanggal_paket?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DeviceMinOrderByAggregateInput = {
+    id?: SortOrder
+    device_name?: SortOrder
+    no_modem?: SortOrder
+    tanggal_paket?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DeviceSumOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+  }
+
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -9723,7 +11087,36 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+  export type CmsSettingCountOrderByAggregateInput = {
+    id?: SortOrder
+    thumbnail?: SortOrder
+    section?: SortOrder
+    content?: SortOrder
+  }
+
+  export type CmsSettingAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CmsSettingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    thumbnail?: SortOrder
+    section?: SortOrder
+    content?: SortOrder
+  }
+
+  export type CmsSettingMinOrderByAggregateInput = {
+    id?: SortOrder
+    thumbnail?: SortOrder
+    section?: SortOrder
+    content?: SortOrder
+  }
+
+  export type CmsSettingSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9731,32 +11124,7 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -9770,100 +11138,104 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
+  export type DeviceScalarRelationFilter = {
+    is?: DeviceWhereInput
+    isNot?: DeviceWhereInput
   }
 
-  export type SipuberListRelationFilter = {
-    every?: SipuberWhereInput
-    some?: SipuberWhereInput
-    none?: SipuberWhereInput
-  }
-
-  export type SipuberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type DeviceCountOrderByAggregateInput = {
+  export type PpmDataSipuberCountOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    device_name?: SortOrder
-    nomor_modem?: SortOrder
-    tanggal_paket?: SortOrder
-    email?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    user_id?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type DeviceAvgOrderByAggregateInput = {
+  export type PpmDataSipuberAvgOrderByAggregateInput = {
     id?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
+    device_id?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type DeviceMaxOrderByAggregateInput = {
+  export type PpmDataSipuberMaxOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    device_name?: SortOrder
-    nomor_modem?: SortOrder
-    tanggal_paket?: SortOrder
-    email?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    user_id?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type DeviceMinOrderByAggregateInput = {
+  export type PpmDataSipuberMinOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    device_name?: SortOrder
-    nomor_modem?: SortOrder
-    tanggal_paket?: SortOrder
-    email?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    user_id?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type DeviceSumOrderByAggregateInput = {
+  export type PpmDataSipuberSumOrderByAggregateInput = {
     id?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
+    device_id?: SortOrder
+    co?: SortOrder
+    so?: SortOrder
+    no2?: SortOrder
+    o3?: SortOrder
+    nh3?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_realtime?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -9882,281 +11254,185 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type DeviceScalarRelationFilter = {
-    is?: DeviceWhereInput
-    isNot?: DeviceWhereInput
-  }
-
-  export type SipuberOlahListRelationFilter = {
-    every?: SipuberOlahWhereInput
-    some?: SipuberOlahWhereInput
-    none?: SipuberOlahWhereInput
-  }
-
-  export type SipuberOlahOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SipuberCountOrderByAggregateInput = {
+  export type DailyDataSipuberCountOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    location?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
   }
 
-  export type SipuberAvgOrderByAggregateInput = {
+  export type DailyDataSipuberAvgOrderByAggregateInput = {
     id?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
   }
 
-  export type SipuberMaxOrderByAggregateInput = {
+  export type DailyDataSipuberMaxOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    location?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
   }
 
-  export type SipuberMinOrderByAggregateInput = {
+  export type DailyDataSipuberMinOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    location?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
   }
 
-  export type SipuberSumOrderByAggregateInput = {
+  export type DailyDataSipuberSumOrderByAggregateInput = {
     id?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    ispu_daily?: SortOrder
     device_id?: SortOrder
   }
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type SipuberScalarRelationFilter = {
-    is?: SipuberWhereInput
-    isNot?: SipuberWhereInput
-  }
-
-  export type SipuberOlahCountOrderByAggregateInput = {
+  export type AnalDataSipuberCountOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type SipuberOlahAvgOrderByAggregateInput = {
+  export type AnalDataSipuberAvgOrderByAggregateInput = {
     id?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    device_id?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type SipuberOlahMaxOrderByAggregateInput = {
+  export type AnalDataSipuberMaxOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type SipuberOlahMinOrderByAggregateInput = {
+  export type AnalDataSipuberMinOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
-    device_name?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    device_id?: SortOrder
+    location?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type SipuberOlahSumOrderByAggregateInput = {
+  export type AnalDataSipuberSumOrderByAggregateInput = {
     id?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
-    pm1?: SortOrder
-    pm10?: SortOrder
-    pm25?: SortOrder
+    device_id?: SortOrder
     co?: SortOrder
-    so2?: SortOrder
+    so?: SortOrder
     no2?: SortOrder
     o3?: SortOrder
     nh3?: SortOrder
-    vbat?: SortOrder
-    aqi?: SortOrder
-    sipuber_id?: SortOrder
+    pm1?: SortOrder
+    pm25?: SortOrder
+    pm10?: SortOrder
+    v_bat?: SortOrder
   }
 
-  export type ContactCountOrderByAggregateInput = {
+  export type AlertManagementCountOrderByAggregateInput = {
     id?: SortOrder
-    contact_name?: SortOrder
-    phone_number?: SortOrder
+    wa_name?: SortOrder
+    wa_number?: SortOrder
+    email?: SortOrder
   }
 
-  export type ContactAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type ContactMaxOrderByAggregateInput = {
-    id?: SortOrder
-    contact_name?: SortOrder
-    phone_number?: SortOrder
-  }
-
-  export type ContactMinOrderByAggregateInput = {
-    id?: SortOrder
-    contact_name?: SortOrder
-    phone_number?: SortOrder
-  }
-
-  export type ContactSumOrderByAggregateInput = {
+  export type AlertManagementAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type SessionCountOrderByAggregateInput = {
+  export type AlertManagementMaxOrderByAggregateInput = {
     id?: SortOrder
-    sid?: SortOrder
-    data?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    wa_name?: SortOrder
+    wa_number?: SortOrder
+    email?: SortOrder
   }
 
-  export type SessionMaxOrderByAggregateInput = {
+  export type AlertManagementMinOrderByAggregateInput = {
     id?: SortOrder
-    sid?: SortOrder
-    data?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    wa_name?: SortOrder
+    wa_number?: SortOrder
+    email?: SortOrder
   }
 
-  export type SessionMinOrderByAggregateInput = {
+  export type AlertManagementSumOrderByAggregateInput = {
     id?: SortOrder
-    sid?: SortOrder
-    data?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type DeviceCreateNestedManyWithoutUserInput = {
@@ -10177,12 +11453,8 @@ export namespace Prisma {
     set?: string
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type DeviceUpdateManyWithoutUserNestedInput = {
@@ -10197,6 +11469,14 @@ export namespace Prisma {
     update?: DeviceUpdateWithWhereUniqueWithoutUserInput | DeviceUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: DeviceUpdateManyWithWhereWithoutUserInput | DeviceUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: DeviceScalarWhereInput | DeviceScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type DeviceUncheckedUpdateManyWithoutUserNestedInput = {
@@ -10219,22 +11499,152 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type SipuberCreateNestedManyWithoutDeviceInput = {
-    create?: XOR<SipuberCreateWithoutDeviceInput, SipuberUncheckedCreateWithoutDeviceInput> | SipuberCreateWithoutDeviceInput[] | SipuberUncheckedCreateWithoutDeviceInput[]
-    connectOrCreate?: SipuberCreateOrConnectWithoutDeviceInput | SipuberCreateOrConnectWithoutDeviceInput[]
-    createMany?: SipuberCreateManyDeviceInputEnvelope
-    connect?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
+  export type PpmDataSipuberCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<PpmDataSipuberCreateWithoutDeviceInput, PpmDataSipuberUncheckedCreateWithoutDeviceInput> | PpmDataSipuberCreateWithoutDeviceInput[] | PpmDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: PpmDataSipuberCreateOrConnectWithoutDeviceInput | PpmDataSipuberCreateOrConnectWithoutDeviceInput[]
+    createMany?: PpmDataSipuberCreateManyDeviceInputEnvelope
+    connect?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
   }
 
-  export type SipuberUncheckedCreateNestedManyWithoutDeviceInput = {
-    create?: XOR<SipuberCreateWithoutDeviceInput, SipuberUncheckedCreateWithoutDeviceInput> | SipuberCreateWithoutDeviceInput[] | SipuberUncheckedCreateWithoutDeviceInput[]
-    connectOrCreate?: SipuberCreateOrConnectWithoutDeviceInput | SipuberCreateOrConnectWithoutDeviceInput[]
-    createMany?: SipuberCreateManyDeviceInputEnvelope
-    connect?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
+  export type DailyDataSipuberCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<DailyDataSipuberCreateWithoutDeviceInput, DailyDataSipuberUncheckedCreateWithoutDeviceInput> | DailyDataSipuberCreateWithoutDeviceInput[] | DailyDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: DailyDataSipuberCreateOrConnectWithoutDeviceInput | DailyDataSipuberCreateOrConnectWithoutDeviceInput[]
+    createMany?: DailyDataSipuberCreateManyDeviceInputEnvelope
+    connect?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type AnalDataSipuberCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<AnalDataSipuberCreateWithoutDeviceInput, AnalDataSipuberUncheckedCreateWithoutDeviceInput> | AnalDataSipuberCreateWithoutDeviceInput[] | AnalDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: AnalDataSipuberCreateOrConnectWithoutDeviceInput | AnalDataSipuberCreateOrConnectWithoutDeviceInput[]
+    createMany?: AnalDataSipuberCreateManyDeviceInputEnvelope
+    connect?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+  }
+
+  export type PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<PpmDataSipuberCreateWithoutDeviceInput, PpmDataSipuberUncheckedCreateWithoutDeviceInput> | PpmDataSipuberCreateWithoutDeviceInput[] | PpmDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: PpmDataSipuberCreateOrConnectWithoutDeviceInput | PpmDataSipuberCreateOrConnectWithoutDeviceInput[]
+    createMany?: PpmDataSipuberCreateManyDeviceInputEnvelope
+    connect?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+  }
+
+  export type DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<DailyDataSipuberCreateWithoutDeviceInput, DailyDataSipuberUncheckedCreateWithoutDeviceInput> | DailyDataSipuberCreateWithoutDeviceInput[] | DailyDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: DailyDataSipuberCreateOrConnectWithoutDeviceInput | DailyDataSipuberCreateOrConnectWithoutDeviceInput[]
+    createMany?: DailyDataSipuberCreateManyDeviceInputEnvelope
+    connect?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+  }
+
+  export type AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<AnalDataSipuberCreateWithoutDeviceInput, AnalDataSipuberUncheckedCreateWithoutDeviceInput> | AnalDataSipuberCreateWithoutDeviceInput[] | AnalDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: AnalDataSipuberCreateOrConnectWithoutDeviceInput | AnalDataSipuberCreateOrConnectWithoutDeviceInput[]
+    createMany?: AnalDataSipuberCreateManyDeviceInputEnvelope
+    connect?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type UserUpdateOneRequiredWithoutDevicesNestedInput = {
+    create?: XOR<UserCreateWithoutDevicesInput, UserUncheckedCreateWithoutDevicesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDevicesInput
+    upsert?: UserUpsertWithoutDevicesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDevicesInput, UserUpdateWithoutDevicesInput>, UserUncheckedUpdateWithoutDevicesInput>
+  }
+
+  export type PpmDataSipuberUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<PpmDataSipuberCreateWithoutDeviceInput, PpmDataSipuberUncheckedCreateWithoutDeviceInput> | PpmDataSipuberCreateWithoutDeviceInput[] | PpmDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: PpmDataSipuberCreateOrConnectWithoutDeviceInput | PpmDataSipuberCreateOrConnectWithoutDeviceInput[]
+    upsert?: PpmDataSipuberUpsertWithWhereUniqueWithoutDeviceInput | PpmDataSipuberUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: PpmDataSipuberCreateManyDeviceInputEnvelope
+    set?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    disconnect?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    delete?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    connect?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    update?: PpmDataSipuberUpdateWithWhereUniqueWithoutDeviceInput | PpmDataSipuberUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: PpmDataSipuberUpdateManyWithWhereWithoutDeviceInput | PpmDataSipuberUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: PpmDataSipuberScalarWhereInput | PpmDataSipuberScalarWhereInput[]
+  }
+
+  export type DailyDataSipuberUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<DailyDataSipuberCreateWithoutDeviceInput, DailyDataSipuberUncheckedCreateWithoutDeviceInput> | DailyDataSipuberCreateWithoutDeviceInput[] | DailyDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: DailyDataSipuberCreateOrConnectWithoutDeviceInput | DailyDataSipuberCreateOrConnectWithoutDeviceInput[]
+    upsert?: DailyDataSipuberUpsertWithWhereUniqueWithoutDeviceInput | DailyDataSipuberUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: DailyDataSipuberCreateManyDeviceInputEnvelope
+    set?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    disconnect?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    delete?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    connect?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    update?: DailyDataSipuberUpdateWithWhereUniqueWithoutDeviceInput | DailyDataSipuberUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: DailyDataSipuberUpdateManyWithWhereWithoutDeviceInput | DailyDataSipuberUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: DailyDataSipuberScalarWhereInput | DailyDataSipuberScalarWhereInput[]
+  }
+
+  export type AnalDataSipuberUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<AnalDataSipuberCreateWithoutDeviceInput, AnalDataSipuberUncheckedCreateWithoutDeviceInput> | AnalDataSipuberCreateWithoutDeviceInput[] | AnalDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: AnalDataSipuberCreateOrConnectWithoutDeviceInput | AnalDataSipuberCreateOrConnectWithoutDeviceInput[]
+    upsert?: AnalDataSipuberUpsertWithWhereUniqueWithoutDeviceInput | AnalDataSipuberUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: AnalDataSipuberCreateManyDeviceInputEnvelope
+    set?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    disconnect?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    delete?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    connect?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    update?: AnalDataSipuberUpdateWithWhereUniqueWithoutDeviceInput | AnalDataSipuberUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: AnalDataSipuberUpdateManyWithWhereWithoutDeviceInput | AnalDataSipuberUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: AnalDataSipuberScalarWhereInput | AnalDataSipuberScalarWhereInput[]
+  }
+
+  export type PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<PpmDataSipuberCreateWithoutDeviceInput, PpmDataSipuberUncheckedCreateWithoutDeviceInput> | PpmDataSipuberCreateWithoutDeviceInput[] | PpmDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: PpmDataSipuberCreateOrConnectWithoutDeviceInput | PpmDataSipuberCreateOrConnectWithoutDeviceInput[]
+    upsert?: PpmDataSipuberUpsertWithWhereUniqueWithoutDeviceInput | PpmDataSipuberUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: PpmDataSipuberCreateManyDeviceInputEnvelope
+    set?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    disconnect?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    delete?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    connect?: PpmDataSipuberWhereUniqueInput | PpmDataSipuberWhereUniqueInput[]
+    update?: PpmDataSipuberUpdateWithWhereUniqueWithoutDeviceInput | PpmDataSipuberUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: PpmDataSipuberUpdateManyWithWhereWithoutDeviceInput | PpmDataSipuberUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: PpmDataSipuberScalarWhereInput | PpmDataSipuberScalarWhereInput[]
+  }
+
+  export type DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<DailyDataSipuberCreateWithoutDeviceInput, DailyDataSipuberUncheckedCreateWithoutDeviceInput> | DailyDataSipuberCreateWithoutDeviceInput[] | DailyDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: DailyDataSipuberCreateOrConnectWithoutDeviceInput | DailyDataSipuberCreateOrConnectWithoutDeviceInput[]
+    upsert?: DailyDataSipuberUpsertWithWhereUniqueWithoutDeviceInput | DailyDataSipuberUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: DailyDataSipuberCreateManyDeviceInputEnvelope
+    set?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    disconnect?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    delete?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    connect?: DailyDataSipuberWhereUniqueInput | DailyDataSipuberWhereUniqueInput[]
+    update?: DailyDataSipuberUpdateWithWhereUniqueWithoutDeviceInput | DailyDataSipuberUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: DailyDataSipuberUpdateManyWithWhereWithoutDeviceInput | DailyDataSipuberUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: DailyDataSipuberScalarWhereInput | DailyDataSipuberScalarWhereInput[]
+  }
+
+  export type AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<AnalDataSipuberCreateWithoutDeviceInput, AnalDataSipuberUncheckedCreateWithoutDeviceInput> | AnalDataSipuberCreateWithoutDeviceInput[] | AnalDataSipuberUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: AnalDataSipuberCreateOrConnectWithoutDeviceInput | AnalDataSipuberCreateOrConnectWithoutDeviceInput[]
+    upsert?: AnalDataSipuberUpsertWithWhereUniqueWithoutDeviceInput | AnalDataSipuberUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: AnalDataSipuberCreateManyDeviceInputEnvelope
+    set?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    disconnect?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    delete?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    connect?: AnalDataSipuberWhereUniqueInput | AnalDataSipuberWhereUniqueInput[]
+    update?: AnalDataSipuberUpdateWithWhereUniqueWithoutDeviceInput | AnalDataSipuberUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: AnalDataSipuberUpdateManyWithWhereWithoutDeviceInput | AnalDataSipuberUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: AnalDataSipuberScalarWhereInput | AnalDataSipuberScalarWhereInput[]
+  }
+
+  export type DeviceCreateNestedOneWithoutPpm_dataInput = {
+    create?: XOR<DeviceCreateWithoutPpm_dataInput, DeviceUncheckedCreateWithoutPpm_dataInput>
+    connectOrCreate?: DeviceCreateOrConnectWithoutPpm_dataInput
+    connect?: DeviceWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -10245,128 +11655,51 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserUpdateOneWithoutDevicesNestedInput = {
-    create?: XOR<UserCreateWithoutDevicesInput, UserUncheckedCreateWithoutDevicesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDevicesInput
-    upsert?: UserUpsertWithoutDevicesInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDevicesInput, UserUpdateWithoutDevicesInput>, UserUncheckedUpdateWithoutDevicesInput>
+  export type DeviceUpdateOneRequiredWithoutPpm_dataNestedInput = {
+    create?: XOR<DeviceCreateWithoutPpm_dataInput, DeviceUncheckedCreateWithoutPpm_dataInput>
+    connectOrCreate?: DeviceCreateOrConnectWithoutPpm_dataInput
+    upsert?: DeviceUpsertWithoutPpm_dataInput
+    connect?: DeviceWhereUniqueInput
+    update?: XOR<XOR<DeviceUpdateToOneWithWhereWithoutPpm_dataInput, DeviceUpdateWithoutPpm_dataInput>, DeviceUncheckedUpdateWithoutPpm_dataInput>
   }
 
-  export type SipuberUpdateManyWithoutDeviceNestedInput = {
-    create?: XOR<SipuberCreateWithoutDeviceInput, SipuberUncheckedCreateWithoutDeviceInput> | SipuberCreateWithoutDeviceInput[] | SipuberUncheckedCreateWithoutDeviceInput[]
-    connectOrCreate?: SipuberCreateOrConnectWithoutDeviceInput | SipuberCreateOrConnectWithoutDeviceInput[]
-    upsert?: SipuberUpsertWithWhereUniqueWithoutDeviceInput | SipuberUpsertWithWhereUniqueWithoutDeviceInput[]
-    createMany?: SipuberCreateManyDeviceInputEnvelope
-    set?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    disconnect?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    delete?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    connect?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    update?: SipuberUpdateWithWhereUniqueWithoutDeviceInput | SipuberUpdateWithWhereUniqueWithoutDeviceInput[]
-    updateMany?: SipuberUpdateManyWithWhereWithoutDeviceInput | SipuberUpdateManyWithWhereWithoutDeviceInput[]
-    deleteMany?: SipuberScalarWhereInput | SipuberScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type SipuberUncheckedUpdateManyWithoutDeviceNestedInput = {
-    create?: XOR<SipuberCreateWithoutDeviceInput, SipuberUncheckedCreateWithoutDeviceInput> | SipuberCreateWithoutDeviceInput[] | SipuberUncheckedCreateWithoutDeviceInput[]
-    connectOrCreate?: SipuberCreateOrConnectWithoutDeviceInput | SipuberCreateOrConnectWithoutDeviceInput[]
-    upsert?: SipuberUpsertWithWhereUniqueWithoutDeviceInput | SipuberUpsertWithWhereUniqueWithoutDeviceInput[]
-    createMany?: SipuberCreateManyDeviceInputEnvelope
-    set?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    disconnect?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    delete?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    connect?: SipuberWhereUniqueInput | SipuberWhereUniqueInput[]
-    update?: SipuberUpdateWithWhereUniqueWithoutDeviceInput | SipuberUpdateWithWhereUniqueWithoutDeviceInput[]
-    updateMany?: SipuberUpdateManyWithWhereWithoutDeviceInput | SipuberUpdateManyWithWhereWithoutDeviceInput[]
-    deleteMany?: SipuberScalarWhereInput | SipuberScalarWhereInput[]
-  }
-
-  export type DeviceCreateNestedOneWithoutSipubersInput = {
-    create?: XOR<DeviceCreateWithoutSipubersInput, DeviceUncheckedCreateWithoutSipubersInput>
-    connectOrCreate?: DeviceCreateOrConnectWithoutSipubersInput
+  export type DeviceCreateNestedOneWithoutDaily_dataInput = {
+    create?: XOR<DeviceCreateWithoutDaily_dataInput, DeviceUncheckedCreateWithoutDaily_dataInput>
+    connectOrCreate?: DeviceCreateOrConnectWithoutDaily_dataInput
     connect?: DeviceWhereUniqueInput
   }
 
-  export type SipuberOlahCreateNestedManyWithoutSipuberInput = {
-    create?: XOR<SipuberOlahCreateWithoutSipuberInput, SipuberOlahUncheckedCreateWithoutSipuberInput> | SipuberOlahCreateWithoutSipuberInput[] | SipuberOlahUncheckedCreateWithoutSipuberInput[]
-    connectOrCreate?: SipuberOlahCreateOrConnectWithoutSipuberInput | SipuberOlahCreateOrConnectWithoutSipuberInput[]
-    createMany?: SipuberOlahCreateManySipuberInputEnvelope
-    connect?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-  }
-
-  export type SipuberOlahUncheckedCreateNestedManyWithoutSipuberInput = {
-    create?: XOR<SipuberOlahCreateWithoutSipuberInput, SipuberOlahUncheckedCreateWithoutSipuberInput> | SipuberOlahCreateWithoutSipuberInput[] | SipuberOlahUncheckedCreateWithoutSipuberInput[]
-    connectOrCreate?: SipuberOlahCreateOrConnectWithoutSipuberInput | SipuberOlahCreateOrConnectWithoutSipuberInput[]
-    createMany?: SipuberOlahCreateManySipuberInputEnvelope
-    connect?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-  }
-
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type DeviceUpdateOneRequiredWithoutSipubersNestedInput = {
-    create?: XOR<DeviceCreateWithoutSipubersInput, DeviceUncheckedCreateWithoutSipubersInput>
-    connectOrCreate?: DeviceCreateOrConnectWithoutSipubersInput
-    upsert?: DeviceUpsertWithoutSipubersInput
+  export type DeviceUpdateOneRequiredWithoutDaily_dataNestedInput = {
+    create?: XOR<DeviceCreateWithoutDaily_dataInput, DeviceUncheckedCreateWithoutDaily_dataInput>
+    connectOrCreate?: DeviceCreateOrConnectWithoutDaily_dataInput
+    upsert?: DeviceUpsertWithoutDaily_dataInput
     connect?: DeviceWhereUniqueInput
-    update?: XOR<XOR<DeviceUpdateToOneWithWhereWithoutSipubersInput, DeviceUpdateWithoutSipubersInput>, DeviceUncheckedUpdateWithoutSipubersInput>
+    update?: XOR<XOR<DeviceUpdateToOneWithWhereWithoutDaily_dataInput, DeviceUpdateWithoutDaily_dataInput>, DeviceUncheckedUpdateWithoutDaily_dataInput>
   }
 
-  export type SipuberOlahUpdateManyWithoutSipuberNestedInput = {
-    create?: XOR<SipuberOlahCreateWithoutSipuberInput, SipuberOlahUncheckedCreateWithoutSipuberInput> | SipuberOlahCreateWithoutSipuberInput[] | SipuberOlahUncheckedCreateWithoutSipuberInput[]
-    connectOrCreate?: SipuberOlahCreateOrConnectWithoutSipuberInput | SipuberOlahCreateOrConnectWithoutSipuberInput[]
-    upsert?: SipuberOlahUpsertWithWhereUniqueWithoutSipuberInput | SipuberOlahUpsertWithWhereUniqueWithoutSipuberInput[]
-    createMany?: SipuberOlahCreateManySipuberInputEnvelope
-    set?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    disconnect?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    delete?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    connect?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    update?: SipuberOlahUpdateWithWhereUniqueWithoutSipuberInput | SipuberOlahUpdateWithWhereUniqueWithoutSipuberInput[]
-    updateMany?: SipuberOlahUpdateManyWithWhereWithoutSipuberInput | SipuberOlahUpdateManyWithWhereWithoutSipuberInput[]
-    deleteMany?: SipuberOlahScalarWhereInput | SipuberOlahScalarWhereInput[]
+  export type DeviceCreateNestedOneWithoutAnal_dataInput = {
+    create?: XOR<DeviceCreateWithoutAnal_dataInput, DeviceUncheckedCreateWithoutAnal_dataInput>
+    connectOrCreate?: DeviceCreateOrConnectWithoutAnal_dataInput
+    connect?: DeviceWhereUniqueInput
   }
 
-  export type SipuberOlahUncheckedUpdateManyWithoutSipuberNestedInput = {
-    create?: XOR<SipuberOlahCreateWithoutSipuberInput, SipuberOlahUncheckedCreateWithoutSipuberInput> | SipuberOlahCreateWithoutSipuberInput[] | SipuberOlahUncheckedCreateWithoutSipuberInput[]
-    connectOrCreate?: SipuberOlahCreateOrConnectWithoutSipuberInput | SipuberOlahCreateOrConnectWithoutSipuberInput[]
-    upsert?: SipuberOlahUpsertWithWhereUniqueWithoutSipuberInput | SipuberOlahUpsertWithWhereUniqueWithoutSipuberInput[]
-    createMany?: SipuberOlahCreateManySipuberInputEnvelope
-    set?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    disconnect?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    delete?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    connect?: SipuberOlahWhereUniqueInput | SipuberOlahWhereUniqueInput[]
-    update?: SipuberOlahUpdateWithWhereUniqueWithoutSipuberInput | SipuberOlahUpdateWithWhereUniqueWithoutSipuberInput[]
-    updateMany?: SipuberOlahUpdateManyWithWhereWithoutSipuberInput | SipuberOlahUpdateManyWithWhereWithoutSipuberInput[]
-    deleteMany?: SipuberOlahScalarWhereInput | SipuberOlahScalarWhereInput[]
+  export type DeviceUpdateOneRequiredWithoutAnal_dataNestedInput = {
+    create?: XOR<DeviceCreateWithoutAnal_dataInput, DeviceUncheckedCreateWithoutAnal_dataInput>
+    connectOrCreate?: DeviceCreateOrConnectWithoutAnal_dataInput
+    upsert?: DeviceUpsertWithoutAnal_dataInput
+    connect?: DeviceWhereUniqueInput
+    update?: XOR<XOR<DeviceUpdateToOneWithWhereWithoutAnal_dataInput, DeviceUpdateWithoutAnal_dataInput>, DeviceUncheckedUpdateWithoutAnal_dataInput>
   }
 
-  export type SipuberCreateNestedOneWithoutSipuberOlahInput = {
-    create?: XOR<SipuberCreateWithoutSipuberOlahInput, SipuberUncheckedCreateWithoutSipuberOlahInput>
-    connectOrCreate?: SipuberCreateOrConnectWithoutSipuberOlahInput
-    connect?: SipuberWhereUniqueInput
-  }
-
-  export type SipuberUpdateOneRequiredWithoutSipuberOlahNestedInput = {
-    create?: XOR<SipuberCreateWithoutSipuberOlahInput, SipuberUncheckedCreateWithoutSipuberOlahInput>
-    connectOrCreate?: SipuberCreateOrConnectWithoutSipuberOlahInput
-    upsert?: SipuberUpsertWithoutSipuberOlahInput
-    connect?: SipuberWhereUniqueInput
-    update?: XOR<XOR<SipuberUpdateToOneWithWhereWithoutSipuberOlahInput, SipuberUpdateWithoutSipuberOlahInput>, SipuberUncheckedUpdateWithoutSipuberOlahInput>
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -10383,29 +11716,36 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -10425,15 +11765,26 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10464,6 +11815,17 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -10476,58 +11838,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -10546,56 +11856,23 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
   export type DeviceCreateWithoutUserInput = {
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    sipubers?: SipuberCreateNestedManyWithoutDeviceInput
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
+    daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
   }
 
   export type DeviceUncheckedCreateWithoutUserInput = {
     id?: number
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    sipubers?: SipuberUncheckedCreateNestedManyWithoutDeviceInput
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
   }
 
   export type DeviceCreateOrConnectWithoutUserInput = {
@@ -10629,41 +11906,29 @@ export namespace Prisma {
     OR?: DeviceScalarWhereInput[]
     NOT?: DeviceScalarWhereInput | DeviceScalarWhereInput[]
     id?: IntFilter<"Device"> | number
-    created_at?: DateTimeFilter<"Device"> | Date | string
-    updated_at?: DateTimeFilter<"Device"> | Date | string
     device_name?: StringFilter<"Device"> | string
-    nomor_modem?: StringNullableFilter<"Device"> | string | null
-    tanggal_paket?: DateTimeNullableFilter<"Device"> | Date | string | null
-    email?: StringFilter<"Device"> | string
-    latitude?: FloatFilter<"Device"> | number
-    longitude?: FloatFilter<"Device"> | number
-    user_id?: StringNullableFilter<"Device"> | string | null
+    no_modem?: StringNullableFilter<"Device"> | string | null
+    tanggal_paket?: StringNullableFilter<"Device"> | string | null
+    user_id?: IntFilter<"Device"> | number
   }
 
   export type UserCreateWithoutDevicesInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email?: string | null
-    no_telepon: string
-    image?: string | null
-    password?: string | null
-    role?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    username: string
+    full_name: string
+    email: string
+    password: string
+    role: string
+    isSoftDelete?: boolean
   }
 
   export type UserUncheckedCreateWithoutDevicesInput = {
-    id?: string
-    first_name: string
-    last_name: string
-    email?: string | null
-    no_telepon: string
-    image?: string | null
-    password?: string | null
-    role?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    id?: number
+    username: string
+    full_name: string
+    email: string
+    password: string
+    role: string
+    isSoftDelete?: boolean
   }
 
   export type UserCreateOrConnectWithoutDevicesInput = {
@@ -10671,48 +11936,122 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutDevicesInput, UserUncheckedCreateWithoutDevicesInput>
   }
 
-  export type SipuberCreateWithoutDeviceInput = {
+  export type PpmDataSipuberCreateWithoutDeviceInput = {
     created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    sipuberOlah?: SipuberOlahCreateNestedManyWithoutSipuberInput
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
   }
 
-  export type SipuberUncheckedCreateWithoutDeviceInput = {
+  export type PpmDataSipuberUncheckedCreateWithoutDeviceInput = {
     id?: number
     created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    sipuberOlah?: SipuberOlahUncheckedCreateNestedManyWithoutSipuberInput
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
   }
 
-  export type SipuberCreateOrConnectWithoutDeviceInput = {
-    where: SipuberWhereUniqueInput
-    create: XOR<SipuberCreateWithoutDeviceInput, SipuberUncheckedCreateWithoutDeviceInput>
+  export type PpmDataSipuberCreateOrConnectWithoutDeviceInput = {
+    where: PpmDataSipuberWhereUniqueInput
+    create: XOR<PpmDataSipuberCreateWithoutDeviceInput, PpmDataSipuberUncheckedCreateWithoutDeviceInput>
   }
 
-  export type SipuberCreateManyDeviceInputEnvelope = {
-    data: SipuberCreateManyDeviceInput | SipuberCreateManyDeviceInput[]
+  export type PpmDataSipuberCreateManyDeviceInputEnvelope = {
+    data: PpmDataSipuberCreateManyDeviceInput | PpmDataSipuberCreateManyDeviceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DailyDataSipuberCreateWithoutDeviceInput = {
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+  }
+
+  export type DailyDataSipuberUncheckedCreateWithoutDeviceInput = {
+    id?: number
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
+  }
+
+  export type DailyDataSipuberCreateOrConnectWithoutDeviceInput = {
+    where: DailyDataSipuberWhereUniqueInput
+    create: XOR<DailyDataSipuberCreateWithoutDeviceInput, DailyDataSipuberUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type DailyDataSipuberCreateManyDeviceInputEnvelope = {
+    data: DailyDataSipuberCreateManyDeviceInput | DailyDataSipuberCreateManyDeviceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AnalDataSipuberCreateWithoutDeviceInput = {
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+  }
+
+  export type AnalDataSipuberUncheckedCreateWithoutDeviceInput = {
+    id?: number
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+  }
+
+  export type AnalDataSipuberCreateOrConnectWithoutDeviceInput = {
+    where: AnalDataSipuberWhereUniqueInput
+    create: XOR<AnalDataSipuberCreateWithoutDeviceInput, AnalDataSipuberUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type AnalDataSipuberCreateManyDeviceInputEnvelope = {
+    data: AnalDataSipuberCreateManyDeviceInput | AnalDataSipuberCreateManyDeviceInput[]
     skipDuplicates?: boolean
   }
 
@@ -10728,490 +12067,504 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDevicesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    no_telepon?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    full_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateWithoutDevicesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    no_telepon?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    full_name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type SipuberUpsertWithWhereUniqueWithoutDeviceInput = {
-    where: SipuberWhereUniqueInput
-    update: XOR<SipuberUpdateWithoutDeviceInput, SipuberUncheckedUpdateWithoutDeviceInput>
-    create: XOR<SipuberCreateWithoutDeviceInput, SipuberUncheckedCreateWithoutDeviceInput>
+  export type PpmDataSipuberUpsertWithWhereUniqueWithoutDeviceInput = {
+    where: PpmDataSipuberWhereUniqueInput
+    update: XOR<PpmDataSipuberUpdateWithoutDeviceInput, PpmDataSipuberUncheckedUpdateWithoutDeviceInput>
+    create: XOR<PpmDataSipuberCreateWithoutDeviceInput, PpmDataSipuberUncheckedCreateWithoutDeviceInput>
   }
 
-  export type SipuberUpdateWithWhereUniqueWithoutDeviceInput = {
-    where: SipuberWhereUniqueInput
-    data: XOR<SipuberUpdateWithoutDeviceInput, SipuberUncheckedUpdateWithoutDeviceInput>
+  export type PpmDataSipuberUpdateWithWhereUniqueWithoutDeviceInput = {
+    where: PpmDataSipuberWhereUniqueInput
+    data: XOR<PpmDataSipuberUpdateWithoutDeviceInput, PpmDataSipuberUncheckedUpdateWithoutDeviceInput>
   }
 
-  export type SipuberUpdateManyWithWhereWithoutDeviceInput = {
-    where: SipuberScalarWhereInput
-    data: XOR<SipuberUpdateManyMutationInput, SipuberUncheckedUpdateManyWithoutDeviceInput>
+  export type PpmDataSipuberUpdateManyWithWhereWithoutDeviceInput = {
+    where: PpmDataSipuberScalarWhereInput
+    data: XOR<PpmDataSipuberUpdateManyMutationInput, PpmDataSipuberUncheckedUpdateManyWithoutDeviceInput>
   }
 
-  export type SipuberScalarWhereInput = {
-    AND?: SipuberScalarWhereInput | SipuberScalarWhereInput[]
-    OR?: SipuberScalarWhereInput[]
-    NOT?: SipuberScalarWhereInput | SipuberScalarWhereInput[]
-    id?: IntFilter<"Sipuber"> | number
-    created_at?: DateTimeFilter<"Sipuber"> | Date | string
-    device_name?: StringFilter<"Sipuber"> | string
-    latitude?: FloatFilter<"Sipuber"> | number
-    longitude?: FloatFilter<"Sipuber"> | number
-    pm1?: FloatNullableFilter<"Sipuber"> | number | null
-    pm10?: FloatNullableFilter<"Sipuber"> | number | null
-    pm25?: FloatNullableFilter<"Sipuber"> | number | null
-    co?: FloatNullableFilter<"Sipuber"> | number | null
-    so2?: FloatNullableFilter<"Sipuber"> | number | null
-    no2?: FloatNullableFilter<"Sipuber"> | number | null
-    o3?: FloatNullableFilter<"Sipuber"> | number | null
-    nh3?: FloatNullableFilter<"Sipuber"> | number | null
-    vbat?: FloatNullableFilter<"Sipuber"> | number | null
-    device_id?: IntFilter<"Sipuber"> | number
+  export type PpmDataSipuberScalarWhereInput = {
+    AND?: PpmDataSipuberScalarWhereInput | PpmDataSipuberScalarWhereInput[]
+    OR?: PpmDataSipuberScalarWhereInput[]
+    NOT?: PpmDataSipuberScalarWhereInput | PpmDataSipuberScalarWhereInput[]
+    id?: IntFilter<"PpmDataSipuber"> | number
+    created_at?: DateTimeFilter<"PpmDataSipuber"> | Date | string
+    device_id?: IntFilter<"PpmDataSipuber"> | number
+    location?: StringFilter<"PpmDataSipuber"> | string
+    co?: FloatFilter<"PpmDataSipuber"> | number
+    so?: FloatFilter<"PpmDataSipuber"> | number
+    no2?: FloatFilter<"PpmDataSipuber"> | number
+    o3?: FloatFilter<"PpmDataSipuber"> | number
+    nh3?: FloatFilter<"PpmDataSipuber"> | number
+    pm1?: FloatFilter<"PpmDataSipuber"> | number
+    pm25?: FloatFilter<"PpmDataSipuber"> | number
+    pm10?: FloatFilter<"PpmDataSipuber"> | number
+    ispu_realtime?: IntFilter<"PpmDataSipuber"> | number
+    v_bat?: FloatFilter<"PpmDataSipuber"> | number
   }
 
-  export type DeviceCreateWithoutSipubersInput = {
-    created_at?: Date | string
-    updated_at?: Date | string
+  export type DailyDataSipuberUpsertWithWhereUniqueWithoutDeviceInput = {
+    where: DailyDataSipuberWhereUniqueInput
+    update: XOR<DailyDataSipuberUpdateWithoutDeviceInput, DailyDataSipuberUncheckedUpdateWithoutDeviceInput>
+    create: XOR<DailyDataSipuberCreateWithoutDeviceInput, DailyDataSipuberUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type DailyDataSipuberUpdateWithWhereUniqueWithoutDeviceInput = {
+    where: DailyDataSipuberWhereUniqueInput
+    data: XOR<DailyDataSipuberUpdateWithoutDeviceInput, DailyDataSipuberUncheckedUpdateWithoutDeviceInput>
+  }
+
+  export type DailyDataSipuberUpdateManyWithWhereWithoutDeviceInput = {
+    where: DailyDataSipuberScalarWhereInput
+    data: XOR<DailyDataSipuberUpdateManyMutationInput, DailyDataSipuberUncheckedUpdateManyWithoutDeviceInput>
+  }
+
+  export type DailyDataSipuberScalarWhereInput = {
+    AND?: DailyDataSipuberScalarWhereInput | DailyDataSipuberScalarWhereInput[]
+    OR?: DailyDataSipuberScalarWhereInput[]
+    NOT?: DailyDataSipuberScalarWhereInput | DailyDataSipuberScalarWhereInput[]
+    id?: IntFilter<"DailyDataSipuber"> | number
+    created_at?: DateTimeFilter<"DailyDataSipuber"> | Date | string
+    location?: StringFilter<"DailyDataSipuber"> | string
+    co?: FloatFilter<"DailyDataSipuber"> | number
+    so?: FloatFilter<"DailyDataSipuber"> | number
+    no2?: FloatFilter<"DailyDataSipuber"> | number
+    o3?: FloatFilter<"DailyDataSipuber"> | number
+    nh3?: FloatFilter<"DailyDataSipuber"> | number
+    pm1?: FloatFilter<"DailyDataSipuber"> | number
+    pm25?: FloatFilter<"DailyDataSipuber"> | number
+    pm10?: FloatFilter<"DailyDataSipuber"> | number
+    ispu_daily?: IntFilter<"DailyDataSipuber"> | number
+    device_id?: IntFilter<"DailyDataSipuber"> | number
+  }
+
+  export type AnalDataSipuberUpsertWithWhereUniqueWithoutDeviceInput = {
+    where: AnalDataSipuberWhereUniqueInput
+    update: XOR<AnalDataSipuberUpdateWithoutDeviceInput, AnalDataSipuberUncheckedUpdateWithoutDeviceInput>
+    create: XOR<AnalDataSipuberCreateWithoutDeviceInput, AnalDataSipuberUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type AnalDataSipuberUpdateWithWhereUniqueWithoutDeviceInput = {
+    where: AnalDataSipuberWhereUniqueInput
+    data: XOR<AnalDataSipuberUpdateWithoutDeviceInput, AnalDataSipuberUncheckedUpdateWithoutDeviceInput>
+  }
+
+  export type AnalDataSipuberUpdateManyWithWhereWithoutDeviceInput = {
+    where: AnalDataSipuberScalarWhereInput
+    data: XOR<AnalDataSipuberUpdateManyMutationInput, AnalDataSipuberUncheckedUpdateManyWithoutDeviceInput>
+  }
+
+  export type AnalDataSipuberScalarWhereInput = {
+    AND?: AnalDataSipuberScalarWhereInput | AnalDataSipuberScalarWhereInput[]
+    OR?: AnalDataSipuberScalarWhereInput[]
+    NOT?: AnalDataSipuberScalarWhereInput | AnalDataSipuberScalarWhereInput[]
+    id?: IntFilter<"AnalDataSipuber"> | number
+    created_at?: DateTimeFilter<"AnalDataSipuber"> | Date | string
+    device_id?: IntFilter<"AnalDataSipuber"> | number
+    location?: StringFilter<"AnalDataSipuber"> | string
+    co?: FloatFilter<"AnalDataSipuber"> | number
+    so?: FloatFilter<"AnalDataSipuber"> | number
+    no2?: FloatFilter<"AnalDataSipuber"> | number
+    o3?: FloatFilter<"AnalDataSipuber"> | number
+    nh3?: FloatFilter<"AnalDataSipuber"> | number
+    pm1?: FloatFilter<"AnalDataSipuber"> | number
+    pm25?: FloatFilter<"AnalDataSipuber"> | number
+    pm10?: FloatFilter<"AnalDataSipuber"> | number
+    v_bat?: FloatFilter<"AnalDataSipuber"> | number
+  }
+
+  export type DeviceCreateWithoutPpm_dataInput = {
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    user?: UserCreateNestedOneWithoutDevicesInput
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user: UserCreateNestedOneWithoutDevicesInput
+    daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
   }
 
-  export type DeviceUncheckedCreateWithoutSipubersInput = {
+  export type DeviceUncheckedCreateWithoutPpm_dataInput = {
     id?: number
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
-    user_id?: string | null
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user_id: number
+    daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
   }
 
-  export type DeviceCreateOrConnectWithoutSipubersInput = {
+  export type DeviceCreateOrConnectWithoutPpm_dataInput = {
     where: DeviceWhereUniqueInput
-    create: XOR<DeviceCreateWithoutSipubersInput, DeviceUncheckedCreateWithoutSipubersInput>
+    create: XOR<DeviceCreateWithoutPpm_dataInput, DeviceUncheckedCreateWithoutPpm_dataInput>
   }
 
-  export type SipuberOlahCreateWithoutSipuberInput = {
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    aqi: number
-  }
-
-  export type SipuberOlahUncheckedCreateWithoutSipuberInput = {
-    id?: number
-    created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    aqi: number
-  }
-
-  export type SipuberOlahCreateOrConnectWithoutSipuberInput = {
-    where: SipuberOlahWhereUniqueInput
-    create: XOR<SipuberOlahCreateWithoutSipuberInput, SipuberOlahUncheckedCreateWithoutSipuberInput>
-  }
-
-  export type SipuberOlahCreateManySipuberInputEnvelope = {
-    data: SipuberOlahCreateManySipuberInput | SipuberOlahCreateManySipuberInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type DeviceUpsertWithoutSipubersInput = {
-    update: XOR<DeviceUpdateWithoutSipubersInput, DeviceUncheckedUpdateWithoutSipubersInput>
-    create: XOR<DeviceCreateWithoutSipubersInput, DeviceUncheckedCreateWithoutSipubersInput>
+  export type DeviceUpsertWithoutPpm_dataInput = {
+    update: XOR<DeviceUpdateWithoutPpm_dataInput, DeviceUncheckedUpdateWithoutPpm_dataInput>
+    create: XOR<DeviceCreateWithoutPpm_dataInput, DeviceUncheckedCreateWithoutPpm_dataInput>
     where?: DeviceWhereInput
   }
 
-  export type DeviceUpdateToOneWithWhereWithoutSipubersInput = {
+  export type DeviceUpdateToOneWithWhereWithoutPpm_dataInput = {
     where?: DeviceWhereInput
-    data: XOR<DeviceUpdateWithoutSipubersInput, DeviceUncheckedUpdateWithoutSipubersInput>
+    data: XOR<DeviceUpdateWithoutPpm_dataInput, DeviceUncheckedUpdateWithoutPpm_dataInput>
   }
 
-  export type DeviceUpdateWithoutSipubersInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type DeviceUpdateWithoutPpm_dataInput = {
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    user?: UserUpdateOneWithoutDevicesNestedInput
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutDevicesNestedInput
+    daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
   }
 
-  export type DeviceUncheckedUpdateWithoutSipubersInput = {
+  export type DeviceUncheckedUpdateWithoutPpm_dataInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: IntFieldUpdateOperationsInput | number
+    daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
   }
 
-  export type SipuberOlahUpsertWithWhereUniqueWithoutSipuberInput = {
-    where: SipuberOlahWhereUniqueInput
-    update: XOR<SipuberOlahUpdateWithoutSipuberInput, SipuberOlahUncheckedUpdateWithoutSipuberInput>
-    create: XOR<SipuberOlahCreateWithoutSipuberInput, SipuberOlahUncheckedCreateWithoutSipuberInput>
-  }
-
-  export type SipuberOlahUpdateWithWhereUniqueWithoutSipuberInput = {
-    where: SipuberOlahWhereUniqueInput
-    data: XOR<SipuberOlahUpdateWithoutSipuberInput, SipuberOlahUncheckedUpdateWithoutSipuberInput>
-  }
-
-  export type SipuberOlahUpdateManyWithWhereWithoutSipuberInput = {
-    where: SipuberOlahScalarWhereInput
-    data: XOR<SipuberOlahUpdateManyMutationInput, SipuberOlahUncheckedUpdateManyWithoutSipuberInput>
-  }
-
-  export type SipuberOlahScalarWhereInput = {
-    AND?: SipuberOlahScalarWhereInput | SipuberOlahScalarWhereInput[]
-    OR?: SipuberOlahScalarWhereInput[]
-    NOT?: SipuberOlahScalarWhereInput | SipuberOlahScalarWhereInput[]
-    id?: IntFilter<"SipuberOlah"> | number
-    created_at?: DateTimeFilter<"SipuberOlah"> | Date | string
-    device_name?: StringFilter<"SipuberOlah"> | string
-    latitude?: FloatFilter<"SipuberOlah"> | number
-    longitude?: FloatFilter<"SipuberOlah"> | number
-    pm1?: FloatNullableFilter<"SipuberOlah"> | number | null
-    pm10?: FloatNullableFilter<"SipuberOlah"> | number | null
-    pm25?: FloatNullableFilter<"SipuberOlah"> | number | null
-    co?: FloatNullableFilter<"SipuberOlah"> | number | null
-    so2?: FloatNullableFilter<"SipuberOlah"> | number | null
-    no2?: FloatNullableFilter<"SipuberOlah"> | number | null
-    o3?: FloatNullableFilter<"SipuberOlah"> | number | null
-    nh3?: FloatNullableFilter<"SipuberOlah"> | number | null
-    vbat?: FloatNullableFilter<"SipuberOlah"> | number | null
-    aqi?: IntFilter<"SipuberOlah"> | number
-    sipuber_id?: IntFilter<"SipuberOlah"> | number
-  }
-
-  export type SipuberCreateWithoutSipuberOlahInput = {
-    created_at?: Date | string
+  export type DeviceCreateWithoutDaily_dataInput = {
     device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    device: DeviceCreateNestedOneWithoutSipubersInput
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user: UserCreateNestedOneWithoutDevicesInput
+    ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
   }
 
-  export type SipuberUncheckedCreateWithoutSipuberOlahInput = {
+  export type DeviceUncheckedCreateWithoutDaily_dataInput = {
     id?: number
-    created_at?: Date | string
     device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    device_id: number
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user_id: number
+    ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
   }
 
-  export type SipuberCreateOrConnectWithoutSipuberOlahInput = {
-    where: SipuberWhereUniqueInput
-    create: XOR<SipuberCreateWithoutSipuberOlahInput, SipuberUncheckedCreateWithoutSipuberOlahInput>
+  export type DeviceCreateOrConnectWithoutDaily_dataInput = {
+    where: DeviceWhereUniqueInput
+    create: XOR<DeviceCreateWithoutDaily_dataInput, DeviceUncheckedCreateWithoutDaily_dataInput>
   }
 
-  export type SipuberUpsertWithoutSipuberOlahInput = {
-    update: XOR<SipuberUpdateWithoutSipuberOlahInput, SipuberUncheckedUpdateWithoutSipuberOlahInput>
-    create: XOR<SipuberCreateWithoutSipuberOlahInput, SipuberUncheckedCreateWithoutSipuberOlahInput>
-    where?: SipuberWhereInput
+  export type DeviceUpsertWithoutDaily_dataInput = {
+    update: XOR<DeviceUpdateWithoutDaily_dataInput, DeviceUncheckedUpdateWithoutDaily_dataInput>
+    create: XOR<DeviceCreateWithoutDaily_dataInput, DeviceUncheckedCreateWithoutDaily_dataInput>
+    where?: DeviceWhereInput
   }
 
-  export type SipuberUpdateToOneWithWhereWithoutSipuberOlahInput = {
-    where?: SipuberWhereInput
-    data: XOR<SipuberUpdateWithoutSipuberOlahInput, SipuberUncheckedUpdateWithoutSipuberOlahInput>
+  export type DeviceUpdateToOneWithWhereWithoutDaily_dataInput = {
+    where?: DeviceWhereInput
+    data: XOR<DeviceUpdateWithoutDaily_dataInput, DeviceUncheckedUpdateWithoutDaily_dataInput>
   }
 
-  export type SipuberUpdateWithoutSipuberOlahInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type DeviceUpdateWithoutDaily_dataInput = {
     device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    device?: DeviceUpdateOneRequiredWithoutSipubersNestedInput
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutDevicesNestedInput
+    ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
   }
 
-  export type SipuberUncheckedUpdateWithoutSipuberOlahInput = {
+  export type DeviceUncheckedUpdateWithoutDaily_dataInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    device_id?: IntFieldUpdateOperationsInput | number
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: IntFieldUpdateOperationsInput | number
+    ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+  }
+
+  export type DeviceCreateWithoutAnal_dataInput = {
+    device_name: string
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user: UserCreateNestedOneWithoutDevicesInput
+    ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
+    daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
+  }
+
+  export type DeviceUncheckedCreateWithoutAnal_dataInput = {
+    id?: number
+    device_name: string
+    no_modem?: string | null
+    tanggal_paket?: string | null
+    user_id: number
+    ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+    daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
+  }
+
+  export type DeviceCreateOrConnectWithoutAnal_dataInput = {
+    where: DeviceWhereUniqueInput
+    create: XOR<DeviceCreateWithoutAnal_dataInput, DeviceUncheckedCreateWithoutAnal_dataInput>
+  }
+
+  export type DeviceUpsertWithoutAnal_dataInput = {
+    update: XOR<DeviceUpdateWithoutAnal_dataInput, DeviceUncheckedUpdateWithoutAnal_dataInput>
+    create: XOR<DeviceCreateWithoutAnal_dataInput, DeviceUncheckedCreateWithoutAnal_dataInput>
+    where?: DeviceWhereInput
+  }
+
+  export type DeviceUpdateToOneWithWhereWithoutAnal_dataInput = {
+    where?: DeviceWhereInput
+    data: XOR<DeviceUpdateWithoutAnal_dataInput, DeviceUncheckedUpdateWithoutAnal_dataInput>
+  }
+
+  export type DeviceUpdateWithoutAnal_dataInput = {
+    device_name?: StringFieldUpdateOperationsInput | string
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutDevicesNestedInput
+    ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
+    daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
+  }
+
+  export type DeviceUncheckedUpdateWithoutAnal_dataInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    device_name?: StringFieldUpdateOperationsInput | string
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: IntFieldUpdateOperationsInput | number
+    ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
   }
 
   export type DeviceCreateManyUserInput = {
     id?: number
-    created_at?: Date | string
-    updated_at?: Date | string
     device_name: string
-    nomor_modem?: string | null
-    tanggal_paket?: Date | string | null
-    email: string
-    latitude: number
-    longitude: number
+    no_modem?: string | null
+    tanggal_paket?: string | null
   }
 
   export type DeviceUpdateWithoutUserInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    sipubers?: SipuberUpdateManyWithoutDeviceNestedInput
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
+    daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
   }
 
   export type DeviceUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    sipubers?: SipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
+    anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
   }
 
   export type DeviceUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     device_name?: StringFieldUpdateOperationsInput | string
-    nomor_modem?: NullableStringFieldUpdateOperationsInput | string | null
-    tanggal_paket?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
+    no_modem?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SipuberCreateManyDeviceInput = {
+  export type PpmDataSipuberCreateManyDeviceInput = {
     id?: number
     created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_realtime: number
+    v_bat: number
   }
 
-  export type SipuberUpdateWithoutDeviceInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    sipuberOlah?: SipuberOlahUpdateManyWithoutSipuberNestedInput
-  }
-
-  export type SipuberUncheckedUpdateWithoutDeviceInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    sipuberOlah?: SipuberOlahUncheckedUpdateManyWithoutSipuberNestedInput
-  }
-
-  export type SipuberUncheckedUpdateManyWithoutDeviceInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-  }
-
-  export type SipuberOlahCreateManySipuberInput = {
+  export type DailyDataSipuberCreateManyDeviceInput = {
     id?: number
     created_at?: Date | string
-    device_name: string
-    latitude: number
-    longitude: number
-    pm1?: number | null
-    pm10?: number | null
-    pm25?: number | null
-    co?: number | null
-    so2?: number | null
-    no2?: number | null
-    o3?: number | null
-    nh3?: number | null
-    vbat?: number | null
-    aqi: number
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    ispu_daily: number
   }
 
-  export type SipuberOlahUpdateWithoutSipuberInput = {
+  export type AnalDataSipuberCreateManyDeviceInput = {
+    id?: number
+    created_at?: Date | string
+    location: string
+    co: number
+    so: number
+    no2: number
+    o3: number
+    nh3: number
+    pm1: number
+    pm25: number
+    pm10: number
+    v_bat: number
+  }
+
+  export type PpmDataSipuberUpdateWithoutDeviceInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type SipuberOlahUncheckedUpdateWithoutSipuberInput = {
+  export type PpmDataSipuberUncheckedUpdateWithoutDeviceInput = {
     id?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type SipuberOlahUncheckedUpdateManyWithoutSipuberInput = {
+  export type PpmDataSipuberUncheckedUpdateManyWithoutDeviceInput = {
     id?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    device_name?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    pm1?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm10?: NullableFloatFieldUpdateOperationsInput | number | null
-    pm25?: NullableFloatFieldUpdateOperationsInput | number | null
-    co?: NullableFloatFieldUpdateOperationsInput | number | null
-    so2?: NullableFloatFieldUpdateOperationsInput | number | null
-    no2?: NullableFloatFieldUpdateOperationsInput | number | null
-    o3?: NullableFloatFieldUpdateOperationsInput | number | null
-    nh3?: NullableFloatFieldUpdateOperationsInput | number | null
-    vbat?: NullableFloatFieldUpdateOperationsInput | number | null
-    aqi?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type DailyDataSipuberUpdateWithoutDeviceInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DailyDataSipuberUncheckedUpdateWithoutDeviceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DailyDataSipuberUncheckedUpdateManyWithoutDeviceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    ispu_daily?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AnalDataSipuberUpdateWithoutDeviceInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AnalDataSipuberUncheckedUpdateWithoutDeviceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AnalDataSipuberUncheckedUpdateManyWithoutDeviceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    co?: FloatFieldUpdateOperationsInput | number
+    so?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm1?: FloatFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
 
