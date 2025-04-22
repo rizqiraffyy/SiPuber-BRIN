@@ -3967,7 +3967,7 @@ export namespace Prisma {
 
   export type CmsSettingGroupByOutputType = {
     id: number
-    thumbnail: string
+    thumbnail: string | null
     section: string
     content: string
     _count: CmsSettingCountAggregateOutputType | null
@@ -4026,7 +4026,7 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      thumbnail: string
+      thumbnail: string | null
       section: string
       content: string
     }, ExtArgs["result"]["cmsSetting"]>
@@ -9912,14 +9912,14 @@ export namespace Prisma {
     OR?: CmsSettingWhereInput[]
     NOT?: CmsSettingWhereInput | CmsSettingWhereInput[]
     id?: IntFilter<"CmsSetting"> | number
-    thumbnail?: StringFilter<"CmsSetting"> | string
+    thumbnail?: StringNullableFilter<"CmsSetting"> | string | null
     section?: StringFilter<"CmsSetting"> | string
     content?: StringFilter<"CmsSetting"> | string
   }
 
   export type CmsSettingOrderByWithRelationInput = {
     id?: SortOrder
-    thumbnail?: SortOrder
+    thumbnail?: SortOrderInput | SortOrder
     section?: SortOrder
     content?: SortOrder
   }
@@ -9929,14 +9929,14 @@ export namespace Prisma {
     AND?: CmsSettingWhereInput | CmsSettingWhereInput[]
     OR?: CmsSettingWhereInput[]
     NOT?: CmsSettingWhereInput | CmsSettingWhereInput[]
-    thumbnail?: StringFilter<"CmsSetting"> | string
+    thumbnail?: StringNullableFilter<"CmsSetting"> | string | null
     section?: StringFilter<"CmsSetting"> | string
     content?: StringFilter<"CmsSetting"> | string
   }, "id">
 
   export type CmsSettingOrderByWithAggregationInput = {
     id?: SortOrder
-    thumbnail?: SortOrder
+    thumbnail?: SortOrderInput | SortOrder
     section?: SortOrder
     content?: SortOrder
     _count?: CmsSettingCountOrderByAggregateInput
@@ -9951,7 +9951,7 @@ export namespace Prisma {
     OR?: CmsSettingScalarWhereWithAggregatesInput[]
     NOT?: CmsSettingScalarWhereWithAggregatesInput | CmsSettingScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"CmsSetting"> | number
-    thumbnail?: StringWithAggregatesFilter<"CmsSetting"> | string
+    thumbnail?: StringNullableWithAggregatesFilter<"CmsSetting"> | string | null
     section?: StringWithAggregatesFilter<"CmsSetting"> | string
     content?: StringWithAggregatesFilter<"CmsSetting"> | string
   }
@@ -10437,47 +10437,47 @@ export namespace Prisma {
   }
 
   export type CmsSettingCreateInput = {
-    thumbnail: string
+    thumbnail?: string | null
     section: string
     content: string
   }
 
   export type CmsSettingUncheckedCreateInput = {
     id?: number
-    thumbnail: string
+    thumbnail?: string | null
     section: string
     content: string
   }
 
   export type CmsSettingUpdateInput = {
-    thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     section?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CmsSettingUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     section?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CmsSettingCreateManyInput = {
     id?: number
-    thumbnail: string
+    thumbnail?: string | null
     section: string
     content: string
   }
 
   export type CmsSettingUpdateManyMutationInput = {
-    thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     section?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CmsSettingUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    thumbnail?: StringFieldUpdateOperationsInput | string
+    thumbnail?: NullableStringFieldUpdateOperationsInput | string | null
     section?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
   }

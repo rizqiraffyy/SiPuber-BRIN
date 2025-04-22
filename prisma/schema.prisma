@@ -39,7 +39,7 @@ model Device {
 
 model CmsSetting {
   id         Int    @id @default(autoincrement())
-  thumbnail  String
+  thumbnail  String?
   section    String
   content    String
 }
