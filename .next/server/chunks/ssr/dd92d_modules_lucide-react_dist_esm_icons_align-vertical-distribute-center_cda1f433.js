@@ -1,0 +1,78 @@
+module.exports = {
+
+"[project]/node_modules/lucide-react/dist/esm/icons/align-vertical-distribute-center.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+/**
+ * @license lucide-react v0.488.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ __turbopack_context__.s({
+    "__iconNode": (()=>__iconNode),
+    "default": (()=>AlignVerticalDistributeCenter)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+;
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M22 17h-3",
+            key: "1lwga1"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M22 7h-5",
+            key: "o2endc"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M5 17H2",
+            key: "1gx9xc"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M7 7H2",
+            key: "6bq26l"
+        }
+    ],
+    [
+        "rect",
+        {
+            x: "5",
+            y: "14",
+            width: "14",
+            height: "6",
+            rx: "2",
+            key: "1qrzuf"
+        }
+    ],
+    [
+        "rect",
+        {
+            x: "7",
+            y: "4",
+            width: "10",
+            height: "6",
+            rx: "2",
+            key: "we8e9z"
+        }
+    ]
+];
+const AlignVerticalDistributeCenter = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])("align-vertical-distribute-center", __iconNode);
+;
+ //# sourceMappingURL=align-vertical-distribute-center.js.map
+}}),
+
+};
+
+//# sourceMappingURL=dd92d_modules_lucide-react_dist_esm_icons_align-vertical-distribute-center_cda1f433.js.map
