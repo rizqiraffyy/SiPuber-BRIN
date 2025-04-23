@@ -132,6 +132,7 @@ exports.Prisma.DeviceScalarFieldEnum = {
   device_name: 'device_name',
   no_modem: 'no_modem',
   tanggal_paket: 'tanggal_paket',
+  isSoftDelete: 'isSoftDelete',
   user_id: 'user_id'
 };
 

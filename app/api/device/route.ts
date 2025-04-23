@@ -4,7 +4,7 @@ import prisma from "../../../lib/prisma";
 
 export async function GET() {
   try {
-    const devices = await prisma.device.findMany();
+    const devices = await prisma.device.findMany({where: { isSoftDelete: false }});
 
     if (!devices || devices.length === 0) {
       return NextResponse.json({
@@ -28,7 +28,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = await request.json();   
 
     if (!body.device_name || !body.no_modem || !body.tanggal_paket || !body.user_id) {
       return NextResponse.json({

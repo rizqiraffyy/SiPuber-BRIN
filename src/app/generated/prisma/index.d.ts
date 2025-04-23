@@ -2651,6 +2651,7 @@ export namespace Prisma {
     device_name: string | null
     no_modem: string | null
     tanggal_paket: string | null
+    isSoftDelete: boolean | null
     user_id: number | null
   }
 
@@ -2659,6 +2660,7 @@ export namespace Prisma {
     device_name: string | null
     no_modem: string | null
     tanggal_paket: string | null
+    isSoftDelete: boolean | null
     user_id: number | null
   }
 
@@ -2667,6 +2669,7 @@ export namespace Prisma {
     device_name: number
     no_modem: number
     tanggal_paket: number
+    isSoftDelete: number
     user_id: number
     _all: number
   }
@@ -2687,6 +2690,7 @@ export namespace Prisma {
     device_name?: true
     no_modem?: true
     tanggal_paket?: true
+    isSoftDelete?: true
     user_id?: true
   }
 
@@ -2695,6 +2699,7 @@ export namespace Prisma {
     device_name?: true
     no_modem?: true
     tanggal_paket?: true
+    isSoftDelete?: true
     user_id?: true
   }
 
@@ -2703,6 +2708,7 @@ export namespace Prisma {
     device_name?: true
     no_modem?: true
     tanggal_paket?: true
+    isSoftDelete?: true
     user_id?: true
     _all?: true
   }
@@ -2798,6 +2804,7 @@ export namespace Prisma {
     device_name: string
     no_modem: string | null
     tanggal_paket: string | null
+    isSoftDelete: boolean
     user_id: number
     _count: DeviceCountAggregateOutputType | null
     _avg: DeviceAvgAggregateOutputType | null
@@ -2825,6 +2832,7 @@ export namespace Prisma {
     device_name?: boolean
     no_modem?: boolean
     tanggal_paket?: boolean
+    isSoftDelete?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     ppm_data?: boolean | Device$ppm_dataArgs<ExtArgs>
@@ -2838,6 +2846,7 @@ export namespace Prisma {
     device_name?: boolean
     no_modem?: boolean
     tanggal_paket?: boolean
+    isSoftDelete?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["device"]>
@@ -2847,6 +2856,7 @@ export namespace Prisma {
     device_name?: boolean
     no_modem?: boolean
     tanggal_paket?: boolean
+    isSoftDelete?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["device"]>
@@ -2856,10 +2866,11 @@ export namespace Prisma {
     device_name?: boolean
     no_modem?: boolean
     tanggal_paket?: boolean
+    isSoftDelete?: boolean
     user_id?: boolean
   }
 
-  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "device_name" | "no_modem" | "tanggal_paket" | "user_id", ExtArgs["result"]["device"]>
+  export type DeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "device_name" | "no_modem" | "tanggal_paket" | "isSoftDelete" | "user_id", ExtArgs["result"]["device"]>
   export type DeviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     ppm_data?: boolean | Device$ppm_dataArgs<ExtArgs>
@@ -2887,6 +2898,7 @@ export namespace Prisma {
       device_name: string
       no_modem: string | null
       tanggal_paket: string | null
+      isSoftDelete: boolean
       user_id: number
     }, ExtArgs["result"]["device"]>
     composites: {}
@@ -3319,6 +3331,7 @@ export namespace Prisma {
     readonly device_name: FieldRef<"Device", 'String'>
     readonly no_modem: FieldRef<"Device", 'String'>
     readonly tanggal_paket: FieldRef<"Device", 'String'>
+    readonly isSoftDelete: FieldRef<"Device", 'Boolean'>
     readonly user_id: FieldRef<"Device", 'Int'>
   }
     
@@ -9595,6 +9608,7 @@ export namespace Prisma {
     device_name: 'device_name',
     no_modem: 'no_modem',
     tanggal_paket: 'tanggal_paket',
+    isSoftDelete: 'isSoftDelete',
     user_id: 'user_id'
   };
 
@@ -9849,6 +9863,7 @@ export namespace Prisma {
     device_name?: StringFilter<"Device"> | string
     no_modem?: StringNullableFilter<"Device"> | string | null
     tanggal_paket?: StringNullableFilter<"Device"> | string | null
+    isSoftDelete?: BoolFilter<"Device"> | boolean
     user_id?: IntFilter<"Device"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     ppm_data?: PpmDataSipuberListRelationFilter
@@ -9861,6 +9876,7 @@ export namespace Prisma {
     device_name?: SortOrder
     no_modem?: SortOrderInput | SortOrder
     tanggal_paket?: SortOrderInput | SortOrder
+    isSoftDelete?: SortOrder
     user_id?: SortOrder
     user?: UserOrderByWithRelationInput
     ppm_data?: PpmDataSipuberOrderByRelationAggregateInput
@@ -9876,6 +9892,7 @@ export namespace Prisma {
     device_name?: StringFilter<"Device"> | string
     no_modem?: StringNullableFilter<"Device"> | string | null
     tanggal_paket?: StringNullableFilter<"Device"> | string | null
+    isSoftDelete?: BoolFilter<"Device"> | boolean
     user_id?: IntFilter<"Device"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     ppm_data?: PpmDataSipuberListRelationFilter
@@ -9888,6 +9905,7 @@ export namespace Prisma {
     device_name?: SortOrder
     no_modem?: SortOrderInput | SortOrder
     tanggal_paket?: SortOrderInput | SortOrder
+    isSoftDelete?: SortOrder
     user_id?: SortOrder
     _count?: DeviceCountOrderByAggregateInput
     _avg?: DeviceAvgOrderByAggregateInput
@@ -9904,6 +9922,7 @@ export namespace Prisma {
     device_name?: StringWithAggregatesFilter<"Device"> | string
     no_modem?: StringNullableWithAggregatesFilter<"Device"> | string | null
     tanggal_paket?: StringNullableWithAggregatesFilter<"Device"> | string | null
+    isSoftDelete?: BoolWithAggregatesFilter<"Device"> | boolean
     user_id?: IntWithAggregatesFilter<"Device"> | number
   }
 
@@ -10376,6 +10395,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user: UserCreateNestedOneWithoutDevicesInput
     ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
     daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
@@ -10387,6 +10407,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user_id: number
     ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
     daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
@@ -10397,6 +10418,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutDevicesNestedInput
     ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
     daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
@@ -10408,6 +10430,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user_id?: IntFieldUpdateOperationsInput | number
     ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
     daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
@@ -10419,6 +10442,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user_id: number
   }
 
@@ -10426,6 +10450,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DeviceUncheckedUpdateManyInput = {
@@ -10433,6 +10458,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -11040,6 +11066,7 @@ export namespace Prisma {
     device_name?: SortOrder
     no_modem?: SortOrder
     tanggal_paket?: SortOrder
+    isSoftDelete?: SortOrder
     user_id?: SortOrder
   }
 
@@ -11053,6 +11080,7 @@ export namespace Prisma {
     device_name?: SortOrder
     no_modem?: SortOrder
     tanggal_paket?: SortOrder
+    isSoftDelete?: SortOrder
     user_id?: SortOrder
   }
 
@@ -11061,6 +11089,7 @@ export namespace Prisma {
     device_name?: SortOrder
     no_modem?: SortOrder
     tanggal_paket?: SortOrder
+    isSoftDelete?: SortOrder
     user_id?: SortOrder
   }
 
@@ -11860,6 +11889,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
     daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
     anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
@@ -11870,6 +11900,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
     daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
     anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
@@ -11909,6 +11940,7 @@ export namespace Prisma {
     device_name?: StringFilter<"Device"> | string
     no_modem?: StringNullableFilter<"Device"> | string | null
     tanggal_paket?: StringNullableFilter<"Device"> | string | null
+    isSoftDelete?: BoolFilter<"Device"> | boolean
     user_id?: IntFilter<"Device"> | number
   }
 
@@ -12195,6 +12227,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user: UserCreateNestedOneWithoutDevicesInput
     daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
     anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
@@ -12205,6 +12238,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user_id: number
     daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
     anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
@@ -12230,6 +12264,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutDevicesNestedInput
     daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
     anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
@@ -12240,6 +12275,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user_id?: IntFieldUpdateOperationsInput | number
     daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
     anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
@@ -12249,6 +12285,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user: UserCreateNestedOneWithoutDevicesInput
     ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
     anal_data?: AnalDataSipuberCreateNestedManyWithoutDeviceInput
@@ -12259,6 +12296,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user_id: number
     ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
     anal_data?: AnalDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
@@ -12284,6 +12322,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutDevicesNestedInput
     ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
     anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
@@ -12294,6 +12333,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user_id?: IntFieldUpdateOperationsInput | number
     ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
     anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
@@ -12303,6 +12343,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user: UserCreateNestedOneWithoutDevicesInput
     ppm_data?: PpmDataSipuberCreateNestedManyWithoutDeviceInput
     daily_data?: DailyDataSipuberCreateNestedManyWithoutDeviceInput
@@ -12313,6 +12354,7 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
     user_id: number
     ppm_data?: PpmDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
     daily_data?: DailyDataSipuberUncheckedCreateNestedManyWithoutDeviceInput
@@ -12338,6 +12380,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutDevicesNestedInput
     ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
     daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
@@ -12348,6 +12391,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     user_id?: IntFieldUpdateOperationsInput | number
     ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
     daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
@@ -12358,12 +12402,14 @@ export namespace Prisma {
     device_name: string
     no_modem?: string | null
     tanggal_paket?: string | null
+    isSoftDelete?: boolean
   }
 
   export type DeviceUpdateWithoutUserInput = {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     ppm_data?: PpmDataSipuberUpdateManyWithoutDeviceNestedInput
     daily_data?: DailyDataSipuberUpdateManyWithoutDeviceNestedInput
     anal_data?: AnalDataSipuberUpdateManyWithoutDeviceNestedInput
@@ -12374,6 +12420,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
     ppm_data?: PpmDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
     daily_data?: DailyDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
     anal_data?: AnalDataSipuberUncheckedUpdateManyWithoutDeviceNestedInput
@@ -12384,6 +12431,7 @@ export namespace Prisma {
     device_name?: StringFieldUpdateOperationsInput | string
     no_modem?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_paket?: NullableStringFieldUpdateOperationsInput | string | null
+    isSoftDelete?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PpmDataSipuberCreateManyDeviceInput = {

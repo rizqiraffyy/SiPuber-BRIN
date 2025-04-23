@@ -16,12 +16,18 @@ const EmailSchema = z
   .email("Invalid email address")
   .min(4, "Email must be at least 4 characters")
   .max(100, "Email must be less than 100 characters");
-const PasswordSchema = z
-  .string()
-  .min(6, "Password must be at least 6 characters")
-  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-  .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-  .regex(/[0-9]/, "Password must contain at least one number");
+const PasswordSchema = z.object({
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number"),
+  confirmPassword: z.string()
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords must match",
+  path: ["confirmPassword"]
+});
 const RoleSchema = z.enum(["USER", "STAKEHOLDER", "ADMIN"], {
   errorMap: () => ({ message: "Role must be one of: USER, STAKEHOLDER, ADMIN" }),
 });
@@ -58,7 +64,10 @@ export const siPuberSchema = z.object({
   // ispu_realtime: z.number(),
   v_bat: z.number()
 });
-// 
+// {"username":"testuser",
+// "full_name":"Test User",
+// "email":"test@example.com",
+// "password":{"password":"Test123","confirmPassword":"Test123"}}
 export const registerSchema = z.object({
   username: UsernameSchema,
   full_name: FullNameSchema,
@@ -68,7 +77,12 @@ export const registerSchema = z.object({
 });
 export const loginSchema = z.object({
   email: EmailSchema,
-  password: PasswordSchema,
+  password: z
+  .string()
+  .min(6, "Password must be at least 6 characters")
+  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+  .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+  .regex(/[0-9]/, "Password must contain at least one number"),
 });
 // api/user
 export const roleSchema = z.object({

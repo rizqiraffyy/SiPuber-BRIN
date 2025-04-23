@@ -30,6 +30,7 @@ model Device {
   device_name  String @db.VarChar(50)
   no_modem     String? @db.VarChar(50)
   tanggal_paket String?
+  isSoftDelete Boolean  @default(false)
   user_id      Int
   user         User     @relation(fields: [user_id], references: [id])
   ppm_data     PpmDataSipuber[]
