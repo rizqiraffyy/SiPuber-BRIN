@@ -22,13 +22,13 @@ export default function Navbar() {
                 data-state={menuState && 'active'}
                 className="fixed z-20 w-full border-b border-[#F3F4F6] bg-white backdrop-blur">
                 <div className="m-auto max-w-5xl px-6 relative">
-                    <div className="flex items-center justify-between py-3 lg:py-4 relative">
+                    <div className="flex items-center justify-between py-2 lg:py-3 relative">
                         <div className="flex items-center">
                             <Link
                                 href="/"
                                 aria-label="home"
                                 className="flex items-center space-x-2">
-                                <Image className="w-32" src={Logo} alt="Logo" />
+                                <Image className="w-28" src={Logo} alt="Logo" />
                             </Link>
                             <button
                                 onClick={() => setMenuState(!menuState)}
@@ -54,19 +54,10 @@ export default function Navbar() {
                         <div className="hidden lg:flex space-x-3">
                             <Button
                                 asChild
-                                variant="outline"
-                                size="sm"
-                                className="border-[#C81D25] text-[#C81D25] hover:bg-[#C81D25] hover:text-white">
-                                <Link href="/login">
-                                    <span>Masuk</span>
-                                </Link>
-                            </Button>
-                            <Button
-                                asChild
                                 size="sm"
                                 className="bg-[#C81D25] hover:bg-[#a8141c] text-white">
-                                <Link href="/register">
-                                    <span>Daftar</span>
+                                <Link href="/login">
+                                    <span>Login</span>
                                 </Link>
                             </Button>
                         </div>

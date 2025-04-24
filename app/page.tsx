@@ -1,5 +1,4 @@
 import AboutSection from "@/components/about"
-import FAQSection from "@/components/faq"
 import MainSection from "@/components/main-section"
 import Navbar from "@/components/navbar"
 import ServiceSection from "@/components/services"
@@ -12,7 +11,6 @@ export default function Page() {
       <MainSection />
       <AboutSection />
       <ServiceSection />
-      <FAQSection />
       <FooterSection />
     </div>
   )
