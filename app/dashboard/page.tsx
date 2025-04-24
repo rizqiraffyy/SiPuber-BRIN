@@ -15,7 +15,7 @@ export default function Page() {
       <SidebarProvider className="flex flex-col">
         <SiteHeader />
         <div className="flex flex-1">
-          <AppSidebar />
+          {/* <AppSidebar /> */}
           <SidebarInset>
             <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
               <MapLeaflet />
