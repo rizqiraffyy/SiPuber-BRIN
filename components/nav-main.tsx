@@ -35,12 +35,11 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible key={item.title} asChild defaultOpen={item.isActive}>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={item.title}>
+              <SidebarMenuButton className="justify-start text-left" asChild tooltip={item.title}>
                 <a href={item.url}>
                   {/* <item.icon /> */}
                   <span>{item.title}</span>
