@@ -32,21 +32,33 @@ const RoleSchema = z.enum(["USER", "STAKEHOLDER", "ADMIN"], {
   errorMap: () => ({ message: "Role must be one of: USER, STAKEHOLDER, ADMIN" }),
 });
 
-const UnsurValues = ["co", "so2", "no2", "o3", "nh3", "pm1", "pm25", "pm10", "ispu_daily"] as const;
-const RowSchema = z
-.string()
-.transform((val) => parseInt(val, 10))
-.refine((val) => !isNaN(val) && val > 0, {
-  message: "Row parameter must be a positive integer",
-})
+const generateToken = () => {
+  const today = new Date();
+  const day = today.getDate().toString().padStart(2, '0');
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const year = today.getFullYear().toString();
+  const tokenSuffix = process.env.TOKEN_SUFFIX;
+  return `${day}${month}${year}${tokenSuffix}`;
+};
+
+const UnsurValues = ["co", "so2", "no2", "o3", "nh3", "pm1", "pm25", "pm10"] as const;
 const unsurSchema = z.enum(UnsurValues, {
   errorMap: () => ({ message: "Invalid column name provided for unsur" }),
 })
 
 // api/parameter
 export const paramsSchema = z.object({
+  location: z
+  .string()
+  .min(1, "Location is required")
+  .regex(
+    /^SRID=4326;POINT\([-]?\d+(\.\d+)?\s[-]?\d+(\.\d+)?\)$/,
+    "Location must be in valid WKT format, e.g., SRID=4326;POINT(107.6691 -6.9175)"
+  ),
   unsur: unsurSchema,
-  row: RowSchema
+  time: z.enum(["one-day", "one-week", "one-month"], {
+    errorMap: () => ({ message: "Time must be one-day, one-week, or one-month" }),
+  }),
 });
 // api/data-sipuber
 export const siPuberSchema = z.object({
@@ -61,8 +73,10 @@ export const siPuberSchema = z.object({
   no2: z.number(),
   o3: z.number(),
   nh3: z.number(),
-  // ispu_realtime: z.number(),
-  v_bat: z.number()
+  v_bat: z.number(),
+  token: z.string().refine((val) => val === generateToken(), {
+    message: `Invalid token.`,
+  }),
 });
 // {"username":"testuser",
 // "full_name":"Test User",

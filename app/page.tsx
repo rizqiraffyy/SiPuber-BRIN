@@ -15,7 +15,7 @@ interface IoTData {
   pm1: number;
   pm25: number;
   pm10: number;
-  // ispu_realtime: number;
+  ispu_realtime: number;
   v_bat: number;
   timestamp?: string; 
 }
@@ -97,7 +97,7 @@ export default function Home() {
       <p><strong>NO₂:</strong> {iotData.no2}</p>
       <p><strong>O₃:</strong> {iotData.o3}</p>
       <p><strong>NH₃:</strong> {iotData.nh3}</p>
-      {/* <p><strong>ISPU (Realtime):</strong> {iotData.ispu_realtime}</p> */}
+      <p><strong>ISPU (Realtime):</strong> {iotData.ispu_realtime}</p>
       <p><strong>Battery Voltage:</strong> {iotData.v_bat} V</p>
       {iotData.timestamp && (
         <p><strong>Timestamp:</strong> {iotData.timestamp}</p>

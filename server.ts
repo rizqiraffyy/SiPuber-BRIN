@@ -16,10 +16,10 @@ app.prepare().then(() => {
   const io = new SocketIOServer(httpServer); // renamed for clarity
 
   io.on('connection', (socket) => {
-    console.log('Client connected '+socket.id);
+    console.log('Client server connected '+socket.id);
 
     socket.on('iot-update', (data) => {
-      console.log('Received from API ::', data);
+      console.log('Data thru server ::', data);
       io.emit('iot-update', data);
     });
   });

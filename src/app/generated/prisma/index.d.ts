@@ -4890,6 +4890,7 @@ export namespace Prisma {
     pm1: number | null
     pm25: number | null
     pm10: number | null
+    high_params: string | null
     ispu_realtime: number | null
     v_bat: number | null
   }
@@ -4907,6 +4908,7 @@ export namespace Prisma {
     pm1: number | null
     pm25: number | null
     pm10: number | null
+    high_params: string | null
     ispu_realtime: number | null
     v_bat: number | null
   }
@@ -4924,6 +4926,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: number
     ispu_realtime: number
     v_bat: number
     _all: number
@@ -4973,6 +4976,7 @@ export namespace Prisma {
     pm1?: true
     pm25?: true
     pm10?: true
+    high_params?: true
     ispu_realtime?: true
     v_bat?: true
   }
@@ -4990,6 +4994,7 @@ export namespace Prisma {
     pm1?: true
     pm25?: true
     pm10?: true
+    high_params?: true
     ispu_realtime?: true
     v_bat?: true
   }
@@ -5007,6 +5012,7 @@ export namespace Prisma {
     pm1?: true
     pm25?: true
     pm10?: true
+    high_params?: true
     ispu_realtime?: true
     v_bat?: true
     _all?: true
@@ -5111,6 +5117,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
     _count: PpmDataSipuberCountAggregateOutputType | null
@@ -5147,6 +5154,7 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_realtime?: boolean
     v_bat?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
@@ -5165,6 +5173,7 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_realtime?: boolean
     v_bat?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
@@ -5183,6 +5192,7 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_realtime?: boolean
     v_bat?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
@@ -5201,11 +5211,12 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_realtime?: boolean
     v_bat?: boolean
   }
 
-  export type PpmDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_realtime" | "v_bat", ExtArgs["result"]["ppmDataSipuber"]>
+  export type PpmDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "device_id" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "high_params" | "ispu_realtime" | "v_bat", ExtArgs["result"]["ppmDataSipuber"]>
   export type PpmDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
@@ -5234,6 +5245,7 @@ export namespace Prisma {
       pm1: number
       pm25: number
       pm10: number
+      high_params: string
       ispu_realtime: number
       v_bat: number
     }, ExtArgs["result"]["ppmDataSipuber"]>
@@ -5672,7 +5684,8 @@ export namespace Prisma {
     readonly pm1: FieldRef<"PpmDataSipuber", 'Float'>
     readonly pm25: FieldRef<"PpmDataSipuber", 'Float'>
     readonly pm10: FieldRef<"PpmDataSipuber", 'Float'>
-    readonly ispu_realtime: FieldRef<"PpmDataSipuber", 'Int'>
+    readonly high_params: FieldRef<"PpmDataSipuber", 'String'>
+    readonly ispu_realtime: FieldRef<"PpmDataSipuber", 'Float'>
     readonly v_bat: FieldRef<"PpmDataSipuber", 'Float'>
   }
     
@@ -6140,6 +6153,7 @@ export namespace Prisma {
     pm1: number | null
     pm25: number | null
     pm10: number | null
+    high_params: string | null
     ispu_daily: number | null
     device_id: number | null
   }
@@ -6156,6 +6170,7 @@ export namespace Prisma {
     pm1: number | null
     pm25: number | null
     pm10: number | null
+    high_params: string | null
     ispu_daily: number | null
     device_id: number | null
   }
@@ -6172,6 +6187,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: number
     ispu_daily: number
     device_id: number
     _all: number
@@ -6218,6 +6234,7 @@ export namespace Prisma {
     pm1?: true
     pm25?: true
     pm10?: true
+    high_params?: true
     ispu_daily?: true
     device_id?: true
   }
@@ -6234,6 +6251,7 @@ export namespace Prisma {
     pm1?: true
     pm25?: true
     pm10?: true
+    high_params?: true
     ispu_daily?: true
     device_id?: true
   }
@@ -6250,6 +6268,7 @@ export namespace Prisma {
     pm1?: true
     pm25?: true
     pm10?: true
+    high_params?: true
     ispu_daily?: true
     device_id?: true
     _all?: true
@@ -6353,6 +6372,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
     device_id: number
     _count: DailyDataSipuberCountAggregateOutputType | null
@@ -6388,6 +6408,7 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_daily?: boolean
     device_id?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
@@ -6405,6 +6426,7 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_daily?: boolean
     device_id?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
@@ -6422,6 +6444,7 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_daily?: boolean
     device_id?: boolean
     device?: boolean | DeviceDefaultArgs<ExtArgs>
@@ -6439,11 +6462,12 @@ export namespace Prisma {
     pm1?: boolean
     pm25?: boolean
     pm10?: boolean
+    high_params?: boolean
     ispu_daily?: boolean
     device_id?: boolean
   }
 
-  export type DailyDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "ispu_daily" | "device_id", ExtArgs["result"]["dailyDataSipuber"]>
+  export type DailyDataSipuberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "location" | "co" | "so2" | "no2" | "o3" | "nh3" | "pm1" | "pm25" | "pm10" | "high_params" | "ispu_daily" | "device_id", ExtArgs["result"]["dailyDataSipuber"]>
   export type DailyDataSipuberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     device?: boolean | DeviceDefaultArgs<ExtArgs>
   }
@@ -6471,6 +6495,7 @@ export namespace Prisma {
       pm1: number
       pm25: number
       pm10: number
+      high_params: string
       ispu_daily: number
       device_id: number
     }, ExtArgs["result"]["dailyDataSipuber"]>
@@ -6908,7 +6933,8 @@ export namespace Prisma {
     readonly pm1: FieldRef<"DailyDataSipuber", 'Float'>
     readonly pm25: FieldRef<"DailyDataSipuber", 'Float'>
     readonly pm10: FieldRef<"DailyDataSipuber", 'Float'>
-    readonly ispu_daily: FieldRef<"DailyDataSipuber", 'Int'>
+    readonly high_params: FieldRef<"DailyDataSipuber", 'String'>
+    readonly ispu_daily: FieldRef<"DailyDataSipuber", 'Float'>
     readonly device_id: FieldRef<"DailyDataSipuber", 'Int'>
   }
     
@@ -9638,6 +9664,7 @@ export namespace Prisma {
     pm1: 'pm1',
     pm25: 'pm25',
     pm10: 'pm10',
+    high_params: 'high_params',
     ispu_realtime: 'ispu_realtime',
     v_bat: 'v_bat'
   };
@@ -9657,6 +9684,7 @@ export namespace Prisma {
     pm1: 'pm1',
     pm25: 'pm25',
     pm10: 'pm10',
+    high_params: 'high_params',
     ispu_daily: 'ispu_daily',
     device_id: 'device_id'
   };
@@ -9886,10 +9914,10 @@ export namespace Prisma {
 
   export type DeviceWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    device_name?: string
     AND?: DeviceWhereInput | DeviceWhereInput[]
     OR?: DeviceWhereInput[]
     NOT?: DeviceWhereInput | DeviceWhereInput[]
-    device_name?: StringFilter<"Device"> | string
     no_modem?: StringNullableFilter<"Device"> | string | null
     tanggal_paket?: StringNullableFilter<"Device"> | string | null
     isSoftDelete?: BoolFilter<"Device"> | boolean
@@ -9898,7 +9926,7 @@ export namespace Prisma {
     ppm_data?: PpmDataSipuberListRelationFilter
     daily_data?: DailyDataSipuberListRelationFilter
     anal_data?: AnalDataSipuberListRelationFilter
-  }, "id">
+  }, "id" | "device_name">
 
   export type DeviceOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9991,7 +10019,8 @@ export namespace Prisma {
     pm1?: FloatFilter<"PpmDataSipuber"> | number
     pm25?: FloatFilter<"PpmDataSipuber"> | number
     pm10?: FloatFilter<"PpmDataSipuber"> | number
-    ispu_realtime?: IntFilter<"PpmDataSipuber"> | number
+    high_params?: StringFilter<"PpmDataSipuber"> | string
+    ispu_realtime?: FloatFilter<"PpmDataSipuber"> | number
     v_bat?: FloatFilter<"PpmDataSipuber"> | number
     device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
   }
@@ -10009,6 +10038,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_realtime?: SortOrder
     v_bat?: SortOrder
     device?: DeviceOrderByWithRelationInput
@@ -10030,7 +10060,8 @@ export namespace Prisma {
     pm1?: FloatFilter<"PpmDataSipuber"> | number
     pm25?: FloatFilter<"PpmDataSipuber"> | number
     pm10?: FloatFilter<"PpmDataSipuber"> | number
-    ispu_realtime?: IntFilter<"PpmDataSipuber"> | number
+    high_params?: StringFilter<"PpmDataSipuber"> | string
+    ispu_realtime?: FloatFilter<"PpmDataSipuber"> | number
     v_bat?: FloatFilter<"PpmDataSipuber"> | number
     device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
   }, "id">
@@ -10048,6 +10079,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_realtime?: SortOrder
     v_bat?: SortOrder
     _count?: PpmDataSipuberCountOrderByAggregateInput
@@ -10073,7 +10105,8 @@ export namespace Prisma {
     pm1?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
     pm25?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
     pm10?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
-    ispu_realtime?: IntWithAggregatesFilter<"PpmDataSipuber"> | number
+    high_params?: StringWithAggregatesFilter<"PpmDataSipuber"> | string
+    ispu_realtime?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
     v_bat?: FloatWithAggregatesFilter<"PpmDataSipuber"> | number
   }
 
@@ -10092,7 +10125,8 @@ export namespace Prisma {
     pm1?: FloatFilter<"DailyDataSipuber"> | number
     pm25?: FloatFilter<"DailyDataSipuber"> | number
     pm10?: FloatFilter<"DailyDataSipuber"> | number
-    ispu_daily?: IntFilter<"DailyDataSipuber"> | number
+    high_params?: StringFilter<"DailyDataSipuber"> | string
+    ispu_daily?: FloatFilter<"DailyDataSipuber"> | number
     device_id?: IntFilter<"DailyDataSipuber"> | number
     device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
   }
@@ -10109,6 +10143,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_daily?: SortOrder
     device_id?: SortOrder
     device?: DeviceOrderByWithRelationInput
@@ -10129,7 +10164,8 @@ export namespace Prisma {
     pm1?: FloatFilter<"DailyDataSipuber"> | number
     pm25?: FloatFilter<"DailyDataSipuber"> | number
     pm10?: FloatFilter<"DailyDataSipuber"> | number
-    ispu_daily?: IntFilter<"DailyDataSipuber"> | number
+    high_params?: StringFilter<"DailyDataSipuber"> | string
+    ispu_daily?: FloatFilter<"DailyDataSipuber"> | number
     device_id?: IntFilter<"DailyDataSipuber"> | number
     device?: XOR<DeviceScalarRelationFilter, DeviceWhereInput>
   }, "id">
@@ -10146,6 +10182,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_daily?: SortOrder
     device_id?: SortOrder
     _count?: DailyDataSipuberCountOrderByAggregateInput
@@ -10170,7 +10207,8 @@ export namespace Prisma {
     pm1?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
     pm25?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
     pm10?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
-    ispu_daily?: IntWithAggregatesFilter<"DailyDataSipuber"> | number
+    high_params?: StringWithAggregatesFilter<"DailyDataSipuber"> | string
+    ispu_daily?: FloatWithAggregatesFilter<"DailyDataSipuber"> | number
     device_id?: IntWithAggregatesFilter<"DailyDataSipuber"> | number
   }
 
@@ -10519,6 +10557,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
     device: DeviceCreateNestedOneWithoutPpm_dataInput
@@ -10537,6 +10576,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
   }
@@ -10552,7 +10592,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
     device?: DeviceUpdateOneRequiredWithoutPpm_dataNestedInput
   }
@@ -10570,7 +10611,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -10587,6 +10629,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
   }
@@ -10602,7 +10645,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -10619,7 +10663,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -10634,6 +10679,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
     device: DeviceCreateNestedOneWithoutDaily_dataInput
   }
@@ -10650,6 +10696,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
     device_id: number
   }
@@ -10665,7 +10712,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
     device?: DeviceUpdateOneRequiredWithoutDaily_dataNestedInput
   }
 
@@ -10681,7 +10729,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
     device_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -10697,6 +10746,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
     device_id: number
   }
@@ -10712,7 +10762,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
   }
 
   export type DailyDataSipuberUncheckedUpdateManyInput = {
@@ -10727,7 +10778,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
     device_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -11185,6 +11237,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_realtime?: SortOrder
     v_bat?: SortOrder
   }
@@ -11217,6 +11270,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_realtime?: SortOrder
     v_bat?: SortOrder
   }
@@ -11234,6 +11288,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_realtime?: SortOrder
     v_bat?: SortOrder
   }
@@ -11295,6 +11350,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_daily?: SortOrder
     device_id?: SortOrder
   }
@@ -11325,6 +11381,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_daily?: SortOrder
     device_id?: SortOrder
   }
@@ -11341,6 +11398,7 @@ export namespace Prisma {
     pm1?: SortOrder
     pm25?: SortOrder
     pm10?: SortOrder
+    high_params?: SortOrder
     ispu_daily?: SortOrder
     device_id?: SortOrder
   }
@@ -11979,6 +12037,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
   }
@@ -11995,6 +12054,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
   }
@@ -12020,6 +12080,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
   }
 
@@ -12035,6 +12096,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
   }
 
@@ -12149,7 +12211,8 @@ export namespace Prisma {
     pm1?: FloatFilter<"PpmDataSipuber"> | number
     pm25?: FloatFilter<"PpmDataSipuber"> | number
     pm10?: FloatFilter<"PpmDataSipuber"> | number
-    ispu_realtime?: IntFilter<"PpmDataSipuber"> | number
+    high_params?: StringFilter<"PpmDataSipuber"> | string
+    ispu_realtime?: FloatFilter<"PpmDataSipuber"> | number
     v_bat?: FloatFilter<"PpmDataSipuber"> | number
   }
 
@@ -12184,7 +12247,8 @@ export namespace Prisma {
     pm1?: FloatFilter<"DailyDataSipuber"> | number
     pm25?: FloatFilter<"DailyDataSipuber"> | number
     pm10?: FloatFilter<"DailyDataSipuber"> | number
-    ispu_daily?: IntFilter<"DailyDataSipuber"> | number
+    high_params?: StringFilter<"DailyDataSipuber"> | string
+    ispu_daily?: FloatFilter<"DailyDataSipuber"> | number
     device_id?: IntFilter<"DailyDataSipuber"> | number
   }
 
@@ -12446,6 +12510,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_realtime: number
     v_bat: number
   }
@@ -12462,6 +12527,7 @@ export namespace Prisma {
     pm1: number
     pm25: number
     pm10: number
+    high_params: string
     ispu_daily: number
   }
 
@@ -12491,7 +12557,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -12507,7 +12574,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -12523,7 +12591,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_realtime?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_realtime?: FloatFieldUpdateOperationsInput | number
     v_bat?: FloatFieldUpdateOperationsInput | number
   }
 
@@ -12538,7 +12607,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
   }
 
   export type DailyDataSipuberUncheckedUpdateWithoutDeviceInput = {
@@ -12553,7 +12623,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
   }
 
   export type DailyDataSipuberUncheckedUpdateManyWithoutDeviceInput = {
@@ -12568,7 +12639,8 @@ export namespace Prisma {
     pm1?: FloatFieldUpdateOperationsInput | number
     pm25?: FloatFieldUpdateOperationsInput | number
     pm10?: FloatFieldUpdateOperationsInput | number
-    ispu_daily?: IntFieldUpdateOperationsInput | number
+    high_params?: StringFieldUpdateOperationsInput | string
+    ispu_daily?: FloatFieldUpdateOperationsInput | number
   }
 
   export type AnalDataSipuberUpdateWithoutDeviceInput = {

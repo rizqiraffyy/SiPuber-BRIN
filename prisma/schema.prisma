@@ -27,7 +27,7 @@ model User {
 
 model Device {
   id           Int      @id @default(autoincrement())
-  device_name  String @db.VarChar(50)
+  device_name  String @db.VarChar(50) 
   no_modem     String? @db.VarChar(50)
   tanggal_paket String?
   isSoftDelete Boolean  @default(false)
@@ -51,14 +51,15 @@ model PpmDataSipuber {
   device_id    Int
   location     String
   co           Float
-  so2           Float
+  so2          Float
   no2          Float
   o3           Float
   nh3          Float
   pm1          Float
   pm25         Float
   pm10         Float
-  ispu_realtime Int
+  high_params  String @db.VarChar(50)
+  ispu_realtime Float
   v_bat        Float
   device       Device   @relation(fields: [device_id], references: [id])
 }
@@ -75,7 +76,8 @@ model DailyDataSipuber {
   pm1          Float
   pm25         Float
   pm10         Float
-  ispu_daily   Int
+  high_params  String @db.VarChar(50)
+  ispu_daily   Float
   device_id    Int
   device       Device   @relation(fields: [device_id], references: [id])
 }

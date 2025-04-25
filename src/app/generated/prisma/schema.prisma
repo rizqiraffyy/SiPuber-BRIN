@@ -27,7 +27,7 @@ model User {
 
 model Device {
   id            Int                @id @default(autoincrement())
-  device_name   String             @db.VarChar(50)
+  device_name   String             @unique @db.VarChar(50)
   no_modem      String?            @db.VarChar(50)
   tanggal_paket String?
   isSoftDelete  Boolean            @default(false)
@@ -58,26 +58,28 @@ model PpmDataSipuber {
   pm1           Float
   pm25          Float
   pm10          Float
-  ispu_realtime Int
+  high_params   String   @db.VarChar(50)
+  ispu_realtime Float
   v_bat         Float
   device        Device   @relation(fields: [device_id], references: [id])
 }
 
 model DailyDataSipuber {
-  id         Int      @id @default(autoincrement())
-  created_at DateTime @default(now()) // Maps to TIMESTAMPTZ in PostgreSQL, ensuring time zone support
-  location   String
-  co         Float
-  so2        Float
-  no2        Float
-  o3         Float
-  nh3        Float
-  pm1        Float
-  pm25       Float
-  pm10       Float
-  ispu_daily Int
-  device_id  Int
-  device     Device   @relation(fields: [device_id], references: [id])
+  id          Int      @id @default(autoincrement())
+  created_at  DateTime @default(now()) // Maps to TIMESTAMPTZ in PostgreSQL, ensuring time zone support
+  location    String
+  co          Float
+  so2         Float
+  no2         Float
+  o3          Float
+  nh3         Float
+  pm1         Float
+  pm25        Float
+  pm10        Float
+  high_params String   @db.VarChar(50)
+  ispu_daily  Float
+  device_id   Int
+  device      Device   @relation(fields: [device_id], references: [id])
 }
 
 model AnalDataSipuber {

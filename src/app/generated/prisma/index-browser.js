@@ -156,6 +156,7 @@ exports.Prisma.PpmDataSipuberScalarFieldEnum = {
   pm1: 'pm1',
   pm25: 'pm25',
   pm10: 'pm10',
+  high_params: 'high_params',
   ispu_realtime: 'ispu_realtime',
   v_bat: 'v_bat'
 };
@@ -172,6 +173,7 @@ exports.Prisma.DailyDataSipuberScalarFieldEnum = {
   pm1: 'pm1',
   pm25: 'pm25',
   pm10: 'pm10',
+  high_params: 'high_params',
   ispu_daily: 'ispu_daily',
   device_id: 'device_id'
 };
