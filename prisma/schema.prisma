@@ -27,7 +27,7 @@ model User {
 
 model Device {
   id           Int      @id @default(autoincrement())
-  device_name  String @db.VarChar(50) 
+  device_name  String @db.VarChar(50) @unique
   no_modem     String? @db.VarChar(50)
   tanggal_paket String?
   isSoftDelete Boolean  @default(false)

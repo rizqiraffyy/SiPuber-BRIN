@@ -1,26 +1,29 @@
 import { NextResponse } from "next/server";
-import prisma from "../../../../../lib/prisma";
+import prisma from "./../../../lib/prisma";
 import { paramsSchema } from "@/lib/validator";
 
-// Interface for the raw query result
 interface QueryResult {
   created_at: Date;
   [key: string]: number | string | Date | null;
 }
 
-interface Params {
-  location: string;
-  unsur: string;
-  time: "one-day" | "one-week" | "one-month";
-}
-
-export async function GET(
-  _request: never, // Remove unused request parameter
-  { params }: { params: Promise<Params> }
-) {
+export async function POST(request: Request) {
   try {
-    const resolvedParams = await params;
-    const result = paramsSchema.safeParse(resolvedParams);
+    const rawBody = await request.text();
+    console.log("Raw request body:", rawBody);
+
+    let body;
+    try {
+      body = JSON.parse(rawBody);
+    } catch (error) {
+      console.error("JSON parsing error:", error);
+      return NextResponse.json({
+        success: false,
+        message: `Invalid JSON in request body: ${error}`,
+      }, { status: 400 });
+    }
+
+    const result = paramsSchema.safeParse(body);
     if (!result.success) {
       return NextResponse.json({
         success: false,
@@ -29,37 +32,25 @@ export async function GET(
     }
 
     const { location, unsur, time } = result.data;
-
-    // Log inputs for debugging
     console.log("Input parameters:", { location, unsur, time });
 
-    // Determine data source, time range, and row count based on time period
+    // Determine table, row count, and time range
     const tableToUse = time === "one-day" ? "PpmDataSipuber" : "DailyDataSipuber";
-    
-    // Determine number of rows based on time period (maximum limit)
     const rowCount = time === "one-day" ? 24 : time === "one-week" ? 168 : 720;
-    console.log("Row count:", rowCount, "Using table:", tableToUse);
+    const timeRange = time === "one-day" ? "1 day" : time === "one-week" ? "7 days" : "30 days";
+    console.log("Query details:", { tableToUse, rowCount, timeRange });
 
-    // Determine time range for the query
-    let timeRange;
-    if (time === "one-day") {
-      timeRange = "1 day";
-    } else if (time === "one-week") {
-      timeRange = "7 days";
-    } else {
-      timeRange = "30 days";
-    }
-
-    // Check if location exists in the database
+    // Check if location exists
     const locationExistsQuery = `SELECT COUNT(*) as count FROM "${tableToUse}" WHERE location = $1`;
     const locationResult = await prisma.$queryRawUnsafe<{ count: number }[]>(locationExistsQuery, location);
     const locationExists = locationResult[0].count > 0;
+    console.log("Location exists:", locationExists, "in table:", tableToUse);
 
     if (!locationExists) {
       console.log("Location not found in", tableToUse, ":", location);
       return NextResponse.json({
         success: false,
-        message: `No data found for location: ${location}`,
+        message: `No data found for location: ${location} in ${tableToUse}`,
       }, { status: 404 });
     }
 
@@ -77,19 +68,30 @@ export async function GET(
       ORDER BY created_at DESC
       LIMIT $2
     `;
+    console.log("Executing query:", query, "with params:", [location, rowCount]);
 
     const data = await prisma.$queryRawUnsafe<QueryResult[]>(query, location, rowCount);
     console.log(`Retrieved ${data.length} rows from ${tableToUse}`);
 
-    // Return data even if fewer rows than rowCount are found
     if (data.length === 0) {
+      // Log available data for debugging
+      const debugQuery = `
+        SELECT created_at, location, "${unsur}"
+        FROM "${tableToUse}"
+        WHERE location = $1
+        AND "${unsur}" IS NOT NULL
+        ORDER BY created_at DESC
+        LIMIT $2
+      `;
+      const debugData = await prisma.$queryRawUnsafe<QueryResult[]>(debugQuery, location);
+      console.log("Debug: Recent data for location:", debugData);
+
       return NextResponse.json({
         success: false,
-        message: `No data found for the specified location and time period in ${tableToUse}`,
+        message: `No data found for: ${time}`,
       }, { status: 404 });
     }
 
-    // Format the response to match the original structure
     return NextResponse.json({
       success: true,
       data: data.map((item) => ({
