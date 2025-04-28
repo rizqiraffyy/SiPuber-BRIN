@@ -1130,10 +1130,6 @@
     height: 1px;
   }
 
-  .h-screen {
-    height: 100vh;
-  }
-
   .h-svh {
     height: 100svh;
   }
@@ -1577,10 +1573,6 @@
 
   .gap-6 {
     gap: calc(var(--spacing) * 6);
-  }
-
-  .gap-7 {
-    gap: calc(var(--spacing) * 7);
   }
 
   .gap-8 {
@@ -2317,16 +2309,8 @@
     padding-bottom: calc(var(--spacing) * 20);
   }
 
-  .pl-1 {
-    padding-left: calc(var(--spacing) * 1);
-  }
-
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
-  }
-
-  .pl-5 {
-    padding-left: calc(var(--spacing) * 5);
   }
 
   .pl-6 {
