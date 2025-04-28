@@ -50,11 +50,7 @@ const unsurSchema = z.enum(UnsurValues, {
 export const paramsSchema = z.object({
   location: z
   .string()
-  .min(1, "Location is required")
-  .regex(
-    /^SRID=4326;POINT\([-]?\d+(\.\d+)?\s[-]?\d+(\.\d+)?\)$/,
-    "Location must be in valid WKT format, e.g., SRID=4326;POINT(107.6691 -6.9175)"
-  ),
+  .min(1, "Location is required"),
   unsur: unsurSchema,
   time: z.enum(["one-day", "one-week", "one-month"], {
     errorMap: () => ({ message: "Time must be one-day, one-week, or one-month" }),
