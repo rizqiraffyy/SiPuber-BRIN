@@ -2579,269 +2579,11 @@ const schema = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$z
     target: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string(),
     limit: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string(),
     reviewer: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string(),
-    nama: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string(),
-    device: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string(),
-    statusDevice: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string(),
-    nomorDevice: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string()
+    nama: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().default('N/A'),
+    device: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().default('Unknown Device'),
+    statusDevice: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().default('Unknown Status'),
+    nomorDevice: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().default('Unknown Number')
 });
-// Create a separate component for the drag handle
-// function DragHandle({ id }: { id: number }) {
-//   const { attributes, listeners } = useSortable({
-//     id,
-//   })
-//   return (
-//     <Button
-//       {...attributes}
-//       {...listeners}
-//       variant="ghost"
-//       size="icon"
-//       className="size-7 text-muted-foreground hover:bg-transparent"
-//     >
-//       <GripVerticalIcon className="size-3 text-muted-foreground" />
-//       <span className="sr-only">Drag to reorder</span>
-//     </Button>
-//   )
-// }
-// const columns: ColumnDef<z.infer<typeof schema>>[] = [
-// {
-//   id: "drag",
-//   header: () => null,
-//   cell: ({ row }) => <DragHandle id={row.original.id} />,
-// },
-// {
-//   id: "select",
-//   header: ({ table }) => (
-//     <div className="flex items-center justify-center">
-//       <Checkbox
-//         checked={
-//           table.getIsAllPageRowsSelected() ||
-//           (table.getIsSomePageRowsSelected() && "indeterminate")
-//         }
-//         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-//         aria-label="Select all"
-//       />
-//     </div>
-//   ),
-//   cell: ({ row }) => (
-//     <div className="flex items-center justify-center">
-//       <Checkbox
-//         checked={row.getIsSelected()}
-//         onCheckedChange={(value) => row.toggleSelected(!!value)}
-//         aria-label="Select row"
-//       />
-//     </div>
-//   ),
-//   enableSorting: false,
-//   enableHiding: false,
-// },
-// {
-//   accessorKey: "header",
-//   header: "Header",
-//   cell: ({ row }) => {
-//     return <TableCellViewer item={row.original} />
-//   },
-//   enableHiding: false,
-// },
-// {
-//   accessorKey: "type",
-//   header: "Section Type",
-//   cell: ({ row }) => (
-//     <div className="w-32">
-//       <Badge variant="outline" className="px-1.5 text-muted-foreground">
-//         {row.original.type}
-//       </Badge>
-//     </div>
-//   ),
-// },
-// {
-//   accessorKey: "status",
-//   header: "Status",
-//   cell: ({ row }) => (
-//     <Badge
-//       variant="outline"
-//       className="flex gap-1 px-1.5 text-muted-foreground [&_svg]:size-3"
-//     >
-//       {row.original.status === "Done" ? (
-//         <CheckCircle2Icon className="text-green-500 dark:text-green-400" />
-//       ) : (
-//         <LoaderIcon />
-//       )}
-//       {row.original.status}
-//     </Badge>
-//   ),
-// },
-// {
-//   accessorKey: "target",
-//   header: () => <div className="w-full text-right">Target</div>,
-//   cell: ({ row }) => (
-//     <form
-//       onSubmit={(e) => {
-//         e.preventDefault()
-//         toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-//           loading: `Saving ${row.original.header}`,
-//           success: "Done",
-//           error: "Error",
-//         })
-//       }}
-//     >
-//       <Label htmlFor={`${row.original.id}-target`} className="sr-only">
-//         Target
-//       </Label>
-//       <Input
-//         className="h-8 w-16 border-transparent bg-transparent text-right shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background"
-//         defaultValue={row.original.target}
-//         id={`${row.original.id}-target`}
-//       />
-//     </form>
-//   ),
-// },
-// {
-//   accessorKey: "limit",
-//   header: () => <div className="w-full text-right">Limit</div>,
-//   cell: ({ row }) => (
-//     <form
-//       onSubmit={(e) => {
-//         e.preventDefault()
-//         toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-//           loading: `Saving ${row.original.header}`,
-//           success: "Done",
-//           error: "Error",
-//         })
-//       }}
-//     >
-//       <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
-//         Limit
-//       </Label>
-//       <Input
-//         className="h-8 w-16 border-transparent bg-transparent text-right shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background"
-//         defaultValue={row.original.limit}
-//         id={`${row.original.id}-limit`}
-//       />
-//     </form>
-//   ),
-// },
-// {
-//   accessorKey: "reviewer",
-//   header: () => (
-//     <div className="pl-2">No</div>
-//   ),
-//   cell: ({ row }) => {
-//     return (
-//       <span className="text-sm text-gray-900 pl-2 w-40 block">
-//         1
-//       </span>
-//     )
-//   },
-// },
-// {
-//   accessorKey: "reviewer",
-//   header: "Reviewer",
-//   cell: ({ row }) => {
-//     const isAssigned = row.original.reviewer !== "Assign reviewer"
-//     if (isAssigned) {
-//       return row.original.reviewer
-//     }
-//     return (
-//       <>
-//         <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
-//           Reviewer
-//         </Label>
-//         <Select>
-//           <SelectTrigger
-//             className="h-8 w-40"
-//             id={`${row.original.id}-reviewer`}
-//           >
-//             <SelectValue placeholder="Assign reviewer" />
-//           </SelectTrigger>
-//           <SelectContent align="end">
-//             <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-//           </SelectContent>
-//         </Select>
-//       </>
-//     )
-//   },
-// },
-// {
-//   accessorKey: "reviewer",
-//   header: "Reviewer",
-//   cell: ({ row }) => {
-//     const isAssigned = row.original.reviewer !== "Assign reviewer"
-//     if (isAssigned) {
-//       return row.original.reviewer
-//     }
-//     return (
-//       <>
-//         <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
-//           Reviewer
-//         </Label>
-//         <Select>
-//           <SelectTrigger
-//             className="h-8 w-40"
-//             id={`${row.original.id}-reviewer`}
-//           >
-//             <SelectValue placeholder="Assign reviewer" />
-//           </SelectTrigger>
-//           <SelectContent align="end">
-//             <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-//           </SelectContent>
-//         </Select>
-//       </>
-//     )
-//   },
-// },
-// {
-//   accessorKey: "reviewer",
-//   header: "Reviewer",
-//   cell: ({ row }) => {
-//     const isAssigned = row.original.reviewer !== "Assign reviewer"
-//     if (isAssigned) {
-//       return row.original.reviewer
-//     }
-//     return (
-//       <>
-//         <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
-//           Reviewer
-//         </Label>
-//         <Select>
-//           <SelectTrigger
-//             className="h-8 w-40"
-//             id={`${row.original.id}-reviewer`}
-//           >
-//             <SelectValue placeholder="Assign reviewer" />
-//           </SelectTrigger>
-//           <SelectContent align="end">
-//             <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-//           </SelectContent>
-//         </Select>
-//       </>
-//     )
-//   },
-// },
-// {
-//   id: "actions",
-//   cell: () => (
-//     <DropdownMenu>
-//       <DropdownMenuTrigger asChild>
-//         <Button
-//           variant="ghost"
-//           className="flex cursor-pointer size-8 text-muted-foreground data-[state=open]:bg-muted"
-//           size="icon"
-//         >
-//           <MoreVerticalIcon />
-//           <span className="sr-only">Open menu</span>
-//         </Button>
-//       </DropdownMenuTrigger>
-//       <DropdownMenuContent align="end" className="w-32 ">
-//         <DropdownMenuItem>Edit</DropdownMenuItem>
-//         {/* <DropdownMenuItem>Make a copy</DropdownMenuItem>
-//         <DropdownMenuItem>Favorite</DropdownMenuItem> */}
-//         <DropdownMenuSeparator />
-//         <DropdownMenuItem>Delete</DropdownMenuItem>
-//       </DropdownMenuContent>
-//     </DropdownMenu>
-//   ),
-// },
-// ]
 const columns = [
     {
         id: "no",
@@ -2851,7 +2593,7 @@ const columns = [
                 children: row.index + 1
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 397,
+                lineNumber: 87,
                 columnNumber: 14
             }, this);
         }
@@ -2864,7 +2606,7 @@ const columns = [
                 children: row.original.nama
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 404,
+                lineNumber: 94,
                 columnNumber: 14
             }, this);
         }
@@ -2877,7 +2619,7 @@ const columns = [
                 children: row.original.device
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 411,
+                lineNumber: 101,
                 columnNumber: 14
             }, this);
         }
@@ -2890,7 +2632,7 @@ const columns = [
                 children: row.original.statusDevice
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 418,
+                lineNumber: 108,
                 columnNumber: 14
             }, this);
         }
@@ -2903,7 +2645,7 @@ const columns = [
                 children: row.original.nomorDevice
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 425,
+                lineNumber: 115,
                 columnNumber: 14
             }, this);
         }
@@ -2922,7 +2664,7 @@ const columns = [
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$ellipsis$2d$vertical$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MoreVerticalIcon$3e$__["MoreVerticalIcon"], {}, void 0, false, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 439,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2930,18 +2672,18 @@ const columns = [
                                     children: "Open menu"
                                 }, void 0, false, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 440,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/data-table.tsx",
-                            lineNumber: 434,
+                            lineNumber: 124,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/data-table.tsx",
-                        lineNumber: 433,
+                        lineNumber: 123,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuContent"], {
@@ -2952,31 +2694,31 @@ const columns = [
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "[project]/components/data-table.tsx",
-                                lineNumber: 444,
+                                lineNumber: 134,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuSeparator"], {}, void 0, false, {
                                 fileName: "[project]/components/data-table.tsx",
-                                lineNumber: 445,
+                                lineNumber: 135,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
                                 children: "Delete"
                             }, void 0, false, {
                                 fileName: "[project]/components/data-table.tsx",
-                                lineNumber: 446,
+                                lineNumber: 136,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/data-table.tsx",
-                        lineNumber: 443,
+                        lineNumber: 133,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 432,
+                lineNumber: 122,
                 columnNumber: 7
             }, this)
     }
@@ -2999,12 +2741,12 @@ function DraggableRow({ row }) {
                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$table$2f$build$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["flexRender"])(cell.column.columnDef.cell, cell.getContext())
             }, cell.id, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 471,
+                lineNumber: 161,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/components/data-table.tsx",
-        lineNumber: 460,
+        lineNumber: 150,
         columnNumber: 5
     }, this);
 }
@@ -3089,18 +2831,18 @@ function DataTable({ data: initialData }) {
                                         children: "Start"
                                     }, void 0, false, {
                                         fileName: "[project]/components/data-table.tsx",
-                                        lineNumber: 552,
+                                        lineNumber: 242,
                                         columnNumber: 11
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$date$2d$picker$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DatePicker"], {}, void 0, false, {
                                         fileName: "[project]/components/data-table.tsx",
-                                        lineNumber: 553,
+                                        lineNumber: 243,
                                         columnNumber: 11
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/data-table.tsx",
-                                lineNumber: 551,
+                                lineNumber: 241,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3110,24 +2852,24 @@ function DataTable({ data: initialData }) {
                                         children: "End"
                                     }, void 0, false, {
                                         fileName: "[project]/components/data-table.tsx",
-                                        lineNumber: 556,
+                                        lineNumber: 246,
                                         columnNumber: 11
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$date$2d$picker$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DatePicker"], {}, void 0, false, {
                                         fileName: "[project]/components/data-table.tsx",
-                                        lineNumber: 557,
+                                        lineNumber: 247,
                                         columnNumber: 11
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/data-table.tsx",
-                                lineNumber: 555,
+                                lineNumber: 245,
                                 columnNumber: 9
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/data-table.tsx",
-                        lineNumber: 550,
+                        lineNumber: 240,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3138,18 +2880,18 @@ function DataTable({ data: initialData }) {
                             children: "DOWNLOAD"
                         }, void 0, false, {
                             fileName: "[project]/components/data-table.tsx",
-                            lineNumber: 561,
+                            lineNumber: 251,
                             columnNumber: 9
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/data-table.tsx",
-                        lineNumber: 560,
+                        lineNumber: 250,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 549,
+                lineNumber: 239,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3177,18 +2919,18 @@ function DataTable({ data: initialData }) {
                                                         children: header.isPlaceholder ? null : (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$table$2f$build$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["flexRender"])(header.column.columnDef.header, header.getContext())
                                                     }, header.id, false, {
                                                         fileName: "[project]/components/data-table.tsx",
-                                                        lineNumber: 670,
+                                                        lineNumber: 280,
                                                         columnNumber: 25
                                                     }, this);
                                                 })
                                             }, headerGroup.id, false, {
                                                 fileName: "[project]/components/data-table.tsx",
-                                                lineNumber: 667,
+                                                lineNumber: 277,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/data-table.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 275,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
@@ -3200,12 +2942,12 @@ function DataTable({ data: initialData }) {
                                                     row: row
                                                 }, row.id, false, {
                                                     fileName: "[project]/components/data-table.tsx",
-                                                    lineNumber: 690,
+                                                    lineNumber: 300,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 685,
+                                            lineNumber: 295,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -3214,33 +2956,33 @@ function DataTable({ data: initialData }) {
                                                 children: "No results."
                                             }, void 0, false, {
                                                 fileName: "[project]/components/data-table.tsx",
-                                                lineNumber: 695,
+                                                lineNumber: 305,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 694,
+                                            lineNumber: 304,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/data-table.tsx",
-                                        lineNumber: 683,
+                                        lineNumber: 293,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/data-table.tsx",
-                                lineNumber: 664,
+                                lineNumber: 274,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/data-table.tsx",
-                            lineNumber: 657,
+                            lineNumber: 267,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/data-table.tsx",
-                        lineNumber: 656,
+                        lineNumber: 266,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3259,18 +3001,18 @@ function DataTable({ data: initialData }) {
                                             children: "Go to first page"
                                         }, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 814,
+                                            lineNumber: 325,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevrons$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronsLeftIcon$3e$__["ChevronsLeftIcon"], {}, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 815,
+                                            lineNumber: 326,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 808,
+                                    lineNumber: 319,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3285,18 +3027,18 @@ function DataTable({ data: initialData }) {
                                             children: "Go to previous page"
                                         }, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 824,
+                                            lineNumber: 335,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeftIcon$3e$__["ChevronLeftIcon"], {}, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 825,
+                                            lineNumber: 336,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 817,
+                                    lineNumber: 328,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3309,7 +3051,7 @@ function DataTable({ data: initialData }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 828,
+                                    lineNumber: 339,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3324,18 +3066,18 @@ function DataTable({ data: initialData }) {
                                             children: "Go to next page"
                                         }, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 839,
+                                            lineNumber: 350,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRightIcon$3e$__["ChevronRightIcon"], {}, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 840,
+                                            lineNumber: 351,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 832,
+                                    lineNumber: 343,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3349,35 +3091,35 @@ function DataTable({ data: initialData }) {
                                             children: "Go to last page"
                                         }, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 848,
+                                            lineNumber: 359,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevrons$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronsRightIcon$3e$__["ChevronsRightIcon"], {}, void 0, false, {
                                             fileName: "[project]/components/data-table.tsx",
-                                            lineNumber: 849,
+                                            lineNumber: 360,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/data-table.tsx",
-                                    lineNumber: 842,
+                                    lineNumber: 353,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/data-table.tsx",
-                            lineNumber: 807,
+                            lineNumber: 318,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/data-table.tsx",
-                        lineNumber: 806,
+                        lineNumber: 317,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 652,
+                lineNumber: 262,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3387,12 +3129,12 @@ function DataTable({ data: initialData }) {
                     className: "aspect-video w-full flex-1 rounded-lg border border-dashed"
                 }, void 0, false, {
                     fileName: "[project]/components/data-table.tsx",
-                    lineNumber: 859,
+                    lineNumber: 370,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 855,
+                lineNumber: 366,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3402,12 +3144,12 @@ function DataTable({ data: initialData }) {
                     className: "aspect-video w-full flex-1 rounded-lg border border-dashed"
                 }, void 0, false, {
                     fileName: "[project]/components/data-table.tsx",
-                    lineNumber: 862,
+                    lineNumber: 373,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 861,
+                lineNumber: 372,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3417,197 +3159,21 @@ function DataTable({ data: initialData }) {
                     className: "aspect-video w-full flex-1 rounded-lg border border-dashed"
                 }, void 0, false, {
                     fileName: "[project]/components/data-table.tsx",
-                    lineNumber: 868,
+                    lineNumber: 379,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/data-table.tsx",
-                lineNumber: 864,
+                lineNumber: 375,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/data-table.tsx",
-        lineNumber: 545,
+        lineNumber: 235,
         columnNumber: 5
     }, this);
-} // const chartData = [
- //   { month: "January", desktop: 186, mobile: 80 },
- //   { month: "February", desktop: 305, mobile: 200 },
- //   { month: "March", desktop: 237, mobile: 120 },
- //   { month: "April", desktop: 73, mobile: 190 },
- //   { month: "May", desktop: 209, mobile: 130 },
- //   { month: "June", desktop: 214, mobile: 140 },
- // ]
- // const chartConfig = {
- //   desktop: {
- //     label: "Desktop",
- //     color: "var(--primary)",
- //   },
- //   mobile: {
- //     label: "Mobile",
- //     color: "var(--primary)",
- //   },
- // } satisfies ChartConfig
- // function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
- //   const isMobile = useIsMobile()
- //   return (
- //     <Sheet>
- //       <SheetTrigger asChild>
- //         <Button variant="link" className="w-fit px-0 text-left text-foreground">
- //           {item.header}
- //         </Button>
- //       </SheetTrigger>
- //       <SheetContent side="right" className="flex flex-col">
- //         <SheetHeader className="gap-1">
- //           <SheetTitle>{item.header}</SheetTitle>
- //           <SheetDescription>
- //             Showing total visitors for the last 6 months
- //           </SheetDescription>
- //         </SheetHeader>
- //         <div className="flex flex-1 flex-col gap-4 overflow-y-auto py-4 text-sm">
- //           {!isMobile && (
- //             <>
- //               <ChartContainer config={chartConfig}>
- //                 <AreaChart
- //                   accessibilityLayer
- //                   data={chartData}
- //                   margin={{
- //                     left: 0,
- //                     right: 10,
- //                   }}
- //                 >
- //                   <CartesianGrid vertical={false} />
- //                   <XAxis
- //                     dataKey="month"
- //                     tickLine={false}
- //                     axisLine={false}
- //                     tickMargin={8}
- //                     tickFormatter={(value) => value.slice(0, 3)}
- //                     hide
- //                   />
- //                   <ChartTooltip
- //                     cursor={false}
- //                     content={<ChartTooltipContent indicator="dot" />}
- //                   />
- //                   <Area
- //                     dataKey="mobile"
- //                     type="natural"
- //                     fill="var(--color-mobile)"
- //                     fillOpacity={0.6}
- //                     stroke="var(--color-mobile)"
- //                     stackId="a"
- //                   />
- //                   <Area
- //                     dataKey="desktop"
- //                     type="natural"
- //                     fill="var(--color-desktop)"
- //                     fillOpacity={0.4}
- //                     stroke="var(--color-desktop)"
- //                     stackId="a"
- //                   />
- //                 </AreaChart>
- //               </ChartContainer>
- //               <Separator />
- //               <div className="grid gap-2">
- //                 <div className="flex gap-2 font-medium leading-none">
- //                   Trending up by 5.2% this month{" "}
- //                   <TrendingUpIcon className="size-4" />
- //                 </div>
- //                 <div className="text-muted-foreground">
- //                   Showing total visitors for the last 6 months. This is just
- //                   some random text to test the layout. It spans multiple lines
- //                   and should wrap around.
- //                 </div>
- //               </div>
- //               <Separator />
- //             </>
- //           )}
- //           <form className="flex flex-col gap-4">
- //             <div className="flex flex-col gap-3">
- //               <Label htmlFor="header">Header</Label>
- //               <Input id="header" defaultValue={item.header} />
- //             </div>
- //             <div className="grid grid-cols-2 gap-4">
- //               <div className="flex flex-col gap-3">
- //                 <Label htmlFor="type">Type</Label>
- //                 <Select defaultValue={item.type}>
- //                   <SelectTrigger id="type" className="w-full">
- //                     <SelectValue placeholder="Select a type" />
- //                   </SelectTrigger>
- //                   <SelectContent>
- //                     <SelectItem value="Table of Contents">
- //                       Table of Contents
- //                     </SelectItem>
- //                     <SelectItem value="Executive Summary">
- //                       Executive Summary
- //                     </SelectItem>
- //                     <SelectItem value="Technical Approach">
- //                       Technical Approach
- //                     </SelectItem>
- //                     <SelectItem value="Design">Design</SelectItem>
- //                     <SelectItem value="Capabilities">Capabilities</SelectItem>
- //                     <SelectItem value="Focus Documents">
- //                       Focus Documents
- //                     </SelectItem>
- //                     <SelectItem value="Narrative">Narrative</SelectItem>
- //                     <SelectItem value="Cover Page">Cover Page</SelectItem>
- //                   </SelectContent>
- //                 </Select>
- //               </div>
- //               <div className="flex flex-col gap-3">
- //                 <Label htmlFor="status">Status</Label>
- //                 <Select defaultValue={item.status}>
- //                   <SelectTrigger id="status" className="w-full">
- //                     <SelectValue placeholder="Select a status" />
- //                   </SelectTrigger>
- //                   <SelectContent>
- //                     <SelectItem value="Done">Done</SelectItem>
- //                     <SelectItem value="In Progress">In Progress</SelectItem>
- //                     <SelectItem value="Not Started">Not Started</SelectItem>
- //                   </SelectContent>
- //                 </Select>
- //               </div>
- //             </div>
- //             <div className="grid grid-cols-2 gap-4">
- //               <div className="flex flex-col gap-3">
- //                 <Label htmlFor="target">Target</Label>
- //                 <Input id="target" defaultValue={item.target} />
- //               </div>
- //               <div className="flex flex-col gap-3">
- //                 <Label htmlFor="limit">Limit</Label>
- //                 <Input id="limit" defaultValue={item.limit} />
- //               </div>
- //             </div>
- //             <div className="flex flex-col gap-3">
- //               <Label htmlFor="reviewer">Reviewer</Label>
- //               <Select defaultValue={item.reviewer}>
- //                 <SelectTrigger id="reviewer" className="w-full">
- //                   <SelectValue placeholder="Select a reviewer" />
- //                 </SelectTrigger>
- //                 <SelectContent>
- //                   <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
- //                   <SelectItem value="Jamik Tashpulatov">
- //                     Jamik Tashpulatov
- //                   </SelectItem>
- //                   <SelectItem value="Emily Whalen">Emily Whalen</SelectItem>
- //                 </SelectContent>
- //               </Select>
- //             </div>
- //           </form>
- //         </div>
- //         <SheetFooter className="mt-auto flex gap-2 sm:flex-col sm:space-x-0">
- //           <Button className="w-full">Submit</Button>
- //           <SheetClose asChild>
- //             <Button variant="outline" className="w-full">
- //               Done
- //             </Button>
- //           </SheetClose>
- //         </SheetFooter>
- //       </SheetContent>
- //     </Sheet>
- //   )
- // }
+}
 _s1(DataTable, "vQgbMU5twrtY41pqQrnqncFW0VY=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$dnd$2d$kit$2f$core$2f$dist$2f$core$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSensors"],
