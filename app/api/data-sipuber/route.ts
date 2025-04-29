@@ -38,15 +38,6 @@ export async function POST(req: NextRequest) {
       const location = `SRID=4326;POINT(${longitude} ${latitude})` 
 
       const { ispu_realtime, high_params } = calculateISPU(pm1, pm25, co, so2, no2, o3)
-      const device = await prisma.device.findUnique({
-        where: { device_name },
-        select: { id: true },
-      });
-      
-      if (!device) {
-        throw new Error(`Device with name ${device_name} not found`);
-      }
-
       socket.emit("iot-update", {
         device_name, 
         location,
@@ -62,6 +53,14 @@ export async function POST(req: NextRequest) {
         ispu_realtime,
         v_bat
       });
+      const device = await prisma.device.findUnique({
+        where: { device_name },
+        select: { id: true },
+      });
+      
+      if (!device) {
+        throw new Error(`Device with name ${device_name} not found`);
+      }
 
       const ppmData = await prisma.ppmDataSipuber.create({
         data: {
