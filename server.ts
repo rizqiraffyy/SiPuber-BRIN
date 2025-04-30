@@ -1,49 +1,33 @@
-// server.ts
-import { createServer } from 'node:http';
+import express from 'express';
 import next from 'next';
-import { Server as SocketIOServer } from 'socket.io';
+// import axios from 'axios';
+import http from 'http';
+import { Server } from 'socket.io';
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = process.env.HOSTNAME || 'localhost';
-const port = parseInt(process.env.PORT || '3000', 10);
-
-// Initialize Next.js
-const app = next({ dev, hostname, port });
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
-app.prepare().then(() => {
-  // Create a plain HTTP server, passing every request to Next.js
-  const httpServer = createServer((req, res) => {
-    // You could inspect req.url here if you want to bypass Next.js for certain routes
-    return handle(req, res);
-  });
+app.prepare().then(async () => {
+    const server = express();
+    const httpServer = http.createServer(server);
+    const io = new Server(httpServer);
 
-  // Attach Socket.IO to the same server
-  const io = new SocketIOServer(httpServer, {
-    path: '/socket.io',            // optional: custom path
-    cors: { origin: '*' },         // adjust CORS to your needs
-    serveClient: false,            // optional: disable serving the client script
-  });
+    io.on('connection', (socket) => {
+        console.log('Client connected');
 
-  io.on('connection', (socket) => {
-    console.log('Client connected:', socket.id);
-
-    socket.on('iot-update', (data) => {
-      console.log('Data through server ::', data);
-      // Broadcast to all clients (including sender)
-      io.emit('iot-update', data);
+        socket.on('iot-update', (data) => {
+            console.log('Recieved from API ::', data);
+            io.emit('iot-update', data);
+        });
     });
 
-    socket.on('disconnect', (reason) => {
-      console.log(`Socket ${socket.id} disconnected:`, reason);
+    server.all('*', (req, res) => {
+        return handle(req, res);
     });
-  });
 
-  // Start listening
-  httpServer.listen(port, () => {
-    console.log(`> Server ready on http://${hostname}:${port}`);
-  });
-}).catch((err) => {
-  console.error('Error starting server:', err);
-  process.exit(1);
+    const PORT = process.env.PORT || 3000;
+    httpServer.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
 });
