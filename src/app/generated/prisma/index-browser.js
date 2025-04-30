@@ -204,6 +204,17 @@ exports.Prisma.AlertManagementScalarFieldEnum = {
   email: 'email'
 };
 
+exports.Prisma.DataVehicleScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  location: 'location',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  golongan1: 'golongan1',
+  golongan2: 'golongan2',
+  golongan3: 'golongan3'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -227,7 +238,8 @@ exports.Prisma.ModelName = {
   PpmDataSipuber: 'PpmDataSipuber',
   DailyDataSipuber: 'DailyDataSipuber',
   AnalDataSipuber: 'AnalDataSipuber',
-  AlertManagement: 'AlertManagement'
+  AlertManagement: 'AlertManagement',
+  DataVehicle: 'DataVehicle'
 };
 
 /**

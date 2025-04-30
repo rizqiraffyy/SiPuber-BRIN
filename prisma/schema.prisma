@@ -105,3 +105,14 @@ model AlertManagement {
   wa_number  String
   email      String @db.VarChar(100)
 }
+
+model DataVehicle {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  location   String
+  startTime  DateTime
+  endTime    DateTime
+  golongan1  String
+  golongan2  String
+  golongan3  String
+}

@@ -48,6 +48,11 @@ export type AnalDataSipuber = $Result.DefaultSelection<Prisma.$AnalDataSipuberPa
  * 
  */
 export type AlertManagement = $Result.DefaultSelection<Prisma.$AlertManagementPayload>
+/**
+ * Model DataVehicle
+ * 
+ */
+export type DataVehicle = $Result.DefaultSelection<Prisma.$DataVehiclePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -243,6 +248,16 @@ export class PrismaClient<
     * ```
     */
   get alertManagement(): Prisma.AlertManagementDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dataVehicle`: Exposes CRUD operations for the **DataVehicle** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DataVehicles
+    * const dataVehicles = await prisma.dataVehicle.findMany()
+    * ```
+    */
+  get dataVehicle(): Prisma.DataVehicleDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -689,7 +704,8 @@ export namespace Prisma {
     PpmDataSipuber: 'PpmDataSipuber',
     DailyDataSipuber: 'DailyDataSipuber',
     AnalDataSipuber: 'AnalDataSipuber',
-    AlertManagement: 'AlertManagement'
+    AlertManagement: 'AlertManagement',
+    DataVehicle: 'DataVehicle'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -708,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "device" | "cmsSetting" | "ppmDataSipuber" | "dailyDataSipuber" | "analDataSipuber" | "alertManagement"
+      modelProps: "user" | "device" | "cmsSetting" | "ppmDataSipuber" | "dailyDataSipuber" | "analDataSipuber" | "alertManagement" | "dataVehicle"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1230,6 +1246,80 @@ export namespace Prisma {
           }
         }
       }
+      DataVehicle: {
+        payload: Prisma.$DataVehiclePayload<ExtArgs>
+        fields: Prisma.DataVehicleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DataVehicleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DataVehicleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>
+          }
+          findFirst: {
+            args: Prisma.DataVehicleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DataVehicleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>
+          }
+          findMany: {
+            args: Prisma.DataVehicleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>[]
+          }
+          create: {
+            args: Prisma.DataVehicleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>
+          }
+          createMany: {
+            args: Prisma.DataVehicleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DataVehicleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>[]
+          }
+          delete: {
+            args: Prisma.DataVehicleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>
+          }
+          update: {
+            args: Prisma.DataVehicleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>
+          }
+          deleteMany: {
+            args: Prisma.DataVehicleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DataVehicleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DataVehicleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>[]
+          }
+          upsert: {
+            args: Prisma.DataVehicleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataVehiclePayload>
+          }
+          aggregate: {
+            args: Prisma.DataVehicleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDataVehicle>
+          }
+          groupBy: {
+            args: Prisma.DataVehicleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DataVehicleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DataVehicleCountArgs<ExtArgs>
+            result: $Utils.Optional<DataVehicleCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1321,6 +1411,7 @@ export namespace Prisma {
     dailyDataSipuber?: DailyDataSipuberOmit
     analDataSipuber?: AnalDataSipuberOmit
     alertManagement?: AlertManagementOmit
+    dataVehicle?: DataVehicleOmit
   }
 
   /* Types for Logging */
@@ -9603,6 +9694,1074 @@ export namespace Prisma {
 
 
   /**
+   * Model DataVehicle
+   */
+
+  export type AggregateDataVehicle = {
+    _count: DataVehicleCountAggregateOutputType | null
+    _avg: DataVehicleAvgAggregateOutputType | null
+    _sum: DataVehicleSumAggregateOutputType | null
+    _min: DataVehicleMinAggregateOutputType | null
+    _max: DataVehicleMaxAggregateOutputType | null
+  }
+
+  export type DataVehicleAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DataVehicleSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DataVehicleMinAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    location: string | null
+    startTime: Date | null
+    endTime: Date | null
+    golongan1: string | null
+    golongan2: string | null
+    golongan3: string | null
+  }
+
+  export type DataVehicleMaxAggregateOutputType = {
+    id: number | null
+    createdAt: Date | null
+    location: string | null
+    startTime: Date | null
+    endTime: Date | null
+    golongan1: string | null
+    golongan2: string | null
+    golongan3: string | null
+  }
+
+  export type DataVehicleCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    location: number
+    startTime: number
+    endTime: number
+    golongan1: number
+    golongan2: number
+    golongan3: number
+    _all: number
+  }
+
+
+  export type DataVehicleAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type DataVehicleSumAggregateInputType = {
+    id?: true
+  }
+
+  export type DataVehicleMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    location?: true
+    startTime?: true
+    endTime?: true
+    golongan1?: true
+    golongan2?: true
+    golongan3?: true
+  }
+
+  export type DataVehicleMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    location?: true
+    startTime?: true
+    endTime?: true
+    golongan1?: true
+    golongan2?: true
+    golongan3?: true
+  }
+
+  export type DataVehicleCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    location?: true
+    startTime?: true
+    endTime?: true
+    golongan1?: true
+    golongan2?: true
+    golongan3?: true
+    _all?: true
+  }
+
+  export type DataVehicleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DataVehicle to aggregate.
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataVehicles to fetch.
+     */
+    orderBy?: DataVehicleOrderByWithRelationInput | DataVehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DataVehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataVehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataVehicles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DataVehicles
+    **/
+    _count?: true | DataVehicleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DataVehicleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DataVehicleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DataVehicleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DataVehicleMaxAggregateInputType
+  }
+
+  export type GetDataVehicleAggregateType<T extends DataVehicleAggregateArgs> = {
+        [P in keyof T & keyof AggregateDataVehicle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDataVehicle[P]>
+      : GetScalarType<T[P], AggregateDataVehicle[P]>
+  }
+
+
+
+
+  export type DataVehicleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DataVehicleWhereInput
+    orderBy?: DataVehicleOrderByWithAggregationInput | DataVehicleOrderByWithAggregationInput[]
+    by: DataVehicleScalarFieldEnum[] | DataVehicleScalarFieldEnum
+    having?: DataVehicleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DataVehicleCountAggregateInputType | true
+    _avg?: DataVehicleAvgAggregateInputType
+    _sum?: DataVehicleSumAggregateInputType
+    _min?: DataVehicleMinAggregateInputType
+    _max?: DataVehicleMaxAggregateInputType
+  }
+
+  export type DataVehicleGroupByOutputType = {
+    id: number
+    createdAt: Date
+    location: string
+    startTime: Date
+    endTime: Date
+    golongan1: string
+    golongan2: string
+    golongan3: string
+    _count: DataVehicleCountAggregateOutputType | null
+    _avg: DataVehicleAvgAggregateOutputType | null
+    _sum: DataVehicleSumAggregateOutputType | null
+    _min: DataVehicleMinAggregateOutputType | null
+    _max: DataVehicleMaxAggregateOutputType | null
+  }
+
+  type GetDataVehicleGroupByPayload<T extends DataVehicleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DataVehicleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DataVehicleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DataVehicleGroupByOutputType[P]>
+            : GetScalarType<T[P], DataVehicleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DataVehicleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    location?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    golongan1?: boolean
+    golongan2?: boolean
+    golongan3?: boolean
+  }, ExtArgs["result"]["dataVehicle"]>
+
+  export type DataVehicleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    location?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    golongan1?: boolean
+    golongan2?: boolean
+    golongan3?: boolean
+  }, ExtArgs["result"]["dataVehicle"]>
+
+  export type DataVehicleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    location?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    golongan1?: boolean
+    golongan2?: boolean
+    golongan3?: boolean
+  }, ExtArgs["result"]["dataVehicle"]>
+
+  export type DataVehicleSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    location?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    golongan1?: boolean
+    golongan2?: boolean
+    golongan3?: boolean
+  }
+
+  export type DataVehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "location" | "startTime" | "endTime" | "golongan1" | "golongan2" | "golongan3", ExtArgs["result"]["dataVehicle"]>
+
+  export type $DataVehiclePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DataVehicle"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      createdAt: Date
+      location: string
+      startTime: Date
+      endTime: Date
+      golongan1: string
+      golongan2: string
+      golongan3: string
+    }, ExtArgs["result"]["dataVehicle"]>
+    composites: {}
+  }
+
+  type DataVehicleGetPayload<S extends boolean | null | undefined | DataVehicleDefaultArgs> = $Result.GetResult<Prisma.$DataVehiclePayload, S>
+
+  type DataVehicleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DataVehicleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DataVehicleCountAggregateInputType | true
+    }
+
+  export interface DataVehicleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DataVehicle'], meta: { name: 'DataVehicle' } }
+    /**
+     * Find zero or one DataVehicle that matches the filter.
+     * @param {DataVehicleFindUniqueArgs} args - Arguments to find a DataVehicle
+     * @example
+     * // Get one DataVehicle
+     * const dataVehicle = await prisma.dataVehicle.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DataVehicleFindUniqueArgs>(args: SelectSubset<T, DataVehicleFindUniqueArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DataVehicle that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DataVehicleFindUniqueOrThrowArgs} args - Arguments to find a DataVehicle
+     * @example
+     * // Get one DataVehicle
+     * const dataVehicle = await prisma.dataVehicle.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DataVehicleFindUniqueOrThrowArgs>(args: SelectSubset<T, DataVehicleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DataVehicle that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleFindFirstArgs} args - Arguments to find a DataVehicle
+     * @example
+     * // Get one DataVehicle
+     * const dataVehicle = await prisma.dataVehicle.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DataVehicleFindFirstArgs>(args?: SelectSubset<T, DataVehicleFindFirstArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DataVehicle that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleFindFirstOrThrowArgs} args - Arguments to find a DataVehicle
+     * @example
+     * // Get one DataVehicle
+     * const dataVehicle = await prisma.dataVehicle.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DataVehicleFindFirstOrThrowArgs>(args?: SelectSubset<T, DataVehicleFindFirstOrThrowArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DataVehicles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DataVehicles
+     * const dataVehicles = await prisma.dataVehicle.findMany()
+     * 
+     * // Get first 10 DataVehicles
+     * const dataVehicles = await prisma.dataVehicle.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dataVehicleWithIdOnly = await prisma.dataVehicle.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DataVehicleFindManyArgs>(args?: SelectSubset<T, DataVehicleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DataVehicle.
+     * @param {DataVehicleCreateArgs} args - Arguments to create a DataVehicle.
+     * @example
+     * // Create one DataVehicle
+     * const DataVehicle = await prisma.dataVehicle.create({
+     *   data: {
+     *     // ... data to create a DataVehicle
+     *   }
+     * })
+     * 
+     */
+    create<T extends DataVehicleCreateArgs>(args: SelectSubset<T, DataVehicleCreateArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DataVehicles.
+     * @param {DataVehicleCreateManyArgs} args - Arguments to create many DataVehicles.
+     * @example
+     * // Create many DataVehicles
+     * const dataVehicle = await prisma.dataVehicle.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DataVehicleCreateManyArgs>(args?: SelectSubset<T, DataVehicleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DataVehicles and returns the data saved in the database.
+     * @param {DataVehicleCreateManyAndReturnArgs} args - Arguments to create many DataVehicles.
+     * @example
+     * // Create many DataVehicles
+     * const dataVehicle = await prisma.dataVehicle.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DataVehicles and only return the `id`
+     * const dataVehicleWithIdOnly = await prisma.dataVehicle.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DataVehicleCreateManyAndReturnArgs>(args?: SelectSubset<T, DataVehicleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DataVehicle.
+     * @param {DataVehicleDeleteArgs} args - Arguments to delete one DataVehicle.
+     * @example
+     * // Delete one DataVehicle
+     * const DataVehicle = await prisma.dataVehicle.delete({
+     *   where: {
+     *     // ... filter to delete one DataVehicle
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DataVehicleDeleteArgs>(args: SelectSubset<T, DataVehicleDeleteArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DataVehicle.
+     * @param {DataVehicleUpdateArgs} args - Arguments to update one DataVehicle.
+     * @example
+     * // Update one DataVehicle
+     * const dataVehicle = await prisma.dataVehicle.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DataVehicleUpdateArgs>(args: SelectSubset<T, DataVehicleUpdateArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DataVehicles.
+     * @param {DataVehicleDeleteManyArgs} args - Arguments to filter DataVehicles to delete.
+     * @example
+     * // Delete a few DataVehicles
+     * const { count } = await prisma.dataVehicle.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DataVehicleDeleteManyArgs>(args?: SelectSubset<T, DataVehicleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DataVehicles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DataVehicles
+     * const dataVehicle = await prisma.dataVehicle.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DataVehicleUpdateManyArgs>(args: SelectSubset<T, DataVehicleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DataVehicles and returns the data updated in the database.
+     * @param {DataVehicleUpdateManyAndReturnArgs} args - Arguments to update many DataVehicles.
+     * @example
+     * // Update many DataVehicles
+     * const dataVehicle = await prisma.dataVehicle.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DataVehicles and only return the `id`
+     * const dataVehicleWithIdOnly = await prisma.dataVehicle.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DataVehicleUpdateManyAndReturnArgs>(args: SelectSubset<T, DataVehicleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DataVehicle.
+     * @param {DataVehicleUpsertArgs} args - Arguments to update or create a DataVehicle.
+     * @example
+     * // Update or create a DataVehicle
+     * const dataVehicle = await prisma.dataVehicle.upsert({
+     *   create: {
+     *     // ... data to create a DataVehicle
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DataVehicle we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DataVehicleUpsertArgs>(args: SelectSubset<T, DataVehicleUpsertArgs<ExtArgs>>): Prisma__DataVehicleClient<$Result.GetResult<Prisma.$DataVehiclePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DataVehicles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleCountArgs} args - Arguments to filter DataVehicles to count.
+     * @example
+     * // Count the number of DataVehicles
+     * const count = await prisma.dataVehicle.count({
+     *   where: {
+     *     // ... the filter for the DataVehicles we want to count
+     *   }
+     * })
+    **/
+    count<T extends DataVehicleCountArgs>(
+      args?: Subset<T, DataVehicleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DataVehicleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DataVehicle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DataVehicleAggregateArgs>(args: Subset<T, DataVehicleAggregateArgs>): Prisma.PrismaPromise<GetDataVehicleAggregateType<T>>
+
+    /**
+     * Group by DataVehicle.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataVehicleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DataVehicleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DataVehicleGroupByArgs['orderBy'] }
+        : { orderBy?: DataVehicleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DataVehicleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDataVehicleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DataVehicle model
+   */
+  readonly fields: DataVehicleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DataVehicle.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DataVehicleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DataVehicle model
+   */
+  interface DataVehicleFieldRefs {
+    readonly id: FieldRef<"DataVehicle", 'Int'>
+    readonly createdAt: FieldRef<"DataVehicle", 'DateTime'>
+    readonly location: FieldRef<"DataVehicle", 'String'>
+    readonly startTime: FieldRef<"DataVehicle", 'DateTime'>
+    readonly endTime: FieldRef<"DataVehicle", 'DateTime'>
+    readonly golongan1: FieldRef<"DataVehicle", 'String'>
+    readonly golongan2: FieldRef<"DataVehicle", 'String'>
+    readonly golongan3: FieldRef<"DataVehicle", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DataVehicle findUnique
+   */
+  export type DataVehicleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * Filter, which DataVehicle to fetch.
+     */
+    where: DataVehicleWhereUniqueInput
+  }
+
+  /**
+   * DataVehicle findUniqueOrThrow
+   */
+  export type DataVehicleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * Filter, which DataVehicle to fetch.
+     */
+    where: DataVehicleWhereUniqueInput
+  }
+
+  /**
+   * DataVehicle findFirst
+   */
+  export type DataVehicleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * Filter, which DataVehicle to fetch.
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataVehicles to fetch.
+     */
+    orderBy?: DataVehicleOrderByWithRelationInput | DataVehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DataVehicles.
+     */
+    cursor?: DataVehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataVehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataVehicles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DataVehicles.
+     */
+    distinct?: DataVehicleScalarFieldEnum | DataVehicleScalarFieldEnum[]
+  }
+
+  /**
+   * DataVehicle findFirstOrThrow
+   */
+  export type DataVehicleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * Filter, which DataVehicle to fetch.
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataVehicles to fetch.
+     */
+    orderBy?: DataVehicleOrderByWithRelationInput | DataVehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DataVehicles.
+     */
+    cursor?: DataVehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataVehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataVehicles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DataVehicles.
+     */
+    distinct?: DataVehicleScalarFieldEnum | DataVehicleScalarFieldEnum[]
+  }
+
+  /**
+   * DataVehicle findMany
+   */
+  export type DataVehicleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * Filter, which DataVehicles to fetch.
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataVehicles to fetch.
+     */
+    orderBy?: DataVehicleOrderByWithRelationInput | DataVehicleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DataVehicles.
+     */
+    cursor?: DataVehicleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataVehicles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataVehicles.
+     */
+    skip?: number
+    distinct?: DataVehicleScalarFieldEnum | DataVehicleScalarFieldEnum[]
+  }
+
+  /**
+   * DataVehicle create
+   */
+  export type DataVehicleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * The data needed to create a DataVehicle.
+     */
+    data: XOR<DataVehicleCreateInput, DataVehicleUncheckedCreateInput>
+  }
+
+  /**
+   * DataVehicle createMany
+   */
+  export type DataVehicleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DataVehicles.
+     */
+    data: DataVehicleCreateManyInput | DataVehicleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DataVehicle createManyAndReturn
+   */
+  export type DataVehicleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * The data used to create many DataVehicles.
+     */
+    data: DataVehicleCreateManyInput | DataVehicleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DataVehicle update
+   */
+  export type DataVehicleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * The data needed to update a DataVehicle.
+     */
+    data: XOR<DataVehicleUpdateInput, DataVehicleUncheckedUpdateInput>
+    /**
+     * Choose, which DataVehicle to update.
+     */
+    where: DataVehicleWhereUniqueInput
+  }
+
+  /**
+   * DataVehicle updateMany
+   */
+  export type DataVehicleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DataVehicles.
+     */
+    data: XOR<DataVehicleUpdateManyMutationInput, DataVehicleUncheckedUpdateManyInput>
+    /**
+     * Filter which DataVehicles to update
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * Limit how many DataVehicles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DataVehicle updateManyAndReturn
+   */
+  export type DataVehicleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * The data used to update DataVehicles.
+     */
+    data: XOR<DataVehicleUpdateManyMutationInput, DataVehicleUncheckedUpdateManyInput>
+    /**
+     * Filter which DataVehicles to update
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * Limit how many DataVehicles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DataVehicle upsert
+   */
+  export type DataVehicleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * The filter to search for the DataVehicle to update in case it exists.
+     */
+    where: DataVehicleWhereUniqueInput
+    /**
+     * In case the DataVehicle found by the `where` argument doesn't exist, create a new DataVehicle with this data.
+     */
+    create: XOR<DataVehicleCreateInput, DataVehicleUncheckedCreateInput>
+    /**
+     * In case the DataVehicle was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DataVehicleUpdateInput, DataVehicleUncheckedUpdateInput>
+  }
+
+  /**
+   * DataVehicle delete
+   */
+  export type DataVehicleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+    /**
+     * Filter which DataVehicle to delete.
+     */
+    where: DataVehicleWhereUniqueInput
+  }
+
+  /**
+   * DataVehicle deleteMany
+   */
+  export type DataVehicleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DataVehicles to delete
+     */
+    where?: DataVehicleWhereInput
+    /**
+     * Limit how many DataVehicles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DataVehicle without action
+   */
+  export type DataVehicleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataVehicle
+     */
+    select?: DataVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataVehicle
+     */
+    omit?: DataVehicleOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9719,6 +10878,20 @@ export namespace Prisma {
   };
 
   export type AlertManagementScalarFieldEnum = (typeof AlertManagementScalarFieldEnum)[keyof typeof AlertManagementScalarFieldEnum]
+
+
+  export const DataVehicleScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    location: 'location',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    golongan1: 'golongan1',
+    golongan2: 'golongan2',
+    golongan3: 'golongan3'
+  };
+
+  export type DataVehicleScalarFieldEnum = (typeof DataVehicleScalarFieldEnum)[keyof typeof DataVehicleScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10358,6 +11531,75 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"AlertManagement"> | string
   }
 
+  export type DataVehicleWhereInput = {
+    AND?: DataVehicleWhereInput | DataVehicleWhereInput[]
+    OR?: DataVehicleWhereInput[]
+    NOT?: DataVehicleWhereInput | DataVehicleWhereInput[]
+    id?: IntFilter<"DataVehicle"> | number
+    createdAt?: DateTimeFilter<"DataVehicle"> | Date | string
+    location?: StringFilter<"DataVehicle"> | string
+    startTime?: DateTimeFilter<"DataVehicle"> | Date | string
+    endTime?: DateTimeFilter<"DataVehicle"> | Date | string
+    golongan1?: StringFilter<"DataVehicle"> | string
+    golongan2?: StringFilter<"DataVehicle"> | string
+    golongan3?: StringFilter<"DataVehicle"> | string
+  }
+
+  export type DataVehicleOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    location?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    golongan1?: SortOrder
+    golongan2?: SortOrder
+    golongan3?: SortOrder
+  }
+
+  export type DataVehicleWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DataVehicleWhereInput | DataVehicleWhereInput[]
+    OR?: DataVehicleWhereInput[]
+    NOT?: DataVehicleWhereInput | DataVehicleWhereInput[]
+    createdAt?: DateTimeFilter<"DataVehicle"> | Date | string
+    location?: StringFilter<"DataVehicle"> | string
+    startTime?: DateTimeFilter<"DataVehicle"> | Date | string
+    endTime?: DateTimeFilter<"DataVehicle"> | Date | string
+    golongan1?: StringFilter<"DataVehicle"> | string
+    golongan2?: StringFilter<"DataVehicle"> | string
+    golongan3?: StringFilter<"DataVehicle"> | string
+  }, "id">
+
+  export type DataVehicleOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    location?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    golongan1?: SortOrder
+    golongan2?: SortOrder
+    golongan3?: SortOrder
+    _count?: DataVehicleCountOrderByAggregateInput
+    _avg?: DataVehicleAvgOrderByAggregateInput
+    _max?: DataVehicleMaxOrderByAggregateInput
+    _min?: DataVehicleMinOrderByAggregateInput
+    _sum?: DataVehicleSumOrderByAggregateInput
+  }
+
+  export type DataVehicleScalarWhereWithAggregatesInput = {
+    AND?: DataVehicleScalarWhereWithAggregatesInput | DataVehicleScalarWhereWithAggregatesInput[]
+    OR?: DataVehicleScalarWhereWithAggregatesInput[]
+    NOT?: DataVehicleScalarWhereWithAggregatesInput | DataVehicleScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DataVehicle"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"DataVehicle"> | Date | string
+    location?: StringWithAggregatesFilter<"DataVehicle"> | string
+    startTime?: DateTimeWithAggregatesFilter<"DataVehicle"> | Date | string
+    endTime?: DateTimeWithAggregatesFilter<"DataVehicle"> | Date | string
+    golongan1?: StringWithAggregatesFilter<"DataVehicle"> | string
+    golongan2?: StringWithAggregatesFilter<"DataVehicle"> | string
+    golongan3?: StringWithAggregatesFilter<"DataVehicle"> | string
+  }
+
   export type UserCreateInput = {
     username: string
     full_name: string
@@ -10935,6 +12177,80 @@ export namespace Prisma {
     wa_name?: StringFieldUpdateOperationsInput | string
     wa_number?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataVehicleCreateInput = {
+    createdAt?: Date | string
+    location: string
+    startTime: Date | string
+    endTime: Date | string
+    golongan1: string
+    golongan2: string
+    golongan3: string
+  }
+
+  export type DataVehicleUncheckedCreateInput = {
+    id?: number
+    createdAt?: Date | string
+    location: string
+    startTime: Date | string
+    endTime: Date | string
+    golongan1: string
+    golongan2: string
+    golongan3: string
+  }
+
+  export type DataVehicleUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    golongan1?: StringFieldUpdateOperationsInput | string
+    golongan2?: StringFieldUpdateOperationsInput | string
+    golongan3?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataVehicleUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    golongan1?: StringFieldUpdateOperationsInput | string
+    golongan2?: StringFieldUpdateOperationsInput | string
+    golongan3?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataVehicleCreateManyInput = {
+    id?: number
+    createdAt?: Date | string
+    location: string
+    startTime: Date | string
+    endTime: Date | string
+    golongan1: string
+    golongan2: string
+    golongan3: string
+  }
+
+  export type DataVehicleUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    golongan1?: StringFieldUpdateOperationsInput | string
+    golongan2?: StringFieldUpdateOperationsInput | string
+    golongan3?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataVehicleUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    golongan1?: StringFieldUpdateOperationsInput | string
+    golongan2?: StringFieldUpdateOperationsInput | string
+    golongan3?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11519,6 +12835,47 @@ export namespace Prisma {
   }
 
   export type AlertManagementSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DataVehicleCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    location?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    golongan1?: SortOrder
+    golongan2?: SortOrder
+    golongan3?: SortOrder
+  }
+
+  export type DataVehicleAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DataVehicleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    location?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    golongan1?: SortOrder
+    golongan2?: SortOrder
+    golongan3?: SortOrder
+  }
+
+  export type DataVehicleMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    location?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    golongan1?: SortOrder
+    golongan2?: SortOrder
+    golongan3?: SortOrder
+  }
+
+  export type DataVehicleSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
