@@ -224,7 +224,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\BRIN\\nextjs\\IWMS\\main\\iwms-jogja\\src\\app\\generated\\prisma",
+      "value": "/app/src/app/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -233,12 +233,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\BRIN\\nextjs\\IWMS\\main\\iwms-jogja\\prisma\\schema.prisma",
+    "sourceFilePath": "/app/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -256,7 +256,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:janganlupasenyum@db.imnvaephnejbbvqeqmax.supabase.co:5432/postgres"
+        "value": "postgres://devbahagia:bahagiaselalu@db:5432/sipuberdb"
       }
     }
   },
