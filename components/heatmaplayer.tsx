@@ -2,32 +2,33 @@
 
 import { useEffect } from "react"
 import { useMap } from "react-leaflet"
-import L from "leaflet"
+import L, { LatLngExpression, Layer } from "leaflet"
 import "leaflet.heat"
 import { parseWKT, getLatestDataPerDevice } from "@/lib/heatmap"
 import airData from "@/app/stakeholder/data.json"
+type HeatLatLngTuple = [number, number, number]
 
-interface HeatmapLayerProps {
-  location: "semarang" | "yogyakarta"
-}
-
-export function HeatmapLayer({ location }: HeatmapLayerProps) {
+export default function HeatmapLayer({ location }: { location: "semarang" | "yogyakarta" }) {
   const map = useMap()
 
   useEffect(() => {
-    const filtered = airData // atau filter sesuai lokasi
+    const filtered = airData 
 
     const latestPoints = getLatestDataPerDevice(filtered)
 
-    const heatData = latestPoints.map((item) => {
+    const heatData: HeatLatLngTuple[] = latestPoints.map((item) => {
       const [lat, lng] = parseWKT(item.location)
       const intensity = Math.min(item.ispu_realtime / 300, 1)
-      return [lat, lng, intensity] as [number, number, number]
+      return [lat, lng, intensity]
     })
 
     console.log("Heatmap data:", heatData)
 
-    const heatLayer = L.heatLayer(heatData, {
+    const heatLayerFactory = (L as typeof L & {
+      heatLayer: (points: LatLngExpression[], options?: object) => Layer
+    }).heatLayer
+
+    const heatLayer = heatLayerFactory(heatData, {
       radius: 25,
       blur: 15,
       maxZoom: 17,
@@ -39,9 +40,6 @@ export function HeatmapLayer({ location }: HeatmapLayerProps) {
         1.0: "purple",
       },
     })
-
-    // ⬇️ Ini baris yang kamu tanyakan
-    heatLayer.addTo(map)
 
     return () => {
       map.removeLayer(heatLayer)

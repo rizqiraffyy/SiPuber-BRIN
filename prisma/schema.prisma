@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(50)
+  full_name String  @db.VarChar(100)
+  email      String   @unique @db.VarChar(100)
+  password   String
+  role       String @db.VarChar(20)
+  isSoftDelete Boolean  @default(false)
+  devices    Device[]
+}
+
+model Device {
+  id           Int      @id @default(autoincrement())
+  device_name  String @db.VarChar(50) @unique
+  no_modem     String? @db.VarChar(50)
+  tanggal_paket String?
+  isSoftDelete Boolean  @default(false)
+  user_id      Int
+  user         User     @relation(fields: [user_id], references: [id])
+  ppm_data     PpmDataSipuber[]
+  daily_data   DailyDataSipuber[]
+  anal_data    AnalDataSipuber[]
+}
+
+model CmsSetting {
+  id         Int    @id @default(autoincrement())
+  thumbnail  String?
+  section    String
+  content    String
+}
+
+model PpmDataSipuber {
+  id           Int      @id @default(autoincrement())
+  created_at   DateTime @default(now()) // Maps to TIMESTAMPTZ in PostgreSQL, ensuring time zone support
+  device_id    Int
+  location     String
+  co           Float
+  so2          Float
+  no2          Float
+  o3           Float
+  nh3          Float
+  pm1          Float
+  pm25         Float
+  pm10         Float
+  high_params  String @db.VarChar(50)
+  ispu_realtime Float
+  v_bat        Float
+  device       Device   @relation(fields: [device_id], references: [id])
+}
+
+model DailyDataSipuber {
+  id           Int      @id @default(autoincrement())
+  created_at   DateTime @default(now()) // Maps to TIMESTAMPTZ in PostgreSQL, ensuring time zone support
+  location     String
+  co           Float
+  so2           Float
+  no2          Float
+  o3           Float
+  nh3          Float
+  pm1          Float
+  pm25         Float
+  pm10         Float
+  high_params  String @db.VarChar(50)
+  ispu_daily   Float
+  device_id    Int
+  device       Device   @relation(fields: [device_id], references: [id])
+}
+
+model AnalDataSipuber {
+  id           Int      @id @default(autoincrement())
+  created_at   DateTime @default(now()) // Maps to TIMESTAMPTZ in PostgreSQL, ensuring time zone support
+  device_id    Int
+  location     String
+  co           Float
+  so2           Float
+  no2          Float
+  o3           Float
+  nh3          Float
+  pm1          Float
+  pm25         Float
+  pm10         Float
+  v_bat        Float
+  device       Device   @relation(fields: [device_id], references: [id])
+}
+
+model AlertManagement {
+  id         Int      @id @default(autoincrement())
+  wa_name    String
+  wa_number  String
+  email      String @db.VarChar(100)
+}
+
+model DataVehicle {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  location   String
+  startTime  DateTime
+  endTime    DateTime
+  golongan1  String
+  golongan2  String
+  golongan3  String
+}

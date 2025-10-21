@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import dynamic from "next/dynamic"
-import { MapContainer, TileLayer } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -16,10 +15,22 @@ import {
   ToggleGroup, ToggleGroupItem,
 } from "@/components/ui/toggle-group"
 
+// 👉 Import MapContainer dan TileLayer pakai dynamic
+const MapContainer = dynamic(
+  () => import("react-leaflet").then(mod => mod.MapContainer),
+  { ssr: false }
+)
+const TileLayer = dynamic(
+  () => import("react-leaflet").then(mod => mod.TileLayer),
+  { ssr: false }
+)
+
 // ⬇️ HeatmapLayer diimpor secara dinamis tanpa SSR
-const HeatmapLayer = dynamic<{
-  location: "semarang" | "yogyakarta"
-}>(() => import("./heatmaplayer"), { ssr: false })
+// ⬇️ HeatmapLayer diimpor secara dinamis tanpa SSR
+const HeatmapLayer = dynamic<{ location: "semarang" | "yogyakarta" }>(
+  () => import("./heatmaplayer").then((mod) => mod.default),
+  { ssr: false }
+)
 
 const locations: Record<"semarang" | "yogyakarta", { center: [number, number]; zoom: number }> = {
   semarang: { center: [-6.9667, 110.4167], zoom: 11 },

@@ -44,7 +44,7 @@ const data = {
   },
   navMain: [
     {
-      title: "Download",
+      title: "Data Monitoring",
       url: "#",
       icon: "",
     },
