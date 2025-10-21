@@ -3,7 +3,6 @@
 import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
-
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
@@ -60,12 +59,13 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ className, ...props }) => (
-          <ChevronLeft className={cn("size-4", className)} {...props} />
-        ),
-        IconRight: ({ className, ...props }) => (
-          <ChevronRight className={cn("size-4", className)} {...props} />
-        ),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        Chevron: (props: any) =>
+          props.direction === "left" ? (
+            <ChevronLeft className={cn("size-4", props.className)} />
+          ) : (
+            <ChevronRight className={cn("size-4", props.className)} />
+          ),
       }}
       {...props}
     />
