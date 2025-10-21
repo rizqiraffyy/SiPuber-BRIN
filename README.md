@@ -83,7 +83,7 @@ See the [LICENSE](./LICENSE) file for more details.
 <p align="center">
   <strong>Developed by</strong><br>
   <b>Rizqi Raffy Imam Malik</b><br>
-  <em>Full Stack Engineer @ BRIN (National Research and Innovation Agency)</em><br>
+  <em>Front-end Developer @ BRIN (National Research and Innovation Agency)</em><br>
   📍 Yogyakarta, Indonesia  
   <br>📧 <a href="mailto:rizqiraffy@gmail.com">rizqiraffy@gmail.com</a>  
   <br>🔗 <a href="https://www.linkedin.com/in/rizqiraffy/">linkedin.com/in/rizqiraffy</a>
