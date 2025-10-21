@@ -1,11 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/devicemonitoring/page": "app/devicemonitoring/page.js",
-  "/stakeholder/page": "app/stakeholder/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/login/page": "app/login/page.js",
-  "/register/page": "app/register/page.js",
-  "/visitor/page": "app/visitor/page.js"
+  "/stakeholder/page": "app/stakeholder/page.js"
 }
