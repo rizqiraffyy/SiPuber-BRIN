@@ -1,7 +1,6 @@
-const CHUNK_PUBLIC_PATH = "server/app/favicon.ico/route.js";
-const runtime = require("../../chunks/[turbopack]_runtime.js");
-runtime.loadChunk("server/chunks/node_modules_next_a21da7b7._.js");
-runtime.loadChunk("server/chunks/[root-of-the-server]__6ec1ff91._.js");
-runtime.getOrInstantiateRuntimeModule("[project]/.next-internal/server/app/favicon.ico/route/actions.js [app-rsc] (server actions loader, ecmascript)", CHUNK_PUBLIC_PATH);
-runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/favicon--route-entry.js [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH);
-module.exports = runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/favicon--route-entry.js [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH).exports;
+var R=require("../../chunks/[turbopack]_runtime.js")("server/app/favicon.ico/route.js")
+R.c("server/chunks/642e6_next_1db7a564._.js")
+R.c("server/chunks/[root-of-the-server]__b7296fd8._.js")
+R.m("[project]/iwms-jogja/.next-internal/server/app/favicon.ico/route/actions.js [app-rsc] (server actions loader, ecmascript)")
+R.m("[project]/iwms-jogja/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/iwms-jogja/app/favicon--route-entry.js [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/iwms-jogja/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/iwms-jogja/app/favicon--route-entry.js [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports
